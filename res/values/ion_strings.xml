@@ -503,4 +503,8 @@
     <string name="smart_pulldown_dismissable">No dismissable</string>
     <string name="smart_pulldown_ongoing">No ongoing</string>
 
+    <!-- Hide brightness slider -->
+    <string name="brightness_slider_title">Brightness slider</string>
+    <string name="brightness_slider_summary">Show the brightness slider underneath quick settings</string>
+
 </resources>
