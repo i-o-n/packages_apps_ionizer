@@ -75,6 +75,7 @@ public class StatusBar extends SettingsPreferenceFragment implements
     public static final int CLOCK_DATE_STYLE_LOWERCASE = 1;
     public static final int CLOCK_DATE_STYLE_UPPERCASE = 2;
     private static final int CUSTOM_CLOCK_DATE_FORMAT_INDEX = 18;
+    private static final String QUICK_PULLDOWN = "quick_pulldown";
 
     private SwitchPreference mShowLteFourGee;
     private ListPreference mStatusBarClock;
@@ -85,6 +86,7 @@ public class StatusBar extends SettingsPreferenceFragment implements
     private ListPreference mClockDatePosition;
     private SystemSettingSeekBarPreference mClockSize;
     private ListPreference mClockFontStyle;
+    private ListPreference mQuickPulldown;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -175,6 +177,13 @@ public class StatusBar extends SettingsPreferenceFragment implements
         mClockDatePosition.setOnPreferenceChangeListener(this);
 
         setDateOptions();
+
+        mQuickPulldown = (ListPreference) findPreference(QUICK_PULLDOWN);
+        mQuickPulldown.setOnPreferenceChangeListener(this);
+        int quickPulldownValue = Settings.System.getIntForUser(resolver,
+                Settings.System.STATUS_BAR_QUICK_QS_PULLDOWN, 0, UserHandle.USER_CURRENT);
+        mQuickPulldown.setValue(String.valueOf(quickPulldownValue));
+        updatePulldownSummary(quickPulldownValue);
     }
 
     @Override
@@ -275,6 +284,13 @@ public class StatusBar extends SettingsPreferenceFragment implements
             mClockDatePosition.setSummary(mClockDatePosition.getEntries()[index]);
             parseClockDateFormats();
             return true;
+        } else if (preference == mQuickPulldown) {
+            int quickPulldownValue = Integer.valueOf((String) objValue);
+            Settings.System.putIntForUser(getActivity().getContentResolver(),
+                    Settings.System.STATUS_BAR_QUICK_QS_PULLDOWN,
+                    quickPulldownValue, UserHandle.USER_CURRENT);
+            updatePulldownSummary(quickPulldownValue);
+            return true;
         }
         return false;
     }
@@ -317,6 +333,23 @@ public class StatusBar extends SettingsPreferenceFragment implements
             mClockDateStyle.setEnabled(true);
             mClockDateFormat.setEnabled(true);
             mClockDatePosition.setEnabled(true);
+        }
+    }
+
+    private void updatePulldownSummary(int value) {
+        Resources res = getResources();
+
+        if (value == 0) {
+            // quick pulldown deactivated
+            mQuickPulldown.setSummary(res.getString(R.string.quick_pulldown_off));
+        } else if (value == 3) {
+            // quick pulldown always
+            mQuickPulldown.setSummary(res.getString(R.string.quick_pulldown_summary_always));
+        } else {
+            String direction = res.getString(value == 2
+                    ? R.string.quick_pulldown_left
+                    : R.string.quick_pulldown_right);
+            mQuickPulldown.setSummary(res.getString(R.string.quick_pulldown_summary, direction));
         }
     }
 
