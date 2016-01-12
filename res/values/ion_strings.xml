@@ -615,4 +615,8 @@
     <string name="status_bar_carrier_color">Carrier label color</string>
     <string name="status_bar_carrier_size">Carrier label size</string>
     <string name="status_bar_carrier_font_style_title">Carrier Label Font</string>
+
+    <!-- Show QS on lockscreen -->
+    <string name="show_qs_on_secure_keyguard_title">Quick settings</string>
+    <string name="show_qs_on_secure_keyguard_summary">Show quick settings on secure lockscreen</string>
 </resources>
