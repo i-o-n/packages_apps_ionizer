@@ -29,6 +29,12 @@
         android:title="@string/fprint_sucess_vib_title"
         android:summary="@string/fprint_sucess_vib_summary"
         android:persistent="false" />
+		
+    <com.ion.ionizer.preferences.SecureSettingSwitchPreference
+        android:key="status_bar_locked_on_secure_keyguard"
+        android:title="@string/block_on_secure_keyguard_title"
+        android:summary="@string/block_on_secure_keyguard_summary"
+        android:defaultValue="false"/>
 
     <Preference
             android:title="@string/lockscreen_tuner_title" >
