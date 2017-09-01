@@ -507,4 +507,8 @@
     <string name="brightness_slider_title">Brightness slider</string>
     <string name="brightness_slider_summary">Show the brightness slider underneath quick settings</string>
 
+    <!-- DoubleTap2Sleep -->
+    <string name="double_tap_sleep_lockscreen_title">Double tap to sleep</string>
+    <string name="double_tap_sleep_lockscreen_sumary">Double tap anywhere on the lockscreen to put phone to sleep</string>
+
 </resources>
