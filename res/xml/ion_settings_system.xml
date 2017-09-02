@@ -24,6 +24,12 @@
         android:summary="@string/show_cpu_summary"/>
 
     <Preference
+        android:id="@+id/alarm_blocker"
+        android:title="@string/alarm_blocker"
+        android:summary="@string/alarm_blocker_summary"
+        android:fragment="com.ion.ionizer.fragments.AlarmBlocker" />
+
+    <Preference
         android:key="wakelock_blocker"
         android:title="@string/wakelock_blocker_title"
         android:summary="@string/wakelock_blocker_summary"
