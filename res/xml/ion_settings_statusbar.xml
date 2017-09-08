@@ -37,4 +37,11 @@
         android:summary="@string/network_traffic_hidearrow_summary"
         android:dependency="network_traffic_state"
         android:defaultValue="false" />
+
+     <Preference
+            android:title="@string/statusbar_items_title" >
+            <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="com.android.systemui"
+                android:targetClass="com.android.systemui.tuner.StatusbarItemsActivity" />
+    </Preference>
 </PreferenceScreen>
