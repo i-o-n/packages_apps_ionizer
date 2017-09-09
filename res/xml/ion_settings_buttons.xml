@@ -23,4 +23,10 @@
         android:fragment="com.ion.ionizer.fragments.Volume"
         android:title="@string/volume_title" />
 
+     <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+        android:key="volume_button_music_control"
+        android:summary="@string/volume_rocker_music_controls_summary"
+        android:title="@string/volume_rocker_music_controls_title"
+        android:defaultValue="false" />
+
 </PreferenceScreen>
