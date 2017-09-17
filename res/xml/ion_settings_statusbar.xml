@@ -23,13 +23,25 @@
             <intent android:action="android.intent.action.MAIN"
                 android:targetPackage="com.android.systemui"
                 android:targetClass="com.android.systemui.tuner.StatusbarItemsActivity" />
-    </Preference>
+     </Preference>
 
         <Preference
             android:key="battery_settings"
             android:title="@string/battery_style_category_title"
             android:summary="@string/battery_style_category_summary"
             android:fragment="com.ion.ionizer.fragments.StatusBarBattery" />
-        </Preference>
+
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+            android:key="network_traffic_state"
+            android:title="@string/network_traffic_state_title"
+            android:summary="@string/network_traffic_state_summary"
+            android:defaultValue="true" />
+
+        <com.ion.ionizer.preferences.SystemSettingSeekBarPreference
+            android:key="network_traffic_autohide_threshold"
+            android:title="@string/network_traffic_autohide_threshold_title"
+            android:max="10"
+            android:min="0"
+            settings:units="" />
 
 </PreferenceScreen>
