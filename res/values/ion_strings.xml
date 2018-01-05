@@ -589,4 +589,8 @@
     <string name="double_tap_sleep_gesture_title">Double tap to sleep</string>
     <string name="double_tap_sleep_gesture_summary">Double tap on the status bar to put the device to sleep</string>
 
+    <!-- Brightness control -->
+    <string name="status_bar_toggle_brightness">Brightness control</string>
+    <string name="status_bar_toggle_brightness_summary">Adjust brightness by sliding across the status bar</string>
+
 </resources>
