@@ -297,4 +297,8 @@
 
     <string name="sysui_qqs_count_title">Small tiles</string>	
 
+    <!-- CPU info -->
+    <string name="show_cpu_info">Show CPU info</string>
+    <string name="show_cpu_info_summary">Screen overlay showing current CPU info</string>	
+
 </resources>
