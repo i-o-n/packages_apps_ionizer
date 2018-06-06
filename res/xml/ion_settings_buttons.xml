@@ -35,6 +35,12 @@
             android:key="volume_key_cursor_control"
             android:title="@string/volume_key_cursor_control_title"/>
 
+        <Preference
+            android:key="volume_steps"
+            android:title="@string/volume_steps_title"
+            android:summary="@string/volume_steps_summary"
+            android:fragment="com.ion.ionizer.fragments.VolumeSteps" />
+
         <com.ion.ionizer.preferences.SystemSettingSwitchPreference
             android:key="volume_rocker_wake"
             android:summary="@string/volume_rocker_wake_summary"
