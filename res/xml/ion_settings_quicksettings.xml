@@ -18,10 +18,18 @@
     android:title="@string/quicksettings_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-        <com.ion.ionizers.preferences.SecureSettingSwitchPreference
+        <com.ion.ionizer.preferences.SecureSettingSwitchPreference
             android:key="quick_settings_vibrate"
             android:title="@string/quick_settings_vibrate_title"
             android:summary="@string/quick_settings_vibrate_summary"
             android:defaultValue="false"/>
+
+        <com.ion.ionizer.preferences.SystemSettingSeekBarPreference
+            android:key="sysui_qqs_count"
+            android:title="@string/sysui_qqs_count_title"
+            android:max="8"
+            android:min="3"
+            android:defaultValue="6"
+            android:persistent="false" />
 
 </PreferenceScreen>

@@ -295,4 +295,6 @@
     <string name="wakeup_when_plugged_unplugged_title">Wake up on charge</string>
     <string name="wakeup_when_plugged_unplugged_summary">Wake up device if charger is plugged/unplugged.</string>
 
+    <string name="sysui_qqs_count_title">Small tiles</string>	
+
 </resources>
