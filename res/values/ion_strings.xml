@@ -373,6 +373,9 @@
     <string name="qs_brightness_position_bottom_title">Brightness slider on bottom</string>
     <string name="qs_brightness_position_bottom_summary">Show a brightness slider on bottom quick settings</string>
 
+    <string name="qs_tile_title_visibility_title">Tile title</string> 
+    <string name="qs_tile_title_visibility_summary">Display title below each tile</string> 
+
     <!-- Statusbar Clock -->
     <string name="status_bar_clock_title">Clock settings</string>
     <string name="status_bar_clock_summary">Customize clock and date in statusbar</string>
