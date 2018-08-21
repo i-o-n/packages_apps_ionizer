@@ -166,4 +166,13 @@
     <string name="screen_off_animation_crt">CRT</string> 
     <string name="screen_off_animation_scale">Scale</string> 
 
+    <!-- Statusbar Tuner -->
+    <string name="statusbar_items_title">Statusbar Icons</string>
+
+    <!-- Lockscreen icons -->
+    <string name="lockscreen_tuner_title">Lockscreen Shortcuts</string>
+
+    <!-- Navbar tuner -->
+    <string name="navbar_tuner_title">Navbar Buttons</string>
+
 </resources>
