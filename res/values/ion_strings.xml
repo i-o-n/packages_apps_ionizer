@@ -291,4 +291,8 @@
     <string name="incall_vibrate_call_wait_title">Vibrate on Call Waiting</string>
     <string name="incall_vibrate_disconnect_title">Vibrate on Disconnect</string>
 		
+    <!-- Wakeup options -->
+    <string name="wakeup_when_plugged_unplugged_title">Wake up on charge</string>
+    <string name="wakeup_when_plugged_unplugged_summary">Wake up device if charger is plugged/unplugged.</string>
+
 </resources>
