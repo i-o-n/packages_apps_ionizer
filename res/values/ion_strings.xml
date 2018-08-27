@@ -88,6 +88,11 @@
     <string name="powermenu_users">Users</string>
     <string name="powermenu_logout">Logout</string>
     <string name="powermenu_torch">Flashlight</string>
+    <string name="scroll_title" >Scroll</string>
+    <string name="misc_animation_title" >Misc Animation</string>
+    <string name="tile_animation_title" >Tile Animation</string>
+    <string name="list_animation_title" >ListView Animation</string>
+    <string name="system_keyguard_animation_title" >System and Keyguard Animation</string>
 
     <!-- Lockscreen battery info indicator  -->
     <string name="lockscreen_battery_info_title">Lockscreen charging info</string>
