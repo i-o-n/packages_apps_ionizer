@@ -18,4 +18,10 @@
     android:title="@string/animations_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+         <PreferenceScreen
+            android:key="system_animation"
+            android:title="@string/system_animation_title"
+            android:summary="@string/system_animation_summary"
+            android:fragment="com.ion.ionizer.fragments.ui.AnimationControls" />
+
 </PreferenceScreen>
