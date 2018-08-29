@@ -944,4 +944,8 @@
     <!-- Lock icon -->
     <string name="hide_lockicon_title">Hide lock icon</string>
     <string name="hide_lockicon_summary">Hide the lock icon on lockscreen</string>
+
+    <!-- Notification light -->
+    <string name="notification_light_settings">Notification LED</string>
+    <string name="notification_light_settings_summary">Configure notification light on per-app basis</string>
 </resources>
