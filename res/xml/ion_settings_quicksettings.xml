@@ -41,4 +41,17 @@
             android:title="@string/qs_footer_settings_title"
             android:summary="@string/qs_footer_settings_summary"
             android:defaultValue="true"/>
+
+    <com.ion.ionizer.preferences.SecureSettingSwitchPreference
+        android:key="qs_show_brightness"
+        android:title="@string/qs_show_brightness_title"
+        android:summary="@string/qs_show_brightness_summary"
+        android:defaultValue="true" />
+
+    <com.ion.ionizer.preferences.SecureSettingSwitchPreference
+        android:key="qs_brightness_position_bottom"
+        android:title="@string/qs_brightness_position_bottom_title"
+        android:summary="@string/qs_brightness_position_bottom_summary"
+        android:defaultValue="false"
+        android:dependency="qs_show_brightness" />
 </PreferenceScreen>
