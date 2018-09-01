@@ -31,6 +31,12 @@
             android:summary="@string/battery_style_category_summary"
             android:fragment="com.ion.ionizer.fragments.StatusBarBattery" />
 
+        <Preference
+            android:key="status_bar_clock_settings"
+            android:fragment="com.ion.ionizer.fragments.StatusbarClockSettings" 
+            android:title="@string/status_bar_clock_title"
+            android:summary="@string/status_bar_clock_summary" />
+
         <com.ion.ionizer.preferences.SystemSettingSwitchPreference
             android:key="network_traffic_state"
             android:title="@string/network_traffic_state_title"
