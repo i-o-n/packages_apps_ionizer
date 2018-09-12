@@ -45,6 +45,7 @@ public class LockScreen extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
     private static final String FINGERPRINT_VIB = "fingerprint_success_vib";
+    private static final String LOCK_CLOCK_FONTS = "lock_clock_fonts";
 
     private static final String LOCK_SCREEN_VISUALIZER_CUSTOM_COLOR = "lock_screen_visualizer_custom_color";
     private static final String CLOCK_FONT_SIZE  = "lockclock_font_size";
@@ -57,6 +58,7 @@ public class LockScreen extends SettingsPreferenceFragment implements
     private SwitchPreference mFingerprintVib;
     private SystemSettingSeekBarPreference mClockFontSize;
     private SystemSettingSeekBarPreference mDateFontSize;
+    ListPreference mLockClockFonts;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -86,6 +88,13 @@ public class LockScreen extends SettingsPreferenceFragment implements
         mVisualizerColor.setNewPreviewColor(visColor);
         mVisualizerColor.setAlphaSliderEnabled(true);
         mVisualizerColor.setOnPreferenceChangeListener(this);
+
+        // Lockscren Clock Fonts
+        mLockClockFonts = (ListPreference) findPreference(LOCK_CLOCK_FONTS);
+        mLockClockFonts.setValue(String.valueOf(Settings.System.getInt(
+                getContentResolver(), Settings.System.LOCK_CLOCK_FONTS, 17)));
+        mLockClockFonts.setSummary(mLockClockFonts.getEntry());
+        mLockClockFonts.setOnPreferenceChangeListener(this);
 
         // Lock Clock Size
         mClockFontSize = (SystemSettingSeekBarPreference) findPreference(CLOCK_FONT_SIZE);
@@ -132,6 +141,11 @@ public class LockScreen extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(),
                     Settings.System.LOCKDATE_FONT_SIZE, top*1);
             return true;
+        } else if (preference == mLockClockFonts) {
+            Settings.System.putInt(getContentResolver(), Settings.System.LOCK_CLOCK_FONTS,
+                    Integer.valueOf((String) newValue));
+            mLockClockFonts.setValue(String.valueOf(newValue));
+            mLockClockFonts.setSummary(mLockClockFonts.getEntry());
         }
         return false;
     }
