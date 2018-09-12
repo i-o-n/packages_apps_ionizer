@@ -16,6 +16,7 @@
 package com.ion.ionizer.fragments;
 
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,15 +33,42 @@ import com.android.settings.SettingsPreferenceFragment;
 
 import com.ion.ionizer.R;
 
-public class Animations extends SettingsPreferenceFragment {
+public class Animations extends SettingsPreferenceFragment
+        implements OnPreferenceChangeListener {
 
     public static final String TAG = "Animations";
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    private static final String KEY_SCREEN_OFF_ANIMATION = "screen_off_animation";
 
+    private ListPreference mScreenOffAnimation;
+
+    @Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
         addPreferencesFromResource(R.xml.ion_settings_animations);
+
+        ContentResolver resolver = getActivity().getContentResolver();
+        PreferenceScreen prefs = getPreferenceScreen();
+
+        mScreenOffAnimation = (ListPreference) findPreference(KEY_SCREEN_OFF_ANIMATION);
+        int screenOffAnimation = Settings.System.getInt(getContentResolver(),
+                Settings.System.SCREEN_OFF_ANIMATION, 0);
+        mScreenOffAnimation.setValue(Integer.toString(screenOffAnimation));
+        mScreenOffAnimation.setSummary(mScreenOffAnimation.getEntry());
+        mScreenOffAnimation.setOnPreferenceChangeListener(this);
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        ContentResolver resolver = getActivity().getContentResolver();
+        if (preference == mScreenOffAnimation) {
+            int value = Integer.valueOf((String) newValue);
+            int index = mScreenOffAnimation.findIndexOfValue((String) newValue);
+            mScreenOffAnimation.setSummary(mScreenOffAnimation.getEntries()[index]);
+            Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_OFF_ANIMATION, value);
+            return true;
+        }
+        return false;
     }
 
     @Override
