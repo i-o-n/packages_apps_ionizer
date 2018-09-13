@@ -22,4 +22,11 @@
         android:key="show_cpu_info"
         android:title="@string/show_cpu_title"
         android:summary="@string/show_cpu_summary"/>
+
+    <com.ion.ionizer.preferences.SystemSettingListPreference
+        android:key="screenshot_type"
+        android:entries="@array/screenshot_type_entries"
+        android:entryValues="@array/screenshot_type_values"
+        android:title="@string/screenshot_type_title"
+        android:defaultValue="0" />
 </PreferenceScreen>
