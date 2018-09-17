@@ -38,4 +38,21 @@
                 android:targetClass="com.android.settings.applications.appops.AppOpsSummary" />
         </Preference>
 
+    <PreferenceCategory
+        android:key="navigation_burnin"
+        android:title="@string/navigation_burnin_category" >
+
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+            android:key="burn_in_protection"
+            android:title="@string/burn_in_protection_title"
+            android:summary="@string/burn_in_protection_summary"
+            android:defaultValue="true" />
+
+        <com.ion.ionizer.preferences.SystemSettingSeekBarPreference
+            android:key="burn_in_protection_interval"
+            android:title="@string/burn_in_protection_interval_title"
+            android:max="90"
+            android:min="45"
+            android:persistent="false" />
+    </PreferenceCategory>
 </PreferenceScreen>
