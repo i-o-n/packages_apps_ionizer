@@ -29,4 +29,10 @@
         android:entryValues="@array/screenshot_type_values"
         android:title="@string/screenshot_type_title"
         android:defaultValue="0" />
+
+    <com.ion.ionizer.preferences.GlobalSettingSwitchPreference
+        android:key="allow_signature_fake"
+        android:title="@string/allow_signature_fake"
+        android:summary="@string/allow_signature_fake_summary"
+        android:defaultValue="false" />
 </PreferenceScreen>
