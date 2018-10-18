@@ -512,4 +512,11 @@
     <string name="double_tap_sleep_lockscreen_title">Double tap to sleep</string>
     <string name="double_tap_sleep_lockscreen_sumary">Double tap anywhere on the lockscreen to put phone to sleep</string>
 
+    <!-- QS tile styles -->
+    <string name="qs_tile_style_title">QS Tile Style</string>
+    <string name="qstile_default">Default</string>
+    <string name="qstile_circle_trim">Circle with trim</string>
+    <string name="qstile_dual_tone_circle">Dual-toned circle</string>
+    <string name="qstile_squircle_trim">Squircle with trim</string>
+
 </resources>
