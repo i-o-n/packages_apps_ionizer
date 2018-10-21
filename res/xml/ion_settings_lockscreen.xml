@@ -166,6 +166,15 @@
             android:summary="@string/lockscreen_info_summary"
             android:defaultValue="true" />
 
+        <com.ion.ionizer.preferences.SystemSettingListPreference
+            android:key="lock_date_fonts"
+            android:title="@string/lock_date_font_title"
+            android:entries="@array/lock_clock_fonts_entries"
+            android:entryValues="@array/lock_clock_fonts_values"
+            android:dependency="lockscreen_info"
+            android:defaultValue="0"
+            android:persistent="false" />
+
         <com.ion.ionizer.preferences.SystemSettingSeekBarPreference
             android:key="lockdate_font_size"
             android:title="@string/lockdate_font_size_title"

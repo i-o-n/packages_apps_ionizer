@@ -45,11 +45,12 @@ public class LockScreen extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
     private static final String FINGERPRINT_VIB = "fingerprint_success_vib";
-    private static final String LOCK_CLOCK_FONTS = "lock_clock_fonts";
 
     private static final String LOCK_SCREEN_VISUALIZER_CUSTOM_COLOR = "lock_screen_visualizer_custom_color";
     private static final String CLOCK_FONT_SIZE  = "lockclock_font_size";
+    private static final String LOCK_CLOCK_FONTS = "lock_clock_fonts";
     private static final String DATE_FONT_SIZE  = "lockdate_font_size";
+    private static final String LOCK_DATE_FONTS = "lock_date_fonts";
 
     private static final String WEATHER_LS_CAT = "weather_lockscreen_key_two";
 
@@ -59,6 +60,7 @@ public class LockScreen extends SettingsPreferenceFragment implements
     private SystemSettingSeekBarPreference mClockFontSize;
     private SystemSettingSeekBarPreference mDateFontSize;
     ListPreference mLockClockFonts;
+    ListPreference mLockDateFonts;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -95,6 +97,13 @@ public class LockScreen extends SettingsPreferenceFragment implements
                 getContentResolver(), Settings.System.LOCK_CLOCK_FONTS, 17)));
         mLockClockFonts.setSummary(mLockClockFonts.getEntry());
         mLockClockFonts.setOnPreferenceChangeListener(this);
+
+        // Lockscren Date Fonts
+        mLockDateFonts = (ListPreference) findPreference(LOCK_DATE_FONTS);
+        mLockDateFonts.setValue(String.valueOf(Settings.System.getInt(
+                getContentResolver(), Settings.System.LOCK_DATE_FONTS, 0)));
+        mLockDateFonts.setSummary(mLockDateFonts.getEntry());
+        mLockDateFonts.setOnPreferenceChangeListener(this);
 
         // Lock Clock Size
         mClockFontSize = (SystemSettingSeekBarPreference) findPreference(CLOCK_FONT_SIZE);
@@ -146,6 +155,12 @@ public class LockScreen extends SettingsPreferenceFragment implements
                     Integer.valueOf((String) newValue));
             mLockClockFonts.setValue(String.valueOf(newValue));
             mLockClockFonts.setSummary(mLockClockFonts.getEntry());
+        } else if (preference == mLockDateFonts) {
+            Settings.System.putInt(getContentResolver(), Settings.System.LOCK_DATE_FONTS,
+                    Integer.valueOf((String) newValue));
+            mLockDateFonts.setValue(String.valueOf(newValue));
+            mLockDateFonts.setSummary(mLockDateFonts.getEntry());
+            return true;
         }
         return false;
     }

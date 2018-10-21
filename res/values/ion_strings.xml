@@ -648,4 +648,7 @@
     <string name="lockscreen_clock_selection_sneeky">Analog (Sneeky)</string>
     <string name="lockscreen_clock_selection_text">Text (Android Q)</string>
 
+    <!-- Lock Date Fonts -->
+    <string name="lock_date_font_title">Date font style</string>
+
 </resources>
