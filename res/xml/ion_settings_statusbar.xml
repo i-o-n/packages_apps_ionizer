@@ -77,6 +77,12 @@
             android:entries="@array/status_bar_battery_percentage_entries"
             android:entryValues="@array/status_bar_battery_percentage_values" />
 
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+            android:key="volte_icon"
+            android:title="@string/volte_icon_title"
+            android:summary="@string/volte_icon_summary"
+            android:defaultValue="true"/>
+
         <ListPreference
             android:key="quick_pulldown"
             android:title="@string/quick_pulldown_title"
