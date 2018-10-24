@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 ion-OS
+ * Copyright (C) 2019-2020 ion-OS
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,9 +45,13 @@ public class LockScreenDate extends SettingsPreferenceFragment implements
 
     private static final String LOCK_DATE_FONTS = "lock_date_fonts";
     private static final String DATE_FONT_SIZE  = "lockdate_font_size";
+    private static final String LOCK_OWNERINFO_FONTS = "lock_ownerinfo_fonts";
+    private static final String LOCKOWNER_FONT_SIZE  = "lockowner_font_size";
 
     private ListPreference mLockDateFonts;
     private SystemSettingSeekBarPreference mDateFontSize;
+    private ListPreference mLockOwnerInfoFonts;
+    private SystemSettingSeekBarPreference mOwnerInfoFontSize;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -71,6 +75,19 @@ public class LockScreenDate extends SettingsPreferenceFragment implements
         mDateFontSize.setValue(Settings.System.getInt(getContentResolver(),
                 Settings.System.LOCKDATE_FONT_SIZE, 18));
         mDateFontSize.setOnPreferenceChangeListener(this);
+
+        // Lockscreen Owner Info Fonts
+        mLockOwnerInfoFonts = (ListPreference) findPreference(LOCK_OWNERINFO_FONTS);
+        mLockOwnerInfoFonts.setValue(String.valueOf(Settings.System.getInt(
+                getContentResolver(), Settings.System.LOCK_OWNERINFO_FONTS, 0)));
+        mLockOwnerInfoFonts.setSummary(mLockOwnerInfoFonts.getEntry());
+        mLockOwnerInfoFonts.setOnPreferenceChangeListener(this);
+
+        // Lockscreen Owner Info Size
+        mOwnerInfoFontSize = (SystemSettingSeekBarPreference) findPreference(LOCKOWNER_FONT_SIZE);
+        mOwnerInfoFontSize.setValue(Settings.System.getInt(getContentResolver(),
+                Settings.System.LOCKOWNER_FONT_SIZE, 18));
+        mOwnerInfoFontSize.setOnPreferenceChangeListener(this);
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -85,6 +102,17 @@ public class LockScreenDate extends SettingsPreferenceFragment implements
             int top = (Integer) newValue;
             Settings.System.putInt(getContentResolver(),
                     Settings.System.LOCKDATE_FONT_SIZE, top*1);
+            return true;
+        } else if (preference == mLockOwnerInfoFonts) {
+            Settings.System.putInt(getContentResolver(), Settings.System.LOCK_OWNERINFO_FONTS,
+                    Integer.valueOf((String) newValue));
+            mLockOwnerInfoFonts.setValue(String.valueOf(newValue));
+            mLockOwnerInfoFonts.setSummary(mLockOwnerInfoFonts.getEntry());
+            return true;
+        } else if (preference == mOwnerInfoFontSize) {
+            int top = (Integer) newValue;
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.LOCKOWNER_FONT_SIZE, top*1);
             return true;
         }
         return false;

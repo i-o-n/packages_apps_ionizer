@@ -1017,4 +1017,8 @@
     <string name="lockscreen_date_selection_str_gradient">Gradient</string>
     <string name="lockscreen_date_selection_str_border_accent">Dark with accented borders</string>
     <string name="lockscreen_date_selection_str_border_gradient">Dark with gradient borders</string>
+
+    <!-- LS OwnerInfo Font & Size -->
+    <string name="lock_ownerinfo_font_title">Owner Info font style</string>
+    <string name="lockowner_font_size_title">Owner info font size</string>
 </resources>
