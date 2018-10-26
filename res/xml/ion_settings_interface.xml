@@ -36,6 +36,19 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="quick_settings_category"
+        android:title="@string/qs_panel_alpha_title">
+
+        <com.ion.ionizer.preferences.CustomSeekBarPreference
+            android:key="qs_panel_alpha"
+            android:title="@string/qs_panel_alpha_title"
+            android:summary="@string/qs_panel_alpha_summary"
+            android:max="255"
+            settings:min="0"
+            android:defaultValue="255" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
                 android:key="dashboard_category"
                 android:title="@string/dashboard_category">
 
