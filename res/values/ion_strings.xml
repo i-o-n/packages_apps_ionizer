@@ -829,4 +829,7 @@
     <string name="slim_recents_mem_display_color">Memory bar color</string>
     <string name="slim_recents_mem_display_text_color">Memory bar text color</string>
 
+    <!-- QuickSettings Panel Transparency -->
+    <string name="qs_panel_alpha_title">QS panel transparency</string>
+
 </resources>

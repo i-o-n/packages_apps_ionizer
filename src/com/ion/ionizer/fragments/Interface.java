@@ -29,6 +29,7 @@ import com.ion.ionizer.display.QsTileStylePreferenceController;
 import com.ion.ionizer.display.SwitchStylePreferenceController;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
+import com.ion.ionizer.display.QsAlphaPreferenceController;
 
 import com.ion.ionizer.R;
 
@@ -67,6 +68,7 @@ public class Interface extends DashboardFragment {
         controllers.add(new QsHeaderStylePreferenceController(context));
         controllers.add(new QsTileStylePreferenceController(context));
         controllers.add(new SwitchStylePreferenceController(context));
+        controllers.add(new QsAlphaPreferenceController(context));
         return controllers;
     }
 }

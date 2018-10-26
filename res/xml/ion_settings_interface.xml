@@ -66,6 +66,14 @@
             android:entries="@array/qs_selector_entries"
             android:entryValues="@array/qs_selector_values" />
 
+        <com.ion.ionizer.preferences.CustomSeekBarPreference
+            android:key="qs_panel_alpha"
+            android:title="@string/qs_panel_alpha_title"
+            android:max="255"
+            settings:min="0"
+            settings:units=""
+            android:defaultValue="255" />
+
     </PreferenceCategory>
 
     <PreferenceCategory
