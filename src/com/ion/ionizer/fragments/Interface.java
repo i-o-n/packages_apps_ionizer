@@ -23,7 +23,9 @@ import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.display.AccentPickerPreferenceController;
 import com.android.settings.display.SystemUiThemePreferenceController;
 import com.android.settings.display.ThemePreferenceController;
+import com.ion.ionizer.display.ContentPaddingPreferenceController;
 import com.ion.ionizer.display.QsTileStylePreferenceController;
+import com.ion.ionizer.display.RoundedCornersPreferenceController;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 
@@ -59,8 +61,10 @@ public class Interface extends DashboardFragment {
             Context context, Lifecycle lifecycle, Fragment fragment) {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
         controllers.add(new AccentPickerPreferenceController(context, lifecycle, fragment));
+        controllers.add(new ContentPaddingPreferenceController(context));
         controllers.add(new SystemUiThemePreferenceController(context, lifecycle));
         controllers.add(new QsTileStylePreferenceController(context));
+        controllers.add(new RoundedCornersPreferenceController(context));
         return controllers;
     }
 }
