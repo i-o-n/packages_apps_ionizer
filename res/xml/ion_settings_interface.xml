@@ -77,7 +77,7 @@
         <com.ion.ionizer.preferences.SystemSettingSeekBarPreference
             android:key="sysui_rounded_content_padding"
             android:title="@string/content_padding"
-            android:max="10"
+            android:max="18"
             settings:min="0"
             settings:units=""
             android:persistent="false" />
