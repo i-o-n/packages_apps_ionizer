@@ -89,6 +89,12 @@
         android:summary="@string/qs_tile_title_visibility_summary" 
         android:defaultValue="true" /> 
 
+    <com.ion.ionizer.preferences.SecureSettingSwitchPreferenc
+        android:key="qs_show_info_header"
+        android:title="@string/tuner_show_info_header_title"
+        android:summary="@string/tuner_show_info_header_category"
+        android:defaultValue="true" />
+
     <com.ion.ionizer.preferences.SecureSettingSwitchPreference
         android:key="qs_show_secure"
         android:title="@string/qs_footer_warnings_title"

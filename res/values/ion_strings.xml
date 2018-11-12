@@ -555,4 +555,8 @@
     <string name="lockdate_font_size_title">Date font size</string>
     <string name="lockclock_font_size_title">Clock font size</string>
 
+    <!-- Hide header -->
+    <string name="tuner_show_info_header_title">Information header</string>
+    <string name="tuner_show_info_header_category">Shows information on top of the QS panel</string>
+
 </resources>
