@@ -551,4 +551,8 @@
     <string name="qs_header_accent">Accent Based</string>
     <string name="qs_header_transparent">Transparent</string>
 
+    <!-- Lock Clock & Date Size -->
+    <string name="lockdate_font_size_title">Date font size</string>
+    <string name="lockclock_font_size_title">Clock font size</string>
+
 </resources>
