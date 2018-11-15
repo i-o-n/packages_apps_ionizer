@@ -223,7 +223,7 @@
     <string name="block_on_secure_keyguard_title">Disable Quick settings</string>
     <string name="block_on_secure_keyguard_summary">Disables quick settings on secure lockscreen</string>
 	
-    <string name="app_ops_settings_title">App Ops</string>
+    <string name="app_ops_settings_title">Privacy Guard</string>
     <string name="app_ops_settings_summary">Block app permissions</string>
 	
     <!-- Volume key cursor control -->
