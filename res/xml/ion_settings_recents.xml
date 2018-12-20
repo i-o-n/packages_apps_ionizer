@@ -30,18 +30,11 @@
         android:key="slim_recents_category"
         android:title="@string/slim_recents_title">
 
-        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
-            android:key="use_slim_recents"
-            android:title="@string/slim_recents_title"
-            android:summary="@string/slim_recents_summary"
-            android:defaultValue="false" />
-
         <PreferenceScreen
             android:key="slim_recents_fragment"
             android:fragment="com.ion.ionizer.fragments.SlimRecents"
             android:title="@string/slim_recents_fragment_title"
-            android:summary="@string/slim_recents_fragment_summary"
-            android:dependency="use_slim_recents" />
+            android:summary="@string/slim_recents_fragment_summary" />
     </PreferenceCategory>
 
     <Preference
