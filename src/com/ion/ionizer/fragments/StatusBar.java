@@ -58,12 +58,16 @@ public class StatusBar extends SettingsPreferenceFragment implements
     private static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
     private static final String QUICK_PULLDOWN = "quick_pulldown";
     private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
+    private static final String NETWORK_TRAFFIC_HIDEARROW = "network_traffic_hidearrow";
+    private static final String NETWORK_TRAFFIC_LOCATION = "network_traffic_location";
 
     private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 3;
     private static final int STATUS_BAR_BATTERY_STYLE_HIDDEN = 4;
 
     private SystemSettingSeekBarPreference mThreshold;
     private SystemSettingSwitchPreference mNetMonitor;
+    private SystemSettingSwitchPreference mHideArrows;
+    private ListPreference mNetTrafficLocation;
     private ListPreference mNetTrafficType;
     private ListPreference mStatusBarBatteryShowPercent;
     private ListPreference mStatusBarBattery;
@@ -79,18 +83,11 @@ public class StatusBar extends SettingsPreferenceFragment implements
         PreferenceScreen prefSet = getPreferenceScreen();
         final ContentResolver resolver = getActivity().getContentResolver();
 
-        boolean isNetMonitorEnabled = Settings.System.getIntForUser(resolver,
-                Settings.System.NETWORK_TRAFFIC_STATE, 0, UserHandle.USER_CURRENT) == 1;
-        mNetMonitor = (SystemSettingSwitchPreference) findPreference("network_traffic_state");
-        mNetMonitor.setChecked(isNetMonitorEnabled);
-        mNetMonitor.setOnPreferenceChangeListener(this);
-
         int value = Settings.System.getIntForUser(resolver,
                 Settings.System.NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD, 1, UserHandle.USER_CURRENT);
         mThreshold = (SystemSettingSeekBarPreference) findPreference("network_traffic_autohide_threshold");
         mThreshold.setValue(value);
         mThreshold.setOnPreferenceChangeListener(this);
-        mThreshold.setEnabled(isNetMonitorEnabled);
 
         int nettype = Settings.System.getIntForUser(resolver,
                 Settings.System.NETWORK_TRAFFIC_TYPE, 0, UserHandle.USER_CURRENT);
@@ -98,7 +95,6 @@ public class StatusBar extends SettingsPreferenceFragment implements
         mNetTrafficType.setValue(String.valueOf(nettype));
         mNetTrafficType.setSummary(mNetTrafficType.getEntry());
         mNetTrafficType.setOnPreferenceChangeListener(this);
-        mNetTrafficType.setEnabled(isNetMonitorEnabled);
 
         mStatusBarBatteryShowPercent =
                 (ListPreference) findPreference(SHOW_BATTERY_PERCENT);
@@ -130,19 +126,29 @@ public class StatusBar extends SettingsPreferenceFragment implements
                 Settings.System.QS_SMART_PULLDOWN, 0);
         mSmartPulldown.setValue(String.valueOf(smartPulldown));
         updateSmartPulldownSummary(smartPulldown);
+
+        mNetTrafficLocation = (ListPreference) findPreference(NETWORK_TRAFFIC_LOCATION);
+        int location = Settings.System.getInt(resolver,
+                Settings.System.NETWORK_TRAFFIC_LOCATION, 0);
+        mNetTrafficLocation.setValue(String.valueOf(location));
+        mNetTrafficLocation.setSummary(mNetTrafficLocation.getEntry());
+        mNetTrafficLocation.setOnPreferenceChangeListener(this);
+
+        mHideArrows = (SystemSettingSwitchPreference) findPreference(NETWORK_TRAFFIC_HIDEARROW);
+
+               updateTrafficLocation(location);
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getActivity().getContentResolver();
-        if (preference == mNetMonitor) {
-            boolean value = (Boolean) newValue;
-            Settings.System.putIntForUser(getActivity().getContentResolver(),
-                    Settings.System.NETWORK_TRAFFIC_STATE, value ? 1 : 0,
-                    UserHandle.USER_CURRENT);
-            mNetMonitor.setChecked(value);
-            mNetTrafficType.setEnabled(value);
-            mThreshold.setEnabled(value);
+        if (preference == mNetTrafficLocation) {
+            int location = Integer.valueOf((String) newValue);
+            int index = mNetTrafficLocation.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.NETWORK_TRAFFIC_LOCATION, location);
+            mNetTrafficLocation.setSummary(mNetTrafficLocation.getEntries()[index]);
+            updateTrafficLocation(location);
             return true;
         } else if (preference == mNetTrafficType) {
             int val = Integer.valueOf((String) newValue);
@@ -187,6 +193,40 @@ public class StatusBar extends SettingsPreferenceFragment implements
             return true;
 		}
         return false;
+    }
+
+    public void updateTrafficLocation(int location) {
+        switch(location){ 
+            case 0:
+                mNetTrafficType.setEnabled(false);
+                mThreshold.setEnabled(false);
+                mHideArrows.setEnabled(false);
+                Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.NETWORK_TRAFFIC_STATE, 0);
+                Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.NETWORK_TRAFFIC_EXPANDED_STATUS_BAR_STATE, 0);
+                break;
+            case 1:
+                mNetTrafficType.setEnabled(true);
+                mThreshold.setEnabled(true);
+                mHideArrows.setEnabled(true);
+                Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.NETWORK_TRAFFIC_STATE, 1);
+                Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.NETWORK_TRAFFIC_EXPANDED_STATUS_BAR_STATE, 0);
+                break;
+            case 2:
+                mNetTrafficType.setEnabled(true);
+                mThreshold.setEnabled(true);
+                mHideArrows.setEnabled(true);
+                Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.NETWORK_TRAFFIC_STATE, 0);
+                Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.NETWORK_TRAFFIC_EXPANDED_STATUS_BAR_STATE, 1);
+                break;
+            default: 
+                break;
+        }
     }
 
     private void enableStatusBarBatteryDependents(int batteryIconStyle) {
