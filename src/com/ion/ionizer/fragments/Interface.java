@@ -25,6 +25,7 @@ import com.android.settings.display.SystemUiThemePreferenceController;
 import com.android.settings.display.ThemePreferenceController;
 import com.ion.ionizer.display.QsHeaderStylePreferenceController;
 import com.ion.ionizer.display.QsTileStylePreferenceController;
+import com.ion.ionizer.display.SwitchStylePreferenceController;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 
@@ -63,6 +64,7 @@ public class Interface extends DashboardFragment {
         controllers.add(new SystemUiThemePreferenceController(context, lifecycle));
         controllers.add(new QsHeaderStylePreferenceController(context));
         controllers.add(new QsTileStylePreferenceController(context));
+        controllers.add(new SwitchStylePreferenceController(context));
         return controllers;
     }
 }
