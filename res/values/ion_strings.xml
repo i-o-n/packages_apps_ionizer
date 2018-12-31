@@ -544,6 +544,8 @@
     <string name="volte_icon_summary">Display VoLTE icon in statusbar</string>
 
     <!-- Rounded corners -->
+    <string name="corner_fwvals">Use framework values</string>
+    <string name="corner_fwvals_summary">Useful if the device actually has rounded corners</string>
     <string name="corner_radius">Rounded Corner Radius</string>
     <string name="content_padding">Corner Content Padding</string>
 
