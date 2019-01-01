@@ -926,4 +926,8 @@
     <string name="volte_icon_cr">VoLTE CR Icon</string>
     <string name="volte_icon_text">VoLTE text Icon</string>
     <string name="volte_icon_pie">VoLTE Pie</string>
+
+    <!-- Ambient visualizer -->
+    <string name="ambient_visualizer_title">Show on Ambient Display</string>
+    <string name="ambient_visualizer_summary">Display the visualizer bars on ambient display</string>
 </resources>
