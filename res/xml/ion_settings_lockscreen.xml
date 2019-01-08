@@ -128,13 +128,26 @@
         android:key="lock_clock_size"
         android:title="@string/lockcsize" >
 
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+            android:key="lockscreen_clock"
+            android:title="@string/lockscreen_clock_title"
+            android:summary="@string/lockscreen_clock_summary"
+            android:defaultValue="true" />
+
         <com.ion.ionizer.preferences.SystemSettingSeekBarPreference
             android:key="lockclock_font_size"
             android:title="@string/lockclock_font_size_title"
             android:max="120"
             android:min="50"
+            android:dependency="lockscreen_clock"
             android:persistent="false"
             android:defaultValue="64" />
+
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+            android:key="lockscreen_info"
+            android:title="@string/lockscreen_info_title"
+            android:summary="@string/lockscreen_info_summary"
+            android:defaultValue="true" />
 
         <com.ion.ionizer.preferences.SystemSettingSeekBarPreference
             android:key="lockdate_font_size"
@@ -142,6 +155,7 @@
             android:max="40"
             android:min="10"
             android:defaultValue="16"
+            android:dependency="lockscreen_info"
             android:persistent="false" />
 
     </PreferenceCategory>
