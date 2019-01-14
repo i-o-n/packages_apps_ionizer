@@ -583,4 +583,7 @@
     <string name="audio_panel_view_voice_title">Voice</string>
     <string name="audio_panel_view_bt_sco_title">Bluetooth</string>
 
+    <string name="qs_edit_title">Edit icon</string>
+    <string name="qs_edit_summary">Display the tile edit icon in quick settings footer</string>
+
 </resources>
