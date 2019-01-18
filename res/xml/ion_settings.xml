@@ -41,9 +41,10 @@
 
         <!-- Display -->
         <Preference
-            android:key="display_category"
+            android:key="ambient_display"
             android:title="@string/display_title"
-            android:fragment="com.ion.ionizer.fragments.Display"
+            android:summary="@string/ambient_summary"
+            android:fragment="com.android.settings.display.AmbientDisplaySettings"
             android:icon="@drawable/ic_settings_screen"/>
 
         <!-- Buttons -->

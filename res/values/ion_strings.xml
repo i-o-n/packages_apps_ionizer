@@ -17,10 +17,13 @@
     <!-- App Title -->
     <string name="ionizer_title">ionizer</string>
 
+    <!-- Ambient Display -->
+    <string name="ambient_summary">New Notifications</string>
+
     <!-- Categories -->
     <string name="animations_title">Animations</string>
     <string name="buttons_title">Buttons</string>
-    <string name="display_title">Advanced Display</string>
+    <string name="display_title">Ambient Display</string>
     <string name="gestures_title">Gestures</string>
     <string name="ime_title">IME Settings</string>
     <string name="interface_title">Interface</string>
