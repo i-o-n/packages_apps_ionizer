@@ -29,7 +29,7 @@
     <string name="interface_title">Interface</string>
     <string name="lockscreen_title">Lock Screen</string>
     <string name="misc_title">Miscellaneous</string>
-    <string name="navigation_title">Navigation</string>
+    <string name="navigation_title">Navigation-n-Gestures</string>
     <string name="notifications_title">Notifications</string>
     <string name="quicksettings_title">Quick Settings</string>
     <string name="recents_title">Recents</string>
@@ -43,6 +43,10 @@
     <string name="reset">Reset</string>
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
+
+    <!-- Gestures -->
+    <string name="gestures_summary">Play with Gestures</string>
+    <string name="navigation_summary">Customize the NavigationBar</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">Color Picker</string>
