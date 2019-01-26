@@ -29,12 +29,6 @@
         android:summary="@string/toast_icon_summary" 
         android:defaultValue="true" /> 
 
-    <com.ion.ionizer.preferences.SystemSettingSwitchPreference
-        android:key="battery_fully_charged_notif"
-        android:title="@string/battery_fully_charged_notif_title"
-        android:summary="@string/battery_fully_charged_notif_summary"
-        android:defaultValue="false" />
-		
     <PreferenceCategory
         android:key="incall_vib_options"
         android:title="@string/incall_vibration_category" >

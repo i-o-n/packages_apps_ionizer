@@ -23,5 +23,58 @@
             <intent android:action="android.intent.action.MAIN"
                 android:targetPackage="com.android.systemui"
                 android:targetClass="com.android.systemui.tuner.StatusbarItemsActivity" />
-    </Preference>
+     </Preference>
+
+        <Preference
+            android:key="battery_settings"
+            android:title="@string/battery_style_category_title"
+            android:summary="@string/battery_style_category_summary"
+            android:fragment="com.ion.ionizer.fragments.StatusBarBattery" />
+
+        <Preference
+            android:key="status_bar_clock_settings"
+            android:fragment="com.ion.ionizer.fragments.StatusbarClockSettings" 
+            android:title="@string/status_bar_clock_title"
+            android:summary="@string/status_bar_clock_summary" />
+
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+            android:key="network_traffic_state"
+            android:title="@string/network_traffic_state_title"
+            android:summary="@string/network_traffic_state_summary"
+            android:defaultValue="true" />
+
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+            android:key="network_traffic_hidearrow"
+            android:title="@string/network_traffic_hidearrow"
+            android:summary="@string/network_traffic_hidearrow_summary"
+            android:dependency="network_traffic_state"
+            android:defaultValue="false" />
+
+        <com.ion.ionizer.preferences.SystemSettingSeekBarPreference
+            android:key="network_traffic_autohide_threshold"
+            android:title="@string/network_traffic_autohide_threshold_title"
+            android:max="10"
+            android:min="0"
+            android:defaultValue="1" />
+
+        <Preference
+            android:key="carrierlabel_settings"
+            android:title="@string/carrier_label_category_title"
+            android:summary="@string/carrier_label_category_summary"
+            android:fragment="com.ion.ionizer.fragments.CarrierLabelSettings" />
+
+        <ListPreference
+            android:key="status_bar_battery_style"
+            android:dialogTitle="@string/status_bar_battery_style_title"
+            android:title="@string/status_bar_battery_style_title"
+            android:entries="@array/entries_status_bar_battery"
+            android:entryValues="@array/values_status_bar_battery" />
+
+        <ListPreference
+            android:key="status_bar_show_battery_percent"
+            android:title="@string/status_bar_battery_percentage_title"
+            android:dialogTitle="@string/status_bar_battery_percentage_title"
+            android:entries="@array/status_bar_battery_percentage_entries"
+            android:entryValues="@array/status_bar_battery_percentage_values" />
+
 </PreferenceScreen>

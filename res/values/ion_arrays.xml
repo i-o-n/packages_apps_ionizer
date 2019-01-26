@@ -38,6 +38,55 @@
         <item>7</item>
     </string-array>
 
+        <!-- Tiles animation style -->
+    <string-array name="qs_tile_animation_style_entries" translatable="false">
+        <item>@string/qs_tile_animation_style_off</item>
+        <item>@string/qs_tile_animation_style_flip</item>
+        <item>@string/qs_tile_animation_style_rotate</item>
+    </string-array>
+
+    <string-array name="qs_tile_animation_style_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <!-- Tiles animation duration -->
+    <string-array name="qs_tile_animation_duration_entries" translatable="false">
+        <item>@string/qs_tile_animation_duration_low</item>
+        <item>@string/qs_tile_animation_duration_default</item>
+        <item>@string/qs_tile_animation_duration_fast</item>
+    </string-array>
+
+    <string-array name="qs_tile_animation_duration_values" translatable="false">
+        <item>2500</item>
+        <item>2000</item>
+        <item>1500</item>
+    </string-array>
+
+        <!-- Tiles animation interpolator -->
+    <string-array name="qs_tile_animation_interpolator_entries" translatable="false">
+        <item>@string/qs_tile_animation_interpolator_linearInterpolator</item>
+        <item>@string/qs_tile_animation_interpolator_accelerateInterpolator</item>
+        <item>@string/qs_tile_animation_interpolator_decelerateInterpolator</item>
+        <item>@string/qs_tile_animation_interpolator_accelerateDecelerateInterpolator</item>
+        <item>@string/qs_tile_animation_interpolator_bounceInterpolator</item>
+        <item>@string/qs_tile_animation_interpolator_overshootInterpolator</item>
+        <item>@string/qs_tile_animation_interpolator_anticipateInterpolator</item>
+        <item>@string/qs_tile_animation_interpolator_anticipateOvershootInterpolator</item>
+    </string-array>
+
+    <string-array name="qs_tile_animation_interpolator_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+
         <!-- Option to enable/disable scrolling cache -->
     <string-array name="entries_scrollingcache" translatable="false">
         <item>@string/pref_scrollingcache_force_enable</item>
@@ -214,6 +263,212 @@
         <item>600000</item>
         <item>900000</item>
         <item>1200000</item>
+    </string-array>
+
+    <string-array name="status_bar_battery_percentage_entries" translatable="false">
+        <item>@string/status_bar_battery_percentage_default</item>
+        <item>@string/status_bar_battery_percentage_text_next</item>
+        <item>@string/status_bar_battery_percentage_text_inside</item>
+    </string-array>
+     <string-array name="status_bar_battery_percentage_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="entries_status_bar_battery" translatable="false">
+        <item>@string/status_bar_battery_style_port</item>
+        <item>@string/status_bar_battery_style_circle</item>
+        <item>@string/status_bar_battery_style_dotted_circle</item>
+        <item>@string/status_bar_battery_style_text</item>
+        <item>@string/status_bar_battery_style_hidden</item>
+    </string-array>
+     <string-array name="values_status_bar_battery" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <!-- Statusbar Clock -->
+    <string-array name="status_bar_clock_style_entries" translatable="false">
+        <item>@string/status_bar_clock_style_left</item>
+        <item>@string/status_bar_clock_style_center</item>
+        <item>@string/status_bar_clock_style_right</item>
+    </string-array>
+
+    <string-array name="status_bar_clock_style_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="status_bar_am_pm_entries" translatable="false">
+        <item>@string/status_bar_am_pm_hidden</item>
+        <item>@string/status_bar_am_pm_small</item>
+        <item>@string/status_bar_am_pm_normal</item>
+    </string-array>
+
+    <string-array name="status_bar_am_pm_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="clock_date_display_entries">
+        <item>@string/clock_date_display_none</item>
+        <item>@string/clock_date_display_small</item>
+        <item>@string/clock_date_display_normal</item>
+    </string-array>
+
+    <string-array name="clock_date_display_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="clock_date_style_entries">
+        <item>@string/clock_date_style_normal</item>
+        <item>@string/clock_date_style_lowercase</item>
+        <item>@string/clock_date_style_uppercase</item>
+    </string-array>
+
+    <string-array name="clock_date_style_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="clock_date_format_entries_values">
+        <item>dd/MM/yy</item>
+        <item>MM/dd/yy</item>
+        <item>yyyy-MM-dd</item>
+        <item>yyyy-dd-MM</item>
+        <item>dd-MM-yyyy</item>
+        <item>MM-dd-yyyy</item>
+        <item>MMM dd</item>
+        <item>MMM dd, yyyy</item>
+        <item>MMMM dd, yyyy</item>
+        <item>EEE</item>
+        <item>EEE dd</item>
+        <item>EEE dd/MM</item>
+        <item>EEE MM/dd</item>
+        <item>EEE dd MMM</item>
+        <item>EEE MMM dd</item>
+        <item>EEE MMMM dd</item>
+        <item>EEEE dd/MM</item>
+        <item>EEEE MM/dd</item>
+        <item>@string/clock_date_format_custom</item>
+    </string-array>
+
+    <!-- Carrier Label -->
+    <string-array name="carrier_label_entries" translatable="false">
+        <item>@string/show_carrier_disabled</item>
+        <item>@string/show_carrier_keyguard</item>
+        <item>@string/show_carrier_statusbar</item>
+        <item>@string/show_carrier_enabled</item>
+    </string-array>
+
+    <string-array name="carrier_label_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <!-- Screen Stabilization -->
+    <string-array name="stabilization_velocity_friction_entries" translatable="false">
+        <item>0.01x</item>
+        <item>0.05x</item>
+        <item>0.1x</item>
+        <item>0.2x(Default)</item>
+        <item>0.3x</item>
+        <item>0.4x</item>
+    </string-array> 
+    <string-array name="stabilization_velocity_friction_entry_values" translatable="false">
+        <item>0.01</item>
+        <item>0.05</item>
+        <item>0.1</item>
+        <item>0.2</item>
+        <item>0.3</item>
+        <item>0.4</item>
+        
+    </string-array><string-array name="stabilization_position_friction_entries" translatable="false">
+        <item>0.01x</item>
+        <item>0.05x</item>
+        <item>0.1x(Default)</item>
+        <item>0.2x</item>
+        <item>0.3x</item>
+        <item>0.4x</item>
+    </string-array> 
+    <string-array name="stabilization_position_friction_values" translatable="false">
+        <item>0.01</item>
+        <item>0.05</item>
+        <item>0.1</item>
+        <item>0.2</item>
+        <item>0.3</item>
+        <item>0.4</item>
+    </string-array>
+    
+    <string-array name="stabilization_velocity_amplitude_entries" translatable="false">
+        <item>0.5x</item>
+        <item>0.75x</item>
+        <item>1x(Default)</item>
+        <item>1.25x</item>
+        <item>1.5x</item>
+        <item>2x</item>
+    </string-array> 
+    <string-array name="stabilization_velocity_amplitude_values" translatable="false">
+        <item>4000</item>
+        <item>6000</item>
+        <item>8000</item>
+        <item>10000</item>
+        <item>12000</item>
+        <item>16000</item>
+    </string-array>
+
+    <!-- Lock Clock Fonts -->
+    <string-array name="lock_clock_fonts_entries">
+        <item>@string/lock_clock_font_stock</item>
+        <item>@string/lock_clock_font_italic</item>
+        <item>@string/lock_clock_font_bold</item>
+        <item>@string/lock_clock_font_bold_italic</item>
+        <item>@string/lock_clock_font_light_italic</item>
+        <item>@string/lock_clock_font_light</item>
+        <item>@string/lock_clock_font_thin_italic</item>
+        <item>@string/lock_clock_font_thin</item>
+        <item>@string/lock_clock_font_condensed_normal</item>
+        <item>@string/lock_clock_font_condensed_italic</item>
+        <item>@string/lock_clock_font_condensed_bold</item>
+        <item>@string/lock_clock_font_condensed_bold_italic</item>
+        <item>@string/lock_clock_font_condensed_light</item>
+        <item>@string/lock_clock_font_condensed_light_italic</item>
+        <item>@string/lock_clock_font_medium_normal</item>
+        <item>@string/lock_clock_font_medium_italic</item>
+        <item>@string/lock_clock_font_black</item>
+        <item>@string/lock_clock_font_black_italic</item>
+    </string-array>
+
+    <string-array name="lock_clock_fonts_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
     </string-array>
 
 </resources>

@@ -63,6 +63,29 @@
     <string name="summary_animation_no_override">Prevent apps from overriding transitions</string>
     <string name="animation_duration_default">Default</string>
 
+    <!-- Tiles animation style  -->
+    <string name="qs_tile_animation_category">QS tiles animations</string>
+    <string name="qs_tile_animation_style_title">QS tiles animation style</string>
+    <string name="qs_tile_animation_duration_title">QS tiles animation duration</string>
+    <string name="qs_tile_animation_style_off">No animation</string>
+    <string name="qs_tile_animation_style_flip">Flip</string>
+    <string name="qs_tile_animation_style_rotate">Rotate</string>
+    <string name="qs_tile_animation_duration_low">Low</string>
+    <string name="qs_tile_animation_duration_default">Default</string>
+    <string name="qs_tile_animation_duration_fast">Fast</string>
+    <string name="qs_set_animation_style">%1$s</string>
+    <string name="qs_set_animation_duration">%1$s</string>
+    <string name="qs_tile_animation_interpolator_title">Animation interpolator</string> 
+    <string name="qs_tile_animation_interpolator_linearInterpolator">Linear</string>
+    <string name="qs_tile_animation_interpolator_accelerateInterpolator">Accelerate</string>
+    <string name="qs_tile_animation_interpolator_decelerateInterpolator">Decelerate</string>
+    <string name="qs_tile_animation_interpolator_accelerateDecelerateInterpolator">Accelerate decelerate</string>
+    <string name="qs_tile_animation_interpolator_bounceInterpolator">Bounce</string>
+    <string name="qs_tile_animation_interpolator_overshootInterpolator">Overshoot</string>
+    <string name="qs_tile_animation_interpolator_anticipateInterpolator">Anticipate</string>
+    <string name="qs_tile_animation_interpolator_anticipateOvershootInterpolator">Anticipate overshoot</string>
+    <string name="qs_set_animation_interpolator">%1$s</string>
+
     <!-- Categories -->
     <string name="animations_title">Animations</string>
     <string name="buttons_title">Buttons</string>
@@ -113,21 +136,28 @@
 
     <!-- Power Menu -->
     <string name="powermenu_title">Power Menu</string>
-    <string name="powermenu_screenshot">Screenshot</string>
-    <string name="powermenu_power">Power</string>
-    <string name="powermenu_restart">Restart</string>
-    <string name="powermenu_restart_recovery">Advanced restart</string>
-    <string name="powermenu_airplane">Airplane</string>
-    <string name="powermenu_settings">Settings</string>
-    <string name="powermenu_lockdown">Lock Down</string>
-    <string name="powermenu_users">Users</string>
-    <string name="powermenu_logout">Logout</string>
     <string name="powermenu_torch">Flashlight</string>
+    <string name="powermenu_lockdown">Lockdown</string>
+    <string name="advanced_power_menu">Power menu options</string>
+    <string name="arrow_reboot_menu">Advanced reboot menu</string>
+    <string name="powermenu_reboot_title">Reboot</string>
+    <string name="powermenu_airplane_title">Airplane mode</string>
+    <string name="powermenu_advanced_reboot_title">Advanced reboot</string>
+    <string name="powermenu_advanced_reboot_summary">Enables the advanced reboot menu for rebooting options</string>
+    <string name="powermenu_screenshot_title">Screenshot</string>
+    <string name="powermenu_category_visibility">Lockscreen options</string>
+    <string name="powermenu_lockscreen_title">Visibility on the lockscreen</string>
+    <string name="powermenu_lockscreen_summary">Enable the ability to show and use the power menu dialog while on the lockscreen</string>
+    <string name="powermenu_ls_reboot_summary">Show the reboot option on the lockscreen</string>
+    <string name="powermenu_ls_advanced_reboot_summary">Show the advanced reboot option on the lockscreen</string>
+    <string name="powermenu_ls_screenshot_summary">Show the screenshot option on the lockscreen</string>
+    <string name="powermenu_ls_airplane_summary">Show the airplane mode option on the lockscreen</string>
     <string name="scroll_title" >Scroll</string>
     <string name="misc_animation_title" >Misc Animation</string>
     <string name="tile_animation_title" >Tile Animation</string>
     <string name="list_animation_title" >ListView Animation</string>
     <string name="system_keyguard_animation_title" >System and Keyguard Animation</string>
+    <string name="animation_duration_custom">Custom</string>
 
     <!-- Toast Animation -->
     <string name="toast_animation_title">Toast animation</string>
@@ -172,6 +202,7 @@
     
             <!-- Screen Off animation --> 
     <string name="screen_off_animation_title">Screen off animation</string> 
+    <string name="screen_off_animation_summary">%1$s</string> 
     <string name="screen_off_animation_fade">Simple fade</string> 
     <string name="screen_off_animation_color">Color fade</string> 
     <string name="screen_off_animation_crt">CRT</string> 
@@ -287,10 +318,6 @@
     <string name="heads_up_snooze_15min">15 minutes</string>
     <string name="heads_up_snooze_20min">20 minutes</string>
 
-    <!-- Battery fully charged -->
-    <string name="battery_fully_charged_notif_title">Battery fully charged</string>
-    <string name="battery_fully_charged_notif_summary">Show a notification when the battery is fully charged</string>
-
     <!-- Media art -->
     <string name="media_art_title">Media cover art</string>
     <string name="media_art_summary">Enable media cover art on the lockscreen</string>	
@@ -318,5 +345,144 @@
     <!-- Sensor block per-package -->
     <string name="sensor_block_title">Sensor block per-package</string>
     <string name="sensor_block_summary">Block access to certain sensors for some apps to save battery</string>
+
+    <!-- Battery percentage -->
+    <string name="battery_style_category_title">Battery icon</string>
+    <string name="battery_style_category_summary">Customize the battery icon in statusbar</string>
+    <string name="status_bar_battery_percentage_title">Battery percentage</string>
+    <string name="status_bar_battery_percentage_default">Hidden</string>
+    <string name="status_bar_battery_percentage_text_next">Next to the icon</string>
+    <string name="status_bar_battery_percentage_text_inside">Inside the icon</string>
+
+    <!-- Status bar battery style-->
+    <string name="status_bar_battery_style_title">Battery style</string>
+    <string name="status_bar_battery_style_port">Portrait</string>
+    <string name="status_bar_battery_style_circle">Circle</string>
+    <string name="status_bar_battery_style_dotted_circle">Dotted circle</string>
+    <string name="status_bar_battery_style_text">Text</string>
+    <string name="status_bar_battery_style_hidden">Hidden</string>
+
+    <!-- Statusbar net monitor -->
+    <string name="network_traffic_state_title">Network traffic</string>
+    <string name="network_traffic_state_summary">Show net activity in statusbar</string>
+    <string name="network_traffic_autohide_threshold_title">Net activity autohide threshold (KB/s)</string>
+    <string name="network_traffic_hidearrow">Hide arrows</string>
+    <string name="network_traffic_hidearrow_summary">Hide the network traffic indicator arrows</string>
+
+    <!-- Quick Settings brightness slider -->
+    <string name="qs_brightness_position_bottom_title">Brightness slider on bottom</string>
+    <string name="qs_brightness_position_bottom_summary">Show a brightness slider on bottom quick settings</string>
+
+    <string name="qs_tile_title_visibility_title">Tile title</string> 
+    <string name="qs_tile_title_visibility_summary">Display title below each tile</string> 
+
+    <!-- Statusbar Clock -->
+    <string name="status_bar_clock_title">Clock settings</string>
+    <string name="status_bar_clock_summary">Customize clock and date in statusbar</string>
+    <string name="status_bar_clock_show">Show clock and date</string>
+    <string name="status_bar_clock_style_title">Clock style</string>
+    <string name="status_bar_clock_style_right">Right</string>
+    <string name="status_bar_clock_style_center">Center</string>
+    <string name="status_bar_clock_style_left">Left</string>
+    <string name="status_bar_am_pm_title">AM/PM style</string>
+    <string name="status_bar_am_pm_info">24-hour clock is enabled</string>
+    <string name="status_bar_am_pm_normal">Normal</string>
+    <string name="status_bar_am_pm_small">Small</string>
+    <string name="status_bar_am_pm_hidden">Hidden (default)</string>
+    <string name="clock_seconds_display">Show seconds</string>
+    <string name="clock_date_display">Date</string>
+    <string name="clock_date_display_summary">Display custom date before the clock</string>
+    <string name="clock_date_display_none">Don\'t show</string>
+    <string name="clock_date_display_small">Small font size</string>
+    <string name="clock_date_display_normal">Normal font size</string>
+    <string name="clock_date_style">Date style</string>
+    <string name="clock_date_style_normal">Normal</string>
+    <string name="clock_date_style_lowercase">Lowercase</string>
+    <string name="clock_date_style_uppercase">Uppercase</string>
+    <string name="clock_date_format_custom">Custom java format</string>
+    <string name="clock_date_format">Date format</string>
+    <string name="clock_date_string_edittext_title">Must be in DateFormat eg. MM/dd/yy</string>
+    <string name="clock_date_string_edittext_summary">Enter string</string>
+    <string name="date_cat">Date</string>
+    <string name="clock_cat">Clock</string>
+    <string name="status_bar_clock_font_style_title">Font style</string>
+    <string name="status_bar_clock_font_size_title">Font size</string>
+
+    <!-- QS footer warnings -->
+    <string name="qs_footer_warnings_title">QS footer warnings</string>
+    <string name="qs_footer_warnings_summary">Display a warning at bottom of QS panel when network is monitored by external apps or vpn</string>
+
+    <!-- Custom carrier label and position -->
+    <string name="carrier_label_category_title">Carrier Label</string>
+    <string name="carrier_label_category_summary">Customize statusbar carrier label</string>
+    <string name="carrier_label_settings_title">Carrier Label</string>
+    <string name="carrier_label_settings_summary">Customize the carrier label</string>
+    <string name="custom_carrier_label_title">Custom carrier label</string>
+    <string name="custom_carrier_label_explain">Please enter a new label. Leave blank to revert to stock label.</string>
+    <string name="custom_carrier_label_notset">Custom label currently not set</string>
+    <string name="show_carrier_title">Carrier label</string>
+    <string name="show_carrier_disabled">Disabled</string>
+    <string name="show_carrier_keyguard">Lockscreen only</string>
+    <string name="show_carrier_statusbar">Statusbar only</string>
+    <string name="show_carrier_enabled">Lockscreen &amp; statusbar</string>
+    <string name="status_bar_carrier_size">Carrier label size</string>
+    <string name="status_bar_carrier_font_style_title">Carrier label font</string>
+
+    <!-- Screen Stabilization -->
+    <string name="screen_stabilization_title">Screen Stabilization</string>
+    <string name="screen_stabilization_enable">Enable Screen Stabilization</string>
+    <string name="screen_stabilization_enable_summary">Leave the below values as is if you don\'t understand what they mean.</string>
+    <string name="stabilization_velocity_friction_title">Velocity friction</string>
+    <string name="stabilization_position_friction_title">Position friction</string>
+    <string name="stabilization_velocity_amplitude_title">Velocity amplitude</string>
+
+    <!-- Lockscreen visualizer -->
+    <string name="lockscreen_visualizer_category">Visualizer</string>
+    <string name="lockscreen_visualizer_enable">Enable lockscreen visualizer</string>
+    <string name="lockscreen_visualizer_enable_summary">Show visualizer on lockscreen when music is playing</string>
+    <string name="lockscreen_visualizer_enable_custom">Use custom color</string>
+    <string name="lockscreen_visualizer_enable_custom_summary">Use a preset color instead of the generated color</string>
+    <string name="lockscreen_visualizer_custom_color">Visualizer Color</string>
+
+    <!-- Quick settings tiles columns and rows config --> 
+    <string name="qs_rows_portrait_title">Rows (Portrait)</string>
+    <string name="qs_rows_landscape_title">Rows (Landscape)</string>
+    <string name="qs_columns_portrait_title">Columns (Portrait)</string>
+    <string name="qs_columns_landscape_title">Columns (Landscape)</string>
+
+    <!-- Lock Clock Fonts -->
+    <string name="lock_clock_font_title">Clock font options</string>
+    <string name="lock_clock_font_summary">Change the default font of the lockscreen clock widget</string>
+    <string name="lock_clock_font_dialog_title">Select lock clock font</string>
+    <string name="lock_clock_font_stock">Normal (Default)</string>
+    <string name="lock_clock_font_bold">Bold</string>
+    <string name="lock_clock_font_italic">Italic</string>
+    <string name="lock_clock_font_bold_italic">Bold Italic</string>
+    <string name="lock_clock_font_light_italic">Light Italic</string>
+    <string name="lock_clock_font_thin_italic">Thin Italic</string>
+    <string name="lock_clock_font_light">Light</string>
+    <string name="lock_clock_font_thin">Thin</string>
+    <string name="lock_clock_font_condensed_normal">Condensed</string>
+    <string name="lock_clock_font_condensed_italic">Condensed Italic</string>
+    <string name="lock_clock_font_condensed_bold">Condensed Bold</string>
+    <string name="lock_clock_font_condensed_bold_italic">Condensed Bold Italic</string>
+    <string name="lock_clock_font_condensed_light">Condensed Light</string>
+    <string name="lock_clock_font_condensed_light_italic">Condensed Light Italic</string> 
+    <string name="lock_clock_font_medium_normal">Medium</string>
+    <string name="lock_clock_font_medium_italic">Medium Italic</string>
+    <string name="lock_clock_font_black">Black</string>
+    <string name="lock_clock_font_black_italic">Black Italic</string> 
+
+    <!-- Burn-in Protection -->
+    <string name="navigation_burnin_category">Burn-in Protection</string>
+    <string name="burn_in_protection_title">Burn-in Protection</string>
+    <string name="burn_in_protection_summary">Shift navbar and statusbar icons to prevent burn-in</string>
+    <string name="burn_in_protection_interval_title">Interval of shift</string>
+
+    <!-- QS footer icons -->
+    <string name="qs_footer_services_title">Running Services icon</string>
+    <string name="qs_footer_services_summary">Display Running Services icon in quick settings footer</string>
+    <string name="qs_footer_settings_title">Settings icon</string>
+    <string name="qs_footer_settings_summary">Display Settings icon in quick settings footer</string>
 
 </resources>
