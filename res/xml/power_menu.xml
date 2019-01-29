@@ -32,7 +32,8 @@
 
     <com.ion.ionizer.preferences.SystemSettingSwitchPreference
        android:key="powermenu_lockdown"
-       android:title="@string/powermenu_lockdown"
+       android:title="@string/lockdown_settings_title"
+       android:summary="@string/lockdown_settings_summary"
        android:defaultValue="false" />
 
     <com.ion.ionizer.preferences.SystemSettingSwitchPreference
