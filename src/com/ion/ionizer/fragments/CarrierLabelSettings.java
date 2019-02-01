@@ -36,6 +36,7 @@ import androidx.preference.PreferenceScreen;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import android.telephony.TelephonyManager;
 import android.text.format.DateFormat;
+import android.text.InputFilter;
 import android.text.Spannable;
 import android.text.TextUtils;
 import android.util.Log;
@@ -154,7 +155,9 @@ public class CarrierLabelSettings extends SettingsPreferenceFragment implements
             alert.setMessage(R.string.custom_carrier_label_explain);
             // Set an EditText view to get user input
             final EditText input = new EditText(getActivity());
+            int maxLength = 25;
             input.setText(TextUtils.isEmpty(mCustomCarrierLabelText) ? "" : mCustomCarrierLabelText);
+            input.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxLength)});
             input.setSelection(input.getText().length());
             alert.setView(input);
             alert.setPositiveButton(getString(android.R.string.ok),
