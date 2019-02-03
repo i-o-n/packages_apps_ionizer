@@ -133,6 +133,13 @@
             android:summary="@string/qs_show_brightness_minmax_summary"
             android:dependency="qs_show_brightness"
             android:defaultValue="true"/>
+
+        <com.ion.ionizer.preferences.SystemSettingMasterSwitchPreference
+            android:key="status_bar_custom_header"
+            android:fragment="com.ion.ionizer.fragments.QsHeader"
+            android:title="@string/status_bar_custom_header_title"
+            android:summary="@string/status_bar_custom_header_summary"
+            android:defaultValue="false" />
     </PreferenceCategory>
 
     <PreferenceCategory

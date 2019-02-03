@@ -38,6 +38,7 @@ import com.android.settings.SettingsPreferenceFragment;
 
 import com.ion.ionizer.R;
 import com.ion.ionizer.preferences.SystemSettingEditTextPreference;
+import com.ion.ionizer.preferences.SystemSettingMasterSwitchPreference;
 import com.ion.ionizer.preferences.SystemSettingSeekBarPreference;
 
 public class QuickSettings extends DashboardFragment
@@ -53,6 +54,7 @@ public class QuickSettings extends DashboardFragment
     private static final String ION_FOOTER_TEXT_STRING = "ion_footer_text_string";
     private static final String QS_FOOTER = "quick_footer";
     private static final String QS_USER_TOGGLE = "qs_user_toggle";
+    private static final String STATUS_BAR_CUSTOM_HEADER = "status_bar_custom_header";
 
     private SystemSettingSeekBarPreference mRowsPortrait;
     private SystemSettingSeekBarPreference mRowsLandscape;
@@ -62,6 +64,7 @@ public class QuickSettings extends DashboardFragment
     private SystemSettingEditTextPreference mFooterString;
     private PreferenceCategory mQsFooter;
     private SwitchPreference mUserIcon;
+    private SystemSettingMasterSwitchPreference mCustomHeader;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -118,6 +121,12 @@ public class QuickSettings extends DashboardFragment
         if (!userIcon) {
             mQsFooter.removePreference(mUserIcon);
         }
+
+        mCustomHeader = (SystemSettingMasterSwitchPreference) findPreference(STATUS_BAR_CUSTOM_HEADER);
+        int qsHeader = Settings.System.getInt(resolver,
+                Settings.System.STATUS_BAR_CUSTOM_HEADER, 0);
+        mCustomHeader.setChecked(qsHeader != 0);
+        mCustomHeader.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -158,6 +167,11 @@ public class QuickSettings extends DashboardFragment
                 Settings.System.putString(getActivity().getContentResolver(),
                         Settings.System.ION_FOOTER_TEXT_STRING, value);
             }
+            return true;
+        } else if (preference == mCustomHeader) {
+            boolean header = (Boolean) newValue;
+            Settings.System.putInt(resolver,
+                    Settings.System.STATUS_BAR_CUSTOM_HEADER, header ? 1 : 0);
             return true;
         }
         return false;
