@@ -42,8 +42,8 @@
             android:summary="@string/quick_settings_vibrate_summary"
             android:defaultValue="false"/>
 
-        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
-            android:key="qs_footer_warnings"
+        <com.ion.ionizer.preferences.SecureSettingSwitchPreference
+            android:key="qs_show_secure"
             android:title="@string/qs_footer_warnings_title"
             android:summary="@string/qs_footer_warnings_summary"
             android:defaultValue="true" />
