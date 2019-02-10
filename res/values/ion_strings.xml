@@ -20,7 +20,7 @@
     <!-- Ambient Display -->
     <string name="ambient_summary">New Notifications</string>
 
-        <!-- ListView animation -->
+    <!-- ListView animation -->
     <string name="listview_animation_title">ListView animation</string>
     <string name="listview_off">Default</string>
     <string name="listview_wave_left">Wave (left)</string>
@@ -68,7 +68,7 @@
     <!-- Categories -->
     <string name="animations_title">Animations</string>
     <string name="buttons_title">Buttons</string>
-    <string name="display_title">Ambient Display</string>
+    <string name="display_title">Screen</string>
     <string name="gestures_title">Gestures</string>
     <string name="ime_title">IME Settings</string>
     <string name="interface_title">Interface</string>
@@ -82,6 +82,18 @@
     <string name="system_title">System</string>
     <string name="weather_title">Weather</string>
     <string name="volume_title">Volume Rockers</string>
+    <string name="interfaceui">playUI</string>
+    <string name="about_ion">About</string>
+    <string name="button_info">Volume Rocker, Power Menu</string>
+    <string name="keyguarrd">Keyguard Stuff</string>
+    <string name="taskinfo">Multi Task Changes</string>
+    <string name="aninfo">Animate your own way</string>
+    <string name="manusys">SYSTEM Control</string>
+    <string name="trafficat">Network Traffic</string>
+    <string name="dpi_category_title">Screen Density</string>
+    <string name="vol_rock">Volume Rocker</string>
+    <string name="weatherl_title">Lockscreen Weather</string>
+    <string name="locktra">Extras</string>
 
     <!-- Dashboard conditions--> 
     <string name="dashboard_category">Dashboard options</string> 
@@ -100,8 +112,8 @@
     <string name="attention">Attention</string>
 
     <!-- Gestures -->
-    <string name="gestures_summary">Play with Gestures</string>
-    <string name="navigation_summary">Customize the NavigationBar</string>
+    <string name="gestures_summary">System Gestures</string>
+    <string name="navigation_summary">Customize the NavBar</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">Color Picker</string>
@@ -159,7 +171,7 @@
     <string name="toast_animation_test">This is test for selected toast animation</string>
     <string name="toast">Toast</string>
 
-        <!-- Option to enable/disable scrolling cache -->
+    <!-- Option to enable/disable scrolling cache -->
     <string name="pref_scrollingcache_title">Scrolling cache</string>
     <string name="pref_scrollingcache_summary">Scrolling cache may improve scrolling performance at the cost of memory</string>
     <string name="pref_scrollingcache_force_enable">Force enable</string>
@@ -179,7 +191,7 @@
     <string name="quick_settings_vibrate_title">Vibrate on touch</string>
     <string name="quick_settings_vibrate_summary">Vibrate when touching QS tiles</string>
     
-            <!-- Screen Off animation --> 
+    <!-- Screen Off animation --> 
     <string name="screen_off_animation_title">Screen off animation</string> 
     <string name="screen_off_animation_summary">%1$s</string> 
     <string name="screen_off_animation_fade">Simple fade</string> 

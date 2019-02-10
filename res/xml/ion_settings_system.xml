@@ -33,7 +33,8 @@
         android:key="privacy_guard_manager"
         android:fragment="com.android.settings.privacyguard.PrivacyGuardManager"
         android:title="@string/app_ops_settings_title"
-        android:summary="@string/app_ops_settings_summary" />
+        android:summary="@string/app_ops_settings_summary"
+        settings:allowDividerAbove="true"/>
 
     <PreferenceCategory
         android:key="navigation_burnin"

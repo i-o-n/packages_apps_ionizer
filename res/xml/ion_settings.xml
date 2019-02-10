@@ -19,12 +19,36 @@
     android:title="@string/ionizer_title"
     settings:initialExpandedChildrenCount="8" >
 
+        <!-- About -->
+        <Preference
+            android:key=""
+            android:title="@string/about_ion"
+            android:fragment="" 
+            android:icon="@drawable/ic_settings_about"/>
+
+        <!-- Interface -->
+        <Preference
+            android:key="interface_category"
+            android:title="@string/interface_title"
+            android:summary="@string/interfaceui"
+            android:fragment="com.ion.ionizer.fragments.Interface"
+            android:icon="@drawable/ic_settings_int"
+            settings:allowDividerAbove="true"/>
+
+        <!-- Ambient Display -->
+        <Preference
+            android:key="ambient_display"
+            android:title="@string/ambient_display_screen_title"
+            android:summary="@string/ambient_summary"
+            android:fragment="com.android.settings.display.AmbientDisplaySettings"
+            android:icon="@drawable/ic_settings_ambient"/>
+
         <!-- Status Bar -->
         <Preference
             android:key="statusbar_category"
             android:title="@string/statusbar_title"
             android:fragment="com.ion.ionizer.fragments.StatusBar" 
-            android:icon="@drawable/ic_settings_statusbar"/>
+            android:icon="@drawable/ic_settings_statusbar" />
 
         <!-- Quick Settings -->
         <Preference
@@ -32,21 +56,6 @@
             android:title="@string/quicksettings_title"
             android:fragment="com.ion.ionizer.fragments.QuickSettings"
             android:icon="@drawable/ic_settings_quicksettings"/>
-
-        <!-- Interface -->
-        <Preference
-            android:key="interface_category"
-            android:title="@string/interface_title"
-            android:fragment="com.ion.ionizer.fragments.Interface"
-            android:icon="@drawable/ic_settings_int"/>
-
-        <!-- Ambient Display -->
-        <Preference
-            android:key="ambient_display"
-            android:title="@string/display_title"
-            android:summary="@string/ambient_summary"
-            android:fragment="com.android.settings.display.AmbientDisplaySettings"
-            android:icon="@drawable/ic_settings_screen"/>
 
         <!-- Display -->
         <Preference
@@ -59,8 +68,10 @@
         <Preference
             android:key="buttons_category"
             android:title="@string/buttons_title"
-            android:fragment="com.ion.ionizer.fragments.Buttons"
-            android:icon="@drawable/ic_settings_buttons"/>
+            android:summary="@string/button_info"
+            android:fragment="com.ion.ionizer.fragments.Volume"
+            android:icon="@drawable/ic_settings_buttons"
+            settings:allowDividerAbove="true"/>
 
         <!-- Navigation -->
         <Preference
@@ -73,7 +84,8 @@
         <!-- Lock Screen -->
         <Preference
             android:key="lockscreen_category"
-            android:title="@string/lockscreen_title" 
+            android:title="@string/lockscreen_title"
+            android:summary="@string/keyguarrd"
             android:fragment="com.ion.ionizer.fragments.LockScreen"
             android:icon="@drawable/ic_settings_lockscreen"/>
 
@@ -81,6 +93,7 @@
         <Preference
             android:key="recents_category"
             android:title="@string/recents_title"
+            android:summary="@string/taskinfo"
             android:fragment="com.ion.ionizer.fragments.Recents"
             android:icon="@drawable/ic_settings_recents"/>
 
@@ -89,19 +102,21 @@
             android:key="notifications_category"
             android:title="@string/notifications_title"
             android:fragment="com.ion.ionizer.fragments.Notifications"
-            android:icon="@drawable/ic_settings_notifications"/>
+            android:icon="@drawable/ic_settings_notifications"
+            settings:allowDividerAbove="true"/>
 
         <!-- Weather -->
-        <Preference
+        <!--<Preference
             android:key="weather_category"
             android:title="@string/weather_title"
             android:fragment="com.ion.ionizer.fragments.Weather"
-            android:icon="@drawable/ic_settings_weather"/>
+            android:icon="@drawable/ic_settings_weather"/>-->
 
         <!-- Animations -->
         <Preference
             android:key="animations_category"
             android:title="@string/animations_title"
+            android:summary="@string/aninfo"
             android:fragment="com.ion.ionizer.fragments.Animations"
             android:icon="@drawable/ic_settings_animations"/>
 
@@ -109,6 +124,7 @@
         <Preference
             android:key="system_category"
             android:title="@string/system_title"
+            android:summary="@string/manusys"
             android:fragment="com.ion.ionizer.fragments.System"
             android:icon="@drawable/ic_settings_system"/>
 
@@ -120,10 +136,10 @@
             android:icon="@drawable/ic_settings_ime"/>
 
         <!-- Misc -->
-        <Preference
+        <!--<Preference
             android:key="misc_category"
             android:title="@string/misc_title" 
             android:fragment="com.ion.ionizer.fragments.Misc"
-            android:icon="@drawable/ic_settings_misc"/>
+            android:icon="@drawable/ic_settings_misc"/>-->
 
 </PreferenceScreen>

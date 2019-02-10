@@ -15,26 +15,40 @@
 -->
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/volume_title"
+    android:title="@string/buttons_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+    <PreferenceCategory 
+        android:key="key_vol"
+        android:title="@string/vol_rock">
+
+        <Preference
+            android:key="volume_steps"
+            android:title="@string/volume_steps_title"
+            android:fragment="com.ion.ionizer.fragments.VolumeSteps" />
+
+        <ListPreference
+            android:key="volume_key_cursor_control"
+            android:dialogTitle="@string/volbtn_cursor_control_title"
+            android:title="@string/volbtn_cursor_control_title"
+            android:entries="@array/volbtn_cursor_control_entries"
+            android:entryValues="@array/volbtn_cursor_control_values"
+            android:persistent="false" />
+
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+            android:key="swap_volume_buttons"
+            android:title="@string/swap_volume_buttons_title"
+            android:summary="@string/swap_volume_buttons_summary"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
+
     <Preference
-        android:key="volume_steps"
-        android:title="@string/volume_steps_title"
-        android:fragment="com.ion.ionizer.fragments.VolumeSteps" />
+        android:key="power_menu"
+        android:title="@string/powermenu_title"
+        android:fragment="com.ion.ionizer.fragments.PowerMenu"
+        settings:allowDividerAbove="true"/>
 
-    <ListPreference
-        android:key="volume_key_cursor_control"
-        android:dialogTitle="@string/volbtn_cursor_control_title"
-        android:title="@string/volbtn_cursor_control_title"
-        android:entries="@array/volbtn_cursor_control_entries"
-        android:entryValues="@array/volbtn_cursor_control_values"
-        android:persistent="false" />
-
-    <com.ion.ionizer.preferences.SystemSettingSwitchPreference
-        android:key="swap_volume_buttons"
-        android:title="@string/swap_volume_buttons_title"
-        android:summary="@string/swap_volume_buttons_summary"
-        android:defaultValue="false" />
+    <PreferenceCategory android:key="divider" />
 
 </PreferenceScreen>

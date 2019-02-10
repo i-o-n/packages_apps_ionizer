@@ -15,7 +15,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-         <!-- Listview Interpolator -->
+    <!-- Listview Interpolator -->
     <string-array name="listview_interpolator_entries" translatable="false">
         <item>@string/listview_off</item>
         <item>@string/listview_accelerate_interpolator</item>
@@ -38,7 +38,7 @@
         <item>7</item>
     </string-array>
 
-        <!-- Option to enable/disable scrolling cache -->
+    <!-- Option to enable/disable scrolling cache -->
     <string-array name="entries_scrollingcache" translatable="false">
         <item>@string/pref_scrollingcache_force_enable</item>
         <item>@string/pref_scrollingcache_default_enable</item>
@@ -82,7 +82,7 @@
         <item>10</item>
     </string-array>
 
-        <!-- Screen off animation --> 
+    <!-- Screen off animation --> 
     <string-array name="screen_off_animation_entries"> 
         <item>@string/screen_off_animation_fade</item> 
         <item>@string/screen_off_animation_color</item> 
@@ -216,12 +216,14 @@
         <item>1200000</item>
     </string-array>
 
+    <!-- Statusbar Battery -->
     <string-array name="status_bar_battery_percentage_entries" translatable="false">
         <item>@string/status_bar_battery_percentage_default</item>
         <item>@string/status_bar_battery_percentage_text_next</item>
         <item>@string/status_bar_battery_percentage_text_inside</item>
     </string-array>
-     <string-array name="status_bar_battery_percentage_values" translatable="false">
+
+    <string-array name="status_bar_battery_percentage_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
@@ -234,7 +236,8 @@
         <item>@string/status_bar_battery_style_text</item>
         <item>@string/status_bar_battery_style_hidden</item>
     </string-array>
-     <string-array name="values_status_bar_battery" translatable="false">
+
+    <string-array name="values_status_bar_battery" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
@@ -337,6 +340,7 @@
         <item>0.3x</item>
         <item>0.4x</item>
     </string-array> 
+
     <string-array name="stabilization_velocity_friction_entry_values" translatable="false">
         <item>0.01</item>
         <item>0.05</item>
@@ -370,6 +374,7 @@
         <item>1.5x</item>
         <item>2x</item>
     </string-array> 
+
     <string-array name="stabilization_velocity_amplitude_values" translatable="false">
         <item>4000</item>
         <item>6000</item>
@@ -426,6 +431,7 @@
         <item>@string/clock_date_left</item>
         <item>@string/clock_date_right</item>
     </string-array>
+
     <string-array name="clock_date_position_values" translatable="false">
         <item>0</item>
         <item>1</item>
@@ -484,6 +490,7 @@
         <item>@string/qstile_teardrop</item>
         <item>@string/qstile_wavey</item>
     </string-array>
+
     <string-array name="qs_selector_values" translatable="false">
         <item>0</item>
         <item>1</item>
@@ -526,6 +533,7 @@
         <item>@string/traffic_statusbar</item>
         <item>@string/traffic_expanded_statusbar</item>
     </string-array>
+
     <string-array name="network_traffic_location_values" translatable="false">
         <item>0</item>
         <item>1</item>

@@ -16,44 +16,23 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/lockscreen_title"
-    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
-	
-    <com.ion.ionizer.preferences.SystemSettingSwitchPreference
-        android:key="double_tap_sleep_lockscreen"
-        android:title="@string/double_tap_sleep_lockscreen_title"
-        android:summary="@string/double_tap_sleep_lockscreen_sumary"
-        android:defaultValue="false" />
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    settings:initialExpandedChildrenCount="7" >
 
-    <com.ion.ionizer.preferences.SystemSettingSwitchPreference
-        android:key="lockscreen_battery_info"
-        android:title="@string/lockscreen_battery_info_title"
-        android:summary="@string/lockscreen_battery_info_summary"
-        android:defaultValue="true" />
+    <PreferenceCategory
+        android:key="weather_lockscreen_key"
+        android:title="@string/weatherl_title"
+        settings:controller="com.android.settings.security.screenlock.WeatherPreferenceController">
+        <com.android.settings.custom.preference.SystemSettingListPreference
+            android:key="weather_lockscreen_unit"
+            android:dialogTitle="@string/weather_unit"
+            android:title="@string/weather_unit"
+            android:summary="%s"
+            android:entries="@array/weather_unit_entries"
+            android:entryValues="@array/weather_unit_values"
+            android:defaultValue="0" />
+    </PreferenceCategory>
 
-    <SwitchPreference
-        android:key="fingerprint_success_vib"
-        android:title="@string/fprint_sucess_vib_title"
-        android:summary="@string/fprint_sucess_vib_summary"
-        android:persistent="false" />
-		
-    <com.ion.ionizer.preferences.SecureSettingSwitchPreference
-        android:key="status_bar_locked_on_secure_keyguard"
-        android:title="@string/block_on_secure_keyguard_title"
-        android:summary="@string/block_on_secure_keyguard_summary"
-        android:defaultValue="false"/>
-
-    <com.ion.ionizer.preferences.SystemSettingSwitchPreference
-        android:key="lockscreen_pin_ripple"
-        android:title="@string/lockscreen_pin_ripple_title"
-        android:summary="@string/lockscreen_pin_ripple_summary"
-        android:defaultValue="true" />
-
-    <com.ion.ionizer.preferences.SystemSettingSwitchPreference
-        android:key="lockscreen_media_metadata"
-        android:title="@string/media_art_title"
-        android:summary="@string/media_art_summary"
-        android:defaultValue="true" />
-		
     <PreferenceCategory
         android:key="lockscreen_visualizer"
         android:title="@string/lockscreen_visualizer_category" >
@@ -80,32 +59,61 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory>
-    <com.ion.ionizer.preferences.SystemSettingSwitchPreference  
-        android:key="fp_unlock_keystore" 
-        android:title="@string/fp_unlock_keystore_title" 
-        android:summary="@string/fp_unlock_keystore_summary" 
-        android:defaultValue="false" /> 
+    <PreferenceCategory
+        android:key="lock_extra"
+        android:title="@string/locktra" >
 
-    <Preference
-            android:title="@string/lockscreen_tuner_title" >
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+            android:key="lockscreen_media_metadata"
+            android:title="@string/media_art_title"
+            android:summary="@string/media_art_summary"
+            android:defaultValue="true" />
+
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+            android:key="double_tap_sleep_lockscreen"
+            android:title="@string/double_tap_sleep_lockscreen_title"
+            android:summary="@string/double_tap_sleep_lockscreen_sumary"
+            android:defaultValue="false" />
+
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+            android:key="lockscreen_battery_info"
+            android:title="@string/lockscreen_battery_info_title"
+            android:summary="@string/lockscreen_battery_info_summary"
+            android:defaultValue="true" />
+
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+            android:key="lockscreen_pin_ripple"
+            android:title="@string/lockscreen_pin_ripple_title"
+            android:summary="@string/lockscreen_pin_ripple_summary"
+            android:defaultValue="true" />
+
+        <Preference
+            android:title="@string/lockscreen_tuner_title"
+            settings:allowDividerAbove="true" >
             <intent android:action="android.intent.action.MAIN"
                 android:targetPackage="com.android.systemui"
                 android:targetClass="com.android.systemui.tuner.LockscreenActivity" />
-    </Preference>
+        </Preference>
+
+        <SwitchPreference
+            android:key="fingerprint_success_vib"
+            android:title="@string/fprint_sucess_vib_title"
+            android:summary="@string/fprint_sucess_vib_summary"
+            android:persistent="false"
+            settings:allowDividerAbove="true"/>
+		
+        <com.ion.ionizer.preferences.SecureSettingSwitchPreference
+            android:key="status_bar_locked_on_secure_keyguard"
+            android:title="@string/block_on_secure_keyguard_title"
+            android:summary="@string/block_on_secure_keyguard_summary"
+            android:defaultValue="false"/>
+
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference  
+            android:key="fp_unlock_keystore" 
+            android:title="@string/fp_unlock_keystore_title" 
+            android:summary="@string/fp_unlock_keystore_summary" 
+            android:defaultValue="false" /> 
+
     </PreferenceCategory>
 
-    <PreferenceCategory
-        android:key="weather_lockscreen_key"
-        android:title="@string/weather_title"
-        settings:controller="com.android.settings.security.screenlock.WeatherPreferenceController">
-        <com.android.settings.custom.preference.SystemSettingListPreference
-            android:key="weather_lockscreen_unit"
-            android:dialogTitle="@string/weather_unit"
-            android:title="@string/weather_unit"
-            android:summary="%s"
-            android:entries="@array/weather_unit_entries"
-            android:entryValues="@array/weather_unit_values"
-            android:defaultValue="0" />
-    </PreferenceCategory>
 </PreferenceScreen>
