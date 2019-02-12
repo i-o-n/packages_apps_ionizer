@@ -26,6 +26,7 @@ import android.os.Bundle;
 import android.view.Surface;
 import android.preference.Preference;
 import com.android.settings.R;
+import com.ion.ionizer.preferences.Utils;
 
 import com.android.settings.SettingsPreferenceFragment;
 
@@ -34,8 +35,15 @@ public class IonIonizer extends SettingsPreferenceFragment {
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+        final String KEY_DEVICE_PART = "device_part";
+        final String KEY_DEVICE_PART_PACKAGE_NAME = "com.ion.ionizer.device";
 
         addPreferencesFromResource(R.xml.ion_settings);
+
+        // Device ionizer
+        if (!Utils.isPackageInstalled(getActivity(), KEY_DEVICE_PART_PACKAGE_NAME)) {
+            getPreferenceScreen().removePreference(findPreference(KEY_DEVICE_PART));
+        }
     }
 
     @Override
