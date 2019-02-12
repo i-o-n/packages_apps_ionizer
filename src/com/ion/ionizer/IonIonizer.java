@@ -19,18 +19,30 @@ package com.ion.ionizer;
 
 import com.android.internal.logging.nano.MetricsProto;
 
+import android.app.Fragment;
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Surface;
 import android.preference.Preference;
 import com.android.settings.R;
+import com.android.settings.dashboard.DashboardFragment;
+import com.android.settings.deviceinfo.ion.IonInfoPreferenceController;
+import com.android.settingslib.core.AbstractPreferenceController;
+import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.ion.ionizer.preferences.Utils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import com.android.settings.SettingsPreferenceFragment;
 
-public class IonIonizer extends SettingsPreferenceFragment {
+public class IonIonizer extends DashboardFragment {
+
+    private static final String TAG = "ionizer";
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -40,7 +52,7 @@ public class IonIonizer extends SettingsPreferenceFragment {
 
         addPreferencesFromResource(R.xml.ion_settings);
 
-        // Device ionizer
+         //Device ionizer
         if (!Utils.isPackageInstalled(getActivity(), KEY_DEVICE_PART_PACKAGE_NAME)) {
             getPreferenceScreen().removePreference(findPreference(KEY_DEVICE_PART));
         }
@@ -49,6 +61,16 @@ public class IonIonizer extends SettingsPreferenceFragment {
     @Override
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.ION_IONIZER;
+    }
+
+    @Override
+    protected String getLogTag() {
+        return TAG;
+    }
+
+    @Override
+    protected int getPreferenceScreenResId() {
+        return R.xml.ion_settings_;
     }
 
     public static void lockCurrentOrientation(Activity activity) {
@@ -79,4 +101,16 @@ public class IonIonizer extends SettingsPreferenceFragment {
         }
         activity.setRequestedOrientation(frozenRotation);
     }
+
+    protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
+        return buildPreferenceControllers(context, getLifecycle(), this);
+    }
+
+    private static List<AbstractPreferenceController> buildPreferenceControllers(
+            Context context, Lifecycle lifecycle, Fragment fragment) {
+        final List<AbstractPreferenceController> controllers = new ArrayList<>();
+        controllers.add(new IonInfoPreferenceController(context, fragment));
+        return controllers;
+    }
+
 }

@@ -21,11 +21,9 @@
 
         <!-- About -->
         <Preference
-            android:key=""
+            android:key="ion_info"
             android:title="@string/about_ion"
-            android:fragment="" 
-            android:icon="@drawable/ic_settings_about"
-            android:selectable="false"/>
+            android:icon="@drawable/ic_settings_about" />
 
         <!-- Interface -->
         <Preference
