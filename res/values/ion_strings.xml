@@ -94,6 +94,7 @@
     <string name="vol_rock">Volume Rocker</string>
     <string name="weatherl_title">Lockscreen Weather</string>
     <string name="locktra">Extras</string>
+    <string name="device_part_title">Device ionizer</string>
 
     <!-- Dashboard conditions--> 
     <string name="dashboard_category">Dashboard options</string> 
