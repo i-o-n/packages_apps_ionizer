@@ -18,6 +18,12 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/ionizer_title" >
 
+        <!-- About -->
+        <Preference
+            android:key="ion_info"
+            android:title="@string/about_ion"
+            android:icon="@drawable/ic_settings_about" />
+
         <!-- Status Bar -->
         <Preference
             android:key="statusbar_category"
