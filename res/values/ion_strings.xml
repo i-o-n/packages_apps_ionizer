@@ -95,6 +95,7 @@
     <string name="weatherl_title">Lockscreen Weather</string>
     <string name="locktra">Extras</string>
     <string name="device_part_title">Device ionizer</string>
+    <string name="corners_category">Corners</string>
 
     <!-- Dashboard conditions--> 
     <string name="dashboard_category">Dashboard options</string> 
