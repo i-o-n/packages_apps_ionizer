@@ -587,4 +587,10 @@
     <string name="qs_edit_title">Edit icon</string>
     <string name="qs_edit_summary">Display the tile edit icon in quick settings footer</string>
 
+    <!-- Torch Power button gestures -->
+    <string name="power_button_torch_gesture_title">Screen off torch</string>
+    <string name="power_button_torch_gesture_none">Disabled</string>
+    <string name="power_button_torch_gesture_dt">Double tap power button</string>
+    <string name="power_button_torch_gesture_lp">Long press power button</string>
+
 </resources>

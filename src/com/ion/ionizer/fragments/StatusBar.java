@@ -40,6 +40,7 @@ import android.text.TextUtils;
 import android.view.View;
 
 import com.android.settings.SettingsPreferenceFragment;
+import com.ion.ionizer.preferences.CustomSeekBarPreference;
 import com.ion.ionizer.preferences.SystemSettingSeekBarPreference;
 import com.ion.ionizer.preferences.SystemSettingSwitchPreference;
 import com.android.settings.Utils;

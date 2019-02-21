@@ -79,11 +79,17 @@
 
     </PreferenceCategory>
 
-    <Preference
-        android:key="power_menu"
-        android:title="@string/powermenu_title"
-        android:fragment="com.ion.ionizer.fragments.PowerMenu"
-        settings:allowDividerAbove="true"/>
+        <ListPreference
+            android:key="torch_power_button_gesture"
+            android:title="@string/power_button_torch_gesture_title"
+            android:entries="@array/power_button_torch_gesture_entries"
+            android:entryValues="@array/power_button_torch_gesture_values" />
+
+        <Preference
+            android:key="power_menu"
+            android:title="@string/powermenu_title"
+            android:fragment="com.ion.ionizer.fragments.PowerMenu"
+            settings:allowDividerAbove="true"/>
 
     <PreferenceCategory android:key="divider" />
 

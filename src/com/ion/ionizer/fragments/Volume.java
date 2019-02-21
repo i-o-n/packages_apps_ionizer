@@ -46,7 +46,9 @@ public class Volume extends SettingsPreferenceFragment implements
 
 
     private static final String KEY_VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
+    private static final String TORCH_POWER_BUTTON_GESTURE = "torch_power_button_gesture";
 
+    private ListPreference mTorchPowerButton;
     private ListPreference mVolumeKeyCursorControl;
 
     @Override
@@ -65,6 +67,19 @@ public class Volume extends SettingsPreferenceFragment implements
         mVolumeKeyCursorControl = initActionList(KEY_VOLUME_KEY_CURSOR_CONTROL,
                 cursorControlAction);
 
+        if (!Utils.deviceSupportsFlashLight(getContext())) {
+            Preference powerTorch = prefScreen.findPreference(TORCH_POWER_BUTTON_GESTURE);
+            if (powerTorch != null) {
+                prefScreen.removePreference(powerTorch);
+            }
+        } else {
+            mTorchPowerButton = (ListPreference) findPreference(TORCH_POWER_BUTTON_GESTURE);
+            int mTorchPowerButtonValue = Settings.Secure.getInt(resolver,
+                    Settings.Secure.TORCH_POWER_BUTTON_GESTURE, 0);
+            mTorchPowerButton.setValue(Integer.toString(mTorchPowerButtonValue));
+            mTorchPowerButton.setSummary(mTorchPowerButton.getEntry());
+            mTorchPowerButton.setOnPreferenceChangeListener(this);
+        }
     }
 
     private ListPreference initActionList(String key, int value) {
@@ -88,6 +103,18 @@ public class Volume extends SettingsPreferenceFragment implements
         if (preference == mVolumeKeyCursorControl) {
             handleActionListChange(mVolumeKeyCursorControl, objValue,
                     Settings.System.VOLUME_KEY_CURSOR_CONTROL);
+            return true;
+        } else if (preference == mTorchPowerButton) {
+            int mTorchPowerButtonValue = Integer.valueOf((String) objValue);
+            int index = mTorchPowerButton.findIndexOfValue((String) objValue);
+            mTorchPowerButton.setSummary(
+                    mTorchPowerButton.getEntries()[index]);
+            Settings.Secure.putInt(resolver, Settings.Secure.TORCH_POWER_BUTTON_GESTURE,
+                    mTorchPowerButtonValue);
+            if (mTorchPowerButtonValue == 1) {
+                //if doubletap for torch is enabled, switch off double tap for camera
+                Settings.Secure.putInt(resolver, Settings.Secure.CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED, 1);
+            }
             return true;
         }
         return false;
