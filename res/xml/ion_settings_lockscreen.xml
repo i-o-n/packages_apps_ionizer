@@ -20,10 +20,10 @@
     settings:initialExpandedChildrenCount="7" >
 
     <PreferenceCategory
-        android:key="weather_lockscreen_key"
-        android:title="@string/weatherl_title"
-        settings:controller="com.android.settings.security.screenlock.WeatherPreferenceController">
-        <com.android.settings.custom.preference.SystemSettingListPreference
+        android:key="weather_lockscreen_key_two"
+        android:title="@string/weatherl_title" >
+
+        <com.ion.ionizer.preferences.SystemSettingListPreference
             android:key="weather_lockscreen_unit"
             android:dialogTitle="@string/weather_unit"
             android:title="@string/weather_unit"
@@ -116,7 +116,9 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory>
+    <PreferenceCategory
+        android:key="lock_clock_size"
+        android:title="@string/lockcsize" >
 
         <com.ion.ionizer.preferences.SystemSettingSeekBarPreference
             android:key="lockclock_font_size"

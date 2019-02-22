@@ -96,6 +96,7 @@
     <string name="locktra">Extras</string>
     <string name="device_part_title">Device ionizer</string>
     <string name="corners_category">Corners</string>
+    <string name="lockcsize">Font Size</string>
 
     <!-- Dashboard conditions--> 
     <string name="dashboard_category">Dashboard options</string> 

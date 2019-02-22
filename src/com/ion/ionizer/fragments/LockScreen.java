@@ -32,10 +32,12 @@ import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.PreferenceScreen;
 import com.ion.ionizer.preferences.SystemSettingSeekBarPreference;
+import com.ion.ionizer.Utils;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 import android.provider.Settings;
+import com.android.internal.util.custom.weather.WeatherClient;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
@@ -47,6 +49,8 @@ public class LockScreen extends SettingsPreferenceFragment implements
     private static final String LOCK_SCREEN_VISUALIZER_CUSTOM_COLOR = "lock_screen_visualizer_custom_color";
     private static final String CLOCK_FONT_SIZE  = "lockclock_font_size";
     private static final String DATE_FONT_SIZE  = "lockdate_font_size";
+
+    private static final String WEATHER_LS_CAT = "weather_lockscreen_key_two";
 
     private ColorPickerPreference mVisualizerColor;
     private FingerprintManager mFingerprintManager;
@@ -94,6 +98,13 @@ public class LockScreen extends SettingsPreferenceFragment implements
         mDateFontSize.setValue(Settings.System.getInt(getContentResolver(),
                 Settings.System.LOCKDATE_FONT_SIZE,16));
         mDateFontSize.setOnPreferenceChangeListener(this);
+
+        final PreferenceCategory weatherCategory = (PreferenceCategory) prefScreen
+                .findPreference(WEATHER_LS_CAT);
+
+        if (!Utils.isPackageInstalled(getContext(), "com.android.providers.weather")) {
+            prefScreen.removePreference(weatherCategory);
+        }
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
