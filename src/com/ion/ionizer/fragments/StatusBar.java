@@ -60,6 +60,7 @@ public class StatusBar extends SettingsPreferenceFragment implements
     private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
     private static final String NETWORK_TRAFFIC_HIDEARROW = "network_traffic_hidearrow";
     private static final String NETWORK_TRAFFIC_LOCATION = "network_traffic_location";
+    private static final String NETWORK_TRAFFIC_REFRESH_INTERVAL = "network_traffic_refresh_interval";
 
     private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 3;
     private static final int STATUS_BAR_BATTERY_STYLE_HIDDEN = 4;
@@ -73,6 +74,7 @@ public class StatusBar extends SettingsPreferenceFragment implements
     private ListPreference mStatusBarBattery;
     private ListPreference mQuickPulldown;
     private ListPreference mSmartPulldown;
+    private CustomSeekBarPreference mNetTrafficRefreshInterval;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -136,6 +138,12 @@ public class StatusBar extends SettingsPreferenceFragment implements
 
         mHideArrows = (SystemSettingSwitchPreference) findPreference(NETWORK_TRAFFIC_HIDEARROW);
 
+        mNetTrafficRefreshInterval = (CustomSeekBarPreference) findPreference(NETWORK_TRAFFIC_REFRESH_INTERVAL);
+        int interval = Settings.System.getIntForUser(resolver,
+                Settings.System.NETWORK_TRAFFIC_REFRESH_INTERVAL, 2, UserHandle.USER_CURRENT);
+        mNetTrafficRefreshInterval.setValue(interval);
+        mNetTrafficRefreshInterval.setOnPreferenceChangeListener(this);
+
                updateTrafficLocation(location);
     }
 
@@ -191,6 +199,11 @@ public class StatusBar extends SettingsPreferenceFragment implements
             Settings.System.putInt(resolver, Settings.System.QS_SMART_PULLDOWN, smartPulldown);
             updateSmartPulldownSummary(smartPulldown);
             return true;
+        } else if (preference == mNetTrafficRefreshInterval) {
+            int interval = (Integer) newValue;
+            Settings.System.putIntForUser(resolver,
+                    Settings.System.NETWORK_TRAFFIC_REFRESH_INTERVAL, interval, UserHandle.USER_CURRENT);
+            return true;
 		}
         return false;
     }
@@ -201,6 +214,7 @@ public class StatusBar extends SettingsPreferenceFragment implements
                 mNetTrafficType.setEnabled(false);
                 mThreshold.setEnabled(false);
                 mHideArrows.setEnabled(false);
+                mNetTrafficRefreshInterval.setEnabled(false);
                 Settings.System.putInt(getActivity().getContentResolver(),
                 Settings.System.NETWORK_TRAFFIC_STATE, 0);
                 Settings.System.putInt(getActivity().getContentResolver(),
@@ -210,6 +224,7 @@ public class StatusBar extends SettingsPreferenceFragment implements
                 mNetTrafficType.setEnabled(true);
                 mThreshold.setEnabled(true);
                 mHideArrows.setEnabled(true);
+                mNetTrafficRefreshInterval.setEnabled(true);
                 Settings.System.putInt(getActivity().getContentResolver(),
                 Settings.System.NETWORK_TRAFFIC_STATE, 1);
                 Settings.System.putInt(getActivity().getContentResolver(),
@@ -219,6 +234,7 @@ public class StatusBar extends SettingsPreferenceFragment implements
                 mNetTrafficType.setEnabled(true);
                 mThreshold.setEnabled(true);
                 mHideArrows.setEnabled(true);
+                mNetTrafficRefreshInterval.setEnabled(true);
                 Settings.System.putInt(getActivity().getContentResolver(),
                 Settings.System.NETWORK_TRAFFIC_STATE, 0);
                 Settings.System.putInt(getActivity().getContentResolver(),
