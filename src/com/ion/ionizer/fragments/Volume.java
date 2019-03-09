@@ -37,6 +37,7 @@ import android.view.KeyEvent;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.ion.ionizer.Utils;
 
 import com.android.internal.logging.nano.MetricsProto;
 
@@ -100,6 +101,7 @@ public class Volume extends SettingsPreferenceFragment implements
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
+        ContentResolver resolver = getActivity().getContentResolver();
         if (preference == mVolumeKeyCursorControl) {
             handleActionListChange(mVolumeKeyCursorControl, objValue,
                     Settings.System.VOLUME_KEY_CURSOR_CONTROL);

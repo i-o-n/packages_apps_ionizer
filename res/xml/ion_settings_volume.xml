@@ -79,11 +79,16 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:title="@string/power_button">
+
         <ListPreference
             android:key="torch_power_button_gesture"
             android:title="@string/power_button_torch_gesture_title"
             android:entries="@array/power_button_torch_gesture_entries"
             android:entryValues="@array/power_button_torch_gesture_values" />
+
+    </PreferenceCategory>
 
         <Preference
             android:key="power_menu"
