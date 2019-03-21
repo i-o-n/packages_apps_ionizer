@@ -595,7 +595,8 @@
 
     <!-- Switch styles -->
     <string name="switch_style_title">Switch appearance</string>
-    <string name="switch_default">Default</string>
+    <string name="switch_ion">Default</string>
+    <string name="switch_default">Stock</string>
     <string name="switch_md2">Material Design 2</string>
     <string name="switch_oneplus">OnePlus</string>
 

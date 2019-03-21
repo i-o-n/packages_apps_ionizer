@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 Havoc-OS
+ * Copyright (C) 2019 ion
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file
  * except in compliance with the License. You may obtain a copy of the License at
@@ -53,7 +53,7 @@ public class SwitchStylePreferenceController extends AbstractPreferenceControlle
         super.displayPreference(screen);
         mSwitchStyle = (ListPreference) screen.findPreference(SWITCH_STYLE);
         int switchStyle = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.SWITCH_STYLE, 2);
+                Settings.System.SWITCH_STYLE, 0);
         int valueIndex = mSwitchStyle.findIndexOfValue(String.valueOf(switchStyle));
         mSwitchStyle.setValueIndex(valueIndex >= 0 ? valueIndex : 0);
         mSwitchStyle.setSummary(mSwitchStyle.getEntry());
