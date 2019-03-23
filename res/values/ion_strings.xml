@@ -599,5 +599,14 @@
     <string name="switch_default">Stock</string>
     <string name="switch_md2">Material Design 2</string>
     <string name="switch_oneplus">OnePlus</string>
+    <string name="switch_one">Switch One</string>
+    <string name="switch_two">Switch Two</string>
+    <string name="switch_three">Switch Three</string>
+    <string name="switch_four">Switch Four</string>
+    <string name="switch_five">Switch Five</string>
+    <string name="switch_six">Switch Six</string>
+    <string name="switch_seven">Switch Seven</string>
+    <string name="switch_eight">Switch Eight</string>
+    <string name="switch_nine">Switch Nine</string>
 
 </resources>

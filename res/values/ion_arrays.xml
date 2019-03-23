@@ -559,12 +559,30 @@
         <item>@string/switch_default</item>
         <item>@string/switch_md2</item>
         <item>@string/switch_oneplus</item>
+        <item>@string/switch_one</item>
+        <item>@string/switch_two</item>
+        <item>@string/switch_three</item>
+        <item>@string/switch_four</item>
+        <item>@string/switch_five</item>
+        <item>@string/switch_six</item>
+        <item>@string/switch_seven</item>
+        <item>@string/switch_eight</item>
+        <item>@string/switch_nine</item>
     </string-array>
     <string-array name="switch_style_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
     </string-array>
 
 </resources>
