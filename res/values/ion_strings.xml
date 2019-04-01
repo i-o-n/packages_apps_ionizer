@@ -609,4 +609,10 @@
     <string name="switch_eight">Switch Eight</string>
     <string name="switch_nine">Switch Nine</string>
 
+    <!-- Lockscreen cover art filter -->
+    <string name="lockscreen_cover_filter_title">Media cover art filter</string>
+    <string name="lockscreen_cover_filter_none">None</string>
+    <string name="lockscreen_cover_filter_grayscale">Grayscale</string>
+    <string name="lockscreen_cover_filter_blur">Blur</string>
+
 </resources>
