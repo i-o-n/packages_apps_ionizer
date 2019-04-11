@@ -43,19 +43,27 @@
             android:summary="@string/lockscreen_visualizer_enable_summary"
             android:defaultValue="false" />
 
-        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
-            android:key="lock_screen_visualizer_use_custom_color"
-            android:title="@string/lockscreen_visualizer_enable_custom"
-            android:summary="@string/lockscreen_visualizer_enable_custom_summary"
+        <com.ion.ionizer.preferences.SecureSettingSwitchPreference
+            android:key="lockscreen_visualizer_autocolor"
+            android:title="@string/lockscreen_autocolor_title"
+            android:summary="@string/lockscreen_autocolor_summary"
+            android:dependency="lockscreen_visualizer_enabled"
+            android:defaultValue="true" />
+
+        <com.ion.ionizer.preferences.SecureSettingSwitchPreference
+            android:key="lockscreen_lavalamp_enabled"
+            android:title="@string/lockscreen_lavalamp_title"
+            android:summary="@string/lockscreen_lavalamp_summary"
             android:dependency="lockscreen_visualizer_enabled"
             android:defaultValue="false" />
 
-        <net.margaritov.preference.colorpicker.ColorPickerPreference
-            android:key="lock_screen_visualizer_custom_color"
-            android:title="@string/lockscreen_visualizer_custom_color"
-            android:dependency="lock_screen_visualizer_use_custom_color"
-            android:defaultValue="0xffffffff"
-            android:dialogTitle="@string/lockscreen_visualizer_custom_color" />
+        <com.ion.ionizer.preferences.SecureSettingSeekBarPreference
+            android:key="lockscreen_lavalamp_speed"
+            android:title="@string/lockscreen_lavalamp_speed_title"
+            android:defaultValue="10000"
+            android:max="30000"
+            android:min="200"
+            android:dependency="lockscreen_lavalamp_enabled"/>
 
     </PreferenceCategory>
 

@@ -26,6 +26,7 @@ import android.content.res.Resources;
 import android.hardware.fingerprint.FingerprintManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
@@ -34,8 +35,6 @@ import android.support.v7.preference.PreferenceScreen;
 import com.ion.ionizer.preferences.SystemSettingListPreference;
 import com.ion.ionizer.preferences.SystemSettingSeekBarPreference;
 import com.ion.ionizer.Utils;
-
-import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 import android.provider.Settings;
 import com.android.internal.util.custom.weather.WeatherClient;
@@ -47,7 +46,9 @@ public class LockScreen extends SettingsPreferenceFragment implements
 
     private static final String FINGERPRINT_VIB = "fingerprint_success_vib";
 
-    private static final String LOCK_SCREEN_VISUALIZER_CUSTOM_COLOR = "lock_screen_visualizer_custom_color";
+    private static final String KEY_AUTOCOLOR = "lockscreen_visualizer_autocolor";
+    private static final String KEY_LAVALAMP = "lockscreen_lavalamp_enabled";
+
     private static final String CLOCK_FONT_SIZE  = "lockclock_font_size";
     private static final String LOCK_CLOCK_FONTS = "lock_clock_fonts";
     private static final String DATE_FONT_SIZE  = "lockdate_font_size";
@@ -56,7 +57,8 @@ public class LockScreen extends SettingsPreferenceFragment implements
 
     private static final String WEATHER_LS_CAT = "weather_lockscreen_key_two";
 
-    private ColorPickerPreference mVisualizerColor;
+    private SwitchPreference mAutoColor;
+    private SwitchPreference mLavaLamp;
     private FingerprintManager mFingerprintManager;
     private SwitchPreference mFingerprintVib;
     private SystemSettingSeekBarPreference mClockFontSize;
@@ -66,8 +68,9 @@ public class LockScreen extends SettingsPreferenceFragment implements
     SystemSettingListPreference mLockClockStyle;
 
     @Override
-    public void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
         addPreferencesFromResource(R.xml.ion_settings_lockscreen);
 
         ContentResolver resolver = getActivity().getContentResolver();
@@ -84,15 +87,29 @@ public class LockScreen extends SettingsPreferenceFragment implements
             mFingerprintVib.setOnPreferenceChangeListener(this);
         }
 
-        // Visualizer custom color
-        mVisualizerColor = (ColorPickerPreference) findPreference(LOCK_SCREEN_VISUALIZER_CUSTOM_COLOR);
-        int visColor = Settings.System.getInt(resolver,
-                Settings.System.LOCK_SCREEN_VISUALIZER_CUSTOM_COLOR, 0xff1976D2);
-        String visColorHex = String.format("#%08x", (0xff1976D2 & visColor));
-        mVisualizerColor.setSummary(visColorHex);
-        mVisualizerColor.setNewPreviewColor(visColor);
-        mVisualizerColor.setAlphaSliderEnabled(true);
-        mVisualizerColor.setOnPreferenceChangeListener(this);
+        boolean mMediaArtEnabled = Settings.System.getIntForUser(resolver,
+                Settings.System.LOCKSCREEN_MEDIA_METADATA, 1,
+                UserHandle.USER_CURRENT) != 0;
+        boolean mLavaLampEnabled = Settings.Secure.getIntForUser(resolver,
+                Settings.Secure.LOCKSCREEN_LAVALAMP_ENABLED, 1,
+                UserHandle.USER_CURRENT) != 0;
+
+        mAutoColor = (SwitchPreference) findPreference(KEY_AUTOCOLOR);
+        mAutoColor.setEnabled(mMediaArtEnabled && !mLavaLampEnabled);
+
+        if (!mMediaArtEnabled) {
+            mAutoColor.setSummary(getActivity().getString(
+                    R.string.lockscreen_autocolor_mediametadata));
+        } else if (mLavaLampEnabled) {
+            mAutoColor.setSummary(getActivity().getString(
+                    R.string.lockscreen_autocolor_lavalamp));
+        } else {
+            mAutoColor.setSummary(getActivity().getString(
+                    R.string.lockscreen_autocolor_summary));
+        }
+
+        mLavaLamp = (SwitchPreference) findPreference(KEY_LAVALAMP);
+        mLavaLamp.setOnPreferenceChangeListener(this);
 
         // Lockscren Clock Fonts
         mLockClockFonts = (ListPreference) findPreference(LOCK_CLOCK_FONTS);
@@ -140,14 +157,6 @@ public class LockScreen extends SettingsPreferenceFragment implements
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.FINGERPRINT_SUCCESS_VIB, value ? 1 : 0);
             return true;
-        } else if (preference == mVisualizerColor) {
-            String hex = ColorPickerPreference.convertToARGB(
-                    Integer.valueOf(String.valueOf(newValue)));
-            int intHex = ColorPickerPreference.convertToColorInt(hex);
-            Settings.System.putInt(resolver,
-                    Settings.System.LOCK_SCREEN_VISUALIZER_CUSTOM_COLOR, intHex);
-            preference.setSummary(hex);
-            return true;
         } else if (preference == mClockFontSize) {
             int top = (Integer) newValue;
             Settings.System.putInt(getContentResolver(),
@@ -177,6 +186,25 @@ public class LockScreen extends SettingsPreferenceFragment implements
                 Settings.System.putInt(getContentResolver(), Settings.System.LOCKSCREEN_INFO, 0);
             } else {
                 Settings.System.putInt(getContentResolver(), Settings.System.LOCKSCREEN_INFO, 1);
+            }
+            return true;
+        } else if (preference == mLavaLamp) {
+            boolean mLavaLampEnabled = (Boolean) newValue;
+            boolean mMediaArtEnabled = Settings.System.getIntForUser(resolver,
+                Settings.System.LOCKSCREEN_MEDIA_METADATA, 1,
+                UserHandle.USER_CURRENT) != 0;
+
+            mAutoColor.setEnabled(mMediaArtEnabled && !mLavaLampEnabled);
+
+            if (!mMediaArtEnabled) {
+                mAutoColor.setSummary(getActivity().getString(
+                        R.string.lockscreen_autocolor_mediametadata));
+            } else if (mLavaLampEnabled) {
+                mAutoColor.setSummary(getActivity().getString(
+                        R.string.lockscreen_autocolor_lavalamp));
+            } else {
+                mAutoColor.setSummary(getActivity().getString(
+                        R.string.lockscreen_autocolor_summary));
             }
             return true;
         }

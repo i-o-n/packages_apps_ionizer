@@ -448,9 +448,13 @@
     <string name="lockscreen_visualizer_category">Visualizer</string>
     <string name="lockscreen_visualizer_enable">Enable lockscreen visualizer</string>
     <string name="lockscreen_visualizer_enable_summary">Show visualizer on lockscreen when music is playing</string>
-    <string name="lockscreen_visualizer_enable_custom">Use custom color</string>
-    <string name="lockscreen_visualizer_enable_custom_summary">Use a preset color instead of the generated color</string>
-    <string name="lockscreen_visualizer_custom_color">Visualizer Color</string>
+    <string name="lockscreen_autocolor_title">Automatic color</string>
+    <string name="lockscreen_autocolor_summary">Sync color with album art</string>
+    <string name="lockscreen_autocolor_mediametadata">Requires media cover art on lockscreen enabled</string>
+    <string name="lockscreen_autocolor_lavalamp">Requires lava lamp disabled</string>
+    <string name="lockscreen_lavalamp_title">Lava lamp</string>
+    <string name="lockscreen_lavalamp_summary">Use a smooth lava lamp style color blend animation</string>
+    <string name="lockscreen_lavalamp_speed_title">Color blend interval</string>
 
     <!-- Quick settings tiles columns and rows config --> 
     <string name="qs_rows_portrait_title">Rows (Portrait)</string>
