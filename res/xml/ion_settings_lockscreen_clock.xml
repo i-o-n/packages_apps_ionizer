@@ -43,4 +43,11 @@
             ionionizer:units="dp"
             android:defaultValue="64" />
 
+        <com.ion.ionizer.preferences.SystemSettingListPreference
+            android:key="lockscreen_text_clock_align"
+            android:title="@string/lockscreen_clock_align_title"
+            android:entries="@array/lockscreen_clock_align_entries"
+            android:entryValues="@array/lockscreen_clock_align_values"
+            android:defaultValue="0" />
+
 </PreferenceScreen>
