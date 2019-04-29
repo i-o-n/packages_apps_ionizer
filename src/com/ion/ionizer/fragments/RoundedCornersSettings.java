@@ -54,6 +54,7 @@ public class RoundedCornersSettings extends SettingsPreferenceFragment implement
     private static final String SYSUI_ROUNDED_CONTENT_PADDING = "sysui_rounded_content_padding";
     private static final String SYSUI_STATUS_BAR_PADDING = "sysui_status_bar_padding";
     private static final String SYSUI_ROUNDED_FWVALS = "sysui_rounded_fwvals";
+    private static final String KEY_FORCE_FULLSCREEN = "display_cutout_force_fullscreen_settings";
 
     private CustomSeekBarPreference mCornerRadius;
     private CustomSeekBarPreference mContentPadding;
@@ -106,6 +107,11 @@ public class RoundedCornersSettings extends SettingsPreferenceFragment implement
         // Rounded use Framework Values
         mRoundedFwvals = (SwitchPreference) findPreference(SYSUI_ROUNDED_FWVALS);
         mRoundedFwvals.setOnPreferenceChangeListener(this);
+
+        final Preference forceFullscreen = (Preference) getPreferenceScreen().findPreference(KEY_FORCE_FULLSCREEN);
+        if (!IonUtils.hasNotch(getContext())) {
+            getPreferenceScreen().removePreference(forceFullscreen);
+        }
     }
 
     private void restoreCorners() {

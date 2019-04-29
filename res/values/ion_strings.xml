@@ -987,4 +987,8 @@
     <string name="burn_in_protection_title">Burn-in Protection</string>
     <string name="burn_in_protection_summary">Shift navbar and statusbar icons to prevent burn-in</string>
     <string name="burn_in_protection_interval_title">Interval of shift</string>
+
+    <!-- Notch: Full screen apps -->
+    <string name="display_cutout_force_fullscreen_title">Full screen apps</string>
+    <string name="display_cutout_force_fullscreen_summary">Force apps to ignore notch space</string>
 </resources>
