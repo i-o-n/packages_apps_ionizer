@@ -22,15 +22,22 @@
         android:key="theme_category"
         android:title="@string/theme_category_title">
 
+        <Preference
+            android:key="accent_picker"
+            android:title="@string/theme_accent_picker_title" />
+
         <ListPreference
             android:key="systemui_theme"
             android:title="@string/device_theme"
             android:entries="@array/systemui_theme_entries"
             android:entryValues="@array/systemui_theme_values" />
 
-        <Preference
-            android:key="accent_picker"
-            android:title="@string/theme_accent_picker_title" />
+        <com.android.settings.custom.preference.SystemSettingListPreference
+            android:key="dark_theme_style"
+            android:title="@string/dark_theme_style_title"
+            android:entries="@array/dark_theme_style_entries"
+            android:entryValues="@array/dark_theme_style_values"
+            android:defaultValue="0" />
 
         <ListPreference
             android:key="qs_header_style"
