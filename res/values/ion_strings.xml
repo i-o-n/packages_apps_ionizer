@@ -74,7 +74,7 @@
     <string name="interface_title">Interface</string>
     <string name="lockscreen_title">Lock Screen</string>
     <string name="misc_title">Miscellaneous</string>
-    <string name="navigation_title">Navigation-n-Gestures</string>
+    <string name="navigation_title">Navigation &amp; Gestures</string>
     <string name="notifications_title">Notifications</string>
     <string name="quicksettings_title">Quick Settings</string>
     <string name="recents_title">Recents</string>
@@ -97,6 +97,7 @@
     <string name="device_part_title">Device ionizer</string>
     <string name="corners_category">Corners</string>
     <string name="lockcsize">Clock &amp; Date </string>
+    <string name="button_setting_summary">HW-Key Customization</string>
 
     <!-- Dashboard conditions--> 
     <string name="dashboard_category">Dashboard options</string> 

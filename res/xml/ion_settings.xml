@@ -146,7 +146,7 @@
             android:key="device_part"
             android:persistent="false"
             android:title="@string/device_part_title"
-            android:icon="@drawable/ic_settings_misc"
+            android:icon="@drawable/ic_settings_device"
             settings:allowDividerAbove="true" >
             <intent android:action="android.intent.action.MAIN"
                 android:targetPackage="com.ion.ionizer.device"

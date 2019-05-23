@@ -33,4 +33,11 @@
                 android:targetClass="com.android.systemui.tuner.NavBarActivity" />
     </Preference>
 
+    <Preference
+        android:key="button_settings"
+        android:title="@string/button_pref_title"
+        android:icon="@drawable/ic_button_settings"
+        android:summary="@string/button_setting_summary"
+        android:fragment="com.android.settings.custom.buttons.ButtonSettings" />
+
 </PreferenceScreen>
