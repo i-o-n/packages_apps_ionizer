@@ -480,6 +480,11 @@
         <item>@string/qstile_squircle_trim</item>
         <item>@string/qstile_teardrop</item>
         <item>@string/qstile_wavey</item>
+        <item>@string/qstile_neonlike</item>
+        <item>@string/qstile_oos</item>
+        <item>@string/qstile_triangles</item>
+        <item>@string/qstile_divided</item>
+        <item>@string/qstile_cosmos</item>
     </string-array>
 
     <string-array name="qs_selector_values" translatable="false">
@@ -503,6 +508,11 @@
         <item>17</item>
         <item>18</item>
         <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
     </string-array>
 
     <!-- Network Traffic Type -->

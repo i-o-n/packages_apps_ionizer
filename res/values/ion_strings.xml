@@ -546,6 +546,11 @@
     <string name="qstile_squircle_trim">Squircle (Trim)</string>
     <string name="qstile_teardrop">Teardrop</string>
     <string name="qstile_wavey">Wavey</string>
+    <string name="qstile_neonlike">Neon like</string>
+    <string name="qstile_oos">Oxygen</string>
+    <string name="qstile_triangles">Triangles</string>
+    <string name="qstile_divided">Divided</string>
+    <string name="qstile_cosmos">Cosmos</string>
 
     <!-- Show VoLTE icon on statusbar -->
     <string name="volte_icon_title">VoLTE icon</string>
