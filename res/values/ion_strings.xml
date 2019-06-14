@@ -622,6 +622,7 @@
     <string name="lockscreen_cover_filter_tint">Accent tinted</string>
     <string name="lockscreen_cover_filter_blur">Blur</string>
     <string name="lockscreen_cover_filter_grayblur">Grayscale and blurred</string>
+    <string name="lockscreen_cover_filter_tinted_blur">Accent Tinted and blurred</string>
 
     <string name="use_old_mobiletype_title">Use old mobile type style</string>
     <string name="use_old_mobiletype_summary">Merge signal and type icons</string>
@@ -673,5 +674,10 @@
     <string name="volbtn_music_controls_title">Control playback</string>
     <string name="volbtn_music_controls_summary">Seek music tracks by long pressing the volume keys while the display is off</string>
     <string name="button_wake_title">Wake device</string>
+
+    <!-- Powermunu Background -->
+    <string name="power_menu_bg_title">Background Filter</string>
+    <string name="power_menu_bg_summary">Enables Custom filter when powermenu is active</string>
+    <string name="power_menu_bg_style_title">Filter Type</string>
 
 </resources>
