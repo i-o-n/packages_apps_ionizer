@@ -182,11 +182,6 @@ public class LockScreen extends SettingsPreferenceFragment implements
             int val = Integer.valueOf((String) newValue);
             Settings.System.putInt(getContentResolver(),
                     Settings.System.LOCKSCREEN_CLOCK_SELECTION, val);
-            if (val == 14) {
-                Settings.System.putInt(getContentResolver(), Settings.System.LOCKSCREEN_INFO, 0);
-            } else {
-                Settings.System.putInt(getContentResolver(), Settings.System.LOCKSCREEN_INFO, 1);
-            }
             return true;
         } else if (preference == mLavaLamp) {
             boolean mLavaLampEnabled = (Boolean) newValue;
