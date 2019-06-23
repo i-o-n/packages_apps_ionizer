@@ -547,10 +547,16 @@
     <string name="qstile_teardrop">Teardrop</string>
     <string name="qstile_wavey">Wavey</string>
     <string name="qstile_neonlike">Neon like</string>
-    <string name="qstile_oos">Oxygen</string>
+    <string name="qstile_oxygen">Oxygen</string>
     <string name="qstile_triangles">Triangles</string>
     <string name="qstile_divided">Divided</string>
     <string name="qstile_cosmos">Cosmos</string>
+    <string name="qstile_diamond">Diamond</string>
+    <string name="qstile_gear">Gear</string>
+    <string name="qstile_hexagon">Hexagon</string>
+    <string name="qstile_roundedsquare">Rounded Square</string>
+    <string name="qstile_square">Square</string>
+    <string name="qstile_star">Star</string>
 
     <!-- Show VoLTE icon on statusbar -->
     <string name="volte_icon_title">VoLTE icon</string>

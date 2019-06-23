@@ -464,27 +464,33 @@
         <item>@string/qstile_circle_gradient</item>
         <item>@string/qstile_circle_trim</item>
         <item>@string/qstile_cookie</item>
+        <item>@string/qstile_cosmos</item>
+        <item>@string/qstile_diamond</item>
+        <item>@string/qstile_divided</item>
         <item>@string/qstile_dottedcircle</item>
         <item>@string/qstile_circle_dualtone</item>
         <item>@string/qstile_dual_tone_circle</item>
+        <item>@string/qstile_gear</item>
+        <item>@string/qstile_hexagon</item>
         <item>@string/qstile_ink</item>
         <item>@string/qstile_inkdrop</item>
         <item>@string/qstile_mountain</item>
+        <item>@string/qstile_neonlike</item>
         <item>@string/qstile_ninja</item>
         <item>@string/qstile_oreo</item>
         <item>@string/qstile_oreo_circle_trim</item>
         <item>@string/qstile_oreo_squircle_trim</item>
+        <item>@string/qstile_oxygen</item>
         <item>@string/qstile_pokesign</item>
-        <item>@string/qstile_squaremedo</item>
+        <item>@string/qstile_roundedsquare</item>
+        <item>@string/qstile_square</item>
         <item>@string/qstile_squircle</item>
         <item>@string/qstile_squircle_trim</item>
+        <item>@string/qstile_squaremedo</item>
+        <item>@string/qstile_star</item>
         <item>@string/qstile_teardrop</item>
-        <item>@string/qstile_wavey</item>
-        <item>@string/qstile_neonlike</item>
-        <item>@string/qstile_oos</item>
         <item>@string/qstile_triangles</item>
-        <item>@string/qstile_divided</item>
-        <item>@string/qstile_cosmos</item>
+        <item>@string/qstile_wavey</item>
     </string-array>
 
     <string-array name="qs_selector_values" translatable="false">
@@ -513,6 +519,12 @@
         <item>22</item>
         <item>23</item>
         <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
     </string-array>
 
     <!-- Network Traffic Type -->
