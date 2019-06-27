@@ -210,8 +210,7 @@
     <string name="lockscreen_tuner_title">Lockscreen Shortcuts</string>
 
     <!-- Navbar tuner -->
-    <string name="navbar_tuner_title">Navbar Buttons</string>
-    <string name="navbar_visibility">Allow Navigation Bar</string>
+    <string name="navbar_tuner_title">Navbar Buttons Layout</string>
 
     <!-- Disable QS on lockscreen -->
     <string name="block_on_secure_keyguard_title">Disable Quick settings</string>
