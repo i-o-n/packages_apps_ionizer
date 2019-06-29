@@ -16,6 +16,7 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/display_title"
+    xmlns:ionionizer="http://schemas.android.com/apk/res-auto"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <PreferenceCategory 
@@ -33,7 +34,7 @@
             android:title="@string/corner_radius"
             android:max="80"
             android:min="0"
-            settings:units=""
+            ionionizer:unitsRight="dp"
             android:defaultValue="0"
             android:persistent="false"
             android:dependency="sysui_rounded_fwvals" />
@@ -43,7 +44,7 @@
             android:title="@string/content_padding"
             android:max="20"
             android:min="0"
-            settings:units=""
+            ionionizer:unitsRight="dp"
             android:defaultValue="0"
             android:persistent="false"
             android:dependency="sysui_rounded_fwvals" />

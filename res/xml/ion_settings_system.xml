@@ -16,6 +16,7 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/system_title"
+    xmlns:ionionizer="http://schemas.android.com/apk/res-auto"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <SwitchPreference
@@ -64,6 +65,7 @@
             android:max="90"
             android:min="45"
             android:defaultValue="60"
+            ionionizer:unitsRight="sec"
             android:persistent="false" />
     </PreferenceCategory>
 </PreferenceScreen>

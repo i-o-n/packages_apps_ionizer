@@ -75,7 +75,7 @@ public class StatusBar extends SettingsPreferenceFragment implements
     private ListPreference mStatusBarBattery;
     private ListPreference mQuickPulldown;
     private ListPreference mSmartPulldown;
-    private CustomSeekBarPreference mNetTrafficRefreshInterval;
+    private SystemSettingSeekBarPreference mNetTrafficRefreshInterval;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -139,7 +139,7 @@ public class StatusBar extends SettingsPreferenceFragment implements
 
         mHideArrows = (SystemSettingSwitchPreference) findPreference(NETWORK_TRAFFIC_HIDEARROW);
 
-        mNetTrafficRefreshInterval = (CustomSeekBarPreference) findPreference(NETWORK_TRAFFIC_REFRESH_INTERVAL);
+        mNetTrafficRefreshInterval = (SystemSettingSeekBarPreference) findPreference(NETWORK_TRAFFIC_REFRESH_INTERVAL);
         int interval = Settings.System.getIntForUser(resolver,
                 Settings.System.NETWORK_TRAFFIC_REFRESH_INTERVAL, 2, UserHandle.USER_CURRENT);
         mNetTrafficRefreshInterval.setValue(interval);
