@@ -43,7 +43,7 @@ import com.android.settings.Utils;
 
 import com.ion.ionizer.preferences.SystemSettingSwitchPreference;
 import com.ion.ionizer.preferences.SystemSettingSeekBarPreference;
-import net.margaritov.preference.colorpicker.ColorPickerPreference;
+import com.ion.ionizer.colorpicker.ColorPickerPreference;
 import com.android.internal.logging.nano.MetricsProto;
 
 import java.util.Date;

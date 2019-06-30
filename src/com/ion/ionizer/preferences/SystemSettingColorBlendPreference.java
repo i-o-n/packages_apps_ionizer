@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 AICP
+ * Copyright (C) 2018 Android Ice Cold Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,28 +19,20 @@ package com.ion.ionizer.preferences;
 import android.content.Context;
 import android.util.AttributeSet;
 
-public class SystemSettingIntListPreference extends SystemSettingListPreference {
+public class SystemSettingColorBlendPreference extends ColorBlendPreference {
 
-    public SystemSettingIntListPreference(Context context, AttributeSet attrs, int defStyle) {
+    public SystemSettingColorBlendPreference(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        setPreferenceDataStore(new SystemSettingsStore(context.getContentResolver()));
     }
 
-    public SystemSettingIntListPreference(Context context, AttributeSet attrs) {
+    public SystemSettingColorBlendPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
+        setPreferenceDataStore(new SystemSettingsStore(context.getContentResolver()));
     }
 
-    public SystemSettingIntListPreference(Context context) {
+    public SystemSettingColorBlendPreference(Context context) {
         super(context);
+        setPreferenceDataStore(new SystemSettingsStore(context.getContentResolver()));
     }
-
-    @Override
-    protected boolean persistString(String value) {
-        return persistInt(Integer.parseInt(value));
-    }
-
-    @Override
-    protected String getPersistedString(String defaultReturnValue) {
-        return String.valueOf(getPersistedInt(Integer.parseInt(defaultReturnValue)));
-    }
-
 }

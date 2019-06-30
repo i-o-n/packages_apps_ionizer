@@ -28,7 +28,7 @@
         android:min="60"
         android:max="160"
         ionsettings:interval="5"
-        ionsettings:unitsRight="%" />
+        ionsettings:units="%" />
 
     <com.ion.ionizer.preferences.SystemSettingSwitchPreference
         android:key="recent_app_sidebar_disable_labels"
@@ -36,14 +36,14 @@
         android:disableDependentsState="true"
         android:defaultValue="false" />
 
-    <net.margaritov.preference.colorpicker.ColorPickerPreference
+    <com.ion.ionizer.colorpicker.ColorPickerPreference
         android:key="recent_app_sidebar_text_color"
         android:title="@string/recent_app_sidebar_label_color_title"
         android:defaultValue="0xffffffff"
         alphaSlider="false"
         android:dependency="recent_app_sidebar_disable_labels" />
 
-    <net.margaritov.preference.colorpicker.ColorPickerPreference
+    <com.ion.ionizer.colorpicker.ColorPickerPreference
         android:key="recent_app_sidebar_bg_color"
         android:title="@string/recent_app_sidebar_bg_color_title"
         android:defaultValue="0x00ffffff"

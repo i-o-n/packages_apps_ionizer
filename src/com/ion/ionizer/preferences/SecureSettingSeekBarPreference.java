@@ -18,7 +18,7 @@ package com.ion.ionizer.preferences;
 import android.content.Context;
 import android.util.AttributeSet;
 
-public class SecureSettingSeekBarPreference extends SeekBarPreferenceCham {
+public class SecureSettingSeekBarPreference extends CustomSeekBarPreference {
 
     public SecureSettingSeekBarPreference(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);

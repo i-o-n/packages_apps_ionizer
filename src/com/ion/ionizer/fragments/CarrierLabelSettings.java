@@ -51,7 +51,7 @@ import com.android.settings.Utils;
 import com.ion.ionizer.preferences.SystemSettingSwitchPreference;
 import com.ion.ionizer.preferences.SystemSettingListPreference;
 import com.ion.ionizer.preferences.SystemSettingSeekBarPreference;
-import net.margaritov.preference.colorpicker.ColorPickerPreference;
+import com.ion.ionizer.colorpicker.ColorPickerPreference;
 import com.android.internal.logging.nano.MetricsProto;
 
 import com.android.internal.util.ion.IonUtils;

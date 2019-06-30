@@ -39,7 +39,7 @@ import android.view.Surface;
 import android.view.WindowManager;
 
 public final class Utils {
-    private static final String TAG = "HavocSettingsUtils";
+    private static final String TAG = "IonIonizerUtils";
 
     // Device types
     private static final int DEVICE_PHONE = 0;

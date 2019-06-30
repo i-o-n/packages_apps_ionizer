@@ -66,3 +66,4 @@ public class SystemSettingEditTextPreference extends EditTextPreference {
         super.setSummary(summary);
     }
 }
+

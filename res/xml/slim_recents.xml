@@ -28,15 +28,15 @@
         android:max="160"
         android:defaultValue="100"
         ionsettings:interval="5"
-        ionsettings:unitsRight="%" />
+        ionsettings:units="%" />
 
-    <net.margaritov.preference.colorpicker.ColorPickerPreference
+    <com.ion.ionizer.colorpicker.ColorPickerPreference
         android:key="recent_panel_bg_color"
         android:title="@string/recent_panel_bg_color_title"
         android:defaultValue="0x00ffffff"
         alphaSlider="true" />
 
-    <net.margaritov.preference.colorpicker.ColorPickerPreference
+    <com.ion.ionizer.colorpicker.ColorPickerPreference
         android:key="recent_card_bg_color"
         android:title="@string/recent_card_bg_color_title"
         android:defaultValue="0x00ffffff"
@@ -62,7 +62,7 @@
         android:max="20"
         android:defaultValue="8"
         ionsettings:interval="1"
-        ionsettings:unitsRight="dp" />
+        ionsettings:units="dp" />
 
     <com.ion.ionizer.preferences.SystemSettingIntListPreference
         android:key="recent_panel_expanded_mode"
@@ -125,13 +125,13 @@
             android:defaultValue="false"
             android:dependency="slim_recents_mem_display" />
 
-        <net.margaritov.preference.colorpicker.ColorPickerPreference
+        <com.ion.ionizer.colorpicker.ColorPickerPreference
             android:key="slim_mem_bar_color"
             android:title="@string/slim_recents_mem_display_color"
             android:defaultValue="0xffffffff"
             android:dependency="slim_recents_mem_display"/>
 
-        <net.margaritov.preference.colorpicker.ColorPickerPreference
+        <com.ion.ionizer.colorpicker.ColorPickerPreference
             android:key="slim_mem_text_color"
             android:title="@string/slim_recents_mem_display_text_color"
             android:defaultValue="0xffffffff"

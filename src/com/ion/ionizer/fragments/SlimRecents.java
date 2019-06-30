@@ -47,7 +47,7 @@ import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.SettingsPreferenceFragment;
 import com.ion.ionizer.R;
 
-import net.margaritov.preference.colorpicker.ColorPickerPreference;
+import com.ion.ionizer.colorpicker.ColorPickerPreference;
 
 import java.util.ArrayList;
 import java.util.Collections;

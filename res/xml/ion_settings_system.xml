@@ -65,7 +65,7 @@
             android:max="90"
             android:min="45"
             android:defaultValue="60"
-            ionionizer:unitsRight="sec"
+            ionionizer:units="sec"
             android:persistent="false" />
     </PreferenceCategory>
 </PreferenceScreen>

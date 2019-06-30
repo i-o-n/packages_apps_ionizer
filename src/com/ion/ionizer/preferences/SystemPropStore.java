@@ -1,6 +1,5 @@
 /*
- * Copyright (C) 2017 AICP
- * Copyright (C) 2018 CarbonROM
+ * Copyright (C) 2019 Android Ice Cold Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,58 +16,50 @@
 
 package com.ion.ionizer.preferences;
 
-import android.content.ContentResolver;
+import android.os.SystemProperties;
 import android.preference.PreferenceDataStore;
-import android.provider.Settings;
 
-public class SecureSettingsStore extends android.support.v7.preference.PreferenceDataStore
+public class SystemPropStore extends android.support.v7.preference.PreferenceDataStore
         implements PreferenceDataStore {
 
-    private ContentResolver mContentResolver;
-
-    public SecureSettingsStore(ContentResolver contentResolver) {
-        mContentResolver = contentResolver;
-    }
-
     public boolean getBoolean(String key, boolean defValue) {
-        return getInt(key, defValue ? 1 : 0) != 0;
+        return SystemProperties.getBoolean(key, defValue);
     }
 
     public float getFloat(String key, float defValue) {
-        return Settings.Secure.getFloat(mContentResolver, key, defValue);
+        return Float.parseFloat(SystemProperties.get(key, "" + defValue));
     }
 
     public int getInt(String key, int defValue) {
-        return Settings.Secure.getInt(mContentResolver, key, defValue);
+        return SystemProperties.getInt(key, defValue);
     }
 
     public long getLong(String key, long defValue) {
-        return Settings.Secure.getLong(mContentResolver, key, defValue);
+        return SystemProperties.getLong(key, defValue);
     }
 
     public String getString(String key, String defValue) {
-        String result = Settings.Secure.getString(mContentResolver, key);
-        return result == null ? defValue : result;
+        return SystemProperties.get(key, defValue);
     }
 
     public void putBoolean(String key, boolean value) {
-        putInt(key, value ? 1 : 0);
+        SystemProperties.set(key, "" + value);
     }
 
     public void putFloat(String key, float value) {
-        Settings.Secure.putFloat(mContentResolver, key, value);
+        SystemProperties.set(key, "" + value);
     }
 
     public void putInt(String key, int value) {
-        Settings.Secure.putInt(mContentResolver, key, value);
+        SystemProperties.set(key, "" + value);
     }
 
     public void putLong(String key, long value) {
-        Settings.Secure.putLong(mContentResolver, key, value);
+        SystemProperties.set(key, "" + value);
     }
 
     public void putString(String key, String value) {
-        Settings.Secure.putString(mContentResolver, key, value);
+        SystemProperties.set(key, value);
     }
 
 }

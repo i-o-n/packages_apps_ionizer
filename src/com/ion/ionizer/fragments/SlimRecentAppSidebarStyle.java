@@ -25,7 +25,7 @@ import com.android.settings.SettingsPreferenceFragment;
 
 import com.ion.ionizer.R;
 
-import net.margaritov.preference.colorpicker.ColorPickerPreference;
+import com.ion.ionizer.colorpicker.ColorPickerPreference;
 
 public class SlimRecentAppSidebarStyle extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {

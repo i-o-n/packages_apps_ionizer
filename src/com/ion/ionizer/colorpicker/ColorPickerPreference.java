@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package net.margaritov.preference.colorpicker;
+package com.ion.ionizer.colorpicker;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -37,7 +37,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.android.settings.R;
+import com.ion.ionizer.R;
 
 /**
  * A preference type that allows a user to choose a time
@@ -53,6 +53,7 @@ public class ColorPickerPreference extends Preference implements
     private int mValue = Color.BLACK;
     private float mDensity = 0;
     private boolean mAlphaSliderEnabled = false;
+    //private boolean mEnabled = true;
 
     // if we return -6, button is not enabled
     static final String SETTINGS_NS = "http://schemas.android.com/apk/res/com.android.settings";
@@ -204,11 +205,27 @@ public class ColorPickerPreference extends Preference implements
         }
         widgetFrameView.addView(iView);
         widgetFrameView.setMinimumWidth(0);
-        final int size = (int) getContext().getResources().getDimension(R.dimen.picker_circle_preview_size);
+        final int size = (int) getContext().getResources().getDimension(R.dimen.oval_notification_size);
         final int imageColor = ((mValue & 0xF0F0F0) == 0xF0F0F0) ?
                 (mValue - 0x101010) : mValue;
         iView.setImageDrawable(createOvalShape(size, 0xFF000000 + imageColor));
         iView.setTag("preview");
+        /*iView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mEnabled) {
+                    showDialog(null);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        if (mEnabled != enabled) {
+            mEnabled = enabled;
+        }*/
     }
 
     @Override

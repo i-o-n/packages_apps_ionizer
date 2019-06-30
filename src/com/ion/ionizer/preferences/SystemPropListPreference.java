@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 AICP
+ * Copyright (C) 2019 Android Ice Cold Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,45 +17,24 @@
 package com.ion.ionizer.preferences;
 
 import android.content.Context;
-import android.support.v7.preference.ListPreference;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.provider.Settings;
 
-public class SystemSettingListPreference extends ListPreference {
-    private boolean mAutoSummary = false;
+public class SystemPropListPreference extends ListPreference {
 
-    public SystemSettingListPreference(Context context, AttributeSet attrs, int defStyle) {
+    public SystemPropListPreference(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        setPreferenceDataStore(new SystemSettingsStore(context.getContentResolver()));
+        setPreferenceDataStore(new SystemPropStore());
     }
 
-    public SystemSettingListPreference(Context context, AttributeSet attrs) {
+    public SystemPropListPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setPreferenceDataStore(new SystemSettingsStore(context.getContentResolver()));
+        setPreferenceDataStore(new SystemPropStore());
     }
 
-    public SystemSettingListPreference(Context context) {
+    public SystemPropListPreference(Context context) {
         super(context);
-        setPreferenceDataStore(new SystemSettingsStore(context.getContentResolver()));
-    }
-
-    @Override
-    public void setValue(String value) {
-        super.setValue(value);
-        if (mAutoSummary || TextUtils.isEmpty(getSummary())) {
-            setSummary(getEntry(), true);
-        }
-    }
-
-    @Override
-    public void setSummary(CharSequence summary) {
-        setSummary(summary, false);
-    }
-
-    private void setSummary(CharSequence summary, boolean autoSummary) {
-        mAutoSummary = autoSummary;
-        super.setSummary(summary);
+        setPreferenceDataStore(new SystemPropStore());
     }
 
     @Override
@@ -66,4 +45,5 @@ public class SystemSettingListPreference extends ListPreference {
         // Instead, we better do
         setValue(restoreValue ? getPersistedString((String) defaultValue) : (String) defaultValue);
     }
+
 }

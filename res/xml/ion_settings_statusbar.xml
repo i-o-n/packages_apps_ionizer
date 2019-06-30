@@ -83,7 +83,7 @@
             android:max="10"
             android:min="0"
             android:defaultValue="1"
-            ionionizer:unitsRight="sec" />
+            ionionizer:units="KiB" />
 
         <com.ion.ionizer.preferences.SystemSettingSeekBarPreference
             android:key="network_traffic_refresh_interval"
@@ -91,7 +91,7 @@
             android:max="10"
             android:min="1"
             android:defaultValue="2"
-            ionionizer:unitsRight="sec" />
+            ionionizer:units="sec" />
 
         <com.ion.ionizer.preferences.SystemSettingSwitchPreference
             android:key="network_traffic_hidearrow"
