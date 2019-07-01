@@ -51,7 +51,6 @@ import java.util.Date;
 public class StatusbarClockSettings extends SettingsPreferenceFragment implements
 	OnPreferenceChangeListener {
 
-    private static final String STATUS_BAR_CLOCK = "status_bar_clock";
     private static final String STATUS_BAR_CLOCK_SECONDS = "status_bar_clock_seconds";
     private static final String STATUS_BAR_CLOCK_STYLE = "statusbar_clock_style";
     private static final String STATUS_BAR_AM_PM = "status_bar_am_pm";
@@ -67,7 +66,6 @@ public class StatusbarClockSettings extends SettingsPreferenceFragment implement
     private static final String STATUS_BAR_CLOCK_DATE_POSITION = "statusbar_clock_date_position";
     static final int DEFAULT_STATUS_CLOCK_COLOR = 0xffffffff;
 
-    private SystemSettingSwitchPreference mStatusBarClockShow;
     private SystemSettingSwitchPreference mStatusBarSecondsShow;
     private ListPreference mStatusBarClock;
     private ListPreference mStatusBarAmPm;
@@ -92,17 +90,12 @@ public class StatusbarClockSettings extends SettingsPreferenceFragment implement
         String hexColor;
 
 	// clock settings
-        mStatusBarClockShow = (SystemSettingSwitchPreference) findPreference(STATUS_BAR_CLOCK);
         mStatusBarSecondsShow = (SystemSettingSwitchPreference) findPreference(STATUS_BAR_CLOCK_SECONDS);
         mStatusBarClock = (ListPreference) findPreference(STATUS_BAR_CLOCK_STYLE);
         mStatusBarAmPm = (ListPreference) findPreference(STATUS_BAR_AM_PM);
         mClockDateDisplay = (ListPreference) findPreference(STATUS_BAR_CLOCK_DATE_DISPLAY);
         mClockDateStyle = (ListPreference) findPreference(STATUS_BAR_CLOCK_DATE_STYLE);
         mClockDatePosition = (ListPreference) findPreference(STATUS_BAR_CLOCK_DATE_POSITION);
-
-        mStatusBarClockShow.setChecked((Settings.System.getInt(resolver,
-                Settings.System.STATUS_BAR_CLOCK, 1) == 1));
-        mStatusBarClockShow.setOnPreferenceChangeListener(this);
 
         mStatusBarSecondsShow.setChecked((Settings.System.getInt(resolver,
                 Settings.System.STATUS_BAR_CLOCK_SECONDS, 0) == 1));
@@ -202,12 +195,7 @@ public class StatusbarClockSettings extends SettingsPreferenceFragment implement
         AlertDialog dialog;
 	    ContentResolver resolver = getActivity().getContentResolver();
 
-        if (preference == mStatusBarClockShow) {
-            boolean value = (Boolean) newValue;
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.STATUS_BAR_CLOCK, value ? 1 : 0);
-            return true;
-        } else if (preference == mStatusBarSecondsShow) {
+        if (preference == mStatusBarSecondsShow) {
             boolean value = (Boolean) newValue;
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.STATUS_BAR_CLOCK_SECONDS, value ? 1 : 0);

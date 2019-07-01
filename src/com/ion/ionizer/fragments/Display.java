@@ -49,9 +49,6 @@ public class Display extends SettingsPreferenceFragment implements
     private static final String SYSUI_ROUNDED_SIZE = "sysui_rounded_size";
     private static final String SYSUI_ROUNDED_CONTENT_PADDING = "sysui_rounded_content_padding";
 
-    private ListPreference mVelocityFriction;
-    private ListPreference mPositionFriction;
-    private ListPreference mVelocityAmplitude;
     private SecureSettingSwitchPreference mRoundedFwvals;
     private SystemSettingSeekBarPreference mCornerRadius;
     private SystemSettingSeekBarPreference mContentPadding;
@@ -65,33 +62,6 @@ public class Display extends SettingsPreferenceFragment implements
         addPreferencesFromResource(R.xml.ion_settings_display);
 
         resolver = getActivity().getContentResolver(); 
-
-        float velFriction = Settings.System.getFloatForUser(resolver,
-                    Settings.System.STABILIZATION_VELOCITY_FRICTION,
-                    0.1f,
-                    UserHandle.USER_CURRENT);
-        mVelocityFriction = (ListPreference) findPreference("stabilization_velocity_friction");
-    	mVelocityFriction.setValue(Float.toString(velFriction));
-    	mVelocityFriction.setSummary(mVelocityFriction.getEntry());
-    	mVelocityFriction.setOnPreferenceChangeListener(this);
-    	
-    	float posFriction = Settings.System.getFloatForUser(resolver,
-                    Settings.System.STABILIZATION_POSITION_FRICTION,
-                    0.1f,
-                    UserHandle.USER_CURRENT);
-        mPositionFriction = (ListPreference) findPreference("stabilization_position_friction");
-    	mPositionFriction.setValue(Float.toString(posFriction));
-    	mPositionFriction.setSummary(mPositionFriction.getEntry());
-    	mPositionFriction.setOnPreferenceChangeListener(this);
-    
-    	int velAmplitude = Settings.System.getIntForUser(resolver,
-                    Settings.System.STABILIZATION_VELOCITY_AMPLITUDE,
-                    8000,
-                    UserHandle.USER_CURRENT);
-        mVelocityAmplitude = (ListPreference) findPreference("stabilization_velocity_amplitude");
-    	mVelocityAmplitude.setValue(Integer.toString(velAmplitude));
-    	mVelocityAmplitude.setSummary(mVelocityAmplitude.getEntry());
-    	mVelocityAmplitude.setOnPreferenceChangeListener(this);
 
         Resources res = null;
         Context ctx = getContext();
@@ -128,21 +98,7 @@ public class Display extends SettingsPreferenceFragment implements
 
     public boolean onPreferenceChange(Preference preference, Object objValue) { 
         final String key = preference.getKey(); 
-        final String setting = getSystemPreferenceString(preference);
-        if (preference != null && preference instanceof ListPreference) {
-               ListPreference listPref = (ListPreference) preference;
-               String value = (String) objValue;
-               int index = listPref.findIndexOfValue(value);
-               listPref.setSummary(listPref.getEntries()[index]);
-    	    listPref.setValue(value);
-    	    if(preference != mVelocityAmplitude){
-    		Settings.System.putFloatForUser(getContentResolver(), setting, Float.valueOf(value),
-    			UserHandle.USER_CURRENT);
-    	    }else {
-    		Settings.System.putIntForUser(getContentResolver(), setting, Integer.valueOf(value),
-    			UserHandle.USER_CURRENT);
-    	    }
-    	} else if (preference == mCornerRadius) {
+        if (preference == mCornerRadius) {
             Settings.Secure.putInt(getContext().getContentResolver(),Settings.Secure.SYSUI_ROUNDED_SIZE,
                     ((int) objValue) * 1);
         } else if (preference == mContentPadding) {
@@ -152,19 +108,6 @@ public class Display extends SettingsPreferenceFragment implements
             restoreCorners();
         }
         return true; 
-    }
-
-    private String getSystemPreferenceString(Preference preference) {
-        if (preference == null) {
-                return "";
-        } else if(preference == mVelocityFriction){
-            return Settings.System.STABILIZATION_VELOCITY_FRICTION;
-        } else if(preference == mPositionFriction){
-            return Settings.System.STABILIZATION_POSITION_FRICTION;
-        } else if(preference == mVelocityAmplitude){
-            return Settings.System.STABILIZATION_VELOCITY_AMPLITUDE;
-        }  
-        return "";
     }
 
     private void restoreCorners() {

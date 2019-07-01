@@ -32,6 +32,7 @@ import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.SettingsPreferenceFragment;
 
 import com.ion.ionizer.R;
+import com.ion.ionizer.preferences.SystemSettingMasterSwitchPreference;
 import com.ion.ionizer.preferences.SystemSettingSeekBarPreference;
 
 public class System extends SettingsPreferenceFragment
@@ -41,9 +42,11 @@ public class System extends SettingsPreferenceFragment
 
     private static final String SHOW_CPU_INFO_KEY = "show_cpu_info";
     private static final String BURN_INTERVAL_KEY = "burn_in_protection_interval";
+    private static final String GAMING_MODE_MASTER_SWITCH = "gaming_mode_master_switch";
 
     private SwitchPreference mShowCpuInfo;
     private SystemSettingSeekBarPreference mBurnInterval;
+    private SystemSettingMasterSwitchPreference mGamingMode;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,6 +65,11 @@ public class System extends SettingsPreferenceFragment
                 Settings.System.BURN_IN_PROTECTION_INTERVAL, 60);
         mBurnInterval.setValue(burninterval);
         mBurnInterval.setOnPreferenceChangeListener(this);
+
+        mGamingMode = (SystemSettingMasterSwitchPreference) findPreference(GAMING_MODE_MASTER_SWITCH);
+        mGamingMode.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.GAMING_MODE_MASTER_SWITCH, 1) == 1));
+        mGamingMode.setOnPreferenceChangeListener(this);
     }
 
     private void writeCpuInfoOptions(boolean value) {
@@ -86,6 +94,11 @@ public class System extends SettingsPreferenceFragment
             int interval = (Integer) newValue;
             Settings.System.putIntForUser(resolver,
                     Settings.System.BURN_IN_PROTECTION_INTERVAL, interval, UserHandle.USER_CURRENT);
+            return true;
+		} else if (preference == mGamingMode) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.GAMING_MODE_MASTER_SWITCH, value ? 1 : 0);
             return true;
         }
         return false;

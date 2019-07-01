@@ -43,6 +43,7 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.ion.ionizer.preferences.CustomSeekBarPreference;
 import com.ion.ionizer.preferences.SystemSettingSeekBarPreference;
 import com.ion.ionizer.preferences.SystemSettingSwitchPreference;
+import com.ion.ionizer.preferences.SystemSettingMasterSwitchPreference;
 import com.android.settings.Utils;
 import android.util.Log;
 
@@ -55,6 +56,7 @@ import java.util.Collections;
 public class StatusBar extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
+    private static final String STATUS_BAR_CLOCK = "status_bar_clock";
     private static final String SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
     private static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
     private static final String QUICK_PULLDOWN = "quick_pulldown";
@@ -66,6 +68,7 @@ public class StatusBar extends SettingsPreferenceFragment implements
     private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 3;
     private static final int STATUS_BAR_BATTERY_STYLE_HIDDEN = 4;
 
+    private SystemSettingMasterSwitchPreference mStatusBarClockShow;
     private SystemSettingSeekBarPreference mThreshold;
     private SystemSettingSwitchPreference mNetMonitor;
     private SystemSettingSwitchPreference mHideArrows;
@@ -85,6 +88,12 @@ public class StatusBar extends SettingsPreferenceFragment implements
 
         PreferenceScreen prefSet = getPreferenceScreen();
         final ContentResolver resolver = getActivity().getContentResolver();
+
+        // Clock
+        mStatusBarClockShow = (SystemSettingMasterSwitchPreference) findPreference(STATUS_BAR_CLOCK);
+        mStatusBarClockShow.setChecked((Settings.System.getInt(resolver,
+                Settings.System.STATUS_BAR_CLOCK, 1) == 1));
+        mStatusBarClockShow.setOnPreferenceChangeListener(this);
 
         int value = Settings.System.getIntForUser(resolver,
                 Settings.System.NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD, 1, UserHandle.USER_CURRENT);
@@ -151,7 +160,12 @@ public class StatusBar extends SettingsPreferenceFragment implements
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getActivity().getContentResolver();
-        if (preference == mNetTrafficLocation) {
+        if (preference == mStatusBarClockShow) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUS_BAR_CLOCK, value ? 1 : 0);
+            return true;
+        } else if (preference == mNetTrafficLocation) {
             int location = Integer.valueOf((String) newValue);
             int index = mNetTrafficLocation.findIndexOfValue((String) newValue);
             Settings.System.putInt(getActivity().getContentResolver(),

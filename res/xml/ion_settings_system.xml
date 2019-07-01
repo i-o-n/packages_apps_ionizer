@@ -19,10 +19,18 @@
     xmlns:ionionizer="http://schemas.android.com/apk/res-auto"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <SwitchPreference
-        android:key="show_cpu_info"
-        android:title="@string/show_cpu_info"
-        android:summary="@string/show_cpu_info_summary" />
+    <com.ion.ionizer.preferences.SystemSettingMasterSwitchPreference
+        android:key="gaming_mode_master_switch"
+        android:title="@string/gaming_mode_title"
+        android:summary="@string/gaming_mode_summary"
+        android:fragment="com.ion.ionizer.fragments.GamingMode"
+        android:defaultValue="true" />
+
+	<Preference
+        android:key="privacy_guard_manager"
+        android:fragment="com.android.settings.privacyguard.PrivacyGuardManager"
+        android:title="@string/app_ops_settings_title"
+        android:summary="@string/app_ops_settings_summary"/>
 		
         <com.ion.ionizer.preferences.SystemSettingSwitchPreference
             android:key="sensor_block"
@@ -30,24 +38,10 @@
             android:summary="@string/sensor_block_summary"
             android:defaultValue="false" />
 
-        <Preference
-            android:key="aggressive_battery"
-            android:title="@string/aggressive_battery_title"
-            android:summary="@string/aggressive_battery_summary"
-            android:fragment="com.ion.ionizer.fragments.AggressiveBattery" />
-
-        <Preference
-            android:key="gaming_mode"
-            android:title="@string/gaming_mode_title"
-            android:summary="@string/gaming_mode_summary"
-            android:fragment="com.ion.ionizer.fragments.GamingMode" />
-
-	<Preference
-        android:key="privacy_guard_manager"
-        android:fragment="com.android.settings.privacyguard.PrivacyGuardManager"
-        android:title="@string/app_ops_settings_title"
-        android:summary="@string/app_ops_settings_summary"
-        settings:allowDividerAbove="true"/>
+    <SwitchPreference
+        android:key="show_cpu_info"
+        android:title="@string/show_cpu_info"
+        android:summary="@string/show_cpu_info_summary" />
 
     <PreferenceCategory
         android:key="navigation_burnin"

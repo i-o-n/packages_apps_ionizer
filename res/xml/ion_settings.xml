@@ -46,6 +46,7 @@
         <Preference
             android:key="statusbar_category"
             android:title="@string/statusbar_title"
+            android:summary="@string/statusbar_title_summary"
             android:fragment="com.ion.ionizer.fragments.StatusBar" 
             android:icon="@drawable/ic_settings_statusbar" />
 
@@ -53,6 +54,7 @@
         <Preference
             android:key="quicksettings_category"
             android:title="@string/quicksettings_title"
+            android:summary="@string/quicksettings_title_summary"
             android:fragment="com.ion.ionizer.fragments.QuickSettings"
             android:icon="@drawable/ic_settings_quicksettings"/>
 
@@ -60,6 +62,7 @@
         <Preference
             android:key="display_category"
             android:title="@string/display_title"
+            android:summary="@string/display_title_summary"
             android:fragment="com.ion.ionizer.fragments.Display"
             android:icon="@drawable/ic_settings_screen"/>
 
@@ -100,6 +103,7 @@
         <Preference
             android:key="notifications_category"
             android:title="@string/notifications_title"
+            android:summary="@string/notifications_title_summary"
             android:fragment="com.ion.ionizer.fragments.Notifications"
             android:icon="@drawable/ic_settings_notifications"
             settings:allowDividerAbove="true"/>
@@ -131,6 +135,7 @@
         <Preference
             android:key="ime_category"
             android:title="@string/ime_title"
+            android:summary="@string/ime_title_summary"
             android:fragment="com.ion.ionizer.fragments.IME"
             android:icon="@drawable/ic_settings_ime"/>
 
@@ -147,6 +152,7 @@
             android:persistent="false"
             android:title="@string/device_part_title"
             android:icon="@drawable/ic_settings_device"
+            android:summary="@string/device_part_title_summary"
             settings:allowDividerAbove="true" >
             <intent android:action="android.intent.action.MAIN"
                 android:targetPackage="com.ion.ionizer.device"

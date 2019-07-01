@@ -24,7 +24,9 @@
 
     <Preference
             android:title="@string/navbar_tuner_title"
-            android:dependency="navbar_visibility" >
+            android:dependency="navbar_visibility"
+            settings:allowDividerAbove="true"
+            settings:allowDividerBelow="true" >
             <intent android:action="android.intent.action.MAIN"
                 android:targetPackage="com.android.systemui"
                 android:targetClass="com.android.systemui.tuner.NavBarActivity" />

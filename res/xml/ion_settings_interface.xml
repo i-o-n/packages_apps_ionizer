@@ -16,7 +16,8 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/interface_title"
-    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    settings:initialExpandedChildrenCount="6">
 
     <PreferenceCategory
         android:key="theme_category"
@@ -40,6 +41,18 @@
             android:defaultValue="0" />
 
         <ListPreference
+            android:key="switch_style"
+            android:title="@string/switch_style_title"
+            android:persistent="false"
+            android:entries="@array/switch_style_entries"
+            android:entryValues="@array/switch_style_values" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/theme_qspanel_title">
+
+        <ListPreference
             android:key="qs_header_style"
             android:title="@string/qs_header_style_title"
             android:persistent="false"
@@ -52,13 +65,6 @@
             android:persistent="false"
             android:entries="@array/qs_selector_entries"
             android:entryValues="@array/qs_selector_values" />
-
-        <ListPreference
-            android:key="switch_style"
-            android:title="@string/switch_style_title"
-            android:persistent="false"
-            android:entries="@array/switch_style_entries"
-            android:entryValues="@array/switch_style_values" />
 
     </PreferenceCategory>
 

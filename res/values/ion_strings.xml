@@ -20,6 +20,34 @@
     <!-- Ambient Display -->
     <string name="ambient_summary">New Notifications</string>
 
+    <!-- Color Picker -->
+    <string name="dialog_color_picker">Color Picker</string>
+    <string name="press_color_to_apply">Press on color below to apply</string>
+    <string name="arrow_right">→</string>
+    <string name="arrow_down">↓</string>
+    <string name="hex">Hex:</string>
+    <string name="hex_hint">#ff000000</string>
+    <string name="set">Set</string>
+    <string name="color_default">Default</string>
+
+    <!-- Custom seekbar -->
+    <string name="custom_seekbar_value">Value: <xliff:g id="v">%s</xliff:g></string>
+    <string name="custom_seekbar_default_value">Default</string>
+    <string name="custom_seekbar_default_value_to_set">Default value: <xliff:g id="v">%s</xliff:g>\nLong press to set</string>
+    <string name="custom_seekbar_default_value_is_set">Default value is set</string>
+
+    <!-- Color Blend -->
+    <string name="color_blend_ok">@android:string/ok</string>
+    <string name="color_blend_cancel">@android:string/cancel</string>
+    <string name="color_blend_reset">Reset</string>
+    <string name="color_blend_preview">Preview: %1$d%%</string>
+    <string name="color_preview_start">Start</string>
+    <string name="color_preview_end">End</string>
+    <string name="color_preview_between">Between</string>
+
+    <string name="active_edge_app_select_title">Select app</string>
+    <string name="active_edge_activity_select_title">Select activity</string>
+
     <!-- ListView animation -->
     <string name="listview_animation_title">ListView animation</string>
     <string name="listview_off">Default</string>
@@ -82,22 +110,40 @@
     <string name="system_title">System</string>
     <string name="weather_title">Weather</string>
     <string name="volume_title">Volume Rockers</string>
-    <string name="interfaceui">playUI</string>
+    <string name="interfaceui">Themes</string>
     <string name="about_ion">About</string>
-    <string name="button_info">Volume Rocker, Power Menu</string>
-    <string name="keyguarrd">Keyguard Stuff</string>
-    <string name="taskinfo">Multi Task Changes</string>
-    <string name="aninfo">Animate your own way</string>
-    <string name="manusys">SYSTEM Control</string>
+    <string name="button_info">Volume Rocker, Power Button</string>
+    <string name="keyguarrd">Clock &amp; Date, Media, Weather</string>
+    <string name="taskinfo">Recents Style, Hide Apps from Recents</string>
+    <string name="aninfo">System Animations</string>
+    <string name="manusys">Gaming Mode, Privacy Guard</string>
     <string name="trafficat">Network Traffic</string>
     <string name="dpi_category_title">Screen Density</string>
     <string name="vol_rock">Volume Rocker</string>
     <string name="weatherl_title">Lockscreen Weather</string>
-    <string name="locktra">Extras</string>
+    <string name="locktra">Extra</string>
     <string name="device_part_title">Device ionizer</string>
     <string name="corners_category">Corners</string>
     <string name="lockcsize">Clock &amp; Date </string>
     <string name="button_setting_summary">HW-Key Customization</string>
+    <string name="status_icons_title">Icons</string>
+    <string name="quick_tile_title">Tiles</string>
+    <string name="quick_header_title">Header</string>
+    <string name="quick_footer_title">Footer</string>
+    <string name="lockscreen_media_title">Media</string>
+    <string name="lockscreen_unl">Security</string>
+    <string name="charging_noti_category">Charging Notifications</string>
+    <string name="theme_qspanel_title">QS Panel</string>
+    <string name="screen_stabilization_summary">Move display content when device is in motion</string>
+    <string name="statusbar_title_summary">Clock, Battery, Network Traffic</string>
+    <string name="quicksettings_title_summary">Tiles, Header, Footer</string>
+    <string name="display_title_summary">Corners Radius, Screen Stabilization</string>
+    <string name="notifications_title_summary">Heads-up, Toast</string>
+    <string name="ime_title_summary">Keyboard Features</string>
+    <string name="device_part_title_summary">Additional Device Features</string>
+    <string name="volume_steps_title_summary">Customize number of volume steps</string>
+    <string name="button_wake_title_summary">Wake device on volume button press</string>
+    <string name="heads_up_notifications_summary">Pop up statusbar notifications</string>
 
     <!-- Dashboard conditions--> 
     <string name="dashboard_category">Dashboard options</string> 
@@ -118,7 +164,7 @@
 
     <!-- Gestures -->
     <string name="gestures_summary">System Gestures</string>
-    <string name="navigation_summary">Customize the NavBar</string>
+    <string name="navigation_summary">Navbar Layout, Gestures</string>
 
     <!-- Power Menu -->
     <string name="powermenu_title">Power Menu</string>
@@ -373,7 +419,7 @@
     <string name="qs_tile_title_visibility_summary">Display title below each tile</string> 
 
     <!-- Statusbar Clock -->
-    <string name="status_bar_clock_title">Clock settings</string>
+    <string name="status_bar_clock_title">Clock</string>
     <string name="status_bar_clock_summary">Customize clock and date in statusbar</string>
     <string name="status_bar_clock_show">Show clock and date</string>
     <string name="status_bar_clock_style_title">Clock style</string>
@@ -433,14 +479,14 @@
     <!-- Screen Stabilization -->
     <string name="screen_stabilization_title">Screen Stabilization</string>
     <string name="screen_stabilization_enable">Enable Screen Stabilization</string>
-    <string name="screen_stabilization_enable_summary">Leave the below values as is if you don\'t understand what they mean.</string>
+    <string name="screen_stabilization_enable_summary">Leave the above values as it is if you don\'t understand what they mean.</string>
     <string name="stabilization_velocity_friction_title">Velocity friction</string>
     <string name="stabilization_position_friction_title">Position friction</string>
     <string name="stabilization_velocity_amplitude_title">Velocity amplitude</string>
 
     <!-- Lockscreen visualizer -->
     <string name="lockscreen_visualizer_category">Visualizer</string>
-    <string name="lockscreen_visualizer_enable">Enable lockscreen visualizer</string>
+    <string name="lockscreen_visualizer_enable">Lockscreen Visualizer</string>
     <string name="lockscreen_visualizer_enable_summary">Show visualizer on lockscreen when music is playing</string>
     <string name="lockscreen_autocolor_title">Automatic color</string>
     <string name="lockscreen_autocolor_summary">Sync color with album art</string>
@@ -636,7 +682,7 @@
     <!-- Lockscreen items -->
     <string name="lockscreen_clock_title">Clock widget</string>
     <string name="lockscreen_clock_summary">Show the clock widget on the lockscreen</string>
-    <string name="lockscreen_info_title">Items underneath the clock</string>
+    <string name="lockscreen_info_title">Date widget</string>
     <string name="lockscreen_info_summary">Show the date, weather, alarms and zen on the lockscreen</string>
 
     <!-- Lockscreen clock styles -->

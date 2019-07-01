@@ -64,7 +64,7 @@
         ionsettings:interval="1"
         ionsettings:units="dp" />
 
-    <com.ion.ionizer.preferences.SystemSettingIntListPreference
+    <com.ion.ionizer.preferences.SystemSettingListPreference
         android:key="recent_panel_expanded_mode"
         android:entries="@array/recent_panel_expanded_mode_entries"
         android:entryValues="@array/recent_panel_expanded_mode_values"

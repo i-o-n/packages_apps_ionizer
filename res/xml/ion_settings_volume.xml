@@ -22,10 +22,12 @@
         android:key="key_vol"
         android:title="@string/vol_rock">
 
-        <Preference
-            android:key="volume_steps"
-            android:title="@string/volume_steps_title"
-            android:fragment="com.ion.ionizer.fragments.VolumeSteps" />
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+            android:key="volbtn_music_controls"
+            android:title="@string/volbtn_music_controls_title"
+            android:summary="@string/volbtn_music_controls_summary"
+            android:dependency="volume_wake_screen"
+            android:defaultValue="false" />
 
         <ListPreference
             android:key="volume_key_cursor_control"
@@ -41,31 +43,37 @@
             android:summary="@string/swap_volume_buttons_summary"
             android:defaultValue="false" />
 
+        <Preference
+            android:key="volume_steps"
+            android:title="@string/volume_steps_title"
+            android:summary="@string/volume_steps_title_summary"
+            android:fragment="com.ion.ionizer.fragments.VolumeSteps" />
+
         <com.ion.ionizer.preferences.SystemSettingSwitchPreference
             android:key="volume_wake_screen"
             android:title="@string/button_wake_title"
+            android:summary="@string/button_wake_title_summary"
             android:defaultValue="false"
             android:disableDependentsState="true" />
-
-        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
-            android:key="volbtn_music_controls"
-            android:title="@string/volbtn_music_controls_title"
-            android:summary="@string/volbtn_music_controls_summary"
-            android:dependency="volume_wake_screen"
-            android:defaultValue="false" />
 
     </PreferenceCategory>
 
     <PreferenceCategory
         android:title="@string/power_button">
 
-        <ListPreference
-            android:key="torch_power_button_gesture"
-            android:title="@string/power_button_torch_gesture_title"
-            android:entries="@array/power_button_torch_gesture_entries"
-            android:entryValues="@array/power_button_torch_gesture_values" />
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+           android:key="power_menu_bg"
+           android:title="@string/power_menu_bg_title"
+           android:summary="@string/power_menu_bg_summary"
+           android:defaultValue="false" />
 
-    </PreferenceCategory>
+        <com.ion.ionizer.preferences.SystemSettingListPreference
+            android:key="power_menu_bg_style"
+            android:title="@string/power_menu_bg_style_title"
+            android:entries="@array/power_menu_bg_style_entries"
+            android:entryValues="@array/power_menu_bg_style_values"
+            android:dependency="power_menu_bg"
+            android:defaultValue="0" />
 
         <Preference
             android:key="power_menu"
@@ -73,20 +81,13 @@
             android:fragment="com.ion.ionizer.fragments.PowerMenu"
             settings:allowDividerAbove="true"/>
 
-    <PreferenceCategory android:key="divider" />
+        <ListPreference
+            android:key="torch_power_button_gesture"
+            android:title="@string/power_button_torch_gesture_title"
+            android:entries="@array/power_button_torch_gesture_entries"
+            android:entryValues="@array/power_button_torch_gesture_values"
+            settings:allowDividerAbove="true"/>
 
-    <com.ion.ionizer.preferences.SystemSettingSwitchPreference
-       android:key="power_menu_bg"
-       android:title="@string/power_menu_bg_title"
-       android:summary="@string/power_menu_bg_summary"
-       android:defaultValue="false" />
-
-    <com.ion.ionizer.preferences.SystemSettingListPreference
-        android:key="power_menu_bg_style"
-        android:title="@string/power_menu_bg_style_title"
-        android:entries="@array/power_menu_bg_style_entries"
-        android:entryValues="@array/power_menu_bg_style_values"
-        android:dependency="power_menu_bg"
-        android:defaultValue="0" />
+    </PreferenceCategory>
 
 </PreferenceScreen>

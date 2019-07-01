@@ -18,16 +18,12 @@
 	android:title="@string/notifications_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <Preference
-        android:key="heads_up_notifications"
+    <com.ion.ionizer.preferences.GlobalSettingMasterSwitchPreference
+        android:key="heads_up_notifications_enabled"
         android:title="@string/heads_up_notifications"
-        android:fragment="com.ion.ionizer.fragments.HeadsUpSettings" />
-
-        <com.ion.ionizer.preferences.SystemSettingSwitchPreference 
-            android:key="toast_icon" 
-            android:title="@string/toast_icon_title" 
-            android:summary="@string/toast_icon_summary" 
-            android:defaultValue="true" /> 
+        android:fragment="com.ion.ionizer.fragments.HeadsUpSettings"
+        android:summary="@string/heads_up_notifications_summary"
+        android:defaultValue="true" />
 
         <com.ion.ionizer.preferences.SystemSettingSwitchPreference
             android:key="notification_guts_kill_app_button"
@@ -35,18 +31,24 @@
             android:summary="@string/notification_guts_kill_app_button_summary"
             android:defaultValue="false" />
 
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference 
+            android:key="toast_icon" 
+            android:title="@string/toast_icon_title" 
+            android:summary="@string/toast_icon_summary" 
+            android:defaultValue="true" /> 
+
     <PreferenceCategory
         android:key="incall_vib_options"
         android:title="@string/incall_vibration_category" >
 
         <com.ion.ionizer.preferences.SystemSettingSwitchPreference
-            android:key="vibrate_on_connect"
-            android:title="@string/incall_vibrate_connect_title"
+            android:key="vibrate_on_callwaiting"
+            android:title="@string/incall_vibrate_call_wait_title"
             android:defaultValue="false" />
 
         <com.ion.ionizer.preferences.SystemSettingSwitchPreference
-            android:key="vibrate_on_callwaiting"
-            android:title="@string/incall_vibrate_call_wait_title"
+            android:key="vibrate_on_connect"
+            android:title="@string/incall_vibrate_connect_title"
             android:defaultValue="false" />
 
         <com.ion.ionizer.preferences.SystemSettingSwitchPreference
@@ -55,17 +57,21 @@
             android:defaultValue="false" />
     </PreferenceCategory>
 
-    <com.ion.ionizer.preferences.GlobalSettingSwitchPreference
-        android:key="wake_when_plugged_or_unplugged"
-        android:title="@string/wakeup_when_plugged_unplugged_title"
-        android:summary="@string/wakeup_when_plugged_unplugged_summary"
-        android:defaultValue="true"
-        settings:allowDividerAbove="true"/>
+    <PreferenceCategory
+        android:title="@string/charging_noti_category" >
 
-    <com.ion.ionizer.preferences.SystemSettingSwitchPreference
-        android:key="charging_animation"
-        android:title="@string/charging_animation_title"
-        android:summary="@string/charging_animation_summary"
-        android:defaultValue="true" />
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+            android:key="charging_animation"
+            android:title="@string/charging_animation_title"
+            android:summary="@string/charging_animation_summary"
+            android:defaultValue="true" />
+
+        <com.ion.ionizer.preferences.GlobalSettingSwitchPreference
+            android:key="wake_when_plugged_or_unplugged"
+            android:title="@string/wakeup_when_plugged_unplugged_title"
+            android:summary="@string/wakeup_when_plugged_unplugged_summary"
+            android:defaultValue="true"/>
+
+    </PreferenceCategory>
 
 </PreferenceScreen>

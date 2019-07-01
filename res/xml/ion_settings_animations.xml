@@ -21,7 +21,7 @@
 
     <PreferenceCategory
         android:title="@string/system_animation_title"
-        settings:initialExpandedChildrenCount="5" >
+        settings:initialExpandedChildrenCount="4" >
 
         <com.ion.ionizer.preferences.SystemSettingSwitchPreference
             android:key="disable_transition_animations"
