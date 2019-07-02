@@ -461,6 +461,7 @@
     <!-- QS tile styles -->
     <string-array name="qs_selector_entries" translatable="false">
         <item>@string/qstile_default</item>
+        <item>@string/qstile_circle</item>
         <item>@string/qstile_circle_gradient</item>
         <item>@string/qstile_circle_trim</item>
         <item>@string/qstile_cookie</item>
@@ -525,6 +526,7 @@
         <item>28</item>
         <item>29</item>
         <item>30</item>
+        <item>31</item>
     </string-array>
 
     <!-- Network Traffic Type -->
