@@ -86,6 +86,7 @@ public class GamingMode extends SettingsPreferenceFragment
             return;
         }
 
+        mFooterPreferenceMixin.createFooterPreference().setTitle(R.string.add_gaming_mode_package_summary);
     }
 
     @Override
