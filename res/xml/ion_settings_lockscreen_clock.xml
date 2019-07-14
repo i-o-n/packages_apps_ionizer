@@ -29,8 +29,8 @@
         <com.ion.ionizer.preferences.SystemSettingListPreference
             android:key="lock_clock_fonts"
             android:title="@string/lock_clock_font_title"
-            android:entries="@array/lock_clock_fonts_entries"
-            android:entryValues="@array/lock_clock_fonts_values"
+            android:entries="@array/additional_fonts_entries"
+            android:entryValues="@array/additional_fonts_values"
             android:defaultValue="0"
             android:persistent="false" />
 
