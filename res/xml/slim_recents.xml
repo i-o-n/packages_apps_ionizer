@@ -19,6 +19,7 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ionsettings="http://schemas.android.com/apk/res-auto"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/slim_recents_title">
 
     <com.ion.ionizer.preferences.SystemSettingSeekBarPreference
@@ -33,13 +34,13 @@
     <com.ion.ionizer.colorpicker.ColorPickerPreference
         android:key="recent_panel_bg_color"
         android:title="@string/recent_panel_bg_color_title"
-        android:defaultValue="0x00ffffff"
+        settings:defaultColorValue="0x00ffffff"
         alphaSlider="true" />
 
     <com.ion.ionizer.colorpicker.ColorPickerPreference
         android:key="recent_card_bg_color"
         android:title="@string/recent_card_bg_color_title"
-        android:defaultValue="0x00ffffff"
+        settings:defaultColorValue="0x00ffffff"
         alphaSlider="true" />
 
     <com.ion.ionizer.preferences.SystemSettingSeekBarPreference
@@ -128,13 +129,13 @@
         <com.ion.ionizer.colorpicker.ColorPickerPreference
             android:key="slim_mem_bar_color"
             android:title="@string/slim_recents_mem_display_color"
-            android:defaultValue="0xffffffff"
+            settings:defaultColorValue="0xffffffff"
             android:dependency="slim_recents_mem_display"/>
 
         <com.ion.ionizer.colorpicker.ColorPickerPreference
             android:key="slim_mem_text_color"
             android:title="@string/slim_recents_mem_display_text_color"
-            android:defaultValue="0xffffffff"
+            settings:defaultColorValue="0xffffffff"
             android:dependency="slim_recents_mem_display"/>
 
     </PreferenceCategory>

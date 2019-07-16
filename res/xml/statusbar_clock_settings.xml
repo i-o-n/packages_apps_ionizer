@@ -58,7 +58,7 @@
     <com.ion.ionizer.colorpicker.ColorPickerPreference
         android:key="status_bar_clock_color"
         android:title="@string/status_bar_clock_color_title"
-        android:defaultValue="0xffffffff" />
+        settings:defaultColorValue="0xffffffff" />
 
     </PreferenceCategory>
 

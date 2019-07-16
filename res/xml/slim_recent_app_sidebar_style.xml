@@ -19,6 +19,7 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ionsettings="http://schemas.android.com/apk/res-auto"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/recent_app_sidebar_style_title">
 
     <com.ion.ionizer.preferences.SystemSettingSeekBarPreference
@@ -39,14 +40,14 @@
     <com.ion.ionizer.colorpicker.ColorPickerPreference
         android:key="recent_app_sidebar_text_color"
         android:title="@string/recent_app_sidebar_label_color_title"
-        android:defaultValue="0xffffffff"
+        settings:defaultColorValue="0xffffffff"
         alphaSlider="false"
         android:dependency="recent_app_sidebar_disable_labels" />
 
     <com.ion.ionizer.colorpicker.ColorPickerPreference
         android:key="recent_app_sidebar_bg_color"
         android:title="@string/recent_app_sidebar_bg_color_title"
-        android:defaultValue="0x00ffffff"
+        settings:defaultColorValue="0x00ffffff"
         alphaSlider="true" />
 
     <com.ion.ionizer.preferences.SystemSettingSwitchPreference
