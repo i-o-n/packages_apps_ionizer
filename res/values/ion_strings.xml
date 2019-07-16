@@ -118,6 +118,7 @@
     <string name="aninfo">System Animations</string>
     <string name="manusys">Gaming Mode, Privacy Guard</string>
     <string name="trafficat">Network Traffic</string>
+    <string name="trafficat_summary">Network speed indicator</string>
     <string name="dpi_category_title">Screen Density</string>
     <string name="vol_rock">Volume Rocker</string>
     <string name="weatherl_title">Lockscreen Weather</string>
