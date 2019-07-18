@@ -47,8 +47,10 @@ public class LockScreenClock extends SettingsPreferenceFragment implements
     private static final String CLOCK_FONT_SIZE  = "lockclock_font_size";
     private static final String LOCK_CLOCK_FONTS = "lock_clock_fonts";
     private static final String LOCKSCREEN_CLOCK_SELECTION  = "lockscreen_clock_selection";
+    private static final String Q_CLOCK_ALIGNMENT = "lockscreen_text_clock_align";
 
     private SystemSettingSeekBarPreference mClockFontSize;
+    private SystemSettingListPreference mClockAlign;
     ListPreference mLockClockFonts;
     SystemSettingListPreference mLockClockStyle;
 
@@ -77,6 +79,20 @@ public class LockScreenClock extends SettingsPreferenceFragment implements
         mClockFontSize.setValue(Settings.System.getInt(getContentResolver(),
                 Settings.System.LOCKCLOCK_FONT_SIZE, 64));
         mClockFontSize.setOnPreferenceChangeListener(this);
+
+        // Q Clock Alignment
+        int val = Settings.System.getInt(resolver,
+                Settings.System.LOCKSCREEN_CLOCK_SELECTION, 0);
+        mClockAlign = (SystemSettingListPreference) findPreference(Q_CLOCK_ALIGNMENT);
+        updateAlignState(val);
+    }
+
+    public void updateAlignState(int val) {
+        if (val == 14 || val == 15) {
+            mClockAlign.setEnabled(true);
+        } else {
+            mClockAlign.setEnabled(false);
+        }
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -95,6 +111,7 @@ public class LockScreenClock extends SettingsPreferenceFragment implements
             int val = Integer.valueOf((String) newValue);
             Settings.System.putInt(getContentResolver(),
                     Settings.System.LOCKSCREEN_CLOCK_SELECTION, val);
+            updateAlignState(val);
             return true;
         }
         return false;
