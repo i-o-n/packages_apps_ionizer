@@ -19,6 +19,14 @@
     xmlns:ionionizer="http://schemas.android.com/apk/res-auto"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+    <com.ion.ionizer.preferences.SecureSettingListPreference
+        android:key="lockscreen_date_selection"
+        android:title="@string/lockscreen_date_selection_title"
+        android:dialogTitle="@string/lockscreen_date_dialog_title"
+        android:entries="@array/lockscreen_date_selection_entries"
+        android:entryValues="@array/lockscreen_date_selection_values"
+        android:defaultValue="0" />
+
     <com.ion.ionizer.preferences.SystemSettingListPreference
         android:key="lock_date_fonts"
         android:title="@string/lock_date_font_title"
