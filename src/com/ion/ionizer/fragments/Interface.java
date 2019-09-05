@@ -26,6 +26,7 @@ import com.android.settings.display.OverlayCategoryPreferenceController;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.ion.ionizer.display.QsAlphaPreferenceController;
+import com.ion.ionizer.display.QsColorPreferenceController;
 
 import com.ion.ionizer.R;
 
@@ -65,6 +66,7 @@ public class Interface extends DashboardFragment {
         controllers.add(new OverlayCategoryPreferenceController(context,
                 "android.theme.customization.adaptive_icon_shape"));
         controllers.add(new QsAlphaPreferenceController(context));
+        controllers.add(new QsColorPreferenceController(context));
         return controllers;
     }
 }

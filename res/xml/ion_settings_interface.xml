@@ -47,6 +47,34 @@
             android:max="255"
             settings:min="0"
             android:defaultValue="255" />
+
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+            android:key="qs_panel_bg_use_fw"
+            android:title="@string/qs_bg_use_fw"
+            android:summary="@string/qs_bg_use_fw_summary"
+            android:defaultValue="true"
+            android:disableDependentsState="true" />
+
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+            android:key="qs_panel_bg_use_wall"
+            android:title="@string/qs_bg_wall_title"
+            android:summary="@string/qs_bg_wall_summary"
+            android:defaultValue="false"
+            android:dependency="qs_panel_bg_use_fw" />
+
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+            android:key="qs_panel_bg_use_accent"
+            android:title="@string/qs_bg_accent_title"
+            android:summary="@string/qs_bg_accent_summary"
+            android:defaultValue="false"
+            android:dependency="qs_panel_bg_use_fw" />
+
+        <com.ion.ionizer.colorpicker.ColorPickerPreference
+            android:key="qs_panel_color"
+            android:title="@string/qs_panel_color_title"
+            settings:defaultColorValue="0xffffffff"
+            android:persistent="false"
+            android:dependency="qs_panel_bg_use_fw" />
     </PreferenceCategory>
 
     <PreferenceCategory
