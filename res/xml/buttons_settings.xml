@@ -13,21 +13,9 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<PreferenceScreen 
+<PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/navigation_title"
+    android:title="@string/buttons_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <com.ion.ionizer.preferences.SecureSettingSwitchPreference
-        android:key="sysui_nav_bar_inverse"
-        android:title="@string/navbar_invert_layout_title"
-        android:summary="@string/navbar_invert_layout_summary"
-        android:defaultValue="false" />
-
-    <Preference
-        android:fragment="com.ion.ionizer.fragments.ButtonsSettings"
-        android:icon="@drawable/ic_buttons"
-        android:key="buttons"
-        android:summary="@string/buttons_summary"
-        android:title="@string/buttons_title" />
 </PreferenceScreen>
