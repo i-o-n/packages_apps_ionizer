@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2018 ion-OS
+ *  Copyright (C) 2019 ion-OS
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,8 +16,6 @@
  *
  */
 package com.ion.ionizer;
-
-import com.android.internal.logging.nano.MetricsProto;
 
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
@@ -41,10 +39,11 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.android.internal.logging.nano.MetricsProto;
+import com.android.settings.SettingsPreferenceFragment;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.android.settings.SettingsPreferenceFragment;
 
 public class IonIonizer extends DashboardFragment {
 
@@ -58,7 +57,7 @@ public class IonIonizer extends DashboardFragment {
 
         addPreferencesFromResource(R.xml.ion_settings);
 
-         //Device ionizer
+        //Device ionizer
         if (!Utils.isPackageInstalled(getActivity(), KEY_DEVICE_PART_PACKAGE_NAME)) {
             getPreferenceScreen().removePreference(findPreference(KEY_DEVICE_PART));
         }

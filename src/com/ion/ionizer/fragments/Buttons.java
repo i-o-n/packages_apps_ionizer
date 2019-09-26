@@ -25,15 +25,16 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.os.PowerManager;
+import android.provider.Settings;
+import android.view.KeyCharacterMap;
+import android.view.KeyEvent;
+
 import androidx.preference.PreferenceCategory;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.SwitchPreference;
-import android.provider.Settings;
-import android.view.KeyCharacterMap;
-import android.view.KeyEvent;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;

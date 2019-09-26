@@ -18,28 +18,22 @@
     android:title="@string/buttons_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <PreferenceScreen
-        android:key="volume_key"
-        android:fragment="com.ion.ionizer.fragments.Volume"
-        android:title="@string/volume_title" />
-
-     <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+    <com.ion.ionizer.preferences.SystemSettingSwitchPreference
         android:key="volume_button_music_control"
         android:summary="@string/volume_rocker_music_controls_summary"
         android:title="@string/volume_rocker_music_controls_title"
-        android:defaultValue="false" />
-
-    <com.ion.ionizer.preferences.SystemSettingSwitchPreference
-        android:key="volume_rocker_wake"
-        android:summary="@string/volume_rocker_wake_summary"
-        android:title="@string/volume_rocker_wake_title"
-        android:defaultValue="false" />
+        android:defaultValue="false"/>
 
     <ListPreference
         android:dialogTitle="@string/volume_key_cursor_control_title"
         android:entries="@array/volume_key_cursor_control_entries"
         android:entryValues="@array/volume_key_cursor_control_values"
         android:key="volume_key_cursor_control"
-        android:title="@string/volume_key_cursor_control_title" />
+        android:title="@string/volume_key_cursor_control_title"/>
 
+    <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+        android:key="volume_rocker_wake"
+        android:summary="@string/volume_rocker_wake_summary"
+        android:title="@string/volume_rocker_wake_title"
+        android:defaultValue="false"/>
 </PreferenceScreen>

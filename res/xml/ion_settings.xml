@@ -16,116 +16,119 @@
 <PreferenceScreen 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
-    android:title="@string/ionizer_title" >
+    android:title="@string/ionizer_title"
+    settings:initialExpandedChildrenCount="8" >
 
-        <!-- Status Bar -->
-        <Preference
-            android:key="statusbar_category"
-            android:title="@string/statusbar_title"
-            android:fragment="com.ion.ionizer.fragments.StatusBar" 
-            android:icon="@drawable/ic_settings_statusbar"/>
+    <!-- About -->
+    <!--Preference
+        android:key="ion_info"
+        android:title="@string/about_ion"
+        android:icon="@drawable/ic_settings_about" /-->
 
-        <!-- Quick Settings -->
-        <Preference
-            android:key="quicksettings_category"
-            android:title="@string/quicksettings_title"
-            android:fragment="com.ion.ionizer.fragments.QuickSettings"
-            android:icon="@drawable/ic_settings_quicksettings"/>
+    <!-- Interface -->
+    <Preference
+        android:key="interface_category"
+        android:title="@string/interface_title"
+        android:fragment="com.ion.ionizer.fragments.Interface"
+        android:icon="@drawable/ic_settings_int"
+        settings:allowDividerAbove="true"/>
 
-        <!-- Interface -->
-        <Preference
-            android:key="interface_category"
-            android:title="@string/interface_title"
-            android:fragment="com.ion.ionizer.fragments.Interface"
-            android:icon="@drawable/ic_settings_int"/>
+    <!-- Ambient Display -->
+    <!--Preference
+        android:key="ambient_display"
+        android:title="@string/ambient_display_screen_title"
+        android:fragment="com.android.settings.display.AmbientDisplaySettings"
+        android:icon="@drawable/ic_settings_ambient"/-->
 
-        <!-- Display -->
-        <Preference
-            android:key="display_category"
-            android:title="@string/display_title"
-            android:fragment="com.ion.ionizer.fragments.Display"
-            android:icon="@drawable/ic_settings_screen"/>
+    <!-- Status Bar -->
+    <!--Preference
+        android:key="statusbar_category"
+        android:title="@string/statusbar_title"
+        android:fragment="com.ion.ionizer.fragments.StatusBar"
+        android:icon="@drawable/ic_settings_statusbar" /-->
 
-        <!-- Buttons -->
-        <Preference
-            android:key="buttons_category"
-            android:title="@string/buttons_title"
-            android:fragment="com.ion.ionizer.fragments.Buttons"
-            android:icon="@drawable/ic_settings_buttons"/>
+    <!-- Quick Settings -->
+    <!--Preference
+        android:key="quicksettings_category"
+        android:title="@string/quicksettings_title"
+        android:fragment="com.ion.ionizer.fragments.QuickSettings"
+        android:icon="@drawable/ic_settings_quicksettings"/-->
 
-        <!-- Navigation -->
-        <Preference
-            android:key="navigation_category"
-            android:title="@string/navigation_title" 
-            android:fragment="com.ion.ionizer.fragments.Navigation"
-            android:icon="@drawable/ic_settings_navigation"/>
+    <!-- Display -->
+    <!--Preference
+        android:key="display_category"
+        android:title="@string/display_title"
+        android:fragment="com.ion.ionizer.fragments.Display"
+        android:icon="@drawable/ic_settings_screen"/-->
 
-        <!-- Lock Screen -->
-        <Preference
-            android:key="lockscreen_category"
-            android:title="@string/lockscreen_title" 
-            android:fragment="com.ion.ionizer.fragments.LockScreen"
-            android:icon="@drawable/ic_settings_lockscreen"/>
+    <!-- Buttons -->
+    <Preference
+        android:key="buttons_category"
+        android:title="@string/buttons_title"
+        android:fragment="com.ion.ionizer.fragments.Buttons"
+        android:icon="@drawable/ic_settings_buttons"
+        settings:allowDividerAbove="true"/>
 
-        <!-- Recents -->
-        <Preference
-            android:key="recents_category"
-            android:title="@string/recents_title"
-            android:fragment="com.ion.ionizer.fragments.Recents"
-            android:icon="@drawable/ic_settings_recents"/>
+    <!-- Navigation -->
+    <!--Preference
+        android:key="navigation_category"
+        android:title="@string/navigation_title"
+        android:fragment="com.ion.ionizer.fragments.Navigation"
+        android:icon="@drawable/ic_settings_navigation"/-->
 
-        <!-- Notifications -->
-        <Preference
-            android:key="notifications_category"
-            android:title="@string/notifications_title"
-            android:fragment="com.ion.ionizer.fragments.Notifications"
-            android:icon="@drawable/ic_settings_notifications"/>
+    <!-- Lock Screen -->
+    <Preference
+        android:key="lockscreen_category"
+        android:title="@string/lockscreen_title"
+        android:fragment="com.ion.ionizer.fragments.LockScreen"
+        android:icon="@drawable/ic_settings_lockscreen"/>
 
-        <!-- Weather -->
-        <Preference
-            android:key="weather_category"
-            android:title="@string/weather_title"
-            android:fragment="com.ion.ionizer.fragments.Weather"
-            android:icon="@drawable/ic_settings_weather"/>
+    <!-- Recents -->
+    <!--Preference
+        android:key="recents_category"
+        android:title="@string/recents_title"
+        android:fragment="com.ion.ionizer.fragments.Recents"
+        android:icon="@drawable/ic_settings_recents"/-->
 
-        <!-- Animations -->
-        <Preference
-            android:key="animations_category"
-            android:title="@string/animations_title"
-            android:fragment="com.ion.ionizer.fragments.Animations"
-            android:icon="@drawable/ic_settings_animations"/>
+    <!-- Notifications -->
+    <Preference
+        android:key="notifications_category"
+        android:title="@string/notifications_title"
+        android:fragment="com.ion.ionizer.fragments.Notifications"
+        android:icon="@drawable/ic_settings_notifications"
+        settings:allowDividerAbove="true"/>
 
-        <!-- System -->
-        <Preference
-            android:key="system_category"
-            android:title="@string/system_title"
-            android:fragment="com.ion.ionizer.fragments.System"
-            android:icon="@drawable/ic_settings_system"/>
+    <!-- Animations -->
+    <!--Preference
+        android:key="animations_category"
+        android:title="@string/animations_title"
+        android:fragment="com.ion.ionizer.fragments.Animations"
+        android:icon="@drawable/ic_settings_animations"/-->
 
-        <!-- IME Settings -->
-        <Preference
-            android:key="ime_category"
-            android:title="@string/ime_title"
-            android:fragment="com.ion.ionizer.fragments.IME"
-            android:icon="@drawable/ic_settings_ime"/>
+    <!-- System -->
+    <!--Preference
+        android:key="system_category"
+        android:title="@string/system_title"
+        android:fragment="com.ion.ionizer.fragments.System"
+        android:icon="@drawable/ic_settings_system"/-->
 
-        <!-- Misc -->
-        <Preference
-            android:key="misc_category"
-            android:title="@string/misc_title" 
-            android:fragment="com.ion.ionizer.fragments.Misc"
-            android:icon="@drawable/ic_settings_misc"/>
+    <!-- IME Settings -->
+    <!--Preference
+        android:key="ime_category"
+        android:title="@string/ime_title"
+        android:fragment="com.ion.ionizer.fragments.IME"
+        android:icon="@drawable/ic_settings_ime"/-->
 
-        <!-- Device ionizer -->
-        <Preference
-            android:key="device_part"
-            android:persistent="false"
-            android:title="@string/device_part_title"
-            android:icon="@drawable/ic_settings_misc"
-            settings:allowDividerAbove="true" >
-            <intent android:action="android.intent.action.MAIN"
-                android:targetPackage="com.ion.ionizer.device"
-                android:targetClass="com.ion.ionizer.device.DeviceSettings" />
-        </Preference>
-
+    <!-- Device ionizer -->
+    <Preference
+        android:key="device_part"
+        android:persistent="false"
+        android:title="@string/device_part_title"
+        android:icon="@drawable/ic_settings_device"
+        android:summary="@string/device_part_title_summary"
+        settings:allowDividerAbove="true" >
+        <intent android:action="android.intent.action.MAIN"
+            android:targetPackage="com.ion.ionizer.device"
+            android:targetClass="com.ion.ionizer.device.DeviceSettings"/>
+    </Preference>
 </PreferenceScreen>

@@ -19,12 +19,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
+
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.SwitchPreference;
-import android.provider.Settings;
 
 import com.android.internal.logging.nano.MetricsProto; 
 import com.android.settings.SettingsPreferenceFragment;
