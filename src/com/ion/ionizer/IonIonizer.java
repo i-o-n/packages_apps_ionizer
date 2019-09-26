@@ -19,7 +19,6 @@ package com.ion.ionizer;
 
 import com.android.internal.logging.nano.MetricsProto;
 
-import android.app.Fragment;
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
@@ -30,10 +29,17 @@ import android.view.Surface;
 import android.preference.Preference;
 import com.android.settings.R;
 import com.android.settings.dashboard.DashboardFragment;
+import com.android.settings.dashboard.SummaryLoader;
 import com.android.settings.deviceinfo.ion.IonInfoPreferenceController;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.ion.ionizer.preferences.Utils;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.VisibleForTesting;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -103,7 +109,7 @@ public class IonIonizer extends DashboardFragment {
     }
 
     protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
-        return buildPreferenceControllers(context, getLifecycle(), this);
+        return buildPreferenceControllers(context, getSettingsLifecycle(), this);
     }
 
     private static List<AbstractPreferenceController> buildPreferenceControllers(
@@ -112,5 +118,4 @@ public class IonIonizer extends DashboardFragment {
         controllers.add(new IonInfoPreferenceController(context, fragment));
         return controllers;
     }
-
 }

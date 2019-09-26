@@ -19,4 +19,12 @@
     android:title="@string/ionizer_title"
     settings:initialExpandedChildrenCount="8" >
 
+        <!-- About -->
+        <Preference
+            android:key="ion_info"
+            android:title="@string/about_ion"
+            android:icon="@drawable/ic_settings_about"
+            android:summary="@string/summary_placeholder"
+            settings:enableCopying="true" />
+
 </PreferenceScreen>

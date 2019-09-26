@@ -35,6 +35,7 @@
     <string name="weather_title">Weather</string>
     <string name="volume_title">Volume Rockers</string>
     <string name="device_part_title">Device ionizer</string>
+    <string name="about_ion">ion version</string>
 
     <!-- Dashboard conditions--> 
     <string name="dashboard_category">Dashboard options</string> 
