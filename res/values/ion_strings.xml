@@ -170,4 +170,8 @@
     <!-- Lockscreen Double Tap To Sleep -->
     <string name="double_tap_sleep_lockscreen_title">Double tap to sleep on lock screen</string>
     <string name="double_tap_sleep_lockscreen_summary">Double tap anywhere on the lock screen to put the device to sleep</string>
+
+    <!-- StatusBar Double tap to sleep -->
+    <string name="double_tap_to_sleep_title">Double-tap to sleep</string>
+    <string name="double_tap_to_sleep_summary">Double tap on the status bar to put the device to sleep</string>
 </resources>
