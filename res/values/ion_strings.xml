@@ -174,4 +174,8 @@
     <!-- StatusBar Double tap to sleep -->
     <string name="double_tap_to_sleep_title">Double-tap to sleep</string>
     <string name="double_tap_to_sleep_summary">Double tap on the status bar to put the device to sleep</string>
+
+    <!-- CPU info overlay -->
+    <string name="show_cpu_title">Show CPU info</string>
+    <string name="show_cpu_summary">Screen overlay showing current CPU info</string>
 </resources>
