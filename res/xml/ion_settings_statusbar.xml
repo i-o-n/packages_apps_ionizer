@@ -18,25 +18,11 @@
     android:title="@string/statusbar_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <com.ion.ionizer.preferences.SystemSettingSwitchPreference
-        android:key="network_traffic_state"
-        android:title="@string/network_traffic_state_title"
-        android:summary="@string/network_traffic_state_summary"
-        android:defaultValue="true" />
-
-    <com.ion.ionizer.preferences.SystemSettingSeekBarPreference
-        android:key="network_traffic_autohide_threshold"
-        android:title="@string/network_traffic_autohide_threshold_title"
-        android:max="10"
-        settings:min="0"
-        settings:units="" />
-
-    <com.ion.ionizer.preferences.SystemSettingSwitchPreference
-        android:key="network_traffic_hidearrow"
-        android:title="@string/network_traffic_hidearrow"
-        android:summary="@string/network_traffic_hidearrow_summary"
-        android:dependency="network_traffic_state"
-        android:defaultValue="false" />
+    <Preference
+        android:key="traffic_category"
+        android:title="@string/trafficat"
+        android:summary="@string/trafficat_summary"
+        android:fragment="com.ion.ionizer.fragments.NetworkTraffic" />
 
      <Preference
             android:title="@string/statusbar_items_title" >
