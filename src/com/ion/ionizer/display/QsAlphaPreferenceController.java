@@ -27,7 +27,6 @@ import com.android.settingslib.core.AbstractPreferenceController;
 
 import com.ion.ionizer.preferences.CustomSeekBarPreference;
 
-import libcore.util.Objects;
 import java.util.ArrayList;
 import java.util.List;
 

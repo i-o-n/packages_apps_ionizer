@@ -49,7 +49,7 @@ import com.android.internal.logging.nano.MetricsProto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InputMethodsSettings extends SettingsPreferenceFragment implements
+public class IME extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener, Indexable {
 
     private static final int DLG_KEYBOARD_ROTATION = 0;
@@ -160,8 +160,8 @@ public class InputMethodsSettings extends SettingsPreferenceFragment implements
             return frag;
         }
 
-        InputMethodsSettings getOwner() {
-            return (InputMethodsSettings) getTargetFragment();
+        IME getOwner() {
+            return (IME) getTargetFragment();
         }
 
         @Override
@@ -197,7 +197,7 @@ public class InputMethodsSettings extends SettingsPreferenceFragment implements
                     ArrayList<SearchIndexableResource> result =
                             new ArrayList<SearchIndexableResource>();
                      SearchIndexableResource sir = new SearchIndexableResource(context);
-                    sir.xmlResId = R.xml.inputmethod_settings;
+                    sir.xmlResId = R.xml.ion_settings_ime;
                     result.add(sir);
                     return result;
                 }
