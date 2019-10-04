@@ -28,6 +28,7 @@ import android.os.PowerManager;
 import android.provider.Settings;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
+import android.widget.Toast;
 
 import androidx.preference.PreferenceCategory;
 import androidx.preference.ListPreference;
@@ -46,8 +47,10 @@ public class Buttons extends SettingsPreferenceFragment implements
     private static final String TAG = Buttons.class.getSimpleName();
 
     private static final String KEY_VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
+    private static final String TORCH_POWER_BUTTON_GESTURE = "torch_power_button_gesture";
 
     private ListPreference mVolumeKeyCursorControl;
+    private ListPreference mTorchPowerButton;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -65,6 +68,13 @@ public class Buttons extends SettingsPreferenceFragment implements
         mVolumeKeyCursorControl = initActionList(KEY_VOLUME_KEY_CURSOR_CONTROL,
                 cursorControlAction);
 
+        // screen off torch
+        mTorchPowerButton = (ListPreference) findPreference(TORCH_POWER_BUTTON_GESTURE);
+        int mTorchPowerButtonValue = Settings.Secure.getInt(resolver,
+                Settings.Secure.TORCH_POWER_BUTTON_GESTURE, 0);
+        mTorchPowerButton.setValue(Integer.toString(mTorchPowerButtonValue));
+        mTorchPowerButton.setSummary(mTorchPowerButton.getEntry());
+        mTorchPowerButton.setOnPreferenceChangeListener(this);
     }
 
     private ListPreference initActionList(String key, int value) {
@@ -85,9 +95,28 @@ public class Buttons extends SettingsPreferenceFragment implements
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
+        ContentResolver resolver = getActivity().getContentResolver();
+        boolean DoubleTapPowerGesture = Settings.Secure.getInt(resolver,
+                    Settings.Secure.CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED, 1) == 0;
         if (preference == mVolumeKeyCursorControl) {
             handleActionListChange(mVolumeKeyCursorControl, objValue,
                     Settings.System.VOLUME_KEY_CURSOR_CONTROL);
+            return true;
+        } else if (preference == mTorchPowerButton) {
+            int mTorchPowerButtonValue = Integer.valueOf((String) objValue);
+            int index = mTorchPowerButton.findIndexOfValue((String) objValue);
+            mTorchPowerButton.setSummary(
+                    mTorchPowerButton.getEntries()[index]);
+            Settings.Secure.putInt(resolver, Settings.Secure.TORCH_POWER_BUTTON_GESTURE,
+                    mTorchPowerButtonValue);
+            if (mTorchPowerButtonValue == 1 && DoubleTapPowerGesture) {
+                //if doubletap for torch is enabled, switch off double tap for camera
+                Settings.Secure.putInt(resolver, Settings.Secure.CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED,
+                        1);
+                Toast.makeText(getActivity(),
+                    (R.string.torch_power_button_gesture_dt_toast),
+                    Toast.LENGTH_SHORT).show();
+            }
             return true;
         }
         return false;
