@@ -16,9 +16,11 @@
 package com.ion.ionizer.fragments;
 
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.provider.Settings;
 
 import androidx.preference.ListPreference;
@@ -32,15 +34,48 @@ import com.android.settings.SettingsPreferenceFragment;
 
 import com.ion.ionizer.R;
 
-public class System extends SettingsPreferenceFragment {
+public class System extends SettingsPreferenceFragment
+        implements Preference.OnPreferenceChangeListener {
 
     public static final String TAG = "System";
+
+    private static final String SHOW_CPU_INFO_KEY = "show_cpu_info";
+
+    private SwitchPreference mShowCpuInfo;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.ion_settings_system);
+        ContentResolver resolver = getActivity().getContentResolver();
+
+        mShowCpuInfo = (SwitchPreference) findPreference(SHOW_CPU_INFO_KEY);
+        mShowCpuInfo.setChecked(Settings.Global.getInt(getActivity().getContentResolver(),
+                Settings.Global.SHOW_CPU_OVERLAY, 0) == 1);
+        mShowCpuInfo.setOnPreferenceChangeListener(this);
+    }
+
+    private void writeCpuInfoOptions(boolean value) {
+        Settings.Global.putInt(getActivity().getContentResolver(),
+                Settings.Global.SHOW_CPU_OVERLAY, value ? 1 : 0);
+        Intent service = (new Intent())
+                .setClassName("com.android.systemui", "com.android.systemui.CPUInfoService");
+        if (value) {
+            getActivity().startService(service);
+        } else {
+            getActivity().stopService(service);
+        }
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        ContentResolver resolver = getActivity().getContentResolver();
+        if (preference == mShowCpuInfo) {
+            writeCpuInfoOptions((Boolean) newValue);
+            return true;
+        }
+        return false;
     }
 
     @Override
