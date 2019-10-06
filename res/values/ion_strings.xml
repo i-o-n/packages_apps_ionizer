@@ -213,4 +213,8 @@
     <!-- QS footer icons -->
     <string name="qs_footer_settings_title">Settings icon</string>
     <string name="qs_footer_settings_summary">Display Settings icon in quick settings footer</string>
+
+    <!-- Media art -->
+    <string name="media_art_title">Media cover art</string>
+    <string name="media_art_summary">Enable media cover art on the lockscreen</string>
 </resources>
