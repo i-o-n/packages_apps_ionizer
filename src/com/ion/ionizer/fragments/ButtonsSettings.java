@@ -18,6 +18,7 @@ package com.ion.ionizer.fragments;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.UserHandle;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
@@ -56,6 +57,7 @@ public class ButtonsSettings extends ActionFragment implements OnPreferenceChang
     private static final String KEY_BUTTON_BRIGHTNESS_SW = "button_brightness_sw";
     private static final String KEY_BACKLIGHT_TIMEOUT = "backlight_timeout";
     private static final String HWKEY_DISABLE = "hardware_keys_disable";
+    private static final String DISABLE_NAV_KEYS = "disable_nav_keys";
 
     // category keys
     private static final String CATEGORY_HWKEY = "hardware_keys";
@@ -81,6 +83,9 @@ public class ButtonsSettings extends ActionFragment implements OnPreferenceChang
     private CustomSeekBarPreference mButtonBrightness;
     private SwitchPreference mButtonBrightness_sw;
     private SwitchPreference mHwKeyDisable;
+    private SwitchPreference mDisableNavigationKeys;
+    private boolean mIsNavSwitchingMode = false;
+    private Handler mHandler;
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -89,6 +94,20 @@ public class ButtonsSettings extends ActionFragment implements OnPreferenceChang
         final Resources res = getResources();
         final ContentResolver resolver = getActivity().getContentResolver();
         final PreferenceScreen prefScreen = getPreferenceScreen();
+
+        // Force Navigation bar related options
+        mDisableNavigationKeys = (SwitchPreference) findPreference(DISABLE_NAV_KEYS);
+
+        // Only visible on devices that does not have a navigation bar already
+        if (ActionUtils.isHWKeysSupported(getActivity())) {
+            mDisableNavigationKeys.setOnPreferenceChangeListener(this);
+            mHandler = new Handler();
+            // Remove keys that can be provided by the navbar
+            updateDisableNavkeysOption();
+            setActionPreferencesEnabled(mDisableNavigationKeys.isChecked());
+        } else {
+            prefScreen.removePreference(mDisableNavigationKeys);
+        }
 
         final boolean needsNavbar = ActionUtils.hasNavbarByDefault(getActivity());
         final PreferenceCategory hwkeyCat = (PreferenceCategory) prefScreen
@@ -116,8 +135,8 @@ public class ButtonsSettings extends ActionFragment implements OnPreferenceChang
 
                 if (mBacklightTimeout != null) {
                     mBacklightTimeout.setOnPreferenceChangeListener(this);
-                    int BacklightTimeout = Settings.System.getInt(getContentResolver(),
-                            Settings.System.BUTTON_BACKLIGHT_TIMEOUT, 5000);
+                    int BacklightTimeout = Settings.System.getIntForUser(getContentResolver(),
+                            Settings.System.BUTTON_BACKLIGHT_TIMEOUT, 5000, UserHandle.USER_CURRENT);
                     mBacklightTimeout.setValue(Integer.toString(BacklightTimeout));
                     mBacklightTimeout.setSummary(mBacklightTimeout.getEntry());
                 }
@@ -125,16 +144,16 @@ public class ButtonsSettings extends ActionFragment implements OnPreferenceChang
                 if (variableBrightness) {
                     hwkeyCat.removePreference(mButtonBrightness_sw);
                     if (mButtonBrightness != null) {
-                        int ButtonBrightness = Settings.System.getInt(getContentResolver(),
-                                Settings.System.BUTTON_BRIGHTNESS, 255);
+                        int ButtonBrightness = Settings.System.getIntForUser(getContentResolver(),
+                                Settings.System.BUTTON_BRIGHTNESS, 255, UserHandle.USER_CURRENT);
                         mButtonBrightness.setValue(ButtonBrightness / 1);
                         mButtonBrightness.setOnPreferenceChangeListener(this);
                     }
                 } else {
                     hwkeyCat.removePreference(mButtonBrightness);
                     if (mButtonBrightness_sw != null) {
-                        mButtonBrightness_sw.setChecked((Settings.System.getInt(getContentResolver(),
-                                Settings.System.BUTTON_BRIGHTNESS, 1) == 1));
+                        mButtonBrightness_sw.setChecked((Settings.System.getIntForUser(getContentResolver(),
+                                Settings.System.BUTTON_BRIGHTNESS, 1, UserHandle.USER_CURRENT) == 1));
                         mButtonBrightness_sw.setOnPreferenceChangeListener(this);
                     }
                 }
@@ -204,8 +223,8 @@ public class ButtonsSettings extends ActionFragment implements OnPreferenceChang
         if (preference == mBacklightTimeout) {
             String BacklightTimeout = (String) newValue;
             int BacklightTimeoutValue = Integer.parseInt(BacklightTimeout);
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.BUTTON_BACKLIGHT_TIMEOUT, BacklightTimeoutValue);
+            Settings.System.putIntForUser(getActivity().getContentResolver(),
+                    Settings.System.BUTTON_BACKLIGHT_TIMEOUT, BacklightTimeoutValue, UserHandle.USER_CURRENT);
             int BacklightTimeoutIndex = mBacklightTimeout
                     .findIndexOfValue(BacklightTimeout);
             mBacklightTimeout
@@ -213,22 +232,55 @@ public class ButtonsSettings extends ActionFragment implements OnPreferenceChang
             return true;
         } else if (preference == mButtonBrightness) {
             int value = (Integer) newValue;
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.BUTTON_BRIGHTNESS, value * 1);
+            Settings.System.putIntForUser(getActivity().getContentResolver(),
+                    Settings.System.BUTTON_BRIGHTNESS, value * 1, UserHandle.USER_CURRENT);
             return true;
         } else if (preference == mButtonBrightness_sw) {
             boolean value = (Boolean) newValue;
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.BUTTON_BRIGHTNESS, value ? 1 : 0);
+            Settings.System.putIntForUser(getActivity().getContentResolver(),
+                    Settings.System.BUTTON_BRIGHTNESS, value ? 1 : 0, UserHandle.USER_CURRENT);
             return true;
         } else if (preference == mHwKeyDisable) {
             boolean value = (Boolean) newValue;
-            Settings.Secure.putInt(getContentResolver(), Settings.Secure.HARDWARE_KEYS_DISABLE,
-                    value ? 1 : 0);
+            Settings.Secure.putIntForUser(getContentResolver(), Settings.Secure.HARDWARE_KEYS_DISABLE,
+                    value ? 1 : 0, UserHandle.USER_CURRENT);
             setActionPreferencesEnabled(!value);
+            return true;
+        } else if (preference == mDisableNavigationKeys) {
+            if (mIsNavSwitchingMode) {
+                return false;
+            }
+            mIsNavSwitchingMode = true;
+            boolean isNavKeysChecked = ((Boolean) newValue);
+            mDisableNavigationKeys.setEnabled(false);
+            mHwKeyDisable.setEnabled(false);
+            writeDisableNavkeysOption(isNavKeysChecked);
+            updateDisableNavkeysOption();
+            int keysDisabled = Settings.Secure.getIntForUser(getActivity().getContentResolver(),
+                    Settings.Secure.HARDWARE_KEYS_DISABLE, 0, UserHandle.USER_CURRENT);
+            setActionPreferencesEnabled(keysDisabled == 0);
+            mDisableNavigationKeys.setEnabled(true);
+            mHwKeyDisable.setEnabled(true);
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    mIsNavSwitchingMode = false;
+                }
+            }, 1000);
             return true;
         }
             return false;
+    }
+
+    private void writeDisableNavkeysOption(boolean enabled) {
+        Settings.System.putIntForUser(getActivity().getContentResolver(),
+                Settings.System.FORCE_SHOW_NAVBAR, enabled ? 1 : 0, UserHandle.USER_CURRENT);
+    }
+
+    private void updateDisableNavkeysOption() {
+        boolean enabled = Settings.System.getIntForUser(getActivity().getContentResolver(),
+                Settings.System.FORCE_SHOW_NAVBAR, 0, UserHandle.USER_CURRENT) != 0;
+        mDisableNavigationKeys.setChecked(enabled);
     }
 
     @Override
