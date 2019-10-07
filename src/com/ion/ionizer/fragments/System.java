@@ -33,6 +33,7 @@ import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.SettingsPreferenceFragment;
 
 import com.ion.ionizer.R;
+import com.ion.ionizer.preferences.SystemSettingMasterSwitchPreference;
 
 public class System extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
@@ -41,9 +42,11 @@ public class System extends SettingsPreferenceFragment
 
     private static final String SHOW_CPU_INFO_KEY = "show_cpu_info";
     private static final String KEY_SCREEN_OFF_ANIMATION = "screen_off_animation";
+    private static final String SMART_PIXELS_ENABLED = "smart_pixels_enable";
 
     private SwitchPreference mShowCpuInfo;
     private ListPreference mScreenOffAnimation;
+    private SystemSettingMasterSwitchPreference mSmartPixelsEnabled;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,6 +66,16 @@ public class System extends SettingsPreferenceFragment
         mScreenOffAnimation.setValue(Integer.toString(screenOffAnimation));
         mScreenOffAnimation.setSummary(mScreenOffAnimation.getEntry());
         mScreenOffAnimation.setOnPreferenceChangeListener(this);
+
+        mSmartPixelsEnabled = (SystemSettingMasterSwitchPreference) findPreference(SMART_PIXELS_ENABLED);
+        mSmartPixelsEnabled.setOnPreferenceChangeListener(this);
+        int smartPixelsEnabled = Settings.System.getInt(getContentResolver(),
+                SMART_PIXELS_ENABLED, 0);
+        mSmartPixelsEnabled.setChecked(smartPixelsEnabled != 0);
+
+        if (!getResources().getBoolean(com.android.internal.R.bool.config_enableSmartPixels)) {
+            getPreferenceScreen().removePreference(mSmartPixelsEnabled);
+        }
     }
 
     private void writeCpuInfoOptions(boolean value) {
@@ -88,6 +101,11 @@ public class System extends SettingsPreferenceFragment
             int index = mScreenOffAnimation.findIndexOfValue((String) newValue);
             mScreenOffAnimation.setSummary(mScreenOffAnimation.getEntries()[index]);
             Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_OFF_ANIMATION, value);
+            return true;
+        } else if (preference == mSmartPixelsEnabled) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getContentResolver(),
+		            SMART_PIXELS_ENABLED, value ? 1 : 0);
             return true;
         }
         return false;
