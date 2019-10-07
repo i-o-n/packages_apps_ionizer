@@ -40,6 +40,28 @@
     <string name="charging_noti_category">Charging Notifications</string>
     <string name="trafficat">Network Traffic</string>
     <string name="trafficat_summary">Network speed indicator</string>
+    <string name="interfaceui">Themes</string>
+    <string name="statusbar_title_summary">Network Traffic, Statusbar items</string>
+    <string name="quicksettings_title_summary">Tiles, Header, Footer</string>
+    <string name="button_info">Volume Rocker, Power Button</string>
+    <string name="keyguarrd">Media, Gestures, Security</string>
+    <string name="notifications_title_summary">Heads-up, in-call vibration</string>
+    <string name="manusys">CPU Info</string>
+    <string name="ime_title_summary">Keyboard Features</string>
+    <string name="power_button">Power Button</string>
+    <string name="vol_rock">Volume Rocker</string>
+    <string name="powermenu_summary">Powermenu options</string>
+    <string name="theme_qspanel_title">QS Panel</string>
+    <string name="dpi_category_title">Screen Density</string>
+    <string name="lockscreen_media_title">Media</string>
+    <string name="locktra">Extra</string>
+    <string name="lockscreen_unl">Security</string>
+    <string name="heads_up_notifications_summary">Pop up statusbar notifications</string>
+    <string name="quick_tile_title">Tiles</string>
+    <string name="quick_header_title">Header</string>
+    <string name="quick_footer_title">Footer</string>
+    <string name="status_icons_title">Icons</string>
+    <string name="navbar_invert_layout_summary">Invert Navigation button layout</string>
 
     <!-- Dashboard conditions--> 
     <string name="dashboard_category">Dashboard options</string> 

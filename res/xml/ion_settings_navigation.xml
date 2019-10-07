@@ -19,7 +19,8 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <com.ion.ionizer.preferences.SecureSettingSwitchPreference
-            android:key="sysui_nav_bar_inverse"
-            android:title="@string/navbar_invert_layout_title"
-            android:defaultValue="false" />
+        android:key="sysui_nav_bar_inverse"
+        android:title="@string/navbar_invert_layout_title"
+        android:summary="@string/navbar_invert_layout_summary"
+        android:defaultValue="false" />
 </PreferenceScreen>

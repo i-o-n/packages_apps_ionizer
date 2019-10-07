@@ -24,22 +24,32 @@
         android:summary="@string/trafficat_summary"
         android:fragment="com.ion.ionizer.fragments.NetworkTraffic" />
 
-     <Preference
+    <PreferenceCategory
+        android:key="status_icons"
+        android:title="@string/status_icons_title">
+
+        <Preference
             android:title="@string/statusbar_items_title" >
             <intent android:action="android.intent.action.MAIN"
                 android:targetPackage="com.android.systemui"
                 android:targetClass="com.android.systemui.tuner.StatusbarItemsActivity" />
-    </Preference>
+        </Preference>
 
-    <SwitchPreference
+        <SwitchPreference
             android:key="show_lte_fourgee"
             android:title="@string/show_lte_fourgee_title"
             android:summary="@string/show_lte_fourgee_summary"
             android:defaultValue="false" />
+    </PreferenceCategory>
 
-    <com.ion.ionizer.preferences.SystemSettingSwitchPreference
-        android:key="double_tap_sleep_gesture"
-        android:title="@string/double_tap_to_sleep_title"
-        android:summary="@string/double_tap_to_sleep_summary"
-        android:defaultValue="false" />
+    <PreferenceCategory 
+        android:key="status_gestures" 
+        android:title="@string/gesture_preference_title">
+
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+            android:key="double_tap_sleep_gesture"
+            android:title="@string/double_tap_to_sleep_title"
+            android:summary="@string/double_tap_to_sleep_summary"
+            android:defaultValue="false" />
+    </PreferenceCategory>
 </PreferenceScreen>

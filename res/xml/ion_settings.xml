@@ -17,7 +17,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/ionizer_title"
-    settings:initialExpandedChildrenCount="8" >
+    settings:initialExpandedChildrenCount="5" >
 
     <!-- About -->
     <!--Preference
@@ -29,6 +29,7 @@
     <Preference
         android:key="interface_category"
         android:title="@string/interface_title"
+        android:summary="@string/interfaceui"
         android:fragment="com.ion.ionizer.fragments.Interface"
         android:icon="@drawable/ic_settings_int"
         settings:allowDividerAbove="true"/>
@@ -41,18 +42,20 @@
         android:icon="@drawable/ic_settings_ambient"/-->
 
     <!-- Status Bar -->
-    <!--Preference
+    <Preference
         android:key="statusbar_category"
         android:title="@string/statusbar_title"
+        android:summary="@string/statusbar_title_summary"
         android:fragment="com.ion.ionizer.fragments.StatusBar"
-        android:icon="@drawable/ic_settings_statusbar" /-->
+        android:icon="@drawable/ic_settings_statusbar" />
 
     <!-- Quick Settings -->
-    <!--Preference
+    <Preference
         android:key="quicksettings_category"
         android:title="@string/quicksettings_title"
+        android:summary="@string/quicksettings_title_summary"
         android:fragment="com.ion.ionizer.fragments.QuickSettings"
-        android:icon="@drawable/ic_settings_quicksettings"/-->
+        android:icon="@drawable/ic_settings_quicksettings"/>
 
     <!-- Display -->
     <!--Preference
@@ -65,21 +68,23 @@
     <Preference
         android:key="buttons_category"
         android:title="@string/buttons_title"
+        android:summary="@string/button_info"
         android:fragment="com.ion.ionizer.fragments.Buttons"
         android:icon="@drawable/ic_settings_buttons"
         settings:allowDividerAbove="true"/>
 
     <!-- Navigation -->
-    <!--Preference
+    <Preference
         android:key="navigation_category"
         android:title="@string/navigation_title"
         android:fragment="com.ion.ionizer.fragments.Navigation"
-        android:icon="@drawable/ic_settings_navigation"/-->
+        android:icon="@drawable/ic_settings_navigation"/>
 
     <!-- Lock Screen -->
     <Preference
         android:key="lockscreen_category"
         android:title="@string/lockscreen_title"
+        android:summary="@string/keyguarrd"
         android:fragment="com.ion.ionizer.fragments.LockScreen"
         android:icon="@drawable/ic_settings_lockscreen"/>
 
@@ -94,6 +99,7 @@
     <Preference
         android:key="notifications_category"
         android:title="@string/notifications_title"
+        android:summary="@string/notifications_title_summary"
         android:fragment="com.ion.ionizer.fragments.Notifications"
         android:icon="@drawable/ic_settings_notifications"
         settings:allowDividerAbove="true"/>
@@ -106,18 +112,20 @@
         android:icon="@drawable/ic_settings_animations"/-->
 
     <!-- System -->
-    <!--Preference
+    <Preference
         android:key="system_category"
         android:title="@string/system_title"
+        android:summary="@string/manusys"
         android:fragment="com.ion.ionizer.fragments.System"
-        android:icon="@drawable/ic_settings_system"/-->
+        android:icon="@drawable/ic_settings_system"/>
 
     <!-- IME Settings -->
-    <!--Preference
+    <Preference
         android:key="ime_category"
         android:title="@string/ime_title"
+        android:summary="@string/ime_title_summary"
         android:fragment="com.ion.ionizer.fragments.IME"
-        android:icon="@drawable/ic_settings_ime"/-->
+        android:icon="@drawable/ic_settings_ime"/>
 
     <!-- Device ionizer -->
     <Preference
