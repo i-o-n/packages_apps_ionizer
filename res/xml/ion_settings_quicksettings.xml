@@ -34,6 +34,12 @@
         android:title="@string/quick_header_title">
 
         <com.ion.ionizer.preferences.SecureSettingSwitchPreference
+            android:key="qs_battery_location_bar"
+            android:title="@string/qs_battery_location_bar"
+            android:summary="@string/qs_battery_location_bar_summary"
+            android:defaultValue="false" />
+
+        <com.ion.ionizer.preferences.SecureSettingSwitchPreference
             android:key="qs_show_brightness"
             android:title="@string/qs_show_brightness_title"
             android:summary="@string/qs_show_brightness_summary"
