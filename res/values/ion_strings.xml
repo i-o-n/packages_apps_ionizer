@@ -240,6 +240,10 @@
     <string name="media_art_title">Media cover art</string>
     <string name="media_art_summary">Enable media cover art on the lockscreen</string>
 
+    <!-- lock screen media blur -->
+    <string name="lockscreen_media_blur_title">Media artwork blur level</string>
+    <string name="lockscreen_media_blur_summary">Control the blur amount of media artwork</string>
+
     <!-- Quick Settings brightness slider -->
     <string name="qs_show_brightness_title">Brightness slider</string>
     <string name="qs_show_brightness_summary">Show a brightness slider in the quick settings panel</string>

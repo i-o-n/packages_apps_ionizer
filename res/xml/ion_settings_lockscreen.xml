@@ -27,6 +27,15 @@
             android:title="@string/media_art_title"
             android:summary="@string/media_art_summary"
             android:defaultValue="true" />
+
+        <com.ion.ionizer.preferences.SystemSettingSeekBarPreference
+            android:key="lockscreen_media_blur"
+            android:title="@string/lockscreen_media_blur_title"
+            android:summary="@string/lockscreen_media_blur_summary"
+            android:max="2500"
+            settings:min="1"
+            android:dependency="lockscreen_media_metadata"
+            android:persistent="false" />
     </PreferenceCategory>
 
     <PreferenceCategory
