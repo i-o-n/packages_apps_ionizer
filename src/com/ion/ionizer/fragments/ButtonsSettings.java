@@ -55,7 +55,7 @@ public class ButtonsSettings extends ActionFragment implements OnPreferenceChang
     private static final String KEY_BUTTON_BRIGHTNESS = "button_brightness";
     private static final String KEY_BUTTON_BRIGHTNESS_SW = "button_brightness_sw";
     private static final String KEY_BACKLIGHT_TIMEOUT = "backlight_timeout";
-    private static final String HWKEY_DISABLE = "hardware_keys_disable";
+    //private static final String HWKEY_DISABLE = "hardware_keys_disable";
 
     // category keys
     private static final String CATEGORY_HWKEY = "hardware_keys";
@@ -80,7 +80,7 @@ public class ButtonsSettings extends ActionFragment implements OnPreferenceChang
     private ListPreference mBacklightTimeout;
     private CustomSeekBarPreference mButtonBrightness;
     private SwitchPreference mButtonBrightness_sw;
-    private SwitchPreference mHwKeyDisable;
+    //private SwitchPreference mHwKeyDisable;
 
     @Override
     public void onCreate(Bundle bundle) {
@@ -95,12 +95,12 @@ public class ButtonsSettings extends ActionFragment implements OnPreferenceChang
                 .findPreference(CATEGORY_HWKEY);
         int keysDisabled = 0;
         if (!needsNavbar) {
-            mHwKeyDisable = (SwitchPreference) findPreference(HWKEY_DISABLE);
+            /*mHwKeyDisable = (SwitchPreference) findPreference(HWKEY_DISABLE);
             keysDisabled = Settings.Secure.getIntForUser(getContentResolver(),
                     Settings.Secure.HARDWARE_KEYS_DISABLE, 0,
                     UserHandle.USER_CURRENT);
             mHwKeyDisable.setChecked(keysDisabled != 0);
-            mHwKeyDisable.setOnPreferenceChangeListener(this);
+            mHwKeyDisable.setOnPreferenceChangeListener(this);*/
 
             final boolean variableBrightness = getResources().getBoolean(
                     com.android.internal.R.bool.config_deviceHasVariableButtonBrightness);
@@ -221,13 +221,13 @@ public class ButtonsSettings extends ActionFragment implements OnPreferenceChang
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.BUTTON_BRIGHTNESS, value ? 1 : 0);
             return true;
-        } else if (preference == mHwKeyDisable) {
+        }/* else if (preference == mHwKeyDisable) {
             boolean value = (Boolean) newValue;
             Settings.Secure.putInt(getContentResolver(), Settings.Secure.HARDWARE_KEYS_DISABLE,
                     value ? 1 : 0);
             setActionPreferencesEnabled(!value);
             return true;
-        }
+        }*/
             return false;
     }
 
