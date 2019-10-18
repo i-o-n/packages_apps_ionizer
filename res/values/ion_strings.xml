@@ -688,4 +688,8 @@
     <string name="lock_date_font_title">Date font style</string>
     <string name="lockdate_font_size_title">Date font size</string>
     <string name="lockcsize">Clock &amp; Date </string>
+
+    <!-- Brightness icon-->
+    <string name="brightness_icon_title">Brightness icon</string>
+    <string name="brightness_icon_summary">Show a brightness icon to the right of the brighness slider to adjust auto-brightness</string>
 </resources>
