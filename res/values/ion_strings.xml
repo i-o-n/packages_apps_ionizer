@@ -250,7 +250,7 @@
     <string name="qs_brightness_position_bottom_title">Brightness slider on bottom</string>
     <string name="qs_brightness_position_bottom_summary">Show a brightness slider on bottom quick settings</string>
     <string name="qs_battery_location_bar">Battery in QS Header</string>
-    <string name="qs_battery_location_bar_summary">Shows battery in QS Header</string>
+    <string name="qs_battery_location_bar_summary">Show battery in QS Header</string>
 
     <!-- Volume Steps Fragment -->
     <string name="volume_steps_title">Volume steps</string>
@@ -277,7 +277,7 @@
 
     <!-- Batter percentage with estimate -->
     <string name="battery_pct_with_estimate_title">Battery Percent</string>
-    <string name="battery_pct_with_estimate_summary">Shows battery percentage in QS along with estimate</string>
+    <string name="battery_pct_with_estimate_summary">Show battery percentage in QS along with estimate</string>
 
     <!-- Quick settings tiles columns and rows config -->
     <string name="qs_rows_portrait_title">Rows (Portrait)</string>
@@ -287,6 +287,8 @@
     <string name="sysui_qqs_count_title">Columns (Quickbar)</string>
     <string name="qs_tile_title_visibility_title">Tile title</string>
     <string name="qs_tile_title_visibility_summary">Display title below each tile</string>
+    <string name="ion_footer_text_show_title">ion Tag</string>
+    <string name="ion_footer_text_show_summary">Show ion tag in expanded qs footer</string>
 
     <!-- Screenshot -->
     <string name="screenshot_type_title">Screenshot type</string>

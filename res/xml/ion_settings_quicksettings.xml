@@ -28,12 +28,30 @@
         android:persistent="false" />
 
     <com.ion.ionizer.preferences.SystemSettingSeekBarPreference
+        android:key="qs_rows_portrait"
+        android:title="@string/qs_rows_portrait_title"
+        android:max="3"
+        android:min="1"
+        settings:units=""
+        android:defaultValue="3"
+        android:persistent="false" />
+
+    <com.ion.ionizer.preferences.SystemSettingSeekBarPreference
         android:key="qs_columns_portrait"
         android:title="@string/qs_columns_portrait_title"
         android:max="8"
         android:min="3"
         settings:units=""
         android:defaultValue="3"
+        android:persistent="false" />
+
+    <com.ion.ionizer.preferences.SystemSettingSeekBarPreference
+        android:key="qs_rows_landscape"
+        android:title="@string/qs_rows_landscape_title"
+        android:max="2"
+        android:min="1"
+        settings:units=""
+        android:defaultValue="2"
         android:persistent="false" />
 
     <com.ion.ionizer.preferences.SystemSettingSeekBarPreference
@@ -106,6 +124,12 @@
             android:key="qs_edit_toggle"
             android:title="@string/qs_edit_title"
             android:summary="@string/qs_edit_summary"
+            android:defaultValue="true" />
+
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+            android:key="ion_footer_text_show"
+            android:title="@string/ion_footer_text_show_title"
+            android:summary="@string/ion_footer_text_show_summary"
             android:defaultValue="true" />
 
         <com.ion.ionizer.preferences.SystemSettingSwitchPreference
