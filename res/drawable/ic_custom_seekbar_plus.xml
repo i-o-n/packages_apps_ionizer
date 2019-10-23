@@ -14,12 +14,12 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="rectangle">
-
-    <gradient
-        android:startColor="@color/list_background_pressed"
-        android:endColor="@color/list_background_pressed"
-        android:angle="90" />
-
-</shape>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="24.0dp"
+        android:height="24.0dp"
+        android:viewportWidth="48.0"
+        android:viewportHeight="48.0" >
+    <path
+        android:fillColor="?android:attr/colorControlNormal"
+        android:pathData="M38.0,26.0L26.0,26.0l0.0,12.0l-4.0,0.0L22.0,26.0L10.0,26.0l0.0,-4.0l12.0,0.0L22.0,10.0l4.0,0.0l0.0,12.0l12.0,0.0l0.0,4.0z" />
+</vector>

@@ -28,6 +28,7 @@ import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.SwitchPreference;
 
 import com.android.internal.logging.nano.MetricsProto; 
+import com.android.internal.util.hwkeys.ActionUtils;
 import com.android.settings.SettingsPreferenceFragment;
 
 import com.ion.ionizer.R;
@@ -36,11 +37,21 @@ public class Navigation extends SettingsPreferenceFragment {
 
     public static final String TAG = "Navigation";
 
+    private static final String PREF_HW_BUTTONS = "hw_buttons";
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.ion_settings_navigation);
+
+        final boolean needsNavbar = ActionUtils.hasNavbarByDefault(getActivity());
+        // bits for hardware keys present on device
+        final int deviceKeys = getResources().getInteger(
+                com.android.internal.R.integer.config_deviceHardwareKeys);
+        if (needsNavbar && deviceKeys == 0) {
+            getPreferenceScreen().removePreference(findPreference(PREF_HW_BUTTONS));
+        }
     }
 
     @Override

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package net.margaritov.preference.colorpicker;
+package com.ion.ionizer.colorpicker;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -54,7 +54,9 @@ public class AlphaPatternDrawable extends Drawable {
 
     @Override
     public void draw(Canvas canvas) {
-        canvas.drawBitmap(mBitmap, null, getBounds(), mPaint);
+        if (mBitmap != null) {
+            canvas.drawBitmap(mBitmap, null, getBounds(), mPaint);
+        }
     }
 
     @Override

@@ -32,14 +32,19 @@ import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.SettingsPreferenceFragment;
 
 import com.ion.ionizer.preferences.Utils;
+import com.ion.ionizer.preferences.GlobalSettingMasterSwitchPreference;
 
 import com.ion.ionizer.R;
 
-public class Notifications extends SettingsPreferenceFragment {
+public class Notifications extends SettingsPreferenceFragment
+        implements Preference.OnPreferenceChangeListener {
 
     public static final String TAG = "Notifications";
 
+    private static final String HEADS_UP_NOTIFICATIONS_ENABLED = "heads_up_notifications_enabled";
     private static final String INCALL_VIB_OPTIONS = "incall_vib_options";
+
+    private GlobalSettingMasterSwitchPreference mHeadsUpEnabled;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,6 +58,37 @@ public class Notifications extends SettingsPreferenceFragment {
         if (!Utils.isVoiceCapable(getActivity())) {
             prefScreen.removePreference(incallVibCategory);
         }
+
+        mHeadsUpEnabled = (GlobalSettingMasterSwitchPreference) findPreference(HEADS_UP_NOTIFICATIONS_ENABLED);
+        mHeadsUpEnabled.setOnPreferenceChangeListener(this);
+        int headsUpEnabled = Settings.Global.getInt(getContentResolver(),
+                HEADS_UP_NOTIFICATIONS_ENABLED, 1);
+        mHeadsUpEnabled.setChecked(headsUpEnabled != 0);
+        if (headsUpEnabled != 0) {
+            mHeadsUpEnabled.setSummary(getActivity().getString(
+                        R.string.summary_heads_up_enabled));
+        } else {
+            mHeadsUpEnabled.setSummary(getActivity().getString(
+                        R.string.summary_heads_up_disabled));
+        }
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object objValue) {
+        if (preference == mHeadsUpEnabled) {
+            boolean value = (Boolean) objValue;
+            Settings.Global.putInt(getContentResolver(),
+		            HEADS_UP_NOTIFICATIONS_ENABLED, value ? 1 : 0);
+            if (value) {
+                mHeadsUpEnabled.setSummary(getActivity().getString(
+                            R.string.summary_heads_up_enabled));
+            } else {
+                mHeadsUpEnabled.setSummary(getActivity().getString(
+                            R.string.summary_heads_up_disabled));
+            }
+            return true;
+        }
+        return false;
     }
 
     @Override

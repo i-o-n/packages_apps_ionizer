@@ -16,17 +16,9 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <com.ion.ionizer.preferences.GlobalSettingSwitchPreference
-        android:key="heads_up_notifications_enabled"
-        android:title="@string/heads_up_notifications"
-        android:summaryOn="@string/summary_heads_up_enabled"
-        android:summaryOff="@string/summary_heads_up_disabled"
-        android:defaultValue="true" />
-
     <PreferenceCategory
         android:title="@string/heads_up_stoplist_title"
-        android:key="stoplist_applications"
-        android:dependency="heads_up_notifications_enabled" >
+        android:key="stoplist_applications" >
         <Preference
             android:key="add_stoplist_packages"
             android:icon="@drawable/ic_menu_add_activated_tint"
@@ -36,13 +28,11 @@
 
     <PreferenceCategory
         android:title="@string/heads_up_blacklist_title"
-        android:key="blacklist_applications"
-        android:dependency="heads_up_notifications_enabled" >
+        android:key="blacklist_applications" >
         <Preference
             android:key="add_blacklist_packages"
             android:icon="@drawable/ic_menu_add_activated_tint"
             android:title="@string/add_heads_up_package"
             android:summary="@string/add_heads_up_blacklist_summary" />
     </PreferenceCategory>
-
 </PreferenceScreen>

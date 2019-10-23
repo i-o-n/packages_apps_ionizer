@@ -130,7 +130,8 @@
             android:key="ion_footer_text_show"
             android:title="@string/ion_footer_text_show_title"
             android:summary="@string/ion_footer_text_show_summary"
-            android:defaultValue="true" />
+            android:defaultValue="true"
+            android:dependency="qs_edit_toggle" />
 
         <com.ion.ionizer.preferences.SystemSettingSwitchPreference
             android:key="qs_footer_show_settings"

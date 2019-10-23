@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 AICP
+ * Copyright (C) 2016-2019 crDroid Android Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,34 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.ion.ionizer.preferences;
 
 import android.content.Context;
 import android.util.AttributeSet;
 
-public class SystemSettingIntListPreference extends SystemSettingListPreference {
+public class GlobalSettingSeekBarPreference extends CustomSeekBarPreference {
 
-    public SystemSettingIntListPreference(Context context, AttributeSet attrs, int defStyle) {
+    public GlobalSettingSeekBarPreference(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        setPreferenceDataStore(new GlobalSettingsStore(context.getContentResolver()));
     }
 
-    public SystemSettingIntListPreference(Context context, AttributeSet attrs) {
+    public GlobalSettingSeekBarPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
+        setPreferenceDataStore(new GlobalSettingsStore(context.getContentResolver()));
     }
 
-    public SystemSettingIntListPreference(Context context) {
-        super(context);
+    public GlobalSettingSeekBarPreference(Context context) {
+        super(context, null);
+        setPreferenceDataStore(new GlobalSettingsStore(context.getContentResolver()));
     }
-
-    @Override
-    protected boolean persistString(String value) {
-        return persistInt(Integer.parseInt(value));
-    }
-
-    @Override
-    protected String getPersistedString(String defaultReturnValue) {
-        return String.valueOf(getPersistedInt(Integer.parseInt(defaultReturnValue)));
-    }
-
 }

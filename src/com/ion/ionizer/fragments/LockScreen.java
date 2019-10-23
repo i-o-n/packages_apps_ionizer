@@ -69,7 +69,7 @@ public class LockScreen extends SettingsPreferenceFragment implements
         mFingerprintVib.setOnPreferenceChangeListener(this);
         }
 
-        int defaultBlur = 25;
+        int defaultBlur = 100;
         mLockscreenMediaBlur = (SystemSettingSeekBarPreference) findPreference(KEY_LOCKSCREEN_MEDIA_BLUR);
         int value = Settings.System.getInt(getContentResolver(),
                 Settings.System.LOCKSCREEN_MEDIA_BLUR, defaultBlur);
