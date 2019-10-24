@@ -40,8 +40,9 @@
             ionionizer:units="%"
             android:dependency="lockscreen_media_metadata" />
 
-        <com.ion.ionizer.preferences.SecureSettingSwitchPreference
+        <com.ion.ionizer.preferences.SecureSettingMasterSwitchPreference
             android:key="lockscreen_visualizer_enabled"
+            android:fragment="com.ion.ionizer.fragments.Visualizer"
             android:title="@string/lockscreen_visualizer_enable"
             android:summary="@string/lockscreen_visualizer_enable_summary"
             android:defaultValue="false" />

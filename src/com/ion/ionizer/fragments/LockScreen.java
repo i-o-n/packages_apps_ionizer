@@ -37,6 +37,7 @@ import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
+import com.ion.ionizer.preferences.SecureSettingMasterSwitchPreference;
 import com.ion.ionizer.preferences.SystemSettingSeekBarPreference;
 
 public class LockScreen extends SettingsPreferenceFragment implements
@@ -44,10 +45,12 @@ public class LockScreen extends SettingsPreferenceFragment implements
 
     private static final String FINGERPRINT_VIB = "fingerprint_success_vib";
     private static final String KEY_LOCKSCREEN_MEDIA_BLUR = "lockscreen_media_blur";
+    private static final String LOCKSCREEN_VISUALIZER_ENABLED = "lockscreen_visualizer_enabled";
 
     private FingerprintManager mFingerprintManager;
     private SwitchPreference mFingerprintVib;
     private SystemSettingSeekBarPreference mLockscreenMediaBlur;
+    private SecureSettingMasterSwitchPreference mVisualizerEnabled;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -75,6 +78,12 @@ public class LockScreen extends SettingsPreferenceFragment implements
                 Settings.System.LOCKSCREEN_MEDIA_BLUR, defaultBlur);
         mLockscreenMediaBlur.setValue(value);
         mLockscreenMediaBlur.setOnPreferenceChangeListener(this);
+
+        mVisualizerEnabled = (SecureSettingMasterSwitchPreference) findPreference(LOCKSCREEN_VISUALIZER_ENABLED);
+        mVisualizerEnabled.setOnPreferenceChangeListener(this);
+        int visualizerEnabled = Settings.Secure.getInt(resolver,
+                LOCKSCREEN_VISUALIZER_ENABLED, 0);
+        mVisualizerEnabled.setChecked(visualizerEnabled != 0);
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -88,6 +97,11 @@ public class LockScreen extends SettingsPreferenceFragment implements
             int value = (Integer) newValue;
             Settings.System.putInt(getContentResolver(),
                     Settings.System.LOCKSCREEN_MEDIA_BLUR, value);
+            return true;
+        } else if (preference == mVisualizerEnabled) {
+            boolean value = (Boolean) newValue;
+            Settings.Secure.putInt(getContentResolver(),
+		            LOCKSCREEN_VISUALIZER_ENABLED, value ? 1 : 0);
             return true;
         }
         return false;
