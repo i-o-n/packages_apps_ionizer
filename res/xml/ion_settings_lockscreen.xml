@@ -38,8 +38,13 @@
             android:defaultValue="100"
             settings:interval="2"
             ionionizer:units="%"
-            android:dependency="lockscreen_media_metadata"
-            android:persistent="false" />
+            android:dependency="lockscreen_media_metadata" />
+
+        <com.ion.ionizer.preferences.SecureSettingSwitchPreference
+            android:key="lockscreen_visualizer_enabled"
+            android:title="@string/lockscreen_visualizer_enable"
+            android:summary="@string/lockscreen_visualizer_enable_summary"
+            android:defaultValue="false" />
     </PreferenceCategory>
 
     <PreferenceCategory
