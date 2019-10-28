@@ -90,6 +90,14 @@
             android:summary="@string/show_qs_clock_summary"
             android:defaultValue="true" />
 
+        <com.ion.ionizer.preferences.SystemSettingListPreference
+            android:key="qs_system_info"
+            android:title="@string/qs_system_info_title"
+            android:entries="@array/qs_system_info_entries"
+            android:entryValues="@array/qs_system_info_values"
+            android:defaultValue="0"
+            android:summary="%s" />
+
         <com.ion.ionizer.preferences.SecureSettingSwitchPreference
             android:key="qs_battery_location_bar"
             android:title="@string/qs_battery_location_bar"
