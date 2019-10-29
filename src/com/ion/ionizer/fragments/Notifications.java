@@ -35,6 +35,7 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.ion.ionizer.preferences.Utils;
 import com.ion.ionizer.preferences.GlobalSettingMasterSwitchPreference;
 import com.ion.ionizer.preferences.SystemSettingMasterSwitchPreference;
+import com.ion.ionizer.preferences.CustomSeekBarPreference;
 
 import com.ion.ionizer.R;
 
@@ -47,9 +48,13 @@ public class Notifications extends DashboardFragment
     private static final String INCALL_VIB_OPTIONS = "incall_vib_options";
     private static final String BATTERY_LIGHT_ENABLED = "battery_light_enabled";
     private static final String BATTERY_LED = "battery_led_category";
+    private static final String KEY_PULSE_BRIGHTNESS = "ambient_pulse_brightness";
+    private static final String KEY_DOZE_BRIGHTNESS = "ambient_doze_brightness";
 
     private GlobalSettingMasterSwitchPreference mHeadsUpEnabled;
     private SystemSettingMasterSwitchPreference mBatteryLightx;
+    private CustomSeekBarPreference mPulseBrightness;
+    private CustomSeekBarPreference mDozeBrightness;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -86,6 +91,28 @@ public class Notifications extends DashboardFragment
                         com.android.internal.R.bool.config_intrusiveBatteryLed)) {
             prefScreen.removePreference(batteryLightxx);
         }
+
+        int defaultDoze = getResources().getInteger(
+                com.android.internal.R.integer.config_screenBrightnessDoze);
+        int defaultPulse = getResources().getInteger(
+                com.android.internal.R.integer.config_screenBrightnessPulse);
+        if (defaultPulse == -1) {
+            defaultPulse = defaultDoze;
+        }
+
+        mPulseBrightness = (CustomSeekBarPreference) findPreference(KEY_PULSE_BRIGHTNESS);
+        int value = Settings.System.getInt(getContentResolver(),
+                Settings.System.PULSE_BRIGHTNESS, defaultPulse);
+        mPulseBrightness.setValue(value);
+        mPulseBrightness.setDefaultValue(defaultPulse, true);
+        mPulseBrightness.setOnPreferenceChangeListener(this);
+
+        mDozeBrightness = (CustomSeekBarPreference) findPreference(KEY_DOZE_BRIGHTNESS);
+        value = Settings.System.getInt(getContentResolver(),
+                Settings.System.DOZE_BRIGHTNESS, defaultDoze);
+        mDozeBrightness.setValue(value);
+        mDozeBrightness.setDefaultValue(defaultDoze, true);
+        mDozeBrightness.setOnPreferenceChangeListener(this);
    }
 
     @Override
@@ -106,6 +133,16 @@ public class Notifications extends DashboardFragment
             boolean value = (Boolean) objValue;
             Settings.System.putInt(getContentResolver(),
 		            BATTERY_LIGHT_ENABLED, value ? 1 : 0);
+            return true;
+        } else if (preference == mPulseBrightness) {
+            int value = (Integer) objValue;
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.PULSE_BRIGHTNESS, value);
+            return true;
+        } else if (preference == mDozeBrightness) {
+            int value = (Integer) objValue;
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.DOZE_BRIGHTNESS, value);
             return true;
         }
         return false;
