@@ -44,12 +44,10 @@ public class LockScreen extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
     private static final String FINGERPRINT_VIB = "fingerprint_success_vib";
-    private static final String KEY_LOCKSCREEN_MEDIA_BLUR = "lockscreen_media_blur";
     private static final String LOCKSCREEN_VISUALIZER_ENABLED = "lockscreen_visualizer_enabled";
 
     private FingerprintManager mFingerprintManager;
     private SwitchPreference mFingerprintVib;
-    private SystemSettingSeekBarPreference mLockscreenMediaBlur;
     private SecureSettingMasterSwitchPreference mVisualizerEnabled;
 
     @Override
@@ -72,13 +70,6 @@ public class LockScreen extends SettingsPreferenceFragment implements
         mFingerprintVib.setOnPreferenceChangeListener(this);
         }
 
-        int defaultBlur = 100;
-        mLockscreenMediaBlur = (SystemSettingSeekBarPreference) findPreference(KEY_LOCKSCREEN_MEDIA_BLUR);
-        int value = Settings.System.getInt(getContentResolver(),
-                Settings.System.LOCKSCREEN_MEDIA_BLUR, defaultBlur);
-        mLockscreenMediaBlur.setValue(value);
-        mLockscreenMediaBlur.setOnPreferenceChangeListener(this);
-
         mVisualizerEnabled = (SecureSettingMasterSwitchPreference) findPreference(LOCKSCREEN_VISUALIZER_ENABLED);
         mVisualizerEnabled.setOnPreferenceChangeListener(this);
         int visualizerEnabled = Settings.Secure.getInt(resolver,
@@ -92,11 +83,6 @@ public class LockScreen extends SettingsPreferenceFragment implements
             boolean value = (Boolean) newValue;
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.FINGERPRINT_SUCCESS_VIB, value ? 1 : 0);
-            return true;
-        } else if (preference == mLockscreenMediaBlur) {
-            int value = (Integer) newValue;
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.LOCKSCREEN_MEDIA_BLUR, value);
             return true;
         } else if (preference == mVisualizerEnabled) {
             boolean value = (Boolean) newValue;
