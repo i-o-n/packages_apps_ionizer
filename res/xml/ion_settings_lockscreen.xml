@@ -79,7 +79,7 @@
     <PreferenceCategory
         android:title="@string/lockscreen_unl">
 
-        <SwitchPreference
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
             android:key="fingerprint_success_vib"
             android:title="@string/fprint_sucess_vib_title"
             android:summary="@string/fprint_sucess_vib_summary"

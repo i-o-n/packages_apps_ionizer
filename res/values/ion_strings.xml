@@ -228,8 +228,8 @@
     <string name="show_cpu_summary">Screen overlay showing current CPU info</string>
 
     <!-- Fingerprint unlock keystore -->
-    <string name="fp_unlock_keystore_title">Fingerprint unlock</string>
-    <string name="fp_unlock_keystore_summary">Unlock device with fingerprint after reboot without PIN/Password/Pattern\nNote: at your own risk!</string>
+    <string name="fp_unlock_keystore_title">Force Biometric unlock</string>
+    <string name="fp_unlock_keystore_summary">Unlock device with biometric after reboot without PIN/Password/Pattern\nNote: at your own risk!</string>
 
     <!-- QS footer warnings -->
     <string name="qs_footer_warnings_title">QS footer warnings</string>
