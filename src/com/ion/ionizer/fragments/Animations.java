@@ -38,10 +38,6 @@ public class Animations extends SettingsPreferenceFragment
 
     public static final String TAG = "Animations";
 
-    private static final String KEY_SCREEN_OFF_ANIMATION = "screen_off_animation";
-
-    private ListPreference mScreenOffAnimation;
-
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -49,25 +45,12 @@ public class Animations extends SettingsPreferenceFragment
 
         ContentResolver resolver = getActivity().getContentResolver();
         PreferenceScreen prefs = getPreferenceScreen();
-
-        mScreenOffAnimation = (ListPreference) findPreference(KEY_SCREEN_OFF_ANIMATION);
-        int screenOffAnimation = Settings.System.getInt(getContentResolver(),
-                Settings.System.SCREEN_OFF_ANIMATION, 0);
-        mScreenOffAnimation.setValue(Integer.toString(screenOffAnimation));
-        mScreenOffAnimation.setSummary(mScreenOffAnimation.getEntry());
-        mScreenOffAnimation.setOnPreferenceChangeListener(this);
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getActivity().getContentResolver();
-        if (preference == mScreenOffAnimation) {
-            int value = Integer.valueOf((String) newValue);
-            int index = mScreenOffAnimation.findIndexOfValue((String) newValue);
-            mScreenOffAnimation.setSummary(mScreenOffAnimation.getEntries()[index]);
-            Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_OFF_ANIMATION, value);
-            return true;
-        }
+
         return false;
     }
 

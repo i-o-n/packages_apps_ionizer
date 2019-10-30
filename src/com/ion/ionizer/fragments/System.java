@@ -40,8 +40,10 @@ public class System extends SettingsPreferenceFragment
     public static final String TAG = "System";
 
     private static final String SHOW_CPU_INFO_KEY = "show_cpu_info";
+    private static final String KEY_SCREEN_OFF_ANIMATION = "screen_off_animation";
 
     private SwitchPreference mShowCpuInfo;
+    private ListPreference mScreenOffAnimation;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,13 @@ public class System extends SettingsPreferenceFragment
         mShowCpuInfo.setChecked(Settings.Global.getInt(getActivity().getContentResolver(),
                 Settings.Global.SHOW_CPU_OVERLAY, 0) == 1);
         mShowCpuInfo.setOnPreferenceChangeListener(this);
+
+        mScreenOffAnimation = (ListPreference) findPreference(KEY_SCREEN_OFF_ANIMATION);
+        int screenOffAnimation = Settings.System.getInt(getContentResolver(),
+                Settings.System.SCREEN_OFF_ANIMATION, 0);
+        mScreenOffAnimation.setValue(Integer.toString(screenOffAnimation));
+        mScreenOffAnimation.setSummary(mScreenOffAnimation.getEntry());
+        mScreenOffAnimation.setOnPreferenceChangeListener(this);
     }
 
     private void writeCpuInfoOptions(boolean value) {
@@ -73,6 +82,12 @@ public class System extends SettingsPreferenceFragment
         ContentResolver resolver = getActivity().getContentResolver();
         if (preference == mShowCpuInfo) {
             writeCpuInfoOptions((Boolean) newValue);
+            return true;
+        } else if (preference == mScreenOffAnimation) {
+            int value = Integer.valueOf((String) newValue);
+            int index = mScreenOffAnimation.findIndexOfValue((String) newValue);
+            mScreenOffAnimation.setSummary(mScreenOffAnimation.getEntries()[index]);
+            Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_OFF_ANIMATION, value);
             return true;
         }
         return false;

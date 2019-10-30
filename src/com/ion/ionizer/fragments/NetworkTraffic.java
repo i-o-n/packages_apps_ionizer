@@ -84,7 +84,7 @@ public class NetworkTraffic extends SettingsPreferenceFragment implements
         mThreshold.setOnPreferenceChangeListener(this);
 
         int nettype = Settings.System.getIntForUser(resolver,
-                Settings.System.NETWORK_TRAFFIC_TYPE, 0, UserHandle.USER_CURRENT);
+                Settings.System.NETWORK_TRAFFIC_TYPE, 3, UserHandle.USER_CURRENT);
         mNetTrafficType = (ListPreference) findPreference("network_traffic_type");
         mNetTrafficType.setValue(String.valueOf(nettype));
         mNetTrafficType.setSummary(mNetTrafficType.getEntry());
