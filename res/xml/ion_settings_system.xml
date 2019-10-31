@@ -43,11 +43,4 @@
         android:entryValues="@array/screen_off_animation_values"
         android:persistent="false"
         android:defaultValue="0" />
-
-    <com.ion.ionizer.preferences.SystemSettingMasterSwitchPreference
-        android:key="smart_pixels_enable"
-        android:fragment="com.ion.ionizer.fragments.SmartPixels"
-        android:title="@string/smart_pixels_title"
-        android:summary="@string/smart_pixels_summary"
-        android:defaultValue="false" />
 </PreferenceScreen>
