@@ -79,6 +79,7 @@ public class Visualizer extends SettingsPreferenceFragment implements
                 mAutoColor.setSummary(getActivity().getString(
                         R.string.lockscreen_autocolor_summary));
             }
+            mAutoColor.setEnabled(!mLavaLampEnabled);
             return true;
         }
         return false;
