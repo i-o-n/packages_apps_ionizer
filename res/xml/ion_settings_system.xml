@@ -23,6 +23,13 @@
         android:title="@string/show_cpu_title"
         android:summary="@string/show_cpu_summary"/>
 
+    <com.ion.ionizer.preferences.SystemSettingMasterSwitchPreference
+        android:key="screen_state_toggles_enable_key"
+        android:fragment="com.ion.ionizer.fragments.ScreenStateToggles"
+        android:title="@string/screen_state_toggles_title"
+        android:summary="@string/screen_state_toggles_summary"
+        android:defaultValue="false" />
+
     <Preference
         android:id="@+id/alarm_blocker"
         android:title="@string/alarm_blocker"
