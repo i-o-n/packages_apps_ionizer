@@ -62,6 +62,9 @@ public class Animations extends SettingsPreferenceFragment
     private static final String WALLPAPER_INTRA_CLOSE = "wallpaper_intra_close";
     private static final String KEY_SCREEN_OFF_ANIMATION = "screen_off_animation";
 
+    private static final String PREF_TILE_ANIM_STYLE = "qs_tile_animation_style";
+    private static final String PREF_TILE_ANIM_DURATION = "qs_tile_animation_duration";
+
     private CustomSeekBarPreference mAnimDuration;
     ListPreference mActivityOpenPref;
     ListPreference mActivityClosePref;
@@ -75,6 +78,9 @@ public class Animations extends SettingsPreferenceFragment
     ListPreference mWallpaperIntraOpen;
     ListPreference mWallpaperIntraClose;
     private ListPreference mScreenOffAnimation;
+
+    private ListPreference mTileAnimationStyle;
+    private ListPreference mTileAnimationDuration;
 
     private int[] mAnimations;
     private String[] mAnimationsStrings;
@@ -176,6 +182,21 @@ public class Animations extends SettingsPreferenceFragment
         mScreenOffAnimation.setValue(Integer.toString(screenOffAnimation));
         mScreenOffAnimation.setSummary(mScreenOffAnimation.getEntry());
         mScreenOffAnimation.setOnPreferenceChangeListener(this);
+
+        mTileAnimationStyle = (ListPreference) findPreference(PREF_TILE_ANIM_STYLE);
+        int tileAnimationStyle = Settings.System.getIntForUser(getContentResolver(),
+                Settings.System.ANIM_TILE_STYLE, 0, UserHandle.USER_CURRENT);
+        mTileAnimationStyle.setValue(String.valueOf(tileAnimationStyle));
+        updateTileAnimationStyleSummary(tileAnimationStyle);
+        updateAnimTileStyle(tileAnimationStyle);
+
+        mTileAnimationStyle.setOnPreferenceChangeListener(this);
+        mTileAnimationDuration = (ListPreference) findPreference(PREF_TILE_ANIM_DURATION);
+        int tileAnimationDuration = Settings.System.getIntForUser(getContentResolver(),
+                Settings.System.ANIM_TILE_DURATION, 2000, UserHandle.USER_CURRENT);
+        mTileAnimationDuration.setValue(String.valueOf(tileAnimationDuration));
+        updateTileAnimationDurationSummary(tileAnimationDuration);
+        mTileAnimationDuration.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -258,7 +279,19 @@ public class Animations extends SettingsPreferenceFragment
             mScreenOffAnimation.setSummary(mScreenOffAnimation.getEntries()[index]);
             Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_OFF_ANIMATION, value);
             return true;
-
+        } else if (preference == mTileAnimationStyle) {
+            int tileAnimationStyle = Integer.valueOf((String) newValue);
+            Settings.System.putIntForUser(getContentResolver(), Settings.System.ANIM_TILE_STYLE,
+                    tileAnimationStyle, UserHandle.USER_CURRENT);
+            updateTileAnimationStyleSummary(tileAnimationStyle);
+            updateAnimTileStyle(tileAnimationStyle);
+            return true;
+        } else if (preference == mTileAnimationDuration) {
+            int tileAnimationDuration = Integer.valueOf((String) newValue);
+            Settings.System.putIntForUser(getContentResolver(), Settings.System.ANIM_TILE_DURATION,
+                    tileAnimationDuration, UserHandle.USER_CURRENT);
+            updateTileAnimationDurationSummary(tileAnimationDuration);
+            return true;
         }
         return false;
     }
@@ -292,6 +325,28 @@ public class Animations extends SettingsPreferenceFragment
         int mNum = Settings.Global.getInt(getActivity().getContentResolver(),
                     mString, 0);
         return mAnimationsStrings[mNum];
+    }
+
+    private void updateTileAnimationStyleSummary(int tileAnimationStyle) {
+        String prefix = (String) mTileAnimationStyle.getEntries()[mTileAnimationStyle.findIndexOfValue(String
+                .valueOf(tileAnimationStyle))];
+        mTileAnimationStyle.setSummary(getResources().getString(R.string.qs_set_animation_style, prefix));
+    }
+
+    private void updateTileAnimationDurationSummary(int tileAnimationDuration) {
+        String prefix = (String) mTileAnimationDuration.getEntries()[mTileAnimationDuration.findIndexOfValue(String
+                .valueOf(tileAnimationDuration))];
+        mTileAnimationDuration.setSummary(getResources().getString(R.string.qs_set_animation_duration, prefix));
+    }
+
+    private void updateAnimTileStyle(int tileAnimationStyle) {
+        if (mTileAnimationDuration != null) {
+            if (tileAnimationStyle == 0) {
+                mTileAnimationDuration.setEnabled(false);
+            } else {
+                mTileAnimationDuration.setEnabled(true);
+            }
+        }
     }
 
     @Override
