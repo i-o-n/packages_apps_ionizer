@@ -77,5 +77,15 @@
             android:title="@string/torch_power_button_gesture_title"
             android:entries="@array/torch_power_button_gesture_entries"
             android:entryValues="@array/torch_power_button_gesture_values" />
+
+        <com.ion.ionizer.preferences.SystemSettingSeekBarPreference
+            android:key="torch_long_press_power_timeout"
+            android:title="@string/torch_long_press_power_timeout_title"
+            android:summary="@string/torch_long_press_power_timeout_summary"
+            android:max="60"
+            settings:min="0"
+            android:defaultValue="10"
+            settings:interval="1"
+            settings:units="min" />
     </PreferenceCategory>
 </PreferenceScreen>
