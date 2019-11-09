@@ -287,10 +287,6 @@
     <string name="charging_animation_title">Charging animation</string>
     <string name="charging_animation_summary">Display an animation when the device is plugged in</string>
 
-    <!-- Batter percentage with estimate -->
-    <string name="battery_pct_with_estimate_title">Battery Percent</string>
-    <string name="battery_pct_with_estimate_summary">Show battery percentage in QS along with estimate</string>
-
     <!-- Quick settings tiles columns and rows config -->
     <string name="qs_rows_portrait_title">Rows (Portrait)</string>
     <string name="qs_rows_landscape_title">Rows (Landscape)</string>

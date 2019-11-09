@@ -96,12 +96,6 @@
             android:summary="@string/qs_battery_location_bar_summary"
             android:defaultValue="false" />
 
-        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
-            android:key="battery_pct_with_estimate"
-            android:title="@string/battery_pct_with_estimate_title"
-            android:summary="@string/battery_pct_with_estimate_summary"
-            android:defaultValue="false" />
-
         <com.ion.ionizer.preferences.SystemSettingListPreference
             android:key="qs_battery_mode"
             android:title="@string/battery_percentage_title"
