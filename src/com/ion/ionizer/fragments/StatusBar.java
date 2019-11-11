@@ -150,13 +150,14 @@ public class StatusBar extends SettingsPreferenceFragment implements
 
     private void updateBatteryOptions(int batterystyle) {
         boolean enabled = batterystyle != BATTERY_STYLE_TEXT && batterystyle != BATTERY_STYLE_HIDDEN;
+        boolean enabledx = batterystyle != BATTERY_STYLE_TEXT;
         if (batterystyle == BATTERY_STYLE_HIDDEN) {
             mBatteryPercent.setValue(BATTERY_PERCENTAGE_HIDDEN);
             mBatteryPercent.setSummary(mBatteryPercent.getEntry());
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, 0);
         }
-        mBatteryCharging.setEnabled(enabled);
+        mBatteryCharging.setEnabled(enabledx);
         mBatteryPercent.setEnabled(enabled);
     }
 

@@ -40,6 +40,8 @@ import androidx.preference.SwitchPreference;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
+import com.ion.ionizer.preferences.SystemSettingSeekBarPreference;
+
 import com.android.internal.logging.nano.MetricsProto;
 
 public class Buttons extends SettingsPreferenceFragment implements
@@ -48,9 +50,11 @@ public class Buttons extends SettingsPreferenceFragment implements
 
     private static final String KEY_VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
     private static final String TORCH_POWER_BUTTON_GESTURE = "torch_power_button_gesture";
+    private static final String TORCH_POWER_BUTTON_TIMEOUT = "torch_long_press_power_timeout";
 
     private ListPreference mVolumeKeyCursorControl;
     private ListPreference mTorchPowerButton;
+    private SystemSettingSeekBarPreference mTorchPowerButtonTimeout;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -70,8 +74,14 @@ public class Buttons extends SettingsPreferenceFragment implements
 
         // screen off torch
         mTorchPowerButton = (ListPreference) findPreference(TORCH_POWER_BUTTON_GESTURE);
+        mTorchPowerButtonTimeout = (SystemSettingSeekBarPreference) findPreference(TORCH_POWER_BUTTON_TIMEOUT);
         int mTorchPowerButtonValue = Settings.Secure.getInt(resolver,
                 Settings.Secure.TORCH_POWER_BUTTON_GESTURE, 0);
+        if (mTorchPowerButtonValue == 0) {
+            mTorchPowerButtonTimeout.setEnabled(false);
+        } else {
+            mTorchPowerButtonTimeout.setEnabled(true);
+        }
         mTorchPowerButton.setValue(Integer.toString(mTorchPowerButtonValue));
         mTorchPowerButton.setSummary(mTorchPowerButton.getEntry());
         mTorchPowerButton.setOnPreferenceChangeListener(this);
@@ -116,6 +126,11 @@ public class Buttons extends SettingsPreferenceFragment implements
                 Toast.makeText(getActivity(),
                     (R.string.torch_power_button_gesture_dt_toast),
                     Toast.LENGTH_SHORT).show();
+            }
+            if (mTorchPowerButtonValue != 0) {
+                mTorchPowerButtonTimeout.setEnabled(true);
+            } else {
+                mTorchPowerButtonTimeout.setEnabled(false);
             }
             return true;
         }
