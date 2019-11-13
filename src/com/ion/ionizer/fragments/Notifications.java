@@ -34,6 +34,7 @@ import com.android.settings.SettingsPreferenceFragment;
 
 import com.ion.ionizer.preferences.Utils;
 import com.ion.ionizer.preferences.GlobalSettingMasterSwitchPreference;
+import com.ion.ionizer.preferences.SystemSettingMasterSwitchPreference;
 
 import com.ion.ionizer.R;
 
@@ -44,8 +45,11 @@ public class Notifications extends DashboardFragment
 
     private static final String HEADS_UP_NOTIFICATIONS_ENABLED = "heads_up_notifications_enabled";
     private static final String INCALL_VIB_OPTIONS = "incall_vib_options";
+    private static final String BATTERY_LIGHT_ENABLED = "battery_light_enabled";
+    private static final String BATTERY_LED = "battery_led_category";
 
     private GlobalSettingMasterSwitchPreference mHeadsUpEnabled;
+    private SystemSettingMasterSwitchPreference mBatteryLightx;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -70,7 +74,19 @@ public class Notifications extends DashboardFragment
             mHeadsUpEnabled.setSummary(getActivity().getString(
                         R.string.summary_heads_up_disabled));
         }
-    }
+
+        mBatteryLightx = (SystemSettingMasterSwitchPreference) findPreference(BATTERY_LIGHT_ENABLED);
+        mBatteryLightx.setOnPreferenceChangeListener(this);
+        int batteryLight = Settings.System.getInt(getContentResolver(),
+                BATTERY_LIGHT_ENABLED, 1);
+        mBatteryLightx.setChecked(batteryLight != 0);
+
+        PreferenceCategory batteryLightxx = (PreferenceCategory) findPreference(BATTERY_LED);
+        if (!getResources().getBoolean(
+                        com.android.internal.R.bool.config_intrusiveBatteryLed)) {
+            prefScreen.removePreference(batteryLightxx);
+        }
+   }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
@@ -85,6 +101,11 @@ public class Notifications extends DashboardFragment
                 mHeadsUpEnabled.setSummary(getActivity().getString(
                             R.string.summary_heads_up_disabled));
             }
+            return true;
+        } else if (preference == mBatteryLightx) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putInt(getContentResolver(),
+		            BATTERY_LIGHT_ENABLED, value ? 1 : 0);
             return true;
         }
         return false;

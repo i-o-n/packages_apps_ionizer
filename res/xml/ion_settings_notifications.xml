@@ -83,4 +83,16 @@
             android:summary="@string/wakeup_when_plugged_unplugged_summary"
             android:defaultValue="true" />
     </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="battery_led_category"
+        android:title="@string/light_settings_header" >
+
+        <com.ion.ionizer.preferences.SystemSettingMasterSwitchPreference
+            android:key="battery_light_enabled"
+            android:title="@string/battery_light_settings"
+            android:summary="@string/battery_light_summary"
+            android:fragment="com.ion.ionizer.fragments.BatteryLightSettings"
+            android:defaultValue="true" />
+    </PreferenceCategory>
 </PreferenceScreen>
