@@ -69,6 +69,7 @@ public class StatusBar extends SettingsPreferenceFragment implements
     private static final String STATUS_BAR_BATTERY_TEXT_CHARGING = "status_bar_battery_text_charging";
     private static final String BATTERY_PERCENTAGE_HIDDEN = "0";
     private static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
+    private static final String BATTERY_TEXT_CHARGING_SYMBOL = "text_charging_symbol";
 
     private static final int BATTERY_STYLE_Q = 0;
     private static final int BATTERY_STYLE_DOTTED_CIRCLE = 1;
@@ -82,6 +83,7 @@ public class StatusBar extends SettingsPreferenceFragment implements
     private ListPreference mBatteryPercent;
     private ListPreference mBatteryStyle;
     private SwitchPreference mBatteryCharging;
+    private ListPreference mBatteryText;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -113,6 +115,7 @@ public class StatusBar extends SettingsPreferenceFragment implements
         mBatteryPercent = (ListPreference) findPreference(STATUS_BAR_SHOW_BATTERY_PERCENT);
         mBatteryCharging = (SwitchPreference) findPreference(STATUS_BAR_BATTERY_TEXT_CHARGING);
         mBatteryStyle = (ListPreference) findPreference(STATUS_BAR_BATTERY_STYLE);
+        mBatteryText = (ListPreference) findPreference(BATTERY_TEXT_CHARGING_SYMBOL);
         int batterystyle = Settings.System.getInt(resolver,
                 Settings.System.STATUS_BAR_BATTERY_STYLE, BATTERY_STYLE_Q);
         mBatteryStyle.setOnPreferenceChangeListener(this);
@@ -159,6 +162,7 @@ public class StatusBar extends SettingsPreferenceFragment implements
         }
         mBatteryCharging.setEnabled(enabledx);
         mBatteryPercent.setEnabled(enabled);
+        mBatteryText.setEnabled(!enabled);
     }
 
     private void updatePulldownSummary(int value) {
