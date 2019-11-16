@@ -25,6 +25,12 @@
         android:summary="@string/status_bar_clock_summary" />
 
     <Preference
+        android:key="carrierlabel_settings"
+        android:title="@string/carrier_label_category_title"
+        android:summary="@string/carrier_label_category_summary"
+        android:fragment="com.ion.ionizer.fragments.CarrierLabelSettings" />
+
+    <Preference
         android:key="traffic_category"
         android:title="@string/trafficat"
         android:summary="@string/trafficat_summary"
