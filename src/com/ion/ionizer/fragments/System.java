@@ -57,11 +57,13 @@ public class System extends DashboardFragment
     private static final String KEY_ASPECT_RATIO_APPS_LIST = "aspect_ratio_apps_list";
     private static final String KEY_ASPECT_RATIO_CATEGORY = "aspect_ratio_category";
     private static final String KEY_ASPECT_RATIO_APPS_LIST_SCROLLER = "aspect_ratio_apps_list_scroller";
+    private static final String GAMING_MODE_ENABLED = "gaming_mode_enabled";
 
     private SwitchPreference mShowCpuInfo;
     private SystemSettingMasterSwitchPreference mEnableScreenStateToggles;
     private AppMultiSelectListPreference mAspectRatioAppsSelect;
     private ScrollAppsViewPreference mAspectRatioApps;
+    private SystemSettingMasterSwitchPreference mGamingMode;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -104,6 +106,11 @@ public class System extends DashboardFragment
         mAspectRatioAppsSelect.setValues(valuesList);
         mAspectRatioAppsSelect.setOnPreferenceChangeListener(this);
         }
+
+        mGamingMode = (SystemSettingMasterSwitchPreference) findPreference(GAMING_MODE_ENABLED);
+        mGamingMode.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.GAMING_MODE_ENABLED, 0) == 1));
+        mGamingMode.setOnPreferenceChangeListener(this);
     }
 
     private void writeCpuInfoOptions(boolean value) {
@@ -149,6 +156,11 @@ public class System extends DashboardFragment
                 Settings.System.putString(getContentResolver(),
                 Settings.System.ASPECT_RATIO_APPS_LIST, "");
             }
+            return true;
+        } else if (preference == mGamingMode) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.GAMING_MODE_ENABLED, value ? 1 : 0);
             return true;
         }
         return false;

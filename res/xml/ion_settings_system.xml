@@ -39,6 +39,13 @@
          android:summary="@string/corners_summary"
          android:fragment="com.ion.ionizer.fragments.RoundedCornersSettings" />
 
+    <com.ion.ionizer.preferences.SystemSettingMasterSwitchPreference
+        android:key="gaming_mode_enabled"
+        android:fragment="com.ion.ionizer.fragments.GamingMode"
+        android:title="@string/gaming_mode_title"
+        android:summary="@string/gaming_mode_summary"
+        android:defaultValue="false" />
+
     <SwitchPreference
         android:key="show_cpu_info"
         android:title="@string/show_cpu_title"
