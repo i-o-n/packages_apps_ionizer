@@ -431,7 +431,7 @@
     <string name="status_bar_clock_font_size_title">Clock font size</string>
 
     <!-- Lock Clock Fonts -->
-    <string name="lock_clock_font_title">Clock font options</string>
+    <string name="lock_clock_font_title">Clock font style</string>
     <string name="lock_clock_font_summary">Change the default font of the lockscreen clock widget</string>
     <string name="lock_clock_font_dialog_title">Select lock clock font</string>
     <string name="lock_clock_font_stock">Normal</string>
@@ -677,4 +677,14 @@
     <!-- Force expanded notifications -->
     <string name="force_expanded_notifications_title">Force expanded notifications</string>
     <string name="force_expanded_notifications_summary">Force apps that support expanded notifications</string>
+
+    <!-- Lockscreen Clock & Date -->
+    <string name="lockscreen_clock_title">Clock widget</string>
+    <string name="lockscreen_clock_summary">Show the clock widget on the lockscreen</string>
+    <string name="lockclock_font_size_title">Clock font size</string>
+    <string name="lockscreen_info_title">Date widget</string>
+    <string name="lockscreen_info_summary">Show the date, weather, alarms and zen on the lockscreen</string>
+    <string name="lock_date_font_title">Date font style</string>
+    <string name="lockdate_font_size_title">Date font size</string>
+    <string name="lockcsize">Clock &amp; Date </string>
 </resources>

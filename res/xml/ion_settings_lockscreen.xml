@@ -21,6 +21,25 @@
     settings:initialExpandedChildrenCount="3">
 
     <PreferenceCategory
+        android:key="lock_clock_size"
+        android:title="@string/lockcsize" >
+
+        <Preference
+            android:key="lockscreen_clock"
+            android:title="@string/lockscreen_clock_title"
+            android:summary="@string/lockscreen_clock_summary"
+            android:fragment="com.ion.ionizer.fragments.LockScreenClock"
+            android:defaultValue="true" />
+
+        <Preference
+            android:key="lockscreen_info"
+            android:title="@string/lockscreen_info_title"
+            android:summary="@string/lockscreen_info_summary"
+            android:fragment="com.ion.ionizer.fragments.LockScreenDate"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:title="@string/lockscreen_media_title">
 
         <com.ion.ionizer.preferences.SystemSettingSwitchPreference
