@@ -43,8 +43,8 @@
         android:key="status_bar_carrier_font_style"
         android:title="@string/status_bar_carrier_font_style_title"
         android:dialogTitle="@string/status_bar_carrier_font_style_title"
-        android:entries="@array/lock_clock_fonts_entries"
-        android:entryValues="@array/lock_clock_fonts_values"
+        android:entries="@array/additional_fonts_entries"
+        android:entryValues="@array/additional_fonts_values"
         android:defaultValue="14" />
 
     <com.ion.ionizer.colorpicker.ColorPickerPreference
