@@ -63,6 +63,7 @@
     <string name="status_icons_title">Icons</string>
     <string name="navbar_invert_layout_summary">Invert Navigation button layout</string>
     <string name="buttons_summary">Customize hardware button actions</string>
+    <string name="animations_summary">Change system animations</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">Color Picker</string>

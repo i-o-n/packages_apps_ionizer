@@ -19,29 +19,17 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     settings:initialExpandedChildrenCount="4" >
 
+    <!-- Animations -->
+    <Preference
+        android:key="animations_category"
+        android:title="@string/animations_title"
+        android:summary="@string/animations_summary"
+        android:fragment="com.ion.ionizer.fragments.Animations"/>
+
     <SwitchPreference
         android:key="show_cpu_info"
         android:title="@string/show_cpu_title"
         android:summary="@string/show_cpu_summary"/>
-
-    <com.ion.ionizer.preferences.SystemSettingMasterSwitchPreference
-        android:key="screen_state_toggles_enable_key"
-        android:fragment="com.ion.ionizer.fragments.ScreenStateToggles"
-        android:title="@string/screen_state_toggles_title"
-        android:summary="@string/screen_state_toggles_summary"
-        android:defaultValue="false" />
-
-    <Preference
-        android:id="@+id/alarm_blocker"
-        android:title="@string/alarm_blocker"
-        android:summary="@string/alarm_blocker_summary"
-        android:fragment="com.ion.ionizer.fragments.AlarmBlocker" />
-
-    <Preference
-        android:key="wakelock_blocker"
-        android:title="@string/wakelock_blocker_title"
-        android:summary="@string/wakelock_blocker_summary"
-        android:fragment="com.ion.ionizer.fragments.WakeLockBlocker" />
 
     <com.ion.ionizer.preferences.SystemSettingListPreference
         android:key="screenshot_type"
@@ -50,23 +38,38 @@
         android:title="@string/screenshot_type_title"
         android:defaultValue="0" />
 
+    <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+        android:key="force_expanded_settings"
+        android:title="@string/force_expanded_settings_title"
+        android:summary="@string/force_expanded_settings_summary"
+        android:defaultValue="false" />
+
     <com.ion.ionizer.preferences.GlobalSettingSwitchPreference
         android:key="allow_signature_fake"
         android:title="@string/allow_signature_fake"
         android:summary="@string/allow_signature_fake_summary"
         android:defaultValue="false" />
 
-    <ListPreference
-        android:key="screen_off_animation"
-        android:title="@string/screen_off_animation_title"
-        android:entries="@array/screen_off_animation_entries"
-        android:entryValues="@array/screen_off_animation_values"
-        android:persistent="false"
-        android:defaultValue="0" />
+    <PreferenceCategory
+        android:title="@string/misc_title" >
 
-    <com.ion.ionizer.preferences.SystemSettingSwitchPreference
-        android:key="force_expanded_settings"
-        android:title="@string/force_expanded_settings_title"
-        android:summary="@string/force_expanded_settings_summary"
-        android:defaultValue="false" />
+        <com.ion.ionizer.preferences.SystemSettingMasterSwitchPreference
+            android:key="screen_state_toggles_enable_key"
+            android:fragment="com.ion.ionizer.fragments.ScreenStateToggles"
+            android:title="@string/screen_state_toggles_title"
+            android:summary="@string/screen_state_toggles_summary"
+            android:defaultValue="false" />
+
+        <Preference
+            android:id="@+id/alarm_blocker"
+            android:title="@string/alarm_blocker"
+            android:summary="@string/alarm_blocker_summary"
+            android:fragment="com.ion.ionizer.fragments.AlarmBlocker" />
+
+        <Preference
+            android:key="wakelock_blocker"
+            android:title="@string/wakelock_blocker_title"
+            android:summary="@string/wakelock_blocker_summary"
+            android:fragment="com.ion.ionizer.fragments.WakeLockBlocker" />
+    </PreferenceCategory>
 </PreferenceScreen>

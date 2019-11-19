@@ -42,11 +42,9 @@ public class System extends DashboardFragment
     public static final String TAG = "System";
 
     private static final String SHOW_CPU_INFO_KEY = "show_cpu_info";
-    private static final String KEY_SCREEN_OFF_ANIMATION = "screen_off_animation";
     private static final String SCREEN_STATE_TOGGLES_ENABLE = "screen_state_toggles_enable_key";
 
     private SwitchPreference mShowCpuInfo;
-    private ListPreference mScreenOffAnimation;
     private SystemSettingMasterSwitchPreference mEnableScreenStateToggles;
 
     @Override
@@ -59,13 +57,6 @@ public class System extends DashboardFragment
         mShowCpuInfo.setChecked(Settings.Global.getInt(getActivity().getContentResolver(),
                 Settings.Global.SHOW_CPU_OVERLAY, 0) == 1);
         mShowCpuInfo.setOnPreferenceChangeListener(this);
-
-        mScreenOffAnimation = (ListPreference) findPreference(KEY_SCREEN_OFF_ANIMATION);
-        int screenOffAnimation = Settings.System.getInt(getContentResolver(),
-                Settings.System.SCREEN_OFF_ANIMATION, 0);
-        mScreenOffAnimation.setValue(Integer.toString(screenOffAnimation));
-        mScreenOffAnimation.setSummary(mScreenOffAnimation.getEntry());
-        mScreenOffAnimation.setOnPreferenceChangeListener(this);
 
         mEnableScreenStateToggles = (SystemSettingMasterSwitchPreference) findPreference(SCREEN_STATE_TOGGLES_ENABLE);
         int enabled = Settings.System.getIntForUser(getContentResolver(),
@@ -91,12 +82,6 @@ public class System extends DashboardFragment
         ContentResolver resolver = getActivity().getContentResolver();
         if (preference == mShowCpuInfo) {
             writeCpuInfoOptions((Boolean) newValue);
-            return true;
-        } else if (preference == mScreenOffAnimation) {
-            int value = Integer.valueOf((String) newValue);
-            int index = mScreenOffAnimation.findIndexOfValue((String) newValue);
-            mScreenOffAnimation.setSummary(mScreenOffAnimation.getEntries()[index]);
-            Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_OFF_ANIMATION, value);
             return true;
         } else if (preference == mEnableScreenStateToggles) {
             boolean value = (Boolean) newValue;
