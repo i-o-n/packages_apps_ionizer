@@ -44,6 +44,7 @@ import androidx.preference.SwitchPreference;
 
 import com.android.internal.logging.nano.MetricsProto; 
 import com.android.settings.R;
+import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 import com.ion.ionizer.preferences.SystemSettingMasterSwitchPreference;
@@ -59,8 +60,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class StatusBar extends SettingsPreferenceFragment implements
+public class StatusBar extends DashboardFragment implements
         OnPreferenceChangeListener {
+
+    public static final String TAG = "StatusbarSettings";
 
     private static final String STATUS_BAR_CLOCK = "status_bar_clock";
     private static final String SHOW_LTE_FOURGEE = "show_lte_fourgee";
@@ -88,8 +91,6 @@ public class StatusBar extends SettingsPreferenceFragment implements
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-
-        addPreferencesFromResource(R.xml.ion_settings_statusbar);
 
         PreferenceScreen prefSet = getPreferenceScreen();
         final ContentResolver resolver = getActivity().getContentResolver();
@@ -180,6 +181,14 @@ public class StatusBar extends SettingsPreferenceFragment implements
                     : R.string.quick_pulldown_right);
             mQuickPulldown.setSummary(res.getString(R.string.quick_pulldown_summary, direction));
         }
+    }
+    protected int getPreferenceScreenResId() {
+        return R.xml.ion_settings_statusbar;
+    }
+
+    @Override
+    protected String getLogTag() {
+        return TAG;
     }
 
     @Override

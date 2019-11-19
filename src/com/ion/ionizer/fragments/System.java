@@ -30,12 +30,13 @@ import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.SwitchPreference;
 
 import com.android.internal.logging.nano.MetricsProto; 
+import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.SettingsPreferenceFragment;
 
 import com.ion.ionizer.R;
 import com.ion.ionizer.preferences.SystemSettingMasterSwitchPreference;
 
-public class System extends SettingsPreferenceFragment
+public class System extends DashboardFragment
         implements Preference.OnPreferenceChangeListener {
 
     public static final String TAG = "System";
@@ -52,7 +53,6 @@ public class System extends SettingsPreferenceFragment
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        addPreferencesFromResource(R.xml.ion_settings_system);
         ContentResolver resolver = getActivity().getContentResolver();
 
         mShowCpuInfo = (SwitchPreference) findPreference(SHOW_CPU_INFO_KEY);
@@ -113,6 +113,15 @@ public class System extends SettingsPreferenceFragment
             return true;
         }
         return false;
+    }
+
+    protected int getPreferenceScreenResId() {
+        return R.xml.ion_settings_system;
+    }
+
+    @Override
+    protected String getLogTag() {
+        return TAG;
     }
 
     @Override

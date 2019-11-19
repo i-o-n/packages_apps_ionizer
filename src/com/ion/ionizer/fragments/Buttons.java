@@ -38,13 +38,14 @@ import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.SwitchPreference;
 
 import com.android.settings.R;
+import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.SettingsPreferenceFragment;
 
 import com.ion.ionizer.preferences.SystemSettingSeekBarPreference;
 
 import com.android.internal.logging.nano.MetricsProto;
 
-public class Buttons extends SettingsPreferenceFragment implements
+public class Buttons extends DashboardFragment implements
         OnPreferenceChangeListener {
     private static final String TAG = Buttons.class.getSimpleName();
 
@@ -59,7 +60,6 @@ public class Buttons extends SettingsPreferenceFragment implements
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        addPreferencesFromResource(R.xml.ion_settings_buttons);
         PreferenceScreen prefSet = getPreferenceScreen();
 
         final Resources res = getResources();
@@ -135,6 +135,15 @@ public class Buttons extends SettingsPreferenceFragment implements
             return true;
         }
         return false;
+    }
+
+    protected int getPreferenceScreenResId() {
+        return R.xml.ion_settings_buttons;
+    }
+
+    @Override
+    protected String getLogTag() {
+        return TAG;
     }
 
     @Override

@@ -30,13 +30,14 @@ import androidx.preference.PreferenceScreen;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.SwitchPreference;
 
-import com.android.internal.logging.nano.MetricsProto; 
+import com.android.internal.logging.nano.MetricsProto;
+import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.SettingsPreferenceFragment;
 
 import com.ion.ionizer.R;
 import com.ion.ionizer.preferences.SystemSettingSeekBarPreference;
 
-public class QuickSettings extends SettingsPreferenceFragment
+public class QuickSettings extends DashboardFragment
         implements Preference.OnPreferenceChangeListener {
 
     public static final String TAG = "QuickSettings";
@@ -56,8 +57,6 @@ public class QuickSettings extends SettingsPreferenceFragment
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        addPreferencesFromResource(R.xml.ion_settings_quicksettings);
 
         ContentResolver resolver = getActivity().getContentResolver();
 
@@ -122,6 +121,15 @@ public class QuickSettings extends SettingsPreferenceFragment
             return true;
         }
         return false;
+    }
+
+    protected int getPreferenceScreenResId() {
+        return R.xml.ion_settings_quicksettings;
+    }
+
+    @Override
+    protected String getLogTag() {
+        return TAG;
     }
 
     @Override

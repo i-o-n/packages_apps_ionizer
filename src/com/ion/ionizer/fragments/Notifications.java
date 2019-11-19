@@ -29,6 +29,7 @@ import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.SwitchPreference;
 
 import com.android.internal.logging.nano.MetricsProto; 
+import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.SettingsPreferenceFragment;
 
 import com.ion.ionizer.preferences.Utils;
@@ -36,7 +37,7 @@ import com.ion.ionizer.preferences.GlobalSettingMasterSwitchPreference;
 
 import com.ion.ionizer.R;
 
-public class Notifications extends SettingsPreferenceFragment
+public class Notifications extends DashboardFragment
         implements Preference.OnPreferenceChangeListener {
 
     public static final String TAG = "Notifications";
@@ -49,8 +50,6 @@ public class Notifications extends SettingsPreferenceFragment
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        addPreferencesFromResource(R.xml.ion_settings_notifications);
 
         PreferenceScreen prefScreen = getPreferenceScreen();
 
@@ -89,6 +88,15 @@ public class Notifications extends SettingsPreferenceFragment
             return true;
         }
         return false;
+    }
+
+    protected int getPreferenceScreenResId() {
+        return R.xml.ion_settings_notifications;
+    }
+
+    @Override
+    protected String getLogTag() {
+        return TAG;
     }
 
     @Override

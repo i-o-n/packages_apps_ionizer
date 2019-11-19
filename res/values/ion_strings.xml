@@ -692,4 +692,8 @@
     <!-- Brightness icon-->
     <string name="brightness_icon_title">Brightness icon</string>
     <string name="brightness_icon_summary">Show a brightness icon to the right of the brighness slider to adjust auto-brightness</string>
+
+    <!-- Force Expanded Settings -->
+    <string name="force_expanded_settings_title">Force Expanded Settings</string>
+    <string name="force_expanded_settings_summary">Expand Settings Layout</string>
 </resources>

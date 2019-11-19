@@ -16,7 +16,8 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/system_title"
-    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    settings:initialExpandedChildrenCount="4" >
 
     <SwitchPreference
         android:key="show_cpu_info"
@@ -62,4 +63,10 @@
         android:entryValues="@array/screen_off_animation_values"
         android:persistent="false"
         android:defaultValue="0" />
+
+    <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+        android:key="force_expanded_settings"
+        android:title="@string/force_expanded_settings_title"
+        android:summary="@string/force_expanded_settings_summary"
+        android:defaultValue="false" />
 </PreferenceScreen>

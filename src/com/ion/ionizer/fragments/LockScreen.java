@@ -34,14 +34,16 @@ import androidx.preference.SwitchPreference;
 
 import com.android.internal.logging.nano.MetricsProto; 
 import com.android.settings.R;
+import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.SettingsPreferenceFragment;
 
 import com.ion.ionizer.preferences.SecureSettingMasterSwitchPreference;
 import com.ion.ionizer.preferences.SystemSettingSeekBarPreference;
 
-public class LockScreen extends SettingsPreferenceFragment implements
+public class LockScreen extends DashboardFragment implements
         Preference.OnPreferenceChangeListener {
 
+    public static final String TAG = "LockScreenSettings";
     private static final String LOCKSCREEN_VISUALIZER_ENABLED = "lockscreen_visualizer_enabled";
 
     private SecureSettingMasterSwitchPreference mVisualizerEnabled;
@@ -49,8 +51,6 @@ public class LockScreen extends SettingsPreferenceFragment implements
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-
-        addPreferencesFromResource(R.xml.ion_settings_lockscreen);
 
         ContentResolver resolver = getActivity().getContentResolver();
         final PreferenceScreen prefScreen = getPreferenceScreen();
@@ -72,6 +72,15 @@ public class LockScreen extends SettingsPreferenceFragment implements
             return true;
         }
         return false;
+    }
+
+    protected int getPreferenceScreenResId() {
+        return R.xml.ion_settings_lockscreen;
+    }
+
+    @Override
+    protected String getLogTag() {
+        return TAG;
     }
 
     @Override
