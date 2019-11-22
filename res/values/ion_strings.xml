@@ -178,8 +178,6 @@
     <string name="powermenu_advanced_reboot_summary">Enables the advanced reboot menu for rebooting options</string>
     <string name="powermenu_screenshot_title">Screenshot</string>
     <string name="powermenu_screenshot_summary">Enables screenshot option in power menu</string>
-    <string name="powermenu_screenrecord_title">Screenrecord</string>
-    <string name="powermenu_screenrecord_summary">Enables screenrecord option in power menu</string>
     <string name="powermenu_torch">Flashlight</string>
     <string name="powermenu_torch_summary">Enables flashlight option in power menu</string>
     <string name="powermenu_airplane_title">Airplane mode</string>
@@ -192,7 +190,6 @@
     <string name="powermenu_ls_reboot_summary">Show the reboot option on the lockscreen</string>
     <string name="powermenu_ls_advanced_reboot_summary">Show the advanced reboot option on the lockscreen</string>
     <string name="powermenu_ls_screenshot_summary">Show the screenshot option on the lockscreen</string>
-    <string name="powermenu_ls_screenrecord_summary">Show the screenrecord option on the lockscreen</string>
     <string name="powermenu_ls_airplane_summary">Show the airplane mode option on the lockscreen</string>
 
     <!-- Statusbar Tuner -->
