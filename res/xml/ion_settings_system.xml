@@ -19,6 +19,12 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     settings:initialExpandedChildrenCount="4" >
 
+    <Preference
+        android:key="about_category"
+        android:title="@string/about_title"
+        android:summary="@string/ion_title"
+        android:fragment="com.ion.ionizer.fragments.About"/>
+
     <!-- Animations -->
     <Preference
         android:key="animations_category"

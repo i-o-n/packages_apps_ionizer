@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2019 ion-OS
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/about_title"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+
+    <!-- ion logo -->
+    <PreferenceScreen
+        android:layout="@layout/ion_logo"
+        android:key="ion_logo"
+        android:selectable="false" />
+
+    <PreferenceCategory
+        android:key="developer_category"
+        android:title="@string/developers_category_title">
+
+        <Preference
+            android:title="AnkitGourav"
+            android:summary="@string/ion_developer_ankitgourav"
+            android:icon="@drawable/ion_developer">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://www.paypal.me/AnkitGourav"/>
+        </Preference>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="donate"
+        android:title="@string/ion_donate">
+
+        <Preference
+            android:key="ion_donate_paypal"
+            android:title="PayPal"
+            android:icon="@drawable/ion_paypal">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://www.paypal.me/AnkitGourav"/>
+        </Preference>
+
+        <Preference
+            android:key="ion_donate_upi"
+            android:title="UPI"
+            android:fragment="com.ion.ionizer.fragments.UPI"
+            android:icon="@drawable/ion_upi">
+        </Preference>
+
+        <Preference
+            android:persistent="false"
+            android:summary="@string/ion_donate_summary" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="support_category" 
+        android:title="@string/support_category_title"> 
+
+        <Preference
+            android:title="Jijin"
+            android:summary="@string/ion_support_summary_a"
+            android:icon="@drawable/ion_support"/>
+
+        <Preference
+            android:title="Alen"
+            android:summary="@string/ion_support_summary"
+            android:icon="@drawable/ion_support"/>
+
+        <Preference
+            android:title="Moonish"
+            android:summary="@string/ion_support_summary"
+            android:icon="@drawable/ion_support"/>
+
+        <Preference
+            android:title="Param"
+            android:summary="@string/ion_support_summary"
+            android:icon="@drawable/ion_support"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="links"
+        android:title="@string/ion_links">
+
+        <Preference
+            android:key="ion_announcements"
+            android:title="@string/ion_announcements_title"
+            android:summary="@string/ion_announcements_summary"
+            android:icon="@drawable/ion_announcements">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://t.me/ion_OS"/>
+        </Preference>
+
+        <Preference
+            android:key="ion_telegram"
+            android:title="@string/ion_telegram_title"
+            android:summary="@string/ion_telegram_summary"
+            android:icon="@drawable/ion_telegram">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://t.me/i_o_n"/>
+        </Preference>
+
+        <Preference
+            android:key="ion_website"
+            android:title="@string/ion_title"
+            android:summary="@string/website_title_summary"
+            android:icon="@drawable/ion_website">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://sourceforge.net/projects/i-o-n/"/>
+        </Preference>
+
+        <Preference
+            android:key="ion_source"
+            android:title="@string/ion_source_title"
+            android:summary="@string/ion_source_summary"
+            android:icon="@drawable/ion_github">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/i-o-n"/>
+        </Preference>
+    </PreferenceCategory>
+</PreferenceScreen>

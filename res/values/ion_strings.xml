@@ -88,6 +88,25 @@
     <string name="save">Save</string>
     <string name="attention">Attention</string>
 
+    <!-- About -->
+    <string name="about_title">About</string>
+    <string name="developers_category_title">Developers</string>
+    <string name="ion_developer_ankitgourav" translatable="false">• Founder \n• Core Developer \n• UI/UX Designer\n• Maintainer</string>
+    <string name="support_category_title">Support Team</string>
+    <string name="ion_support_summary" translatable="false">• Support Group Moderator</string>
+    <string name="ion_support_summary_a" translatable="false">• Designer \n• Support Group Moderator</string>
+    <string name="ion_links">Links</string>
+    <string name="ion_announcements_title">Announcements</string>
+    <string name="ion_announcements_summary">Official announcements channel</string>
+    <string name="ion_telegram_title">Telegram</string>
+    <string name="ion_telegram_summary">Support group for Official builds</string>
+    <string name="ion_donate">Donate</string>
+    <string name="ion_donate_summary">Show your support to Team ion</string>
+    <string name="website_title">Website</string>
+    <string name="website_title_summary">Download ion for your device</string>
+    <string name="ion_source_title">Github</string>
+    <string name="ion_source_summary">ion source code</string>
+
     <!-- Dashboard conditions-->
     <string name="dashboard_category">Dashboard options</string>
     <string name="dashboard_conditions_title">Dashboard conditions</string>
