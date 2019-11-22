@@ -698,10 +698,10 @@
 
     <!-- Lockscreen Clock & Date -->
     <string name="lockscreen_clock_title">Clock widget</string>
-    <string name="lockscreen_clock_summary">Show the clock widget on the lockscreen</string>
+    <string name="lockscreen_clock_summary">Customize the clock widget on the lockscreen</string>
     <string name="lockclock_font_size_title">Clock font size</string>
     <string name="lockscreen_info_title">Date widget</string>
-    <string name="lockscreen_info_summary">Show the date, weather, alarms and zen on the lockscreen</string>
+    <string name="lockscreen_info_summary">Customize the date, weather, alarms and zen on the lockscreen</string>
     <string name="lock_date_font_title">Date font style</string>
     <string name="lockdate_font_size_title">Date font size</string>
     <string name="lockcsize">Clock &amp; Date </string>
@@ -722,4 +722,11 @@
     <string name="aspect_ratio_apps_list_title">Apps allowed to use scaling</string>
     <string name="aspect_ratio_category_title">Legacy app scaling</string>
     <string name="aspect_ratio_apps_info">Applications need to be restarted after changes</string>
+
+    <!-- Pocket judge -->
+    <string name="pocket_lock_title">Pocket Lock</string>
+    <string name="pocket_judge_title">Pocket detection</string>
+    <string name="pocket_judge_summary">Block screen and button inputs when device is in pocket</string>
+    <string name="pocket_judge_fp_title">Allow FP in pocket mode</string>
+    <string name="pocket_judge_fp_summary">Listen for fingerprint when pocket detection is active</string>
 </resources>
