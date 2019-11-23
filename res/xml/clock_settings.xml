@@ -53,6 +53,11 @@
          android:entryValues="@array/additional_fonts_values"
          android:defaultValue="14" />
 
+    <com.ion.ionizer.colorpicker.ColorPickerPreference
+        android:key="status_bar_clock_color"
+        android:title="@string/status_bar_clock_color_title"
+        settings:defaultColorValue="0xFFFFFFFF" />
+
     <PreferenceScreen
         android:layout="@layout/ion_divider"
         android:selectable="false" />
