@@ -32,6 +32,13 @@
         android:summary="@string/animations_summary"
         android:fragment="com.ion.ionizer.fragments.Animations"/>
 
+    <!-- Rounded Corners -->
+    <PreferenceScreen
+         android:key="rounded_corners"
+         android:title="@string/corners_title"
+         android:summary="@string/corners_summary"
+         android:fragment="com.ion.ionizer.fragments.RoundedCornersSettings" />
+
     <SwitchPreference
         android:key="show_cpu_info"
         android:title="@string/show_cpu_title"
