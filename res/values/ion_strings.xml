@@ -316,8 +316,9 @@
     <string name="sysui_qqs_count_title">Columns (Quickbar)</string>
     <string name="qs_tile_title_visibility_title">Tile title</string>
     <string name="qs_tile_title_visibility_summary">Display title below each tile</string>
-    <string name="ion_footer_text_show_title">ion Tag</string>
-    <string name="ion_footer_text_show_summary">Show ion tag in expanded qs footer</string>
+    <string name="ion_footer_text_show_title">Footer text</string>
+    <string name="ion_footer_text_show_summary">Show text in expanded qs footer</string>
+    <string name="ion_footer_text_string_title">Customize footer text</string>
 
     <!-- Screenshot -->
     <string name="screenshot_type_title">Screenshot type</string>

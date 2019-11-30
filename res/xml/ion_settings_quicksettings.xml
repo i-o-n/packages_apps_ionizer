@@ -140,12 +140,20 @@
             android:summary="@string/qs_edit_summary"
             android:defaultValue="true" />
 
+        <!-- QS footer text toggle -->
         <com.ion.ionizer.preferences.SystemSettingSwitchPreference
             android:key="ion_footer_text_show"
             android:title="@string/ion_footer_text_show_title"
             android:summary="@string/ion_footer_text_show_summary"
             android:defaultValue="true"
             android:dependency="qs_edit_toggle" />
+
+        <!-- QS footer text string -->
+        <com.ion.ionizer.preferences.SystemSettingEditTextPreference
+            android:key="ion_footer_text_string"
+            android:title="@string/ion_footer_text_string_title"
+            android:dependency="ion_footer_text_show"
+            android:defaultValue="#ion" />
 
         <com.ion.ionizer.preferences.SystemSettingSwitchPreference
             android:key="qs_footer_show_settings"

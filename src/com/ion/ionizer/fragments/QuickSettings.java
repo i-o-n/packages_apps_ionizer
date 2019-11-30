@@ -23,6 +23,7 @@ import android.os.Bundle;
 import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.provider.Settings;
+import android.text.TextUtils;
 
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -35,6 +36,7 @@ import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.SettingsPreferenceFragment;
 
 import com.ion.ionizer.R;
+import com.ion.ionizer.preferences.SystemSettingEditTextPreference;
 import com.ion.ionizer.preferences.SystemSettingSeekBarPreference;
 
 public class QuickSettings extends DashboardFragment
@@ -47,12 +49,14 @@ public class QuickSettings extends DashboardFragment
     private static final String PREF_COLUMNS_PORTRAIT = "qs_columns_portrait";
     private static final String PREF_COLUMNS_LANDSCAPE = "qs_columns_landscape";
     private static final String PREF_COLUMNS_QUICKBAR = "qs_columns_quickbar";
+    private static final String ION_FOOTER_TEXT_STRING = "ion_footer_text_string";
 
     private SystemSettingSeekBarPreference mRowsPortrait;
     private SystemSettingSeekBarPreference mRowsLandscape;
     private SystemSettingSeekBarPreference mQsColumnsPortrait;
     private SystemSettingSeekBarPreference mQsColumnsLandscape;
     private SystemSettingSeekBarPreference mQsColumnsQuickbar;
+    private SystemSettingEditTextPreference mFooterString;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -89,6 +93,18 @@ public class QuickSettings extends DashboardFragment
                 Settings.System.OMNI_QS_LAYOUT_COLUMNS_LANDSCAPE, 4, UserHandle.USER_CURRENT);
         mQsColumnsLandscape.setValue(columnsLandscape);
         mQsColumnsLandscape.setOnPreferenceChangeListener(this);
+
+        mFooterString = (SystemSettingEditTextPreference) findPreference(ION_FOOTER_TEXT_STRING);
+        mFooterString.setOnPreferenceChangeListener(this);
+        String footerString = Settings.System.getString(getContentResolver(),
+                ION_FOOTER_TEXT_STRING);
+        if (TextUtils.isEmpty(footerString) || footerString == null) {
+            mFooterString.setText("#ion");
+            Settings.System.putString(getActivity().getContentResolver(),
+                    Settings.System.ION_FOOTER_TEXT_STRING, "#ion");
+        } else {
+            mFooterString.setText(footerString);
+        }
     }
 
     @Override
@@ -118,6 +134,17 @@ public class QuickSettings extends DashboardFragment
             int value = (Integer) newValue;
             Settings.System.putIntForUser(resolver,
                     Settings.System.OMNI_QS_LAYOUT_COLUMNS_LANDSCAPE, value, UserHandle.USER_CURRENT);
+            return true;
+        } else if (preference == mFooterString) {
+            String value = (String) newValue;
+            if (TextUtils.isEmpty(value) || value == null) {
+                mFooterString.setText("#ion");
+                Settings.System.putString(getActivity().getContentResolver(),
+                        Settings.System.ION_FOOTER_TEXT_STRING, "#ion");
+            } else {
+                Settings.System.putString(getActivity().getContentResolver(),
+                        Settings.System.ION_FOOTER_TEXT_STRING, value);
+            }
             return true;
         }
         return false;
