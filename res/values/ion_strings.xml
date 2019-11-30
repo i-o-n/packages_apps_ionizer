@@ -906,4 +906,12 @@
     <string name="lockscreen_clock_default_bold">Default (bold)</string>
     <string name="lockscreen_clock_sammy">Sammy</string>
     <string name="lockscreen_clock_sammy_bold">Sammy (bold)</string>
+
+    <!-- Show VoLTE icon on statusbar -->
+    <string name="volte_icon_style_title">VoLTE Icon Style</string>
+    <string name="volte_icon_default">Default</string>
+    <string name="volte_icon_vo">Vo Only Icon</string>
+    <string name="volte_icon_volte">VoLTE Icon</string>
+    <string name="volte_icon_oos">VoLTE OOS Icon</string>
+    <string name="volte_icon_hd">HD Icon</string>
 </resources>
