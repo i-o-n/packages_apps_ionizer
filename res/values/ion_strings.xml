@@ -585,6 +585,7 @@
     <!-- Status bar - Battery -->
     <string name="status_bar_battery_style_title">Battery style</string>
     <string name="status_bar_battery_style_q">Icon portrait (default)</string>
+    <string name="status_bar_battery_style_circle_normal">Circle</string>
     <string name="status_bar_battery_style_dotted_circle">Dotted circle</string>
     <string name="status_bar_battery_style_circle">Filled circle</string>
     <string name="status_bar_battery_style_text">Text</string>
