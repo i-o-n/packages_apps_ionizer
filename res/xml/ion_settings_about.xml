@@ -79,7 +79,7 @@
 
         <Preference
             android:title="Moonish"
-            android:summary="@string/ion_support_summary"
+            android:summary="@string/ion_support_summary_b"
             android:icon="@drawable/ion_support"/>
 
         <Preference
