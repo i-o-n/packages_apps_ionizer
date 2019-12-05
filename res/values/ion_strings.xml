@@ -763,9 +763,12 @@
     <string name="qs_tile_animation_style_off">Disabled</string>
     <string name="qs_tile_animation_style_flip">Flip</string>
     <string name="qs_tile_animation_style_rotate">Rotate</string>
-    <string name="qs_tile_animation_duration_low">Low</string>
-    <string name="qs_tile_animation_duration_default">Default</string>
-    <string name="qs_tile_animation_duration_fast">Fast</string>
+    <string name="qs_tile_animation_duration_lowest">3.0 sec</string>
+    <string name="qs_tile_animation_duration_low">2.5 sec</string>
+    <string name="qs_tile_animation_duration_default">2.0 sec (Default)</string>
+    <string name="qs_tile_animation_duration_fast">1.5 sec</string>
+    <string name="qs_tile_animation_duration_fastest">1.0 sec</string>
+    <string name="qs_tile_animation_duration_fastestx">0.5 sec</string>
     <string name="qs_tile_animation_interpolator_title">QS tile animation interpolator</string>
     <string name="qs_tile_animation_interpolator_linearInterpolator">Linear</string>
     <string name="qs_tile_animation_interpolator_accelerateInterpolator">Accelerate</string>
