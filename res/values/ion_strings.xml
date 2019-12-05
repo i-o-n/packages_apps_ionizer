@@ -94,6 +94,7 @@
     <string name="ion_developer_ankitgourav" translatable="false">• Founder \n• Core Developer \n• UI/UX Designer\n• Maintainer</string>
     <string name="support_category_title">Support Team</string>
     <string name="ion_support_summary" translatable="false">• Support Group Moderator</string>
+    <string name="ion_support_summary_b" translatable="false">• Support Group Moderator\n• Breaks Sources in Freetime</string>
     <string name="ion_support_summary_a" translatable="false">• Designer \n• Support Group Moderator</string>
     <string name="ion_links">Links</string>
     <string name="ion_announcements_title">Announcements</string>
