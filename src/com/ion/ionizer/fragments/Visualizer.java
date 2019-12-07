@@ -31,14 +31,20 @@ import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
+import com.ion.ionizer.colorpicker.ColorPickerPreference;
+
 public class Visualizer extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
     private static final String KEY_AUTOCOLOR = "lockscreen_visualizer_autocolor";
     private static final String KEY_LAVALAMP = "lockscreen_lavalamp_enabled";
+    private static final String KEY_COLOR = "lockscreen_visualizer_color";
+
+    private static final int DEFAULT_COLOR = 0xffffffff;
 
     private SwitchPreference mAutoColor;
     private SwitchPreference mLavaLamp;
+    private ColorPickerPreference mColor;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,6 +71,14 @@ public class Visualizer extends SettingsPreferenceFragment implements
 
         mLavaLamp = (SwitchPreference) findPreference(KEY_LAVALAMP);
         mLavaLamp.setOnPreferenceChangeListener(this);
+
+        mColor = (ColorPickerPreference) findPreference(KEY_COLOR);
+        mColor.setOnPreferenceChangeListener(this);
+        int intColor = Settings.Secure.getInt(getContentResolver(),
+                Settings.Secure.LOCKSCREEN_VISUALIZER_COLOR, DEFAULT_COLOR);
+        String hexColor = String.format("#%08x", (DEFAULT_COLOR & intColor));
+        mColor.setSummary(hexColor);
+        mColor.setNewPreviewColor(intColor);
     }
 
     @Override
@@ -80,6 +94,14 @@ public class Visualizer extends SettingsPreferenceFragment implements
                         R.string.lockscreen_autocolor_summary));
             }
             mAutoColor.setEnabled(!mLavaLampEnabled);
+            return true;
+        } else if (preference == mColor) {
+            String hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            preference.setSummary(hex);
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.Secure.putInt(resolver,
+                    Settings.Secure.LOCKSCREEN_VISUALIZER_COLOR, intHex);
             return true;
         }
         return false;
