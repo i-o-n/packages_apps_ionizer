@@ -76,12 +76,15 @@
             android:title="@string/wallpaper_intra_close_title" />
     </PreferenceCategory>
 
+    <PreferenceScreen
+        android:layout="@layout/ion_divider"
+        android:selectable="false" />
+
     <ListPreference
         android:key="screen_off_animation"
         android:title="@string/screen_off_animation_title"
         android:entries="@array/screen_off_animation_entries"
         android:entryValues="@array/screen_off_animation_values"
-        settings:allowDividerAbove="true"
         android:persistent="false"
         android:defaultValue="0" />
 

@@ -25,14 +25,17 @@
         android:title="@string/about_ion"
         android:icon="@drawable/ic_settings_about" /-->
 
+    <PreferenceScreen
+        android:layout="@layout/ion_divider"
+        android:selectable="false" />
+
     <!-- Interface -->
     <Preference
         android:key="interface_category"
         android:title="@string/interface_title"
         android:summary="@string/interfaceui"
         android:fragment="com.ion.ionizer.fragments.Interface"
-        android:icon="@drawable/ic_settings_int"
-        settings:allowDividerAbove="true"/>
+        android:icon="@drawable/ic_settings_int"/>
 
     <!-- Ambient Display -->
     <!--Preference
@@ -64,14 +67,17 @@
         android:fragment="com.ion.ionizer.fragments.Display"
         android:icon="@drawable/ic_settings_screen"/-->
 
+    <PreferenceScreen
+        android:layout="@layout/ion_divider"
+        android:selectable="false" />
+
     <!-- Buttons -->
     <Preference
         android:key="buttons_category"
         android:title="@string/buttons_title"
         android:summary="@string/button_info"
         android:fragment="com.ion.ionizer.fragments.Buttons"
-        android:icon="@drawable/ic_settings_buttons"
-        settings:allowDividerAbove="true"/>
+        android:icon="@drawable/ic_settings_buttons"/>
 
     <!-- Navigation -->
     <Preference
@@ -95,14 +101,17 @@
         android:fragment="com.ion.ionizer.fragments.Recents"
         android:icon="@drawable/ic_settings_recents"/-->
 
+    <PreferenceScreen
+        android:layout="@layout/ion_divider"
+        android:selectable="false" />
+
     <!-- Notifications -->
     <Preference
         android:key="notifications_category"
         android:title="@string/notifications_title"
         android:summary="@string/notifications_title_summary"
         android:fragment="com.ion.ionizer.fragments.Notifications"
-        android:icon="@drawable/ic_settings_notifications"
-        settings:allowDividerAbove="true"/>
+        android:icon="@drawable/ic_settings_notifications"/>
 
     <!-- Animations -->
     <!--Preference
@@ -119,13 +128,13 @@
         android:fragment="com.ion.ionizer.fragments.System"
         android:icon="@drawable/ic_settings_system"/>
 
-    <!-- IME Settings -->
+    <!-- About -->
     <Preference
-        android:key="ime_category"
-        android:title="@string/ime_title"
-        android:summary="@string/ime_title_summary"
-        android:fragment="com.ion.ionizer.fragments.IME"
-        android:icon="@drawable/ic_settings_ime"/>
+        android:key="about_category"
+        android:title="@string/about_title"
+        android:summary="@string/ion_title"
+        android:icon="@drawable/ic_phone_info_v2"
+        android:fragment="com.ion.ionizer.fragments.About"/>
 
     <!-- Device ionizer -->
     <Preference

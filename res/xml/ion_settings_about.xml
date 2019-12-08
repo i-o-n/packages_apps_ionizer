@@ -51,6 +51,10 @@
                 android:data="https://www.paypal.me/AnkitGourav"/>
         </Preference>
 
+        <PreferenceScreen
+            android:layout="@layout/ion_divider"
+            android:selectable="false" />
+
         <Preference
             android:key="ion_donate_upi"
             android:title="UPI"

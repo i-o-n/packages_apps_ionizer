@@ -85,6 +85,10 @@
                 android:targetClass="com.android.systemui.tuner.StatusbarItemsActivity" />
         </Preference>
 
+        <PreferenceScreen
+            android:layout="@layout/ion_divider"
+            android:selectable="false" />
+
         <SwitchPreference
             android:key="show_lte_fourgee"
             android:title="@string/show_lte_fourgee_title"

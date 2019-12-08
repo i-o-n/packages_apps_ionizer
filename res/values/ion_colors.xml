@@ -16,4 +16,7 @@
 <resources>
     <!-- ColorPicker -->
     <color name="disabled_text_color">#66000000</color>
+
+    <!-- ion divider -->
+    <color name="colorCardStrokeInverse">#2A000000</color>
 </resources>

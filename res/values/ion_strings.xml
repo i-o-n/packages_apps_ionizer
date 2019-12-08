@@ -40,13 +40,13 @@
     <string name="charging_noti_category">Charging Notifications</string>
     <string name="trafficat">Network Traffic</string>
     <string name="trafficat_summary">Network speed indicator</string>
-    <string name="interfaceui">Themes</string>
-    <string name="statusbar_title_summary">Network Traffic, Statusbar items</string>
+    <string name="interfaceui">Styles</string>
+    <string name="statusbar_title_summary">Clock, Battery, Network Traffic</string>
     <string name="quicksettings_title_summary">Tiles, Header, Footer</string>
     <string name="button_info">Volume Rocker, Power Button</string>
     <string name="keyguarrd">Media, Gestures, Security</string>
     <string name="notifications_title_summary">Heads-up, in-call vibration</string>
-    <string name="manusys">CPU Info</string>
+    <string name="manusys">Gaming Mode</string>
     <string name="ime_title_summary">Keyboard Features</string>
     <string name="power_button">Power Button</string>
     <string name="vol_rock">Volume Rocker</string>
@@ -101,7 +101,7 @@
     <string name="ion_telegram_title">Telegram</string>
     <string name="ion_telegram_summary">Support group for Official builds</string>
     <string name="ion_donate">Donate</string>
-    <string name="ion_donate_summary">Show your support to Team ion</string>
+    <string name="ion_donate_summary">Show your support to #teamion</string>
     <string name="website_title">Website</string>
     <string name="website_title_summary">Download ion for your device</string>
     <string name="ion_source_title">Github</string>

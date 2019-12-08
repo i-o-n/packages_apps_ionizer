@@ -17,7 +17,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/quicksettings_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
-    settings:initialExpandedChildrenCount="5">
+    settings:initialExpandedChildrenCount="4">
 
     <com.ion.ionizer.preferences.SystemSettingSeekBarPreference
         android:key="qs_columns_quickbar"
@@ -102,6 +102,10 @@
             android:entries="@array/qs_battery_mode_entries"
             android:entryValues="@array/qs_battery_mode_values"
             android:defaultValue="1" />
+
+        <PreferenceScreen
+            android:layout="@layout/ion_divider"
+            android:selectable="false" />
 
         <com.ion.ionizer.preferences.SecureSettingSwitchPreference
             android:key="qs_show_brightness"
