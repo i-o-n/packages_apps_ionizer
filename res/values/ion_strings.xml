@@ -205,7 +205,13 @@
     <string name="lockscreen_tuner_title">Lockscreen shortcuts</string>
 
     <!-- Navbar options -->
+    <string name="nav_bar_layout">Layout</string>
+    <string name="nav_bar_layout_normal">Normal</string>
+    <string name="nav_bar_layout_compact">Compact</string>
+    <string name="nav_bar_layout_left">Left-leaning</string>
+    <string name="nav_bar_layout_right">Right-leaning</string>
     <string name="navbar_invert_layout_title">Invert layout</string>
+    <string name="recents_style_info_title">Only valid if button navigation mode is used.</string>
 
     <!-- Heads up -->
     <string name="heads_up_notifications">Heads up</string>

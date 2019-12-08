@@ -670,4 +670,18 @@
         <item>2</item>
         <item>3</item>
     </string-array>
+
+    <!-- Navbar Layout -->
+    <string-array name="nav_bar_layouts">
+        <item>@string/nav_bar_layout_normal</item>
+        <item>@string/nav_bar_layout_compact</item>
+        <item>@string/nav_bar_layout_left</item>
+        <item>@string/nav_bar_layout_right</item>
+    </string-array>
+    <string-array name="nav_bar_layouts_values" translatable="false">
+        <item>default</item>
+        <item>left;back,home,recent;right</item>
+        <item>left,back,home,recent,right;space;space</item>
+        <item>space;space;left,back,home,recent,right</item>
+    </string-array>
 </resources>

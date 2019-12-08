@@ -54,6 +54,7 @@ public class Navigation extends SettingsPreferenceFragment
 
         addPreferencesFromResource(R.xml.ion_settings_navigation);
         final PreferenceScreen prefScreen = getPreferenceScreen();
+        mFooterPreferenceMixin.createFooterPreference().setTitle(R.string.recents_style_info_title);
 
         final boolean needsNavbar = ActionUtils.hasNavbarByDefault(getActivity());
         // bits for hardware keys present on device
