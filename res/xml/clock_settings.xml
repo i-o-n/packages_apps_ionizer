@@ -68,7 +68,8 @@
          android:max="23"
          settings:min="4"
          android:defaultValue="14"
-         settings:units="dp" />
+         settings:units="dp"
+         settings:continuousUpdates="true" />
 
      <com.ion.ionizer.preferences.SystemSettingListPreference
          android:key="status_bar_clock_font_style"

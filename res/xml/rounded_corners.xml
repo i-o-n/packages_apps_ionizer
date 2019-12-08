@@ -32,7 +32,8 @@
         settings:min="0"
         settings:units="dp"
         android:persistent="false"
-        android:dependency="sysui_rounded_fwvals" />
+        android:dependency="sysui_rounded_fwvals"
+        settings:continuousUpdates="true" />
 
     <com.ion.ionizer.preferences.CustomSeekBarPreference
         android:key="sysui_rounded_content_padding"
@@ -50,5 +51,6 @@
         settings:min="0"
         settings:units="dp"
         android:persistent="false"
-        android:dependency="sysui_rounded_fwvals" />
+        android:dependency="sysui_rounded_fwvals"
+        settings:continuousUpdates="true" />
 </PreferenceScreen>
