@@ -976,4 +976,9 @@
     <string name="qs_bg_wall_summary">Set QS background color from Wallpaper</string>
     <string name="qs_bg_use_fw">Use default colors</string>
     <string name="qs_bg_use_fw_summary">Disable custom QS styles for external theme engines</string>
+
+    <!-- FOD icon picker -->
+    <string name="fod_icon_picker_title">FOD icon picker</string>
+    <string name="fod_icon_picker_summary">Choose your favorite fingerprint icon</string>
+    <string name="fod_icon_picker_footer">In order to add your own icon, select the top left icon and use the OnePlus 6T FP Customizer app to select the icon you want.</string>
 </resources>

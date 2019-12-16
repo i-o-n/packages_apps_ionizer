@@ -48,10 +48,14 @@ public class LockScreen extends DashboardFragment implements
     private static final String LOCKSCREEN_CLOCK = "lockscreen_clock";
     private static final String LOCKSCREEN_INFO = "lockscreen_info";
     private static final String LOCKSCREEN_VISUALIZER_ENABLED = "lockscreen_visualizer_enabled";
+    private static final String LOCKSCREEN_EXTRA = "lockscreen_extra";
+    private static final String FOD_ICON_PICKER_CATEGORY = "fod_icon_picker_category";
 
     private SystemSettingMasterSwitchPreference mClockEnabled;
     private SystemSettingMasterSwitchPreference mInfoEnabled;
     private SecureSettingMasterSwitchPreference mVisualizerEnabled;
+    private PreferenceCategory mLsExtra;
+    private Preference mFODIconPicker;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -79,6 +83,13 @@ public class LockScreen extends DashboardFragment implements
         int visualizerEnabled = Settings.Secure.getInt(resolver,
                 LOCKSCREEN_VISUALIZER_ENABLED, 0);
         mVisualizerEnabled.setChecked(visualizerEnabled != 0);
+
+        mLsExtra = (PreferenceCategory) findPreference(LOCKSCREEN_EXTRA);
+        mFODIconPicker = (Preference) findPreference(FOD_ICON_PICKER_CATEGORY);
+        if (mFODIconPicker != null
+                && !getResources().getBoolean(com.android.internal.R.bool.config_needCustomFODView)) {
+            mLsExtra.removePreference(mFODIconPicker);
+        }
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {

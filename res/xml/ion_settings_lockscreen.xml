@@ -79,6 +79,7 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="lockscreen_extra"
         android:title="@string/locktra" >
 
         <com.ion.ionizer.preferences.SystemSettingSwitchPreference
@@ -114,6 +115,13 @@
             android:title="@string/lockscreen_battery_info_title"
             android:summary="@string/lockscreen_battery_info_summary"
             android:defaultValue="true" />
+
+        <!-- FOD icon picker -->
+        <Preference
+            android:key="fod_icon_picker_category"
+            android:title="@string/fod_icon_picker_title"
+            android:summary="@string/fod_icon_picker_summary"
+            android:fragment="com.ion.ionizer.fragments.FODIconPickerFragment" />
 
         <PreferenceScreen
             android:layout="@layout/ion_divider"

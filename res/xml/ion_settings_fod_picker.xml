@@ -13,13 +13,14 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
-    <!-- ColorPicker -->
-    <color name="disabled_text_color">#66000000</color>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    android:title="@string/fod_icon_picker_title">
 
-    <!-- ion divider -->
-    <color name="colorCardStrokeInverse">#2A000000</color>
-
-    <!-- FOD icon picker -->
-    <color name="fod_item_background_stroke_color">#d6d6d6</color>
-</resources>
+    <!-- Preview -->
+    <com.ion.ionizer.preferences.FODIconPicker
+        android:key="fod_icon"
+        android:layout="@layout/fod_picker_preference"
+        android:selectable="false"/>
+</PreferenceScreen>
