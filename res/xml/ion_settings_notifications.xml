@@ -123,6 +123,24 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="notification_flash"
+        android:title="@string/notification_flash_title" >
+
+        <com.ion.ionizer.preferences.SystemSettingListPreference
+            android:key="flashlight_on_call"
+            android:title="@string/flashlight_on_call_title"
+            android:entries="@array/flashlight_on_call_entries"
+            android:entryValues="@array/flashlight_on_call_values"
+            android:defaultValue="0" />
+
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+            android:key="flashlight_on_call_waiting"
+            android:title="@string/flashlight_on_call_wait_title"
+            android:summary="@string/flashlight_on_call_wait_summary"
+            android:defaultValue="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="battery_led_category"
         android:title="@string/light_settings_header" >
 
@@ -132,12 +150,5 @@
             android:summary="@string/battery_light_summary"
             android:fragment="com.ion.ionizer.fragments.BatteryLightSettings"
             android:defaultValue="true" />
-
-        <com.ion.ionizer.preferences.SystemSettingListPreference
-            android:key="flashlight_on_call"
-            android:title="@string/flashlight_on_call_title"
-            android:entries="@array/flashlight_on_call_entries"
-            android:entryValues="@array/flashlight_on_call_values"
-            android:defaultValue="0" />
     </PreferenceCategory>
 </PreferenceScreen>
