@@ -51,13 +51,13 @@ public class Notifications extends DashboardFragment
     private static final String BATTERY_LED = "battery_led_category";
     private static final String KEY_PULSE_BRIGHTNESS = "ambient_pulse_brightness";
     private static final String KEY_DOZE_BRIGHTNESS = "ambient_doze_brightness";
-    private static final String PULSE_AMBIENT_LIGHT_COLOR = "pulse_ambient_light_color";
+    private static final String PULSE_AMBIENT_LIGHT = "pulse_ambient_light";
 
     private GlobalSettingMasterSwitchPreference mHeadsUpEnabled;
     private SystemSettingMasterSwitchPreference mBatteryLightx;
     private CustomSeekBarPreference mPulseBrightness;
     private CustomSeekBarPreference mDozeBrightness;
-    private ColorPickerPreference mEdgeLightColorPreference;
+    private SystemSettingMasterSwitchPreference mEdgePulse;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -117,18 +117,12 @@ public class Notifications extends DashboardFragment
         mDozeBrightness.setDefaultValue(defaultDoze, true);
         mDozeBrightness.setOnPreferenceChangeListener(this);
 
-        mEdgeLightColorPreference = (ColorPickerPreference) findPreference(PULSE_AMBIENT_LIGHT_COLOR);
-        mEdgeLightColorPreference.setOnPreferenceChangeListener(this);
-        int edgeLightColor = Settings.System.getInt(getContentResolver(),
-                Settings.System.PULSE_AMBIENT_LIGHT_COLOR, 0xFF3980FF);
-        String edgeLightColorHex = String.format("#%08x", (0xFF3980FF & edgeLightColor));
-        if (edgeLightColorHex.equals("#ff3980ff")) {
-            mEdgeLightColorPreference.setSummary(R.string.default_string);
-        } else {
-            mEdgeLightColorPreference.setSummary(edgeLightColorHex);
-        }
-        mEdgeLightColorPreference.setNewPreviewColor(edgeLightColor);
-   }
+        mEdgePulse = (SystemSettingMasterSwitchPreference) findPreference(PULSE_AMBIENT_LIGHT);
+        mEdgePulse.setOnPreferenceChangeListener(this);
+        int edgePulse = Settings.System.getInt(getContentResolver(),
+                PULSE_AMBIENT_LIGHT, 0);
+        mEdgePulse.setChecked(edgePulse != 0);
+    }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
@@ -159,17 +153,10 @@ public class Notifications extends DashboardFragment
             Settings.System.putInt(getContentResolver(),
                     Settings.System.DOZE_BRIGHTNESS, value);
             return true;
-        } else if (preference == mEdgeLightColorPreference) {
-            String hex = ColorPickerPreference.convertToARGB(
-                    Integer.valueOf(String.valueOf(objValue)));
-            if (hex.equals("#ff3980ff")) {
-                preference.setSummary(R.string.default_string);
-            } else {
-                preference.setSummary(hex);
-            }
-            int intHex = ColorPickerPreference.convertToColorInt(hex);
+        } else if (preference == mEdgePulse) {
+            boolean value = (Boolean) objValue;
             Settings.System.putInt(getContentResolver(),
-                    Settings.System.PULSE_AMBIENT_LIGHT_COLOR, intHex);
+		            PULSE_AMBIENT_LIGHT, value ? 1 : 0);
             return true;
         }
         return false;

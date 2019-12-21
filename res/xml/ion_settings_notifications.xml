@@ -88,18 +88,12 @@
         android:key="notification_screen"
         android:title="@string/notification_screen_title" >
 
-        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+        <com.ion.ionizer.preferences.SystemSettingMasterSwitchPreference
             android:key="pulse_ambient_light"
             android:title="@string/pulse_ambient_light_title"
             android:summary="@string/pulse_ambient_light_summary"
+            android:fragment="com.ion.ionizer.fragments.EdgePulse"
             android:defaultValue="false" />
-
-        <com.ion.ionizer.colorpicker.ColorPickerPreference
-            android:key="pulse_ambient_light_color"
-            android:title="@string/pulse_ambient_light_color_title"
-            android:persistent="false"
-            android:dependency="pulse_ambient_light"
-            settings:defaultColorValue="0xFF3980FF" />
     </PreferenceCategory>
 
     <PreferenceCategory
