@@ -860,4 +860,8 @@
     <string name="pulse_ambient_light_duration">Edge light pulse duration</string>
     <string name="edgelight_left">Left Edge</string>
     <string name="edgelight_right">Right Edge</string>
+
+    <!-- Notification Vibration -->
+    <string name="vibrate_on_notifications_title">Notification vibration</string>
+    <string name="vibrate_on_notifications_summary">Vibrate on notifications</string>
 </resources>
