@@ -27,6 +27,7 @@ import android.text.TextUtils;
 
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
+import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.SwitchPreference;
@@ -50,6 +51,8 @@ public class QuickSettings extends DashboardFragment
     private static final String PREF_COLUMNS_LANDSCAPE = "qs_columns_landscape";
     private static final String PREF_COLUMNS_QUICKBAR = "qs_columns_quickbar";
     private static final String ION_FOOTER_TEXT_STRING = "ion_footer_text_string";
+    private static final String QS_FOOTER = "quick_footer";
+    private static final String QS_USER_TOGGLE = "qs_user_toggle";
 
     private SystemSettingSeekBarPreference mRowsPortrait;
     private SystemSettingSeekBarPreference mRowsLandscape;
@@ -57,6 +60,8 @@ public class QuickSettings extends DashboardFragment
     private SystemSettingSeekBarPreference mQsColumnsLandscape;
     private SystemSettingSeekBarPreference mQsColumnsQuickbar;
     private SystemSettingEditTextPreference mFooterString;
+    private PreferenceCategory mQsFooter;
+    private SwitchPreference mUserIcon;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -104,6 +109,14 @@ public class QuickSettings extends DashboardFragment
                     Settings.System.ION_FOOTER_TEXT_STRING, "#ion");
         } else {
             mFooterString.setText(footerString);
+        }
+
+        mQsFooter = (PreferenceCategory) findPreference(QS_FOOTER);
+        mUserIcon = (SwitchPreference) findPreference(QS_USER_TOGGLE);
+        boolean userIcon = Settings.Global.getInt(getContentResolver(),
+                Settings.Global.USER_SWITCHER_ENABLED, 0) != 0;
+        if (!userIcon) {
+            mQsFooter.removePreference(mUserIcon);
         }
     }
 

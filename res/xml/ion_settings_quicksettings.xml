@@ -160,6 +160,12 @@
             android:defaultValue="#ion" />
 
         <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+            android:key="qs_user_toggle"
+            android:title="@string/qs_user_toggle_title"
+            android:summary="@string/qs_user_toggle_summary"
+            android:defaultValue="true"/>
+
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
             android:key="qs_services_toggle"
             android:title="@string/qs_services_toggle_title"
             android:summary="@string/qs_services_toggle_summary"
