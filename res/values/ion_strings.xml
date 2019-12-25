@@ -889,4 +889,8 @@
     <string name="listview_overshoot_interpolator">Overshoot</string>
     <string name="listview_anticipate_overshoot_interpolator">Anticipate and overshoot</string>
     <string name="listview_bounce_interpolator">Bounce</string>
+
+    <!-- QS Running Services -->
+    <string name="qs_services_toggle_title">Running Services icon</string>
+    <string name="qs_services_toggle_summary">Display Running Services icon in quick settings footer</string>
 </resources>
