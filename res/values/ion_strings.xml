@@ -897,4 +897,13 @@
     <!-- QS Users -->
     <string name="qs_user_toggle_title">User switcher icon</string>
     <string name="qs_user_toggle_summary">Display Multi-user switcher icon in quick settings footer</string>
+
+    <!-- Lockscreen clock style -->
+    <string name="lockscreen_clock_titlex">Clock style</string>
+    <string name="lockscreen_clock_dialog_title">Select clock style</string>
+    <string name="lockscreen_clock_hide">Hide</string>
+    <string name="lockscreen_clock_default">Default</string>
+    <string name="lockscreen_clock_default_bold">Default (bold)</string>
+    <string name="lockscreen_clock_sammy">Sammy</string>
+    <string name="lockscreen_clock_sammy_bold">Sammy (bold)</string>
 </resources>

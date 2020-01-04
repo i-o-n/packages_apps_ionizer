@@ -19,6 +19,14 @@
     xmlns:ionionizer="http://schemas.android.com/apk/res-auto"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+    <com.ion.ionizer.preferences.SecureSettingListPreference
+        android:key="lockscreen_clock_selection"
+        android:title="@string/lockscreen_clock_titlex"
+        android:dialogTitle="@string/lockscreen_clock_dialog_title"
+        android:entries="@array/lockscreen_clock_titles"
+        android:entryValues="@array/lockscreen_clock_values"
+        android:defaultValue="2" />
+
     <com.ion.ionizer.preferences.SystemSettingListPreference
         android:key="lock_clock_fonts"
         android:title="@string/lock_clock_font_title"
