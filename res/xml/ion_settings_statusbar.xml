@@ -101,13 +101,20 @@
             android:summary="@string/use_old_mobiletype_summary"
             android:defaultValue="false" />
 
-         <com.ion.ionizer.preferences.SystemSettingListPreference
-             android:key="volte_icon_style"
-             android:title="@string/volte_icon_style_title"
-             android:entries="@array/volte_icon_type_entries"
-             android:entryValues="@array/volte_icon_type_values"
-             android:summary="%s"
-             android:defaultValue="0"/>
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+            android:key="volte_icon"
+            android:title="@string/volte_icon_title"
+            android:summary="@string/volte_icon_summary"
+            android:defaultValue="true" />
+
+        <com.ion.ionizer.preferences.SystemSettingListPreference
+            android:key="volte_icon_style"
+            android:title="@string/volte_icon_style_title"
+            android:entries="@array/volte_icon_type_entries"
+            android:entryValues="@array/volte_icon_type_values"
+            android:summary="%s"
+            android:dependency="volte_icon"
+            android:defaultValue="0"/>
     </PreferenceCategory>
 
     <PreferenceCategory 
