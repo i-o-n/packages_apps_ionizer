@@ -918,4 +918,7 @@
     <string name="volte_icon_hd">HD Icon</string>
     <string name="volte_icon_volit">VoLIT Icon</string>
     <string name="volte_icon_asus">VoLTE Asus Icon</string>
+    <string name="volte_icon_cr">VoLTE CR Icon</string>
+    <string name="volte_icon_text">VoLTE text Icon</string>
+    <string name="volte_icon_pie">VoLTE Pie</string>
 </resources>
