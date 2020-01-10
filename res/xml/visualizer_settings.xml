@@ -75,9 +75,22 @@
             settings:interval="5"/>
     </PreferenceCategory>
 
-    <com.ion.ionizer.preferences.SecureSettingSwitchPreference
-        android:key="ambient_visualizer"
-        android:title="@string/ambient_visualizer_title"
-        android:summary="@string/ambient_visualizer_summary"
-        android:defaultValue="false" />
+    <PreferenceCategory
+        android:title="@string/ambient_visualizer_category" >
+
+        <com.ion.ionizer.preferences.SecureSettingSwitchPreference
+            android:key="ambient_visualizer"
+            android:title="@string/ambient_visualizer_title"
+            android:summary="@string/ambient_visualizer_summary"
+            android:defaultValue="false" />
+
+        <com.ion.ionizer.preferences.SecureSettingSeekBarPreference
+            android:key="ambient_visualizer_opacity"
+            android:title="@string/lockscreen_solid_units_opacity_title"
+            android:dependency="ambient_visualizer"
+            android:defaultValue="55"
+            android:max="255"
+            settings:min="0"
+            settings:interval="5"/>
+    </PreferenceCategory>
 </PreferenceScreen>
