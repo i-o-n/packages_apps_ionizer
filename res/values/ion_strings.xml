@@ -726,8 +726,10 @@
     <string name="lockcsize">Clock &amp; Date </string>
 
     <!-- Brightness icon-->
-    <string name="brightness_icon_title">Brightness icon</string>
-    <string name="brightness_icon_summary">Show a brightness icon to the right of the brighness slider to adjust auto-brightness</string>
+    <string name="brightness_icon_title">Auto brightness icon</string>
+    <string name="brightness_icon_summary">Show auto-brightness icon to the right of the brighness slider to adjust auto-brightness</string>
+    <string name="qs_show_brightness_minmax_title">Min-Max icon</string>
+    <string name="qs_show_brightness_minmax_summary">Show + - brightness control buttons near the slider</string>
 
     <!-- Force Expanded Settings -->
     <string name="force_expanded_settings_title">Force Expanded Settings</string>

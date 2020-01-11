@@ -126,6 +126,13 @@
             android:summary="@string/brightness_icon_summary"
             android:dependency="qs_show_brightness"
             android:defaultValue="true"/>
+
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+            android:key="qs_show_brightness_minmax"
+            android:title="@string/qs_show_brightness_minmax_title"
+            android:summary="@string/qs_show_brightness_minmax_summary"
+            android:dependency="qs_show_brightness"
+            android:defaultValue="true"/>
     </PreferenceCategory>
 
     <PreferenceCategory
