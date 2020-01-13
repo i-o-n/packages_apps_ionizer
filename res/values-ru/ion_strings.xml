@@ -237,7 +237,7 @@
     <string name="keyboard_rotation_toggle_summary">Принудительный автоповорот при отображении клавиатуры</string>
     <string name="keyboard_rotation_timeout_title">Тайм-аут автоповорота</string>
     <string name="keyboard_rotation_timeout_summary">Отключить датчик автоповорота через <xliff:g id="rotate_timeout">%1$s</xliff:g> секунд после скрытия клавиатуры</string>
-    <string name="keyboard_rotation_dialog">Эта функция заставляет автоповорот временно включаться, пока отображается клавиатура. Не имеет никакого эффекта, когда автоповорот уже включен.</string>
+    <string name="keyboard_rotation_dialog">Эта функция заставляет автоповорот временно включаться, пока отображается клавиатура. Не имеет никакого эффекта, когда автоповорот уже включен</string>
     <string name="show_enter_key_title">Показывать клавишу ввода</string>
     <string name="show_enter_key_summary">Принудительно показывать клавишу ввода вместо клавиши смайлика</string>
     <string name="ime_switcher_notify">Уведомление выбора клавиатуры</string>
@@ -269,7 +269,7 @@
 
     <!-- QS footer warnings -->
     <string name="qs_footer_warnings_title">Предупреждения нижнего колонтитула в Быстрых настройках</string>
-    <string name="qs_footer_warnings_summary">Показывать предупреждение в нижней части панели Быстрых настроек, когда сеть контролируется внешними приложениями или VPN</string>
+    <string name="qs_footer_warnings_summary">Показывать предупреждения в нижней части панели Быстрых настроек, когда сеть контролируется внешними приложениями или VPN</string>
 
     <!-- QS Edit -->
     <string name="qs_edit_title">Иконка редактирования</string>
@@ -472,21 +472,21 @@
     <string name="lock_clock_font_stock">Нормальный</string>
     <string name="lock_clock_font_bold">Жирный</string>
     <string name="lock_clock_font_italic">Italic</string>
-    <string name="lock_clock_font_bold_italic">Жирный Italic</string>
-    <string name="lock_clock_font_light_italic">Легкий Italic</string>
-    <string name="lock_clock_font_thin_italic">Тонкий Italic</string>
+    <string name="lock_clock_font_bold_italic">Жирный курсив</string>
+    <string name="lock_clock_font_light_italic">Легкий курсив</string>
+    <string name="lock_clock_font_thin_italic">Тонкий курсив</string>
     <string name="lock_clock_font_light">Легкий</string>
     <string name="lock_clock_font_thin">Тонкий</string>
     <string name="lock_clock_font_condensed_normal">Уплотненный</string>
-    <string name="lock_clock_font_condensed_italic">Уплотненный Italic</string>
+    <string name="lock_clock_font_condensed_italic">Уплотненный курсив</string>
     <string name="lock_clock_font_condensed_bold">Уплотненный жирный</string>
     <string name="lock_clock_font_condensed_bold_italic">Уплотненный жирный Italic</string>
     <string name="lock_clock_font_condensed_light">Уплотненный легкий</string>
     <string name="lock_clock_font_condensed_light_italic">Уплотненный легкий Italic</string>
     <string name="lock_clock_font_medium_normal">Средний (по умолчанию)</string>
-    <string name="lock_clock_font_medium_italic">Средний Italic</string>
+    <string name="lock_clock_font_medium_italic">Средний курсив</string>
     <string name="lock_clock_font_black">Черный</string>
-    <string name="lock_clock_font_black_italic">Черный Italic</string>
+    <string name="lock_clock_font_black_italic">Черный курсив</string>
     <string name="lock_clock_font_abelreg" translatable="false">Abel</string>
     <string name="lock_clock_font_adamcg" translatable="false">Adan CG Pro</string>
     <string name="lock_clock_font_adventpro" translatable="false">Advent Pro</string>
