@@ -901,71 +901,71 @@
     <string name="qs_user_toggle_summary">Display Multi-user switcher icon in quick settings footer</string>
 
     <!-- Lockscreen clock style -->
-    <string name="lockscreen_clock_titlex">Clock style</string>
-    <string name="lockscreen_clock_dialog_title">Select clock style</string>
-    <string name="lockscreen_clock_hide">Hide</string>
-    <string name="lockscreen_clock_default">Default</string>
-    <string name="lockscreen_clock_default_bold">Default (bold)</string>
-    <string name="lockscreen_clock_default_accent">Default (accent)</string>
-    <string name="lockscreen_clock_default_accent_min">Default (accent minutes)</string>
-    <string name="lockscreen_clock_default_accent_hour">Default (accent hours)</string>
-    <string name="lockscreen_clock_sammy">Sammy</string>
-    <string name="lockscreen_clock_sammy_bold">Sammy (bold)</string>
-    <string name="lockscreen_clock_sammy_accent">Sammy accent</string>
-    <string name="lockscreen_clock_sammy_accent_alt">Sammy accent (dark hour)</string>
+    <string name="lockscreen_clock_titlex">Стиль часов</string>
+    <string name="lockscreen_clock_dialog_title">Выбрать стиль часов</string>
+    <string name="lockscreen_clock_hide">Скрыто</string>
+    <string name="lockscreen_clock_default">По умолчанию</string>
+    <string name="lockscreen_clock_default_bold">По умолчанию (жирные)</string>
+    <string name="lockscreen_clock_default_accent">По умолчанию (цвет акцента)</string>
+    <string name="lockscreen_clock_default_accent_min">По умолчанию (цвет акцента для минут)</string>
+    <string name="lockscreen_clock_default_accent_hour">По умолчанию (цвет акцента для часов)</string>
+    <string name="lockscreen_clock_sammy">Вертикальные</string>
+    <string name="lockscreen_clock_sammy_bold">Вертикальные (жирные)</string>
+    <string name="lockscreen_clock_sammy_accent">Вертикальные с цветом акцента</string>
+    <string name="lockscreen_clock_sammy_accent_alt">Вертикальные с цветом акцента (темные часы)</string>
 
     <!-- Show VoLTE icon on statusbar -->
-    <string name="volte_icon_title">VoLTE Icon</string>
-    <string name="volte_icon_summary">Display VoLTE icon when available in the statusbar</string>
-    <string name="volte_icon_style_title">VoLTE Icon Style</string>
-    <string name="volte_icon_default">Default</string>
-    <string name="volte_icon_vo">Vo Only Icon</string>
-    <string name="volte_icon_volte">VoLTE Icon</string>
-    <string name="volte_icon_oos">VoLTE OOS Icon</string>
-    <string name="volte_icon_hd">HD Icon</string>
-    <string name="volte_icon_volit">VoLIT Icon</string>
-    <string name="volte_icon_asus">VoLTE Asus Icon</string>
-    <string name="volte_icon_cr">VoLTE CR Icon</string>
-    <string name="volte_icon_text">VoLTE text Icon</string>
+    <string name="volte_icon_title">Иконка VoLTE</string>
+    <string name="volte_icon_summary">Отображать значок VoLTE, когда он доступен, в Строке состояния</string>
+    <string name="volte_icon_style_title">Стиль иконки VoLTE</string>
+    <string name="volte_icon_default">По умолчанию</string>
+    <string name="volte_icon_vo">Только Vo иконка</string>
+    <string name="volte_icon_volte">VoLTE иконка</string>
+    <string name="volte_icon_oos">VoLTE OOS иконка</string>
+    <string name="volte_icon_hd">HD иконка</string>
+    <string name="volte_icon_volit">VoLIT иконка</string>
+    <string name="volte_icon_asus">VoLTE Asus иконка</string>
+    <string name="volte_icon_cr">VoLTE CR иконка</string>
+    <string name="volte_icon_text">VoLTE текстовая иконка</string>
     <string name="volte_icon_pie">VoLTE Pie</string>
 
     <!-- Ambient visualizer -->
-    <string name="ambient_visualizer_category">Ambient Visualizer</string>
-    <string name="ambient_visualizer_title">Show on Ambient Display</string>
-    <string name="ambient_visualizer_summary">Display the visualizer bars on ambient display</string>
+    <string name="ambient_visualizer_category">Ambient Визуализатор</string>
+    <string name="ambient_visualizer_title">Показывать на Ambient дисплее</string>
+    <string name="ambient_visualizer_summary">Отображение панели Визуализатора на Ambient дисплее</string>
 
     <!-- Blink flashlight for incoming calls -->
-    <string name="notification_flash_title">Flashlight</string>
-    <string name="flashlight_on_call_title">Blink for incoming call</string>
-    <string name="flashlight_on_call_disabled">Disabled</string>
-    <string name="flashlight_on_call_not_dnd">Only in ringer mode</string>
-    <string name="flashlight_on_call_dnd">Only in DND mode</string>
-    <string name="flashlight_on_call_always">Always</string>
-    <string name="flashlight_on_call_wait_title">Blink for call waiting</string>
-    <string name="flashlight_on_call_wait_summary">Pulse flash when there\'s a call waiting</string>
+    <string name="notification_flash_title">Фонарик</string>
+    <string name="flashlight_on_call_title">Мигать при входящем звонке</string>
+    <string name="flashlight_on_call_disabled">Выключено</string>
+    <string name="flashlight_on_call_not_dnd">Только в режиме звонка</string>
+    <string name="flashlight_on_call_dnd">Только в режиме "Не беспокоить"</string>
+    <string name="flashlight_on_call_always">Всегда</string>
+    <string name="flashlight_on_call_wait_title">Мигать при ожидании вызова</string>
+    <string name="flashlight_on_call_wait_summary">Вспышка мигает при ожидании вызова</string>
 
     <!-- Lock icon -->
-    <string name="hide_lockicon_title">Hide lock icon</string>
-    <string name="hide_lockicon_summary">Hide the lock icon on lockscreen</string>
+    <string name="hide_lockicon_title">Скрыть иконку блокировки</string>
+    <string name="hide_lockicon_summary">Скрывает отображение иконки блокировки на Экране блокировки</string>
 
     <!-- Notification light -->
-    <string name="notification_light_settings">Notification LED</string>
-    <string name="notification_light_settings_summary">Configure notification light on per-app basis</string>
+    <string name="notification_light_settings">Уведомления LED индикатора</string>
+    <string name="notification_light_settings_summary">Настройка индикатора уведомлений для каждого приложения</string>
 
     <!-- QS header image -->
-    <string name="status_bar_custom_header_title">Header image</string>
-    <string name="status_bar_custom_header_summary">Use a custom image for QS header</string>
+    <string name="status_bar_custom_header_title">Изображение в Верхнем колонтитуле</string>
+    <string name="status_bar_custom_header_summary">Использовать пользовательское изображение в Верхнем колонтитуле</string>
     <string name="daylight_header_provider" translatable="false">daylight</string>
     <string name="file_header_provider" translatable="false">file</string>
-    <string name="custom_header_provider_title">Image type</string>
-    <string name="daylight_header_provider_title">Automatic (Time based)</string>
-    <string name="file_header_provider_title">Static</string>
-    <string name="daylight_header_pack_title">Image collection</string>
-    <string name="header_provider_disabled">Disabled</string>
-    <string name="custom_header_pick_title">Pick image from collection</string>
-    <string name="custom_header_pick_summary">Select an image from pre-installed image collections</string>
-    <string name="file_header_select_title">Pick image from storage</string>
-    <string name="file_header_select_summary">Select an image from internal storage</string>
-    <string name="status_bar_custom_header_shadow_title">Darken image</string>
-    <string name="status_bar_custom_header_height_title">Image height offset</string>
+    <string name="custom_header_provider_title">Тип изображения</string>
+    <string name="daylight_header_provider_title">Автоматическое (Основано на времени)</string>
+    <string name="file_header_provider_title">Статическое</string>
+    <string name="daylight_header_pack_title">Коллекция изображений</string>
+    <string name="header_provider_disabled">Отключено</string>
+    <string name="custom_header_pick_title">Выбрать изображение из коллекции</string>
+    <string name="custom_header_pick_summary">Выберите изображение из предварительно установленных коллекций изображений</string>
+    <string name="file_header_select_title">Выбрать изображение из хранилища</string>
+    <string name="file_header_select_summary">Выберите изображение из Внутреннего хранилища</string>
+    <string name="status_bar_custom_header_shadow_title">Затемнить изображение</string>
+    <string name="status_bar_custom_header_height_title">Смещение высоты изображения</string>
 </resources>
