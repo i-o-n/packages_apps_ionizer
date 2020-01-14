@@ -34,7 +34,7 @@
     <string name="system_title">Система</string>
     <string name="weather_title">Погода</string>
     <string name="volume_title">Клавиши громкости</string>
-    <string name="device_part_title">Device ionizer</string>
+    <string name="device_part_title">ionizer устройства</string>
     <string name="about_ion">Версия ion</string>
     <string name="device_part_title_summary">Дополнительные возможности устройства</string>
     <string name="charging_noti_category">Уведомления при зарядке</string>
@@ -109,7 +109,7 @@
 
     <!-- Dashboard conditions-->
     <string name="dashboard_category">Параметры Информационной панели</string>
-    <string name="dashboard_conditions_title">Условия Информационной панели</string>
+    <string name="dashboard_conditions_title">Состояния Информационной панели</string>
     <string name="summary_dashboard_conditions_enabled">Состояния Информационной панели включены</string>
     <string name="summary_dashboard_conditions_disabled">Состояния Информационной панели выключены</string>
     <string name="dashboard_suggestions_title">Советы Информационной панели</string>
@@ -219,7 +219,7 @@
     <string name="summary_heads_up_disabled">Всплывающие уведомления выключены</string>
     <string name="add_heads_up_package">Добавить приложение</string>
     <string name="add_heads_up_stoplist_summary">Отключить всплывающие уведомления в этих приложениях</string>
-    <string name="add_heads_up_blacklist_summary">Отключить всплывающие уведомления от этих приложений</string>
+    <string name="add_heads_up_blacklist_summary">Отключение всплывающих уведомлений от этих приложений</string>
     <string name="heads_up_stoplist_title">Список отключенных</string>
     <string name="heads_up_blacklist_title">Черный список</string>
     <string name="profile_choose_app">Выберите приложение</string>
@@ -239,7 +239,7 @@
     <string name="keyboard_rotation_timeout_summary">Отключить датчик автоповорота через <xliff:g id="rotate_timeout">%1$с</xliff:g>после скрытия клавиатуры</string>
     <string name="keyboard_rotation_dialog">Эта функция заставляет автоповорот временно включаться, пока отображается клавиатура. Не имеет никакого эффекта, когда автоповорот уже включен</string>
     <string name="show_enter_key_title">Показывать клавишу ввода</string>
-    <string name="show_enter_key_summary">Принудительно показывать клавишу ввода вместо клавиши смайлика</string>
+    <string name="show_enter_key_summary">Принудительно показывать клавишу ввода вместо клавиши смайликов</string>
     <string name="ime_switcher_notify">Уведомление выбора клавиатуры</string>
     <string name="ime_switcher_notify_summary">Показывать уведомление выбора метода ввода</string>
 
@@ -249,7 +249,7 @@
 
     <!-- QuickSettings Panel Transparency -->
     <string name="qs_panel_alpha_title">Непрозрачность Быстрых настроек</string>
-    <string name="qs_panel_alpha_summary">Настроить непрозрачность фона</string>
+    <string name="qs_panel_alpha_summary">Настроить непрозрачность фона Быстрых настроек</string>
 
     <!-- Lockscreen Double Tap To Sleep -->
     <string name="double_tap_sleep_lockscreen_title">Двойное нажатие на Экране блокировки для сна</string>
@@ -265,7 +265,7 @@
 
     <!-- Fingerprint unlock keystore -->
     <string name="fp_unlock_keystore_title">Принудительная биометрическая разблокировка</string>
-    <string name="fp_unlock_keystore_summary">Разблокировать устройство с помощью отпечатка пальцев после перезагрузки без ввода PIN-кода / Пароля / Графического ключа \ Примечание: на свой страх и риск!</string>
+    <string name="fp_unlock_keystore_summary">Разблокировать устройство с помощью отпечатка пальцев после перезагрузки без ввода PIN-кода / Пароля / Графического ключа. Примечание: на свой страх и риск!</string>
 
     <!-- QS footer warnings -->
     <string name="qs_footer_warnings_title">Предупреждения нижнего колонтитула в Быстрых настройках</string>
@@ -291,7 +291,7 @@
     <string name="qs_show_brightness_title">Ползунок яркости</string>
     <string name="qs_show_brightness_summary">Показывать ползунок яркости в панели Быстрых настроек</string>
     <string name="qs_brightness_position_bottom_title">Ползунок яркости снизу</string>
-    <string name="qs_brightness_position_bottom_summary">Показывать ползунок яркости внизу Быстрых настроек</string>
+    <string name="qs_brightness_position_bottom_summary">Показывать ползунок яркости в нижней части Быстрых настроек</string>
     <string name="qs_battery_location_bar">Батарея в верхней части Быстрых настроек</string>
     <string name="qs_battery_location_bar_summary">Показывать батарею в верхней части Быстрых настроек</string>
 
@@ -314,7 +314,7 @@
     <string name="torch_power_button_gesture_dt_toast">Жест перехода к камере теперь отключен</string>
     <string name="torch_power_button_gesture_lp">Долгое удержание кнопки питания</string>
     <string name="torch_long_press_power_timeout_title">Автоматически отключать фонарик</string>
-    <string name="torch_long_press_power_timeout_summary">Примечание: 0 значит никогда(выключен)</string>
+    <string name="torch_long_press_power_timeout_summary">Примечание: 0 значит никогда (выключен)</string>
 
     <!-- Charging animation -->
     <string name="charging_animation_title">Анимация зарядки</string>
@@ -480,9 +480,9 @@
     <string name="lock_clock_font_condensed_normal">Уплотненный</string>
     <string name="lock_clock_font_condensed_italic">Уплотненный курсив</string>
     <string name="lock_clock_font_condensed_bold">Уплотненный жирный</string>
-    <string name="lock_clock_font_condensed_bold_italic">Уплотненный жирный Italic</string>
+    <string name="lock_clock_font_condensed_bold_italic">Уплотненный жирный курсив</string>
     <string name="lock_clock_font_condensed_light">Уплотненный легкий</string>
-    <string name="lock_clock_font_condensed_light_italic">Уплотненный легкий Italic</string>
+    <string name="lock_clock_font_condensed_light_italic">Уплотненный легкий курсив</string>
     <string name="lock_clock_font_medium_normal">Средний (по умолчанию)</string>
     <string name="lock_clock_font_medium_italic">Средний курсив</string>
     <string name="lock_clock_font_black">Черный</string>
@@ -599,7 +599,7 @@
     <string name="status_bar_battery_style_dotted_circle">Пунктирный круг</string>
     <string name="status_bar_battery_style_circle">Заполненный круг</string>
     <string name="status_bar_battery_style_text">Текст</string>
-    <string name="status_bar_battery_style_hidden">Скрыт</string>
+    <string name="status_bar_battery_style_hidden">Скрыта</string>
 
     <!-- Status bar - Battery percentage -->
     <string name="status_bar_battery_percentage_title">Процент батареи</string>
