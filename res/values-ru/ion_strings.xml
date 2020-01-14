@@ -133,7 +133,7 @@
 
     <!-- Wakeup options -->
     <string name="wakeup_when_plugged_unplugged_title">Просыпаться при зарядке</string>
-    <string name="wakeup_when_plugged_unplugged_summary">Разбудить устройство, если зарядное устройство подключено / отключено.</string>
+    <string name="wakeup_when_plugged_unplugged_summary">Разбудить устройство, если зарядное устройство подключено / отключено</string>
 
     <!-- Incall vibrate options -->
     <string name="incall_vibration_category">Варианты вибрации при вызове</string>
@@ -211,7 +211,7 @@
     <string name="nav_bar_layout_left">Смещение влево</string>
     <string name="nav_bar_layout_right">Смещение вправо</string>
     <string name="navbar_invert_layout_title">Инвертировать макет</string>
-    <string name="recents_style_info_title">Действителен только при использовании режима навигации с кнопками.</string>
+    <string name="recents_style_info_title">Действителен только при использовании режима навигации с кнопками</string>
 
     <!-- Heads up -->
     <string name="heads_up_notifications">Всплывающие уведомления</string>
@@ -418,7 +418,7 @@
 
     <!-- Buttons - Enable navbar -->
     <string name="disable_navkeys_title">Включить экранную навигационную панель</string>
-    <string name="disable_navkeys_summary">Включить экранную Панель навигации</string>
+    <string name="disable_navkeys_summary">Включение экранной Панели навигации</string>
 
     <!-- Enable navbar -->
     <string name="enable_navbar_title">Включить</string>
@@ -677,7 +677,7 @@
     <string name="alarm_list_header">Доступные тревоги</string>
     <string name="alarm_blocker_reload">Перезагрузить</string>
     <string name="alarm_blocker_warning_title">Действовать с осторожностью</string>
-    <string name="alarm_blocker_warning">Блокировка сигналов тревоги может привести к нестабильности, сбоям или потере данных.</string>
+    <string name="alarm_blocker_warning">Блокировка сигналов тревоги может привести к нестабильности, сбоям или потере данных</string>
 
     <!-- Screen state service -->
     <string name="screen_state_toggles_title">Приостановить действия</string>
@@ -824,14 +824,14 @@
     <string name="gaming_mode_notifications_feedback_summary">Блокировать звуки уведомлений и вибрацию когда Игровой режим активен</string>
 
     <!-- Battery light -->
-    <string name="light_settings_header">Настройка LED уведомлений</string>
+    <string name="light_settings_header">Настройка LED индикатора уведомлений</string>
     <string name="battery_light_settings">Индикатор батареи</string>
     <string name="battery_light_summary">Настройка индикатора батареи</string>
     <string name="battery_light_enable">Включено</string>
     <string name="battery_light_allow_on_dnd_title">Индикатор батареи в режиме "Не беспокоить"</string>
     <string name="battery_light_allow_on_dnd_summary">Пульсация индикатора батареи в режиме "Не беспокоить"</string>
     <string name="battery_light_low_blinking_title">Мигающий индикатор при низком заряде батареи</string>
-    <string name="battery_light_low_blinking_summary">Пульсация LED при низком заряде батареи </string>
+    <string name="battery_light_low_blinking_summary">Пульсация LED индикатора при низком заряде батареи </string>
     <string name="battery_light_cat">Цвет индикатора батареи во время зарядки</string>
     <string name="battery_light_low_color">Низкий заряд батареи</string>
     <string name="battery_light_medium_color">Средний заряд батареи</string>
