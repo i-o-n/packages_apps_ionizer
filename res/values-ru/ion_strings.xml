@@ -236,7 +236,7 @@
     <string name="keyboard_rotation_toggle_title">Автоматическое вращение клавиатуры</string>
     <string name="keyboard_rotation_toggle_summary">Принудительный автоповорот при отображении клавиатуры</string>
     <string name="keyboard_rotation_timeout_title">Тайм-аут автоповорота</string>
-    <string name="keyboard_rotation_timeout_summary">Отключить датчик автоповорота через <xliff:g id="rotate_timeout">%1$s</xliff:g> секунд после скрытия клавиатуры</string>
+    <string name="keyboard_rotation_timeout_summary">Отключить датчик автоповорота через <xliff:g id="rotate_timeout">%1$с</xliff:g>после скрытия клавиатуры</string>
     <string name="keyboard_rotation_dialog">Эта функция заставляет автоповорот временно включаться, пока отображается клавиатура. Не имеет никакого эффекта, когда автоповорот уже включен</string>
     <string name="show_enter_key_title">Показывать клавишу ввода</string>
     <string name="show_enter_key_summary">Принудительно показывать клавишу ввода вместо клавиши смайлика</string>
@@ -877,7 +877,7 @@
     <string name="listview_stack_bottom">Стек (вниз)</string>
     <string name="listview_unfold">Развертывание</string>
     <string name="listview_fold">Складывание</string>
-    <string name="listview_translate_left">Перемещение(влево)</string>
+    <string name="listview_translate_left">Перемещение (влево)</string>
     <string name="listview_translate_right">Перемещение (вправо)</string>
 
     <!-- ListView interpolator -->
