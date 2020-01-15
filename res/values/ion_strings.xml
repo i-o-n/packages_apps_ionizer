@@ -931,8 +931,8 @@
 
     <!-- Ambient visualizer -->
     <string name="ambient_visualizer_category">Ambient Визуализатор</string>
-    <string name="ambient_visualizer_title">Показывать на Ambient дисплее</string>
-    <string name="ambient_visualizer_summary">Отображение панели Визуализатора на Ambient дисплее</string>
+    <string name="ambient_visualizer_title">Показывать на Ambient экране</string>
+    <string name="ambient_visualizer_summary">Отображение панели Визуализатора на Ambient экране</string>
 
     <!-- Blink flashlight for incoming calls -->
     <string name="notification_flash_title">Фонарик</string>
