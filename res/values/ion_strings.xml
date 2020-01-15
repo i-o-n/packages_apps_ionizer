@@ -728,8 +728,8 @@
     <!-- Brightness icon-->
     <string name="brightness_icon_title">Auto brightness icon</string>
     <string name="brightness_icon_summary">Show auto-brightness icon to the right of the brighness slider to adjust auto-brightness</string>
-    <string name="qs_show_brightness_minmax_title">Min-Max icon</string>
-    <string name="qs_show_brightness_minmax_summary">Show + - brightness control buttons near the slider</string>
+    <string name="qs_show_brightness_minmax_title">Кнопки контроля яркости</string>
+    <string name="qs_show_brightness_minmax_summary">Показывать кнопки + - для контроля яркости рядом с ползунком</string>
 
     <!-- Force Expanded Settings -->
     <string name="force_expanded_settings_title">Force Expanded Settings</string>
