@@ -38,14 +38,19 @@ import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.SettingsPreferenceFragment;
 
 import com.ion.ionizer.preferences.SecureSettingMasterSwitchPreference;
+import com.ion.ionizer.preferences.SystemSettingMasterSwitchPreference;
 import com.ion.ionizer.preferences.SystemSettingSeekBarPreference;
 
 public class LockScreen extends DashboardFragment implements
         Preference.OnPreferenceChangeListener {
 
     public static final String TAG = "LockScreenSettings";
+    private static final String LOCKSCREEN_CLOCK = "lockscreen_clock";
+    private static final String LOCKSCREEN_INFO = "lockscreen_info";
     private static final String LOCKSCREEN_VISUALIZER_ENABLED = "lockscreen_visualizer_enabled";
 
+    private SystemSettingMasterSwitchPreference mClockEnabled;
+    private SystemSettingMasterSwitchPreference mInfoEnabled;
     private SecureSettingMasterSwitchPreference mVisualizerEnabled;
 
     @Override
@@ -56,6 +61,19 @@ public class LockScreen extends DashboardFragment implements
         final PreferenceScreen prefScreen = getPreferenceScreen();
         Resources resources = getResources();
 
+        mClockEnabled = (SystemSettingMasterSwitchPreference) findPreference(LOCKSCREEN_CLOCK);
+        mClockEnabled.setOnPreferenceChangeListener(this);
+        int clockEnabled = Settings.System.getInt(resolver,
+                LOCKSCREEN_CLOCK, 1);
+        mClockEnabled.setChecked(clockEnabled != 0);
+
+        mInfoEnabled = (SystemSettingMasterSwitchPreference) findPreference(LOCKSCREEN_INFO);
+        mInfoEnabled.setOnPreferenceChangeListener(this);
+        int infoEnabled = Settings.System.getInt(resolver,
+                LOCKSCREEN_INFO, 1);
+        mInfoEnabled.setChecked(infoEnabled != 0);
+        mInfoEnabled.setEnabled(clockEnabled != 0);
+
         mVisualizerEnabled = (SecureSettingMasterSwitchPreference) findPreference(LOCKSCREEN_VISUALIZER_ENABLED);
         mVisualizerEnabled.setOnPreferenceChangeListener(this);
         int visualizerEnabled = Settings.Secure.getInt(resolver,
@@ -65,7 +83,18 @@ public class LockScreen extends DashboardFragment implements
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getActivity().getContentResolver();
-        if (preference == mVisualizerEnabled) {
+        if (preference == mClockEnabled) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getContentResolver(),
+		            LOCKSCREEN_CLOCK, value ? 1 : 0);
+            mInfoEnabled.setEnabled(value);
+            return true;
+        } else if (preference == mInfoEnabled) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putInt(getContentResolver(),
+		            LOCKSCREEN_INFO, value ? 1 : 0);
+            return true;
+        } else if (preference == mVisualizerEnabled) {
             boolean value = (Boolean) newValue;
             Settings.Secure.putInt(getContentResolver(),
 		            LOCKSCREEN_VISUALIZER_ENABLED, value ? 1 : 0);
