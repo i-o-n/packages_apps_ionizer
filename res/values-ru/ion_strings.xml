@@ -139,7 +139,7 @@
     <string name="incall_vibration_category">Варианты вибрации при вызове</string>
     <string name="incall_vibrate_connect_title">Вибрация при соединении</string>
     <string name="incall_vibrate_connect_summary">Включить вибрацию при соединении вызова</string>
-    <string name="incall_vibrate_call_wait_title">Вибрация при ожидании вызова</string>
+    <string name="incall_vibrate_call_wait_title">Вибрация при ожидании</string>
     <string name="incall_vibrate_call_wait_summary">Включить вибрацию при ожидании вызова</string>
     <string name="incall_vibrate_disconnect_title">Вибрация при разъединении</string>
     <string name="incall_vibrate_disconnect_summary">Включить вибрацию после разъединения вызова</string>
