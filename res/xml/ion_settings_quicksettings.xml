@@ -98,6 +98,12 @@
             android:defaultValue="0"
             android:summary="%s" />
 
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+            android:key="qs_datausage"
+            android:title="@string/qs_datausage_title"
+            android:summary="@string/qs_datausage_subtitle"
+            android:defaultValue="false" />
+
         <PreferenceScreen
             android:layout="@layout/ion_divider"
             android:selectable="false" />
