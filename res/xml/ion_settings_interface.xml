@@ -50,6 +50,12 @@
             settings:min="0"
             android:defaultValue="255" />
 
+        <com.ion.ionizer.colorpicker.ColorPickerPreference
+            android:key="qs_bg_color"
+            android:title="@string/qs_bg_color_title"
+            settings:defaultColorValue="0xff000000"
+            android:persistent="false" />
+
         <com.ion.ionizer.preferences.SystemSettingSwitchPreference
             android:key="qs_panel_bg_use_fw"
             android:title="@string/qs_bg_use_fw"

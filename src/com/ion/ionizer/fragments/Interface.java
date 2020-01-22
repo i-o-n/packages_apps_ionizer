@@ -28,6 +28,7 @@ import com.android.settingslib.core.lifecycle.Lifecycle;
 
 import com.ion.ionizer.display.AccentColorPreferenceController;
 import com.ion.ionizer.display.QsAlphaPreferenceController;
+import com.ion.ionizer.display.QsbgColorPreferenceController;
 import com.ion.ionizer.display.QsColorPreferenceController;
 
 import com.ion.ionizer.R;
@@ -67,6 +68,7 @@ public class Interface extends DashboardFragment {
                 "android.theme.customization.adaptive_icon_shape"));
         controllers.add(new AccentColorPreferenceController(context));
         controllers.add(new QsAlphaPreferenceController(context));
+        controllers.add(new QsbgColorPreferenceController(context));
         controllers.add(new QsColorPreferenceController(context));
         return controllers;
     }
