@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 ion-OS
+ * Copyright (C) 2019-2020 ion-OS
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,25 +16,34 @@
 package com.ion.ionizer.fragments;
 
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.UserHandle;
+import android.provider.SearchIndexableResource;
+import android.provider.Settings;
+
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
-import android.provider.Settings;
 
 import com.android.internal.logging.nano.MetricsProto;
-
-import com.ion.ionizer.preferences.SystemSettingSwitchPreference;
 import com.android.settings.R;
+import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.search.Indexable;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settingslib.search.SearchIndexable;
 
 import com.ion.ionizer.colorpicker.ColorPickerPreference;
+import com.ion.ionizer.preferences.SystemSettingSwitchPreference;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@SearchIndexable
 public class BatteryLightSettings extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener {
+        Preference.OnPreferenceChangeListener, Indexable {
 
     private ColorPickerPreference mLowColor;
     private ColorPickerPreference mMediumColor;
@@ -139,4 +148,25 @@ public class BatteryLightSettings extends SettingsPreferenceFragment implements
         }
         return false;
     }
+
+    public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+            new BaseSearchIndexProvider() {
+                @Override
+                public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                        boolean enabled) {
+                    ArrayList<SearchIndexableResource> result =
+                            new ArrayList<SearchIndexableResource>();
+
+                    SearchIndexableResource sir = new SearchIndexableResource(context);
+                    sir.xmlResId = R.xml.battery_light;
+                    result.add(sir);
+                    return result;
+                }
+
+                @Override
+                public List<String> getNonIndexableKeys(Context context) {
+                    List<String> keys = super.getNonIndexableKeys(context);
+                    return keys;
+                }
+    };
 }

@@ -16,6 +16,7 @@
 package com.ion.ionizer.fragments;
 
 import android.content.Context;
+import android.provider.SearchIndexableResource;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -23,21 +24,26 @@ import androidx.fragment.app.FragmentManager;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.display.OverlayCategoryPreferenceController;
+import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.search.Indexable;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
+import com.android.settingslib.search.SearchIndexable;
 
+import com.ion.ionizer.R;
 import com.ion.ionizer.display.AccentColorPreferenceController;
 import com.ion.ionizer.display.QsAlphaPreferenceController;
 import com.ion.ionizer.display.QsbgColorPreferenceController;
 import com.ion.ionizer.display.QsColorPreferenceController;
 import com.ion.ionizer.display.QsCustomHeaderPreferenceController;
 
-import com.ion.ionizer.R;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class Interface extends DashboardFragment {
+@SearchIndexable
+public class Interface extends DashboardFragment implements
+        Indexable {
+
     private static final String TAG = "Interface";
 
     @Override
@@ -74,4 +80,23 @@ public class Interface extends DashboardFragment {
         controllers.add(new QsCustomHeaderPreferenceController(context));
         return controllers;
     }
+
+    public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+            new BaseSearchIndexProvider() {
+                @Override
+                public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                        boolean enabled) {
+                    ArrayList<SearchIndexableResource> result =
+                            new ArrayList<SearchIndexableResource>();
+                    SearchIndexableResource sir = new SearchIndexableResource(context);
+                    sir.xmlResId = R.xml.ion_settings_interface;
+                    result.add(sir);
+                    return result;
+                }
+                @Override
+                public List<String> getNonIndexableKeys(Context context) {
+                    ArrayList<String> result = new ArrayList<String>();
+                    return result;
+                }
+    };
 }

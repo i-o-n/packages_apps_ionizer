@@ -22,6 +22,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemProperties;
 import android.os.UserHandle;
+import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.text.TextUtils;
 
@@ -34,15 +35,22 @@ import androidx.preference.SwitchPreference;
 
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.dashboard.DashboardFragment;
+import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.search.Indexable;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settingslib.search.SearchIndexable;
 
 import com.ion.ionizer.R;
 import com.ion.ionizer.preferences.SystemSettingEditTextPreference;
 import com.ion.ionizer.preferences.SystemSettingMasterSwitchPreference;
 import com.ion.ionizer.preferences.SystemSettingSeekBarPreference;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@SearchIndexable
 public class QuickSettings extends DashboardFragment
-        implements Preference.OnPreferenceChangeListener {
+        implements Preference.OnPreferenceChangeListener, Indexable {
 
     public static final String TAG = "QuickSettings";
 
@@ -187,4 +195,23 @@ public class QuickSettings extends DashboardFragment
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.ION_IONIZER;
     }
+
+    public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+            new BaseSearchIndexProvider() {
+                @Override
+                public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                        boolean enabled) {
+                    ArrayList<SearchIndexableResource> result =
+                            new ArrayList<SearchIndexableResource>();
+                    SearchIndexableResource sir = new SearchIndexableResource(context);
+                    sir.xmlResId = R.xml.ion_settings_quicksettings;
+                    result.add(sir);
+                    return result;
+                }
+                @Override
+                public List<String> getNonIndexableKeys(Context context) {
+                    ArrayList<String> result = new ArrayList<String>();
+                    return result;
+                }
+    };
 }

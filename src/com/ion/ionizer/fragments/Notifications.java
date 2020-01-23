@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 ion-OS
+ * Copyright (C) 2019-2020 ion-OS
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 
 import androidx.preference.ListPreference;
@@ -30,18 +31,24 @@ import androidx.preference.SwitchPreference;
 
 import com.android.internal.logging.nano.MetricsProto; 
 import com.android.settings.dashboard.DashboardFragment;
+import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.search.Indexable;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settingslib.search.SearchIndexable;
 
 import com.ion.ionizer.colorpicker.ColorPickerPreference;
-import com.ion.ionizer.preferences.Utils;
+import com.ion.ionizer.preferences.CustomSeekBarPreference;
 import com.ion.ionizer.preferences.GlobalSettingMasterSwitchPreference;
 import com.ion.ionizer.preferences.SystemSettingMasterSwitchPreference;
-import com.ion.ionizer.preferences.CustomSeekBarPreference;
-
+import com.ion.ionizer.preferences.Utils;
 import com.ion.ionizer.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@SearchIndexable
 public class Notifications extends DashboardFragment
-        implements Preference.OnPreferenceChangeListener {
+        implements Preference.OnPreferenceChangeListener, Indexable {
 
     public static final String TAG = "Notifications";
 
@@ -175,4 +182,23 @@ public class Notifications extends DashboardFragment
     public int getMetricsCategory() {
         return MetricsProto.MetricsEvent.ION_IONIZER;
     }
+
+    public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+            new BaseSearchIndexProvider() {
+                @Override
+                public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                        boolean enabled) {
+                    ArrayList<SearchIndexableResource> result =
+                            new ArrayList<SearchIndexableResource>();
+                    SearchIndexableResource sir = new SearchIndexableResource(context);
+                    sir.xmlResId = R.xml.ion_settings_notifications;
+                    result.add(sir);
+                    return result;
+                }
+                @Override
+                public List<String> getNonIndexableKeys(Context context) {
+                    ArrayList<String> result = new ArrayList<String>();
+                    return result;
+                }
+    };
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 ion-OS
+ * Copyright (C) 2019-2020 ion-OS
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,29 +17,28 @@ package com.ion.ionizer.fragments;
 
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.UserHandle;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
-import android.content.res.Resources;
 
+import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
-import androidx.preference.ListPreference;
-import androidx.preference.PreferenceScreen;
 import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceScreen;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.SwitchPreference;
 
 import com.android.settings.R;
-import com.android.settings.SettingsPreferenceFragment;
-
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
+import com.android.settings.SettingsPreferenceFragment;
+import com.android.settingslib.search.SearchIndexable;
 
 import com.android.internal.logging.nano.MetricsProto;
-
 import com.android.internal.util.hwkeys.ActionConstants;
 import com.android.internal.util.hwkeys.ActionUtils;
 
@@ -50,7 +49,9 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ButtonsSettings extends ActionFragment implements OnPreferenceChangeListener, Indexable {
+@SearchIndexable
+public class ButtonsSettings extends ActionFragment implements
+        OnPreferenceChangeListener, Indexable {
 
     //Keys
     private static final String KEY_BUTTON_BRIGHTNESS = "button_brightness";

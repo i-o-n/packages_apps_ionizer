@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 ion-OS
+ * Copyright (C) 2019-2020 ion-OS
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,15 +15,19 @@
  */
 package com.ion.ionizer.fragments;
 
-import com.android.internal.logging.nano.MetricsProto;
-
-import android.os.Bundle;
+import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.os.UserHandle;
-import android.content.ContentResolver;
 import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.UserHandle;
+import android.provider.SearchIndexableResource;
+import android.provider.Settings;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
 
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -34,28 +38,28 @@ import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.SwitchPreference;
 
-import android.provider.Settings;
+import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
-
-import java.util.Locale;
-import android.text.TextUtils;
-import android.view.View;
+import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.search.Indexable;
+import com.android.settings.Utils;
+import com.android.settingslib.search.SearchIndexable;
 
 import com.android.settings.SettingsPreferenceFragment;
 import com.ion.ionizer.preferences.CustomSeekBarPreference;
 import com.ion.ionizer.preferences.SystemSettingSeekBarPreference;
 import com.ion.ionizer.preferences.SystemSettingSwitchPreference;
-import com.android.settings.Utils;
-import android.util.Log;
 
-import java.util.List;
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.HashMap;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.List;
+import java.util.Locale;
 
+@SearchIndexable
 public class NetworkTraffic extends SettingsPreferenceFragment implements
-        OnPreferenceChangeListener {
+        OnPreferenceChangeListener, Indexable {
 
     private static final String NETWORK_TRAFFIC_HIDEARROW = "network_traffic_hidearrow";
     private static final String NETWORK_TRAFFIC_LOCATION = "network_traffic_location";
@@ -203,4 +207,22 @@ public class NetworkTraffic extends SettingsPreferenceFragment implements
         return MetricsProto.MetricsEvent.ION_IONIZER;
     }
 
+    public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
+            new BaseSearchIndexProvider() {
+                @Override
+                public List<SearchIndexableResource> getXmlResourcesToIndex(Context context,
+                        boolean enabled) {
+                    ArrayList<SearchIndexableResource> result =
+                            new ArrayList<SearchIndexableResource>();
+                    SearchIndexableResource sir = new SearchIndexableResource(context);
+                    sir.xmlResId = R.xml.networktraffic;
+                    result.add(sir);
+                    return result;
+                }
+                @Override
+                public List<String> getNonIndexableKeys(Context context) {
+                    ArrayList<String> result = new ArrayList<String>();
+                    return result;
+                }
+    };
 }
