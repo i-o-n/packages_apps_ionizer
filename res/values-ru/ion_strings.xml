@@ -45,8 +45,8 @@
     <string name="quicksettings_title_summary">Плитки, Верхний колонтитул, Нижний колонтитул</string>
     <string name="button_info">Клавиши громкости, Кнопка питания</string>
     <string name="keyguarrd">Мультимедиа, Жесты, Безопасность</string>
-    <string name="notifications_title_summary">Всплывающие уведомления, вибрация во время вызова</string>
-    <string name="manusys">Игровой режим</string>
+    <string name="notifications_title_summary">Всплывающие уведомления, Вибрация во время вызова</string>
+    <string name="manusys">Игровой режим, Прочее</string>
     <string name="ime_title_summary">Возможности клавиатуры</string>
     <string name="power_button">Кнопка питания</string>
     <string name="vol_rock">Клавиши громкости</string>
