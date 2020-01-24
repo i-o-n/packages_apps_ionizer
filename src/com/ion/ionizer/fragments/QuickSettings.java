@@ -52,9 +52,11 @@ public class QuickSettings extends DashboardFragment
     private static final String PREF_COLUMNS_LANDSCAPE = "qs_columns_landscape";
     private static final String PREF_COLUMNS_QUICKBAR = "qs_columns_quickbar";
     private static final String ION_FOOTER_TEXT_STRING = "ion_footer_text_string";
+    private static final String QS_HEADER = "quick_header";
     private static final String QS_FOOTER = "quick_footer";
     private static final String QS_USER_TOGGLE = "qs_user_toggle";
     private static final String STATUS_BAR_CUSTOM_HEADER = "status_bar_custom_header";
+    private static final String QS_SYSTEM_INFO = "qs_system_info";
 
     private SystemSettingSeekBarPreference mRowsPortrait;
     private SystemSettingSeekBarPreference mRowsLandscape;
@@ -62,7 +64,9 @@ public class QuickSettings extends DashboardFragment
     private SystemSettingSeekBarPreference mQsColumnsLandscape;
     private SystemSettingSeekBarPreference mQsColumnsQuickbar;
     private SystemSettingEditTextPreference mFooterString;
+    private PreferenceCategory mQsHeader;
     private PreferenceCategory mQsFooter;
+    private ListPreference mSysInfo;
     private SwitchPreference mUserIcon;
     private SystemSettingMasterSwitchPreference mCustomHeader;
 
@@ -127,6 +131,12 @@ public class QuickSettings extends DashboardFragment
                 Settings.System.STATUS_BAR_CUSTOM_HEADER, 0);
         mCustomHeader.setChecked(qsHeader != 0);
         mCustomHeader.setOnPreferenceChangeListener(this);
+
+        mQsHeader = (PreferenceCategory) findPreference(QS_HEADER);
+        mSysInfo = (ListPreference) findPreference(QS_SYSTEM_INFO);
+        if (!getResources().getBoolean(com.android.internal.R.bool.config_deviceSupportSysInfo)) {
+            mQsHeader.removePreference(mSysInfo);
+        }
     }
 
     @Override
