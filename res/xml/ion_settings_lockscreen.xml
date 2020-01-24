@@ -54,7 +54,7 @@
             android:title="@string/lockscreen_media_blur_title"
             android:summary="@string/lockscreen_media_blur_summary"
             android:max="100"
-            settings:min="4"
+            settings:min="0"
             android:defaultValue="100"
             settings:interval="2"
             ionionizer:units="%"
