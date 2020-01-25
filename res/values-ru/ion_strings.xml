@@ -34,7 +34,7 @@
     <string name="system_title">Система</string>
     <string name="weather_title">Погода</string>
     <string name="volume_title">Клавиши громкости</string>
-    <string name="device_part_title">ionizer устройства</string>
+    <string name="device_part_title">ionizer Устройства</string>
     <string name="about_ion">Версия ion</string>
     <string name="device_part_title_summary">Дополнительные возможности устройства</string>
     <string name="charging_noti_category">Уведомления при зарядке</string>
