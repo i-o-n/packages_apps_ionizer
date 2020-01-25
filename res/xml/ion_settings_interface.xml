@@ -92,6 +92,12 @@
             settings:defaultColorValue="0xffffffff"
             android:persistent="false"
             android:dependency="qs_panel_bg_use_wall" />
+
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+            android:key="qs_blur"
+            android:title="@string/blur_quicksettings_title"
+            android:summary="@string/blur_quicksettings_summary"
+            android:defaultValue="true" />
     </PreferenceCategory>
 
     <PreferenceCategory
