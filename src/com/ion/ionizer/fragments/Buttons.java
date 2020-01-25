@@ -107,7 +107,9 @@ public class Buttons extends DashboardFragment implements
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         ContentResolver resolver = getActivity().getContentResolver();
         boolean DoubleTapPowerGesture = Settings.Secure.getInt(resolver,
-                    Settings.Secure.CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED, 1) == 0;
+                Settings.Secure.CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED, 0) == 0;
+        boolean DoubleTapPowerGestureAvailable = getResources().getBoolean(
+                com.android.internal.R.bool.config_cameraDoubleTapPowerGestureEnabled);
         if (preference == mVolumeKeyCursorControl) {
             handleActionListChange(mVolumeKeyCursorControl, objValue,
                     Settings.System.VOLUME_KEY_CURSOR_CONTROL);
@@ -119,7 +121,7 @@ public class Buttons extends DashboardFragment implements
                     mTorchPowerButton.getEntries()[index]);
             Settings.Secure.putInt(resolver, Settings.Secure.TORCH_POWER_BUTTON_GESTURE,
                     mTorchPowerButtonValue);
-            if (mTorchPowerButtonValue == 1 && DoubleTapPowerGesture) {
+            if (mTorchPowerButtonValue == 1 && DoubleTapPowerGesture && DoubleTapPowerGestureAvailable) {
                 //if doubletap for torch is enabled, switch off double tap for camera
                 Settings.Secure.putInt(resolver, Settings.Secure.CAMERA_DOUBLE_TAP_POWER_GESTURE_DISABLED,
                         1);
