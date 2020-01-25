@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2019 ion-OS
+<!-- Copyright (C) 2019-2020 ion-OS
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -98,6 +98,10 @@
             android:defaultValue="0"
             android:summary="%s" />
 
+        <PreferenceScreen
+            android:layout="@layout/ion_divider"
+            android:selectable="false" />
+
         <com.ion.ionizer.preferences.SecureSettingSwitchPreference
             android:key="qs_battery_location_bar"
             android:title="@string/qs_battery_location_bar"
@@ -142,12 +146,6 @@
             android:dependency="qs_show_brightness"
             android:defaultValue="true"/>
 
-        <com.ion.ionizer.preferences.SystemSettingMasterSwitchPreference
-            android:key="status_bar_custom_header"
-            android:fragment="com.ion.ionizer.fragments.QsHeader"
-            android:title="@string/status_bar_custom_header_title"
-            android:summary="@string/status_bar_custom_header_summary"
-            android:defaultValue="false" />
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -159,6 +157,10 @@
             android:title="@string/qs_footer_warnings_title"
             android:summary="@string/qs_footer_warnings_summary"
             android:defaultValue="true" />
+
+        <PreferenceScreen
+            android:layout="@layout/ion_divider"
+            android:selectable="false" />
 
         <com.ion.ionizer.preferences.SystemSettingSwitchPreference
             android:key="qs_edit_toggle"
@@ -180,6 +182,10 @@
             android:title="@string/ion_footer_text_string_title"
             android:dependency="ion_footer_text_show"
             android:defaultValue="#ion" />
+
+        <PreferenceScreen
+            android:layout="@layout/ion_divider"
+            android:selectable="false" />
 
         <com.ion.ionizer.preferences.SystemSettingSwitchPreference
             android:key="qs_user_toggle"

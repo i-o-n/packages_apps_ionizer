@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 ion-OS
+ * Copyright (C) 2019-2020 ion-OS
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,9 +30,11 @@ import android.os.SystemProperties;
 import android.os.UserHandle;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
+import android.text.TextUtils;
 
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
+import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.SwitchPreference;
@@ -45,7 +47,15 @@ import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
 import com.ion.ionizer.R;
+import com.ion.ionizer.preferences.AppMultiSelectListPreference;
 import com.ion.ionizer.preferences.CustomSeekBarPreference;
+import com.ion.ionizer.preferences.ScrollAppsViewPreference;
+
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
 
 public class RoundedCornersSettings extends SettingsPreferenceFragment implements
          OnPreferenceChangeListener {
@@ -55,11 +65,17 @@ public class RoundedCornersSettings extends SettingsPreferenceFragment implement
     private static final String SYSUI_STATUS_BAR_PADDING = "sysui_status_bar_padding";
     private static final String SYSUI_ROUNDED_FWVALS = "sysui_rounded_fwvals";
     private static final String KEY_FORCE_FULLSCREEN = "display_cutout_force_fullscreen_settings";
+    private static final String KEY_ASPECT_RATIO_APPS_ENABLED = "aspect_ratio_apps_enabled";
+    private static final String KEY_ASPECT_RATIO_APPS_LIST = "aspect_ratio_apps_list";
+    private static final String KEY_ASPECT_RATIO_CATEGORY = "aspect_ratio_category";
+    private static final String KEY_ASPECT_RATIO_APPS_LIST_SCROLLER = "aspect_ratio_apps_list_scroller";
 
     private CustomSeekBarPreference mCornerRadius;
     private CustomSeekBarPreference mContentPadding;
     private CustomSeekBarPreference mSBPadding;
     private SwitchPreference mRoundedFwvals;
+    private AppMultiSelectListPreference mAspectRatioAppsSelect;
+    private ScrollAppsViewPreference mAspectRatioApps;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -112,6 +128,31 @@ public class RoundedCornersSettings extends SettingsPreferenceFragment implement
         if (!IonUtils.hasNotch(getContext())) {
             getPreferenceScreen().removePreference(forceFullscreen);
         }
+
+        final PreferenceCategory aspectRatioCategory =
+                (PreferenceCategory) getPreferenceScreen().findPreference(KEY_ASPECT_RATIO_CATEGORY);
+        final boolean supportMaxAspectRatio =
+                getResources().getBoolean(com.android.internal.R.bool.config_haveHigherAspectRatioScreen);
+        if (!supportMaxAspectRatio) {
+                getPreferenceScreen().removePreference(aspectRatioCategory);
+        } else {
+        mAspectRatioAppsSelect =
+                (AppMultiSelectListPreference) findPreference(KEY_ASPECT_RATIO_APPS_LIST);
+        mAspectRatioApps =
+                (ScrollAppsViewPreference) findPreference(KEY_ASPECT_RATIO_APPS_LIST_SCROLLER);
+        final String valuesString = Settings.System.getString(getContentResolver(),
+                Settings.System.ASPECT_RATIO_APPS_LIST);
+        List<String> valuesList = new ArrayList<String>();
+        if (!TextUtils.isEmpty(valuesString)) {
+            valuesList.addAll(Arrays.asList(valuesString.split(":")));
+            mAspectRatioApps.setVisible(true);
+            mAspectRatioApps.setValues(valuesList);
+        } else {
+            mAspectRatioApps.setVisible(false);
+        }
+        mAspectRatioAppsSelect.setValues(valuesList);
+        mAspectRatioAppsSelect.setOnPreferenceChangeListener(this);
+        }
     }
 
     private void restoreCorners() {
@@ -140,16 +181,33 @@ public class RoundedCornersSettings extends SettingsPreferenceFragment implement
         if (preference == mCornerRadius) {
             Settings.Secure.putIntForUser(getContext().getContentResolver(), Settings.Secure.SYSUI_ROUNDED_SIZE,
                     (int) newValue, UserHandle.USER_CURRENT);
+            return true;
         } else if (preference == mContentPadding) {
             Settings.Secure.putIntForUser(getContext().getContentResolver(), Settings.Secure.SYSUI_ROUNDED_CONTENT_PADDING,
                     (int) newValue, UserHandle.USER_CURRENT);
+            return true;
         } else if (preference == mSBPadding) {
             Settings.Secure.putIntForUser(getContext().getContentResolver(), Settings.Secure.SYSUI_STATUS_BAR_PADDING,
                     (int) newValue, UserHandle.USER_CURRENT);
+            return true;
         } else if (preference == mRoundedFwvals) {
             restoreCorners();
+            return true;
+        } else if (preference == mAspectRatioAppsSelect) {
+            Collection<String> valueList = (Collection<String>) newValue;
+            mAspectRatioApps.setVisible(false);
+            if (valueList != null) {
+                Settings.System.putString(getContentResolver(),
+                        Settings.System.ASPECT_RATIO_APPS_LIST, TextUtils.join(":", valueList));
+                mAspectRatioApps.setVisible(true);
+                mAspectRatioApps.setValues(valueList);
+            } else {
+                Settings.System.putString(getContentResolver(),
+                Settings.System.ASPECT_RATIO_APPS_LIST, "");
+            }
+            return true;
         }
-        return true;
+        return false;
     }
 
     public static void reset(Context mContext) {

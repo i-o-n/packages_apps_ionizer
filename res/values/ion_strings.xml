@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2019 ion-OS
+<!-- Copyright (C) 2019-2020 ion-OS
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -46,7 +46,7 @@
     <string name="button_info">Volume Rocker, Power Button</string>
     <string name="keyguarrd">Media, Gestures, Security</string>
     <string name="notifications_title_summary">Heads-up, in-call vibration</string>
-    <string name="manusys">Gaming Mode</string>
+    <string name="manusys">Gaming Mode, Animations, Screen</string>
     <string name="ime_title_summary">Keyboard Features</string>
     <string name="power_button">Power Button</string>
     <string name="vol_rock">Volume Rocker</string>
@@ -64,6 +64,9 @@
     <string name="navbar_invert_layout_summary">Invert Navigation button layout</string>
     <string name="buttons_summary">Customize hardware button actions</string>
     <string name="animations_summary">Change system animations</string>
+    <string name="display_cat_summary">Display tweaks</string>
+    <string name="misc_summary">Suspend Actions, Blockers, Burn-in Protection</string>
+    <string name="about_summary">ion, Developers &amp; Support Team</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">Color Picker</string>
@@ -106,6 +109,7 @@
     <string name="website_title_summary">Download ion for your device</string>
     <string name="ion_source_title">Github</string>
     <string name="ion_source_summary">ion source code</string>
+    <string name="ion_support_summary_ru_translation" translatable="false">• Russian Translation</string>
 
     <!-- Dashboard conditions-->
     <string name="dashboard_category">Dashboard options</string>

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
      Copyright (C) 2019 crDroid Android Project
+     Copyright (C) 2020 ion-OS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -16,7 +17,7 @@
 -->
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/corners_title"
+    android:title="@string/display_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <Preference
@@ -25,38 +26,72 @@
         android:summary="@string/display_cutout_force_fullscreen_summary"
         android:fragment="com.ion.ionizer.fragments.DisplayCutoutForceFullscreenSettings" />
 
-    <com.ion.ionizer.preferences.SecureSettingSwitchPreference
-       android:key="sysui_rounded_fwvals"
-       android:title="@string/corner_fwvals"
-       android:defaultValue="true"
-       android:disableDependentsState="true" />
+    <PreferenceCategory
+        android:title="@string/corners_title" >
 
-    <com.ion.ionizer.preferences.CustomSeekBarPreference
-        android:key="sysui_rounded_size"
-        android:title="@string/corner_radius"
-        android:max="60"
-        settings:min="0"
-        settings:units="dp"
-        android:persistent="false"
-        android:dependency="sysui_rounded_fwvals"
-        settings:continuousUpdates="true" />
+        <com.ion.ionizer.preferences.SecureSettingSwitchPreference
+            android:key="sysui_rounded_fwvals"
+            android:title="@string/corner_fwvals"
+            android:defaultValue="true"
+            android:summary="@string/corner_fwvals_summary"
+            android:disableDependentsState="true" />
 
-    <com.ion.ionizer.preferences.CustomSeekBarPreference
-        android:key="sysui_rounded_content_padding"
-        android:title="@string/content_padding"
-        android:max="30"
-        settings:min="0"
-        settings:units="dp"
-        android:persistent="false"
-        android:dependency="sysui_rounded_fwvals" />
+        <com.ion.ionizer.preferences.CustomSeekBarPreference
+            android:key="sysui_rounded_size"
+            android:title="@string/corner_radius"
+            android:max="60"
+            settings:min="0"
+            settings:units="dp"
+            android:persistent="false"
+            android:dependency="sysui_rounded_fwvals"
+            settings:continuousUpdates="true" />
 
-    <com.ion.ionizer.preferences.CustomSeekBarPreference
-        android:key="sysui_status_bar_padding"
-        android:title="@string/status_bar_padding"
-        android:max="30"
-        settings:min="0"
-        settings:units="dp"
-        android:persistent="false"
-        android:dependency="sysui_rounded_fwvals"
-        settings:continuousUpdates="true" />
+        <com.ion.ionizer.preferences.CustomSeekBarPreference
+            android:key="sysui_rounded_content_padding"
+            android:title="@string/content_padding"
+            android:max="30"
+            settings:min="0"
+            settings:units="dp"
+            android:persistent="false"
+            android:dependency="sysui_rounded_fwvals" />
+
+        <com.ion.ionizer.preferences.CustomSeekBarPreference
+            android:key="sysui_status_bar_padding"
+            android:title="@string/status_bar_padding"
+            android:max="30"
+            settings:min="0"
+            settings:units="dp"
+            android:persistent="false"
+            android:dependency="sysui_rounded_fwvals"
+            settings:continuousUpdates="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="aspect_ratio_category"
+        android:title="@string/aspect_ratio_category_title">
+
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+            android:key="aspect_ratio_apps_enabled"
+            android:title="@string/aspect_ratio_apps_enabled_title"
+            android:summary="@string/aspect_ratio_apps_enabled_summary"
+            android:defaultValue="false" />
+
+        <com.ion.ionizer.preferences.AppMultiSelectListPreference
+            android:dependency="aspect_ratio_apps_enabled"
+            android:summary="@string/aspect_ratio_apps_list_summary"
+            android:title="@string/aspect_ratio_apps_list_title"
+            android:key="aspect_ratio_apps_list"
+            android:persistent="false" />
+
+        <com.ion.ionizer.preferences.ScrollAppsViewPreference
+            android:dependency="aspect_ratio_apps_enabled"
+            android:key="aspect_ratio_apps_list_scroller"
+            android:persistent="false"
+            android:selectable="false" />
+
+        <Preference
+            android:dependency="aspect_ratio_apps_enabled"
+            android:persistent="false"
+            android:summary="@string/aspect_ratio_apps_info" />
+    </PreferenceCategory>
 </PreferenceScreen>

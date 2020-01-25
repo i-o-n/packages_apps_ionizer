@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2019 ion-OS
+<!-- Copyright (C) 2019-2020 ion-OS
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -16,7 +16,8 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/about_title"
-    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    settings:initialExpandedChildrenCount="5">
 
     <!-- ion logo -->
     <PreferenceScreen
@@ -68,31 +69,6 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:key="support_category" 
-        android:title="@string/support_category_title"> 
-
-        <Preference
-            android:title="Jijin"
-            android:summary="@string/ion_support_summary_a"
-            android:icon="@drawable/ion_support"/>
-
-        <Preference
-            android:title="Alen"
-            android:summary="@string/ion_support_summary"
-            android:icon="@drawable/ion_support"/>
-
-        <Preference
-            android:title="Moonish"
-            android:summary="@string/ion_support_summary"
-            android:icon="@drawable/ion_support"/>
-
-        <Preference
-            android:title="Param"
-            android:summary="@string/ion_support_summary"
-            android:icon="@drawable/ion_support"/>
-    </PreferenceCategory>
-
-    <PreferenceCategory
         android:key="links"
         android:title="@string/ion_links">
 
@@ -135,5 +111,35 @@
                 android:action="android.intent.action.VIEW"
                 android:data="https://github.com/i-o-n"/>
         </Preference>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="support_category"
+        android:title="@string/support_category_title">
+
+        <Preference
+            android:title="Jijin"
+            android:summary="@string/ion_support_summary_a"
+            android:icon="@drawable/ion_support"/>
+
+        <Preference
+            android:title="Alen"
+            android:summary="@string/ion_support_summary"
+            android:icon="@drawable/ion_support"/>
+
+        <Preference
+            android:title="Moonish"
+            android:summary="@string/ion_support_summary"
+            android:icon="@drawable/ion_support"/>
+
+        <Preference
+            android:title="Param"
+            android:summary="@string/ion_support_summary"
+            android:icon="@drawable/ion_support"/>
+
+        <Preference
+            android:title="Alonzo"
+            android:summary="@string/ion_support_summary_ru_translation"
+            android:icon="@drawable/ion_support"/>
     </PreferenceCategory>
 </PreferenceScreen>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2019 ion-OS
+<!-- Copyright (C) 2019-2020 ion-OS
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -37,13 +37,6 @@
         android:fragment="com.ion.ionizer.fragments.Interface"
         android:icon="@drawable/ic_settings_int"/>
 
-    <!-- Ambient Display -->
-    <!--Preference
-        android:key="ambient_display"
-        android:title="@string/ambient_display_screen_title"
-        android:fragment="com.android.settings.display.AmbientDisplaySettings"
-        android:icon="@drawable/ic_settings_ambient"/-->
-
     <!-- Status Bar -->
     <Preference
         android:key="statusbar_category"
@@ -59,13 +52,6 @@
         android:summary="@string/quicksettings_title_summary"
         android:fragment="com.ion.ionizer.fragments.QuickSettings"
         android:icon="@drawable/ic_settings_quicksettings"/>
-
-    <!-- Display -->
-    <!--Preference
-        android:key="display_category"
-        android:title="@string/display_title"
-        android:fragment="com.ion.ionizer.fragments.Display"
-        android:icon="@drawable/ic_settings_screen"/-->
 
     <PreferenceScreen
         android:layout="@layout/ion_divider"
@@ -94,13 +80,6 @@
         android:fragment="com.ion.ionizer.fragments.LockScreen"
         android:icon="@drawable/ic_settings_lockscreen"/>
 
-    <!-- Recents -->
-    <!--Preference
-        android:key="recents_category"
-        android:title="@string/recents_title"
-        android:fragment="com.ion.ionizer.fragments.Recents"
-        android:icon="@drawable/ic_settings_recents"/-->
-
     <PreferenceScreen
         android:layout="@layout/ion_divider"
         android:selectable="false" />
@@ -112,13 +91,6 @@
         android:summary="@string/notifications_title_summary"
         android:fragment="com.ion.ionizer.fragments.Notifications"
         android:icon="@drawable/ic_settings_notifications"/>
-
-    <!-- Animations -->
-    <!--Preference
-        android:key="animations_category"
-        android:title="@string/animations_title"
-        android:fragment="com.ion.ionizer.fragments.Animations"
-        android:icon="@drawable/ic_settings_animations"/-->
 
     <!-- System -->
     <Preference
@@ -132,20 +104,7 @@
     <Preference
         android:key="about_category"
         android:title="@string/about_title"
-        android:summary="@string/ion_title"
+        android:summary="@string/about_summary"
         android:icon="@drawable/ic_phone_info_v2"
         android:fragment="com.ion.ionizer.fragments.About"/>
-
-    <!-- Device ionizer -->
-    <Preference
-        android:key="device_part"
-        android:persistent="false"
-        android:title="@string/device_part_title"
-        android:icon="@drawable/ic_settings_device"
-        android:summary="@string/device_part_title_summary"
-        settings:allowDividerAbove="true" >
-        <intent android:action="android.intent.action.MAIN"
-            android:targetPackage="com.ion.ionizer.device"
-            android:targetClass="com.ion.ionizer.device.DeviceSettings"/>
-    </Preference>
 </PreferenceScreen>

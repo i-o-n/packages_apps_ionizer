@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2019 ion-OS
+<!-- Copyright (C) 2019-2020 ion-OS
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -16,6 +16,50 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
 	android:title="@string/misc_title"
+    xmlns:ionionizer="http://schemas.android.com/apk/res-auto"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+    <PreferenceCategory
+        android:title="@string/misc_title" >
+
+        <com.ion.ionizer.preferences.SystemSettingMasterSwitchPreference
+            android:key="screen_state_toggles_enable_key"
+            android:fragment="com.ion.ionizer.fragments.ScreenStateToggles"
+            android:title="@string/screen_state_toggles_title"
+            android:summary="@string/screen_state_toggles_summary"
+            android:defaultValue="false" />
+
+        <Preference
+            android:id="@+id/alarm_blocker"
+            android:title="@string/alarm_blocker"
+            android:summary="@string/alarm_blocker_summary"
+            android:fragment="com.ion.ionizer.fragments.AlarmBlocker" />
+
+        <Preference
+            android:key="wakelock_blocker"
+            android:title="@string/wakelock_blocker_title"
+            android:summary="@string/wakelock_blocker_summary"
+            android:fragment="com.ion.ionizer.fragments.WakeLockBlocker" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="navigation_burnin"
+        android:title="@string/navigation_burnin_category" >
+
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+            android:key="burn_in_protection"
+            android:title="@string/burn_in_protection_title"
+            android:summary="@string/burn_in_protection_summary"
+            android:defaultValue="false" />
+
+        <com.ion.ionizer.preferences.SystemSettingSeekBarPreference
+            android:key="burn_in_protection_interval"
+            android:title="@string/burn_in_protection_interval_title"
+            android:defaultValue="60"
+            android:max="90"
+            android:min="45"
+            ionionizer:units="sec"
+            android:dependency="burn_in_protection"
+            android:persistent="false" />
+    </PreferenceCategory>
 </PreferenceScreen>

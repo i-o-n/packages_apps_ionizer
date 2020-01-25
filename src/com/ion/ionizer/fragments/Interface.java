@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 ion-OS
+ * Copyright (C) 2019-2020 ion-OS
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,6 +30,7 @@ import com.ion.ionizer.display.AccentColorPreferenceController;
 import com.ion.ionizer.display.QsAlphaPreferenceController;
 import com.ion.ionizer.display.QsbgColorPreferenceController;
 import com.ion.ionizer.display.QsColorPreferenceController;
+import com.ion.ionizer.display.QsCustomHeaderPreferenceController;
 
 import com.ion.ionizer.R;
 
@@ -70,6 +71,7 @@ public class Interface extends DashboardFragment {
         controllers.add(new QsAlphaPreferenceController(context));
         controllers.add(new QsbgColorPreferenceController(context));
         controllers.add(new QsColorPreferenceController(context));
+        controllers.add(new QsCustomHeaderPreferenceController(context));
         return controllers;
     }
 }

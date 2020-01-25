@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2019 ion-OS
+<!-- Copyright (C) 2019-2020 ion-OS
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -100,6 +100,10 @@
             android:title="@string/use_old_mobiletype_title"
             android:summary="@string/use_old_mobiletype_summary"
             android:defaultValue="false" />
+
+        <PreferenceScreen
+            android:layout="@layout/ion_divider"
+            android:selectable="false" />
 
         <com.ion.ionizer.preferences.SystemSettingSwitchPreference
             android:key="volte_icon"

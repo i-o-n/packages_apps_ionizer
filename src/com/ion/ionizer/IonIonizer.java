@@ -1,5 +1,5 @@
 /*
- *  Copyright (C) 2019 ion-OS
+ *  Copyright (C) 2019-2020 ion-OS
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,7 +31,6 @@ import com.android.settings.dashboard.SummaryLoader;
 import com.android.settings.deviceinfo.ion.IonInfoPreferenceController;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
-import com.ion.ionizer.preferences.Utils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
@@ -52,15 +51,8 @@ public class IonIonizer extends DashboardFragment {
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        final String KEY_DEVICE_PART = "device_part";
-        final String KEY_DEVICE_PART_PACKAGE_NAME = "com.ion.ionizer.device";
 
         addPreferencesFromResource(R.xml.ion_settings);
-
-        //Device ionizer
-        if (!Utils.isPackageInstalled(getActivity(), KEY_DEVICE_PART_PACKAGE_NAME)) {
-            getPreferenceScreen().removePreference(findPreference(KEY_DEVICE_PART));
-        }
     }
 
     @Override
