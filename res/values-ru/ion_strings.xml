@@ -982,8 +982,8 @@
     <string name="qs_bg_use_fw_summary">Отключить пользовательские стили Быстрых настроек для внешних движков тем</string>
 
     <!-- FOD icon picker -->
-    <string name="fod_icon_picker_title">Выбор иконки FOD</string>
-    <string name="fod_icon_picker_summary">Выбрать значок отпечатка пальцев</string>
+    <string name="fod_icon_picker_title">Иконка отпечатка пальцев</string>
+    <string name="fod_icon_picker_summary">Выбрать значок отпечатка пальцев на экране</string>
     <string name="fod_icon_picker_footer">Чтобы добавить свой значок, нажмите на иконку в верхнем левом углу и с помощью приложения OnePlus 6T FP Customizer выберите нужный значок</string>
 
     <!-- Burn-in Protection -->
