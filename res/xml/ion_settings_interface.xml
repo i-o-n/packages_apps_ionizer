@@ -109,6 +109,16 @@
             ionionizer:units="%"
             android:defaultValue="100"
             android:dependency="qs_blur" />
+
+        <com.ion.ionizer.preferences.SystemSettingSeekBarPreference
+            android:key="qs_blur_intensity"
+            android:title="@string/qs_blur_intensity_title"
+            android:summary="@string/qs_blur_intensity_summary"
+            android:max="100"
+            settings:min="1"
+            ionionizer:units="%"
+            android:defaultValue="40"
+            android:dependency="qs_blur" />
     </PreferenceCategory>
 
     <PreferenceCategory
