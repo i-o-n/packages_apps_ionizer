@@ -915,8 +915,8 @@
     <string name="lockscreen_clock_default_accent_hour">По умолчанию (цвет акцента для часов)</string>
     <string name="lockscreen_clock_sammy">Вертикальные</string>
     <string name="lockscreen_clock_sammy_bold">Вертикальные (жирные)</string>
-    <string name="lockscreen_clock_sammy_accent_hour">Sammy (accent hour)</string>
-    <string name="lockscreen_clock_sammy_accent_min">Sammy (accent minute)</string>
+    <string name="lockscreen_clock_sammy_accent_hour">Sammy (акцент на часы)</string>
+    <string name="lockscreen_clock_sammy_accent_min">Sammy (акцент на минуты)</string>
 
     <!-- Show VoLTE icon on statusbar -->
     <string name="volte_icon_title">Иконка VoLTE</string>
