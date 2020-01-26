@@ -64,9 +64,9 @@
     <string name="navbar_invert_layout_summary">Инвертировать расположение кнопок навигации</string>
     <string name="buttons_summary">Настроить аппаратные действия кнопок</string>
     <string name="animations_summary">Изменить системные анимации</string>
-    <string name="display_cat_summary">Display tweaks</string>
-    <string name="misc_summary">Suspend Actions, Blockers, Burn-in Protection</string>
-    <string name="about_summary">ion, Developers &amp; Support Team</string>
+    <string name="display_cat_summary">Твики экрана</string>
+    <string name="misc_summary">Приостановка действий, Блокировщики, Защита от выгорания</string>
+    <string name="about_summary">ion, Разработчики &amp; Команда поддержки</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">Выбор цвета</string>
@@ -475,7 +475,7 @@
     <string name="lock_clock_font_dialog_title">Выберите шрифт часов Экрана блокировки</string>
     <string name="lock_clock_font_stock">Нормальный</string>
     <string name="lock_clock_font_bold">Жирный</string>
-    <string name="lock_clock_font_italic">курсив</string>
+    <string name="lock_clock_font_italic">Курсив</string>
     <string name="lock_clock_font_bold_italic">Жирный курсив</string>
     <string name="lock_clock_font_light_italic">Легкий курсив</string>
     <string name="lock_clock_font_thin_italic">Тонкий курсив</string>
@@ -558,8 +558,8 @@
     <string name="quick_pulldown_summary">%1$s край строки состояния открывает Быстрые настройки</string>
     <string name="quick_pulldown_summary_always">Всегда открывать Быстрые настройки при свайпе Строки состояния вниз </string>
     <string name="quick_pulldown_off">Выключено</string>
-    <string name="quick_pulldown_left">Левый</string>
-    <string name="quick_pulldown_right">Правый</string>
+    <string name="quick_pulldown_left">Слева</string>
+    <string name="quick_pulldown_right">Справа</string>
     <string name="quick_pulldown_always">Всегда</string>
 
     <!-- Smart Pixels -->
@@ -974,46 +974,46 @@
     <string name="status_bar_custom_header_height_title">Смещение высоты изображения</string>
 
     <!-- QS themes -->
-    <string name="qs_bg_color_title">QS Header color</string>
-    <string name="qs_panel_color_title">QS Panel color</string>
-    <string name="qs_bg_wall_title">Use Wallpaper colors</string>
-    <string name="qs_bg_wall_summary">Set QS background color from Wallpaper</string>
-    <string name="qs_bg_use_fw">Use default colors</string>
-    <string name="qs_bg_use_fw_summary">Disable custom QS styles for external theme engines</string>
+    <string name="qs_bg_color_title">Цвет заголовка Быстрых настроек</string>
+    <string name="qs_panel_color_title">Цвет панели Быстрых настроек</string>
+    <string name="qs_bg_wall_title">Использовать цвета обоев</string>
+    <string name="qs_bg_wall_summary">Установить цвет фона Быстрых настроек на основе обоев</string>
+    <string name="qs_bg_use_fw">Использовать цвета по умолчанию</string>
+    <string name="qs_bg_use_fw_summary">Отключить пользовательские стили Быстрых настроек для внешних движков тем</string>
 
     <!-- FOD icon picker -->
-    <string name="fod_icon_picker_title">FOD icon picker</string>
-    <string name="fod_icon_picker_summary">Choose your favorite fingerprint icon</string>
-    <string name="fod_icon_picker_footer">In order to add your own icon, select the top left icon and use the OnePlus 6T FP Customizer app to select the icon you want.</string>
+    <string name="fod_icon_picker_title">Выбор иконки FOD</string>
+    <string name="fod_icon_picker_summary">Выбрать значок отпечатка пальцев</string>
+    <string name="fod_icon_picker_footer">Чтобы добавить свой значок, нажмите на иконку в верхнем левом углу и с помощью приложения OnePlus 6T FP Customizer выберите нужный значок</string>
 
     <!-- Burn-in Protection -->
-    <string name="navigation_burnin_category">Burn-in Protection</string>
-    <string name="burn_in_protection_title">Burn-in Protection</string>
-    <string name="burn_in_protection_summary">Shift navbar and statusbar icons to prevent burn-in</string>
-    <string name="burn_in_protection_interval_title">Interval of shift</string>
+    <string name="navigation_burnin_category">Защита от выгорания экрана</string>
+    <string name="burn_in_protection_title">Защита от выгорания</string>
+    <string name="burn_in_protection_summary">Сдвигать значки в Панели навигации и в Строке состояния для предотвращения выгорания</string>
+    <string name="burn_in_protection_interval_title">Интервал смещения</string>
 
     <!-- Notch: Full screen apps -->
-    <string name="display_cutout_force_fullscreen_title">Full screen apps</string>
-    <string name="display_cutout_force_fullscreen_summary">Force apps to ignore notch space</string>
+    <string name="display_cutout_force_fullscreen_title">Полноэкранные приложения</string>
+    <string name="display_cutout_force_fullscreen_summary">Заставить приложения игнорировать вырез в экране</string>
 
     <!-- QS SystemInfo -->
-    <string name="qs_system_info_title">System Info</string>
-    <string name="qs_system_info_off">Off</string>
-    <string name="qs_system_info_cpu_temp">CPU temperature</string>
-    <string name="qs_system_info_battery_temp">Battery temperature</string>
-    <string name="qs_system_info_gpu_clock">GPU frequency</string>
-    <string name="qs_system_info_gpu_busy">GPU utilization</string>
+    <string name="qs_system_info_title">Системная информация</string>
+    <string name="qs_system_info_off">Отключено</string>
+    <string name="qs_system_info_cpu_temp">Температура CPU</string>
+    <string name="qs_system_info_battery_temp">Температура батареи</string>
+    <string name="qs_system_info_gpu_clock">Частота GPU</string>
+    <string name="qs_system_info_gpu_busy">Использование GPU</string>
 
     <!-- Lockscreen Date styles -->
-    <string name="lockscreen_date_selection_title">Date style</string>
-    <string name="lockscreen_date_dialog_title">Select date style</string>
-    <string name="lockscreen_date_selection_default">Default</string>
-    <string name="lockscreen_date_selection_str_box">Semi-transparent box</string>
-    <string name="lockscreen_date_selection_str_round">Semi-transparent box (round)</string>
-    <string name="lockscreen_date_selection_qbeta_style">Q Beta pill</string>
-    <string name="lockscreen_date_selection_str_accent">Rounded, simple and with accent</string>
-    <string name="lockscreen_date_selection_str_accent_transparent">Rounded, transparent and with accent</string>
-    <string name="lockscreen_date_selection_str_gradient">Gradient</string>
-    <string name="lockscreen_date_selection_str_border_accent">Dark with accented borders</string>
-    <string name="lockscreen_date_selection_str_border_gradient">Dark with gradient borders</string>
+    <string name="lockscreen_date_selection_title">Стиль даты</string>
+    <string name="lockscreen_date_dialog_title">Выбрать стиль даты</string>
+    <string name="lockscreen_date_selection_default">По умолчанию</string>
+    <string name="lockscreen_date_selection_str_box">Полупрозрачный бокс</string>
+    <string name="lockscreen_date_selection_str_round">Полупрозрачный бокс (круглый)</string>
+    <string name="lockscreen_date_selection_qbeta_style">Таблетка Q Beta</string>
+    <string name="lockscreen_date_selection_str_accent">Скругленный, простой и с акцентом</string>
+    <string name="lockscreen_date_selection_str_accent_transparent">Скругленный, прозрачный и с акцентом</string>
+    <string name="lockscreen_date_selection_str_gradient">Градиент</string>
+    <string name="lockscreen_date_selection_str_border_accent">Темный с акцентированными границами</string>
+    <string name="lockscreen_date_selection_str_border_gradient">Темный с градиентными границами</string>
 </resources>
