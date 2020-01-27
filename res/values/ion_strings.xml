@@ -1001,6 +1001,10 @@
     <string name="fod_icon_picker_title">FOD icon picker</string>
     <string name="fod_icon_picker_summary">Choose your favorite fingerprint icon</string>
 
+    <!-- FOD animations -->
+    <string name="fod_recog_animation">FOD recognizing animation</string>
+    <string name="fod_recog_animation_summary">Shows an animation while reading your finger</string>
+
     <!-- Burn-in Protection -->
     <string name="navigation_burnin_category">Burn-in Protection</string>
     <string name="burn_in_protection_title">Burn-in Protection</string>
