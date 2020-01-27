@@ -150,7 +150,7 @@
 
     <!-- Lockscreen battery info indicator  -->
     <string name="lockscreen_battery_info_title">Информация о зарядке на Экране блокировки</string>
-    <string name="lockscreen_battery_info_summary">Показывать максимальный ток и напряжение зарядного устройства и температуры аккумулятора на Экране блокировки во время зарядки</string>
+    <string name="lockscreen_battery_info_summary">Показывать максимальный ток, напряжение зарядного устройства и температуру аккумулятора на Экране блокировки во время зарядки</string>
 
     <!-- Fingerprint authentication vibration -->
     <string name="fprint_sucess_vib_title">Вибрация при аутентификации отпечатка пальцев</string>
