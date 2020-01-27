@@ -240,7 +240,7 @@
     <string name="keyboard_rotation_toggle_title">Автоматическое вращение клавиатуры</string>
     <string name="keyboard_rotation_toggle_summary">Принудительный автоповорот при отображении клавиатуры</string>
     <string name="keyboard_rotation_timeout_title">Тайм-аут автоповорота</string>
-    <string name="keyboard_rotation_timeout_summary">Отключить датчик автоповорота через <xliff:g id="rotate_timeout">%1$s</xliff:g> после скрытия клавиатуры</string>
+    <string name="keyboard_rotation_timeout_summary">Отключить датчик автоповорота через <xliff:g id="rotate_timeout">%1$s</xliff:g> секунд после скрытия клавиатуры</string>
     <string name="keyboard_rotation_dialog">Эта функция заставляет автоповорот временно включаться, пока отображается клавиатура. Не имеет никакого эффекта, когда автоповорот уже включен</string>
     <string name="show_enter_key_title">Показывать клавишу ввода</string>
     <string name="show_enter_key_summary">Принудительно показывать клавишу ввода вместо клавиши смайликов</string>
