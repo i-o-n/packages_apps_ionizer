@@ -910,9 +910,9 @@
     <string name="lockscreen_clock_hide">Скрыто</string>
     <string name="lockscreen_clock_default">По умолчанию</string>
     <string name="lockscreen_clock_default_bold">По умолчанию (жирные)</string>
-    <string name="lockscreen_clock_default_accent">По умолчанию (цвет акцента)</string>
-    <string name="lockscreen_clock_default_accent_min">По умолчанию (цвет акцента для минут)</string>
-    <string name="lockscreen_clock_default_accent_hour">По умолчанию (цвет акцента для часов)</string>
+    <string name="lockscreen_clock_default_accent">По умолчанию (акцент)</string>
+    <string name="lockscreen_clock_default_accent_min">По умолчанию (акцент на минуты)</string>
+    <string name="lockscreen_clock_default_accent_hour">По умолчанию (акцент на часы)</string>
     <string name="lockscreen_clock_sammy">Вертикальные</string>
     <string name="lockscreen_clock_sammy_bold">Вертикальные (жирные)</string>
     <string name="lockscreen_clock_sammy_accent_hour">Sammy (accent hour)</string>
