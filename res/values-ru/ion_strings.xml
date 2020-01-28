@@ -64,9 +64,9 @@
     <string name="navbar_invert_layout_summary">Инвертировать расположение кнопок навигации</string>
     <string name="buttons_summary">Настроить аппаратные действия кнопок</string>
     <string name="animations_summary">Изменить системные анимации</string>
-    <string name="display_cat_summary">Display tweaks</string>
-    <string name="misc_summary">Suspend Actions, Blockers, Burn-in Protection</string>
-    <string name="about_summary">ion, Developers &amp; Support Team</string>
+    <string name="display_cat_summary">Твики экрана</string>
+    <string name="misc_summary">Приостановка действий, Блокировщики, Защита от выгорания</string>
+    <string name="about_summary">ion, Разработчики &amp; Команда поддержки</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">Выбор цвета</string>
@@ -150,7 +150,7 @@
 
     <!-- Lockscreen battery info indicator  -->
     <string name="lockscreen_battery_info_title">Информация о зарядке на Экране блокировки</string>
-    <string name="lockscreen_battery_info_summary">Показывать максимальный ток и напряжение зарядного устройства и температуры аккумулятора на Экране блокировки во время зарядки</string>
+    <string name="lockscreen_battery_info_summary">Показывать максимальный ток, напряжение зарядного устройства и температуру аккумулятора на Экране блокировки во время зарядки</string>
 
     <!-- Fingerprint authentication vibration -->
     <string name="fprint_sucess_vib_title">Вибрация при аутентификации отпечатка пальцев</string>
@@ -240,7 +240,7 @@
     <string name="keyboard_rotation_toggle_title">Автоматическое вращение клавиатуры</string>
     <string name="keyboard_rotation_toggle_summary">Принудительный автоповорот при отображении клавиатуры</string>
     <string name="keyboard_rotation_timeout_title">Тайм-аут автоповорота</string>
-    <string name="keyboard_rotation_timeout_summary">Отключить датчик автоповорота через <xliff:g id="rotate_timeout">%1$s</xliff:g>после скрытия клавиатуры</string>
+    <string name="keyboard_rotation_timeout_summary">Отключить датчик автоповорота через <xliff:g id="rotate_timeout">%1$s</xliff:g> секунд после скрытия клавиатуры</string>
     <string name="keyboard_rotation_dialog">Эта функция заставляет автоповорот временно включаться, пока отображается клавиатура. Не имеет никакого эффекта, когда автоповорот уже включен</string>
     <string name="show_enter_key_title">Показывать клавишу ввода</string>
     <string name="show_enter_key_summary">Принудительно показывать клавишу ввода вместо клавиши смайликов</string>
@@ -340,6 +340,7 @@
     <string name="screenshot_type_title">Тип скриншота</string>
     <string name="screenshot_type_fullscreen">Полноэкранный скриншот</string>
     <string name="screenshot_type_partial">Частичный скриншот</string>
+    <string name="screenshot_type_long">Take fullscreen &amp; extended screenshots</string>
     <string name="screenshot_options_category">Опции скриншота</string>
     <string name="screenshot_options_summary">Настроить атрибуты скриншота, такие как время, задержка, тип и т.д.</string>
 
@@ -468,6 +469,7 @@
     <!-- Statusbar Clock Font Style & Size -->
     <string name="status_bar_clock_font_style_title">Стиль шрифта часов</string>
     <string name="status_bar_clock_font_size_title">Размер шрифта часов</string>
+    <string name="status_bar_clock_color_title">Clock font color</string>
 
     <!-- Lock Clock Fonts -->
     <string name="lock_clock_font_title">Стиль шрифта часов</string>
@@ -475,7 +477,7 @@
     <string name="lock_clock_font_dialog_title">Выберите шрифт часов Экрана блокировки</string>
     <string name="lock_clock_font_stock">Нормальный</string>
     <string name="lock_clock_font_bold">Жирный</string>
-    <string name="lock_clock_font_italic">курсив</string>
+    <string name="lock_clock_font_italic">Курсив</string>
     <string name="lock_clock_font_bold_italic">Жирный курсив</string>
     <string name="lock_clock_font_light_italic">Легкий курсив</string>
     <string name="lock_clock_font_thin_italic">Тонкий курсив</string>
@@ -532,6 +534,7 @@
     <string name="lock_clock_font_seaweedsc" translatable="false">Seaweed Script</string>
     <string name="lock_clock_font_sedgwick" translatable="false">Sedgwick Ave Display</string>
     <string name="lock_clock_font_snowstorm" translatable="false">Snowstorm</string>
+    <string name="lock_clock_font_sourcesanspro" translatable="false">Source Sans Pro</string>
     <string name="lock_clock_font_themeable" translatable="false">Themeable (or VCR OSD Mono)</string>
     <string name="lock_clock_font_theoutbox" translatable="false">The Outbox</string>
     <string name="lock_clock_font_union" translatable="false">Union</string>
@@ -558,8 +561,8 @@
     <string name="quick_pulldown_summary">%1$s край строки состояния открывает Быстрые настройки</string>
     <string name="quick_pulldown_summary_always">Всегда открывать Быстрые настройки при свайпе Строки состояния вниз </string>
     <string name="quick_pulldown_off">Выключено</string>
-    <string name="quick_pulldown_left">Левый</string>
-    <string name="quick_pulldown_right">Правый</string>
+    <string name="quick_pulldown_left">Слева</string>
+    <string name="quick_pulldown_right">Справа</string>
     <string name="quick_pulldown_always">Всегда</string>
 
     <!-- Smart Pixels -->
@@ -866,6 +869,22 @@
     <string name="pulse_ambient_light_duration">Продолжительность пульсации Краевой индикации</string>
     <string name="edgelight_left">Левый край</string>
     <string name="edgelight_right">Правый край</string>
+    <string name="ambient_notification_light_enabled_title">Show on AoD</string>
+    <string name="ambient_notification_light_enabled_sumary">Keep showing on always on display. Until the screen is turned on</string>
+    <string name="ambient_notification_light_hide_aod_title">Hide AoD content</string>
+    <string name="ambient_notification_light_hide_aod_sumary">Hide other AoD content when bars are showing</string>
+    <string name="pulse_ambient_light_pulse_for_all_title">Pulse for all doze events</string>
+    <string name="pulse_ambient_light_pulse_for_all_summary">Pulses for any doze wake and not just notifications when enabled</string>
+    <string name="ambient_notification_light_accent_title">Accent color</string>
+    <string name="ambient_notification_light_accent_summary">Sync color with accent color</string>
+    <string name="pulse_ambient_light_pulse_for_all_repeat_title">Repeat edge lighting</string>
+    <string name="pulse_ambient_light_pulse_for_all_repeat_summary">Repeat edge lighting animation on doze wake</string>
+    <string name="pulse_ambient_light_repeat_mode_title">Edge Light Animation</string>
+    <string name="pulse_ambient_light_anim_restart">Restart</string>
+    <string name="pulse_ambient_light_anim_reverse">Reverse</string>
+    <string name="pulse_ambient_light_layout_title">Edge Light View</string>
+    <string name="pulse_ambient_light_layout_solid">Solid</string>
+    <string name="pulse_ambient_light_layout_faded">Faded</string>
 
     <!-- Notification Vibration -->
     <string name="vibrate_on_notifications_title">Вибрация уведомлений</string>
@@ -910,13 +929,15 @@
     <string name="lockscreen_clock_hide">Скрыто</string>
     <string name="lockscreen_clock_default">По умолчанию</string>
     <string name="lockscreen_clock_default_bold">По умолчанию (жирные)</string>
-    <string name="lockscreen_clock_default_accent">По умолчанию (цвет акцента)</string>
-    <string name="lockscreen_clock_default_accent_min">По умолчанию (цвет акцента для минут)</string>
-    <string name="lockscreen_clock_default_accent_hour">По умолчанию (цвет акцента для часов)</string>
+    <string name="lockscreen_clock_default_accent">По умолчанию (акцент)</string>
+    <string name="lockscreen_clock_default_accent_min">По умолчанию (акцент на минуты)</string>
+    <string name="lockscreen_clock_default_accent_hour">По умолчанию (акцент на часы)</string>
     <string name="lockscreen_clock_sammy">Вертикальные</string>
     <string name="lockscreen_clock_sammy_bold">Вертикальные (жирные)</string>
-    <string name="lockscreen_clock_sammy_accent_hour">Sammy (accent hour)</string>
-    <string name="lockscreen_clock_sammy_accent_min">Sammy (accent minute)</string>
+    <string name="lockscreen_clock_sammy_accent_hour">Sammy (акцент на часы)</string>
+    <string name="lockscreen_clock_sammy_accent_min">Sammy (акцент на минуты)</string>
+    <string name="lockscreen_clock_text">Text (Android 9)</string>
+    <string name="lockscreen_clock_text_alt">Text (Android 10)</string>
 
     <!-- Show VoLTE icon on statusbar -->
     <string name="volte_icon_title">Иконка VoLTE</string>
@@ -974,46 +995,59 @@
     <string name="status_bar_custom_header_height_title">Смещение высоты изображения</string>
 
     <!-- QS themes -->
-    <string name="qs_bg_color_title">QS Header color</string>
-    <string name="qs_panel_color_title">QS Panel color</string>
-    <string name="qs_bg_wall_title">Use Wallpaper colors</string>
-    <string name="qs_bg_wall_summary">Set QS background color from Wallpaper</string>
-    <string name="qs_bg_use_fw">Use default colors</string>
-    <string name="qs_bg_use_fw_summary">Disable custom QS styles for external theme engines</string>
+    <string name="qs_bg_color_title">Цвет заголовка Быстрых настроек</string>
+    <string name="qs_panel_color_title">Цвет панели Быстрых настроек</string>
+    <string name="qs_bg_wall_title">Использовать цвета обоев</string>
+    <string name="qs_bg_wall_summary">Установить цвет фона Быстрых настроек на основе обоев</string>
+    <string name="qs_bg_use_fw">Использовать цвета по умолчанию</string>
+    <string name="qs_bg_use_fw_summary">Отключить пользовательские стили Быстрых настроек для внешних движков тем</string>
 
     <!-- FOD icon picker -->
-    <string name="fod_icon_picker_title">FOD icon picker</string>
-    <string name="fod_icon_picker_summary">Choose your favorite fingerprint icon</string>
-    <string name="fod_icon_picker_footer">In order to add your own icon, select the top left icon and use the OnePlus 6T FP Customizer app to select the icon you want.</string>
+    <string name="fod_icon_picker_title">Иконка отпечатка пальцев</string>
+    <string name="fod_icon_picker_summary">Выбрать значок отпечатка пальцев на экране</string>
 
     <!-- Burn-in Protection -->
-    <string name="navigation_burnin_category">Burn-in Protection</string>
-    <string name="burn_in_protection_title">Burn-in Protection</string>
-    <string name="burn_in_protection_summary">Shift navbar and statusbar icons to prevent burn-in</string>
-    <string name="burn_in_protection_interval_title">Interval of shift</string>
+    <string name="navigation_burnin_category">Защита от выгорания экрана</string>
+    <string name="burn_in_protection_title">Защита от выгорания</string>
+    <string name="burn_in_protection_summary">Сдвигать значки в Панели навигации и в Строке состояния для предотвращения выгорания</string>
+    <string name="burn_in_protection_interval_title">Интервал смещения</string>
 
     <!-- Notch: Full screen apps -->
-    <string name="display_cutout_force_fullscreen_title">Full screen apps</string>
-    <string name="display_cutout_force_fullscreen_summary">Force apps to ignore notch space</string>
+    <string name="display_cutout_force_fullscreen_title">Полноэкранные приложения</string>
+    <string name="display_cutout_force_fullscreen_summary">Заставить приложения игнорировать вырез в экране</string>
 
     <!-- QS SystemInfo -->
-    <string name="qs_system_info_title">System Info</string>
-    <string name="qs_system_info_off">Off</string>
-    <string name="qs_system_info_cpu_temp">CPU temperature</string>
-    <string name="qs_system_info_battery_temp">Battery temperature</string>
-    <string name="qs_system_info_gpu_clock">GPU frequency</string>
-    <string name="qs_system_info_gpu_busy">GPU utilization</string>
+    <string name="qs_system_info_title">Системная информация</string>
+    <string name="qs_system_info_off">Отключено</string>
+    <string name="qs_system_info_cpu_temp">Температура CPU</string>
+    <string name="qs_system_info_battery_temp">Температура батареи</string>
+    <string name="qs_system_info_gpu_clock">Частота GPU</string>
+    <string name="qs_system_info_gpu_busy">Использование GPU</string>
 
     <!-- Lockscreen Date styles -->
-    <string name="lockscreen_date_selection_title">Date style</string>
-    <string name="lockscreen_date_dialog_title">Select date style</string>
-    <string name="lockscreen_date_selection_default">Default</string>
-    <string name="lockscreen_date_selection_str_box">Semi-transparent box</string>
-    <string name="lockscreen_date_selection_str_round">Semi-transparent box (round)</string>
-    <string name="lockscreen_date_selection_qbeta_style">Q Beta pill</string>
-    <string name="lockscreen_date_selection_str_accent">Rounded, simple and with accent</string>
-    <string name="lockscreen_date_selection_str_accent_transparent">Rounded, transparent and with accent</string>
-    <string name="lockscreen_date_selection_str_gradient">Gradient</string>
-    <string name="lockscreen_date_selection_str_border_accent">Dark with accented borders</string>
-    <string name="lockscreen_date_selection_str_border_gradient">Dark with gradient borders</string>
+    <string name="lockscreen_date_selection_title">Стиль даты</string>
+    <string name="lockscreen_date_dialog_title">Выбрать стиль даты</string>
+    <string name="lockscreen_date_selection_default">По умолчанию</string>
+    <string name="lockscreen_date_selection_str_box">Полупрозрачный бокс</string>
+    <string name="lockscreen_date_selection_str_round">Полупрозрачный бокс (круглый)</string>
+    <string name="lockscreen_date_selection_qbeta_style">Таблетка Q Beta</string>
+    <string name="lockscreen_date_selection_str_accent">Скругленный, простой и с акцентом</string>
+    <string name="lockscreen_date_selection_str_accent_transparent">Скругленный, прозрачный и с акцентом</string>
+    <string name="lockscreen_date_selection_str_gradient">Градиент</string>
+    <string name="lockscreen_date_selection_str_border_accent">Темный с акцентированными границами</string>
+    <string name="lockscreen_date_selection_str_border_gradient">Темный с градиентными границами</string>
+
+    <!-- LS OwnerInfo Font & Size -->
+    <string name="lock_ownerinfo_font_title">Owner Info font style</string>
+    <string name="lockowner_font_size_title">Owner info font size</string>
+
+    <!-- Text Clock -->
+    <string name="text_clock_customizations">Text Clock</string>
+    <string name="text_clock_alignment">Alignment</string>
+    <string name="text_clock_left">Left</string>
+    <string name="text_clock_center">Center</string>
+    <string name="text_clock_right">Right</string>
+    <string name="text_clock_left_right">Left-Right</string>
+    <string name="text_clock_right_left">Right-Left</string>
+    <string name="text_clock_padding">Edge Padding</string>
 </resources>
