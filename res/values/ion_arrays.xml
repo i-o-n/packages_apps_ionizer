@@ -366,6 +366,7 @@
         <item>@string/lock_clock_font_seaweedsc</item>
         <item>@string/lock_clock_font_sedgwick</item>
         <item>@string/lock_clock_font_snowstorm</item>
+        <item>@string/lock_clock_font_sourcesanspro</item>
         <item>@string/lock_clock_font_themeable</item>
         <item>@string/lock_clock_font_theoutbox</item>
         <item>@string/lock_clock_font_union</item>
@@ -438,6 +439,7 @@
         <item>61</item>
         <item>62</item>
         <item>63</item>
+        <item>64</item>
     </string-array>
 
     <!-- Smart Pixels -->
