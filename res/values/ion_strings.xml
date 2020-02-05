@@ -920,6 +920,8 @@
     <string name="lockscreen_clock_sammy_bold">Sammy (bold)</string>
     <string name="lockscreen_clock_sammy_accent_hour">Sammy (accent hour)</string>
     <string name="lockscreen_clock_sammy_accent_min">Sammy (accent minute)</string>
+    <string name="lockscreen_clock_text">Text (Android 9)</string>
+    <string name="lockscreen_clock_text_alt">Text (Android 10)</string>
 
     <!-- Show VoLTE icon on statusbar -->
     <string name="volte_icon_title">VoLTE Icon</string>
@@ -1022,4 +1024,14 @@
     <!-- LS OwnerInfo Font & Size -->
     <string name="lock_ownerinfo_font_title">Owner Info font style</string>
     <string name="lockowner_font_size_title">Owner info font size</string>
+
+    <!-- Text Clock -->
+    <string name="text_clock_customizations">Text Clock</string>
+    <string name="text_clock_alignment">Alignment</string>
+    <string name="text_clock_left">Left</string>
+    <string name="text_clock_center">Center</string>
+    <string name="text_clock_right">Right</string>
+    <string name="text_clock_left_right">Left-Right</string>
+    <string name="text_clock_right_left">Right-Left</string>
+    <string name="text_clock_padding">Edge Padding</string>
 </resources>
