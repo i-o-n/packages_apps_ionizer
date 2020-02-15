@@ -340,7 +340,7 @@
     <string name="screenshot_type_title">Тип скриншота</string>
     <string name="screenshot_type_fullscreen">Полноэкранный скриншот</string>
     <string name="screenshot_type_partial">Частичный скриншот</string>
-    <string name="screenshot_type_long">Take fullscreen &amp; extended screenshots</string>
+    <string name="screenshot_type_long">Полноэкранный &amp; длинный скриншоты</string>
     <string name="screenshot_options_category">Опции скриншота</string>
     <string name="screenshot_options_summary">Настроить атрибуты скриншота, такие как время, задержка, тип и т.д.</string>
 
@@ -469,7 +469,7 @@
     <!-- Statusbar Clock Font Style & Size -->
     <string name="status_bar_clock_font_style_title">Стиль шрифта часов</string>
     <string name="status_bar_clock_font_size_title">Размер шрифта часов</string>
-    <string name="status_bar_clock_color_title">Clock font color</string>
+    <string name="status_bar_clock_color_title">Цвет шрифта часов</string>
 
     <!-- Lock Clock Fonts -->
     <string name="lock_clock_font_title">Стиль шрифта часов</string>
@@ -869,22 +869,22 @@
     <string name="pulse_ambient_light_duration">Продолжительность пульсации Краевой индикации</string>
     <string name="edgelight_left">Левый край</string>
     <string name="edgelight_right">Правый край</string>
-    <string name="ambient_notification_light_enabled_title">Show on AoD</string>
-    <string name="ambient_notification_light_enabled_sumary">Keep showing on always on display. Until the screen is turned on</string>
-    <string name="ambient_notification_light_hide_aod_title">Hide AoD content</string>
-    <string name="ambient_notification_light_hide_aod_sumary">Hide other AoD content when bars are showing</string>
-    <string name="pulse_ambient_light_pulse_for_all_title">Pulse for all doze events</string>
-    <string name="pulse_ambient_light_pulse_for_all_summary">Pulses for any doze wake and not just notifications when enabled</string>
-    <string name="ambient_notification_light_accent_title">Accent color</string>
-    <string name="ambient_notification_light_accent_summary">Sync color with accent color</string>
-    <string name="pulse_ambient_light_pulse_for_all_repeat_title">Repeat edge lighting</string>
-    <string name="pulse_ambient_light_pulse_for_all_repeat_summary">Repeat edge lighting animation on doze wake</string>
-    <string name="pulse_ambient_light_repeat_mode_title">Edge Light Animation</string>
-    <string name="pulse_ambient_light_anim_restart">Restart</string>
-    <string name="pulse_ambient_light_anim_reverse">Reverse</string>
-    <string name="pulse_ambient_light_layout_title">Edge Light View</string>
-    <string name="pulse_ambient_light_layout_solid">Solid</string>
-    <string name="pulse_ambient_light_layout_faded">Faded</string>
+    <string name="ambient_notification_light_enabled_title">Показывать на AOD</string>
+    <string name="ambient_notification_light_enabled_sumary">Продолжать показывать на Always on Display. Пока не включится экран</string>
+    <string name="ambient_notification_light_hide_aod_title">Скрыть содержимое AOD</string>
+    <string name="ambient_notification_light_hide_aod_sumary">Скрыть другое содержимое AOD, когда отображаются панели</string>
+    <string name="pulse_ambient_light_pulse_for_all_title">Пульсация для всех событий сна</string>
+    <string name="pulse_ambient_light_pulse_for_all_summary">Пульсировать для любого пробуждения, а не только для уведомлений при включении</string>
+    <string name="ambient_notification_light_accent_title">Цвет акцента</string>
+    <string name="ambient_notification_light_accent_summary">Сихронизировать цвет с цветом акцента</string>
+    <string name="pulse_ambient_light_pulse_for_all_repeat_title">Повтор Краевой индикации</string>
+    <string name="pulse_ambient_light_pulse_for_all_repeat_summary">Повторять Краевую индикацию при пробуждении сна</string>
+    <string name="pulse_ambient_light_repeat_mode_title">Анимация Краевой индикации</string>
+    <string name="pulse_ambient_light_anim_restart">Перезагрузка</string>
+    <string name="pulse_ambient_light_anim_reverse">Реверс</string>
+    <string name="pulse_ambient_light_layout_title">Вид Краевой индикации</string>
+    <string name="pulse_ambient_light_layout_solid">Плотный</string>
+    <string name="pulse_ambient_light_layout_faded">Блеклый</string>
 
     <!-- Notification Vibration -->
     <string name="vibrate_on_notifications_title">Вибрация уведомлений</string>
@@ -936,8 +936,8 @@
     <string name="lockscreen_clock_sammy_bold">Вертикальные (жирные)</string>
     <string name="lockscreen_clock_sammy_accent_hour">Sammy (акцент на часы)</string>
     <string name="lockscreen_clock_sammy_accent_min">Sammy (акцент на минуты)</string>
-    <string name="lockscreen_clock_text">Text (Android 9)</string>
-    <string name="lockscreen_clock_text_alt">Text (Android 10)</string>
+    <string name="lockscreen_clock_text">Текстовые (Android 9)</string>
+    <string name="lockscreen_clock_text_alt">Текстовые (Android 10)</string>
 
     <!-- Show VoLTE icon on statusbar -->
     <string name="volte_icon_title">Иконка VoLTE</string>
@@ -957,7 +957,7 @@
     <!-- Ambient visualizer -->
     <string name="ambient_visualizer_category">Ambient Визуализатор</string>
     <string name="ambient_visualizer_title">Показывать на Ambient экране</string>
-    <string name="ambient_visualizer_summary">Отображение панели Визуализатора на Ambient экране</string>
+    <string name="ambient_visualizer_summary">Отображение панелей Визуализатора на Ambient экране</string>
 
     <!-- Blink flashlight for incoming calls -->
     <string name="notification_flash_title">Фонарик</string>
@@ -1038,16 +1038,16 @@
     <string name="lockscreen_date_selection_str_border_gradient">Темный с градиентными границами</string>
 
     <!-- LS OwnerInfo Font & Size -->
-    <string name="lock_ownerinfo_font_title">Owner Info font style</string>
-    <string name="lockowner_font_size_title">Owner info font size</string>
+    <string name="lock_ownerinfo_font_title">Стиль шрифта информации о Владельце</string>
+    <string name="lockowner_font_size_title">Размер шрифта информации о Владельце</string>
 
     <!-- Text Clock -->
-    <string name="text_clock_customizations">Text Clock</string>
-    <string name="text_clock_alignment">Alignment</string>
-    <string name="text_clock_left">Left</string>
-    <string name="text_clock_center">Center</string>
-    <string name="text_clock_right">Right</string>
-    <string name="text_clock_left_right">Left-Right</string>
-    <string name="text_clock_right_left">Right-Left</string>
-    <string name="text_clock_padding">Edge Padding</string>
+    <string name="text_clock_customizations">Текстовые часы</string>
+    <string name="text_clock_alignment">Выравнивание</string>
+    <string name="text_clock_left">Слева</string>
+    <string name="text_clock_center">По центру</string>
+    <string name="text_clock_right">Справа</string>
+    <string name="text_clock_left_right">Слева-направо</string>
+    <string name="text_clock_right_left">Справа-налево</string>
+    <string name="text_clock_padding">Краевые отступы</string>
 </resources>
