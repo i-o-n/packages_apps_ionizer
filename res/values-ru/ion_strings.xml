@@ -244,8 +244,8 @@
     <string name="keyboard_rotation_dialog">Эта функция заставляет автоповорот временно включаться, пока отображается клавиатура. Не имеет никакого эффекта, когда автоповорот уже включен</string>
     <string name="show_enter_key_title">Показывать клавишу ввода</string>
     <string name="show_enter_key_summary">Принудительно показывать клавишу ввода вместо клавиши смайликов</string>
-    <string name="ime_switcher_notify">Уведомление выбора клавиатуры</string>
-    <string name="ime_switcher_notify_summary">Показывать уведомление выбора метода ввода</string>
+    <string name="ime_switcher_notify">Отображение селектора</string>
+    <string name="ime_switcher_notify_summary">Показывать селектор метода ввода</string>
 
     <!-- Show LTE/4G switch -->
     <string name="show_lte_fourgee_title">4G/LTE иконка сети</string>
