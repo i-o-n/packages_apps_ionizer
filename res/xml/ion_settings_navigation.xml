@@ -13,7 +13,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<PreferenceScreen 
+<PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/navigation_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
@@ -38,6 +38,12 @@
         android:key="sysui_nav_bar_inverse"
         android:title="@string/navbar_invert_layout_title"
         android:summary="@string/navbar_invert_layout_summary"
+        android:defaultValue="false" />
+
+    <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+        android:key="navigation_bar_menu_arrow_keys"
+        android:title="@string/navigation_bar_arrow_keys_title"
+        android:summary="@string/navigation_bar_arrow_keys_summary"
         android:defaultValue="false" />
 
     <Preference
