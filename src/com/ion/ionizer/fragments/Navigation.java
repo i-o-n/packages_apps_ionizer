@@ -71,7 +71,7 @@ public class Navigation extends SettingsPreferenceFragment
     private PreferenceCategory leftSwipeCategory;
     private PreferenceCategory rightSwipeCategory;
     private SystemSettingListPreference mTimeout;
-    private SystemSettingSwitchPreference mExtendedSwipe;
+    private SystemSettingListPreference mBackSwipeType;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -143,13 +143,13 @@ public class Navigation extends SettingsPreferenceFragment
 
         mTimeout = (SystemSettingListPreference) findPreference("long_back_swipe_timeout");
 
-        mExtendedSwipe = (SystemSettingSwitchPreference) findPreference("back_swipe_extended");
-        boolean extendedSwipe = Settings.System.getIntForUser(mResolver,
-                Settings.System.BACK_SWIPE_TYPE, 0,
-                UserHandle.USER_CURRENT) != 0;
-        mExtendedSwipe.setChecked(extendedSwipe);
-        mExtendedSwipe.setOnPreferenceChangeListener(this);
-        mTimeout.setEnabled(!mExtendedSwipe.isChecked());
+        mBackSwipeType = (SystemSettingListPreference) findPreference("back_swipe_type");
+        int swipeType = Settings.System.getIntForUser(mResolver,
+                Settings.System.BACK_SWIPE_TYPE, 0, UserHandle.USER_CURRENT);
+        mBackSwipeType.setValue(String.valueOf(swipeType));
+        mBackSwipeType.setSummary(mBackSwipeType.getEntry());
+        mBackSwipeType.setOnPreferenceChangeListener(this);
+        mTimeout.setEnabled(swipeType == 0);
 
         mLeftSwipeAppSelection.setVisible(mLeftSwipeActions.getEntryValues()
                 [leftSwipeActions].equals("5"));
@@ -204,10 +204,14 @@ public class Navigation extends SettingsPreferenceFragment
             actionPreferenceReload();
             customAppCheck();
             return true;
-        } else if (preference == mExtendedSwipe) {
-            boolean enabled = ((Boolean) newValue).booleanValue();
-            mExtendedSwipe.setChecked(enabled);
-            mTimeout.setEnabled(!enabled);
+        } else if (preference == mBackSwipeType) {
+            int swipeType = Integer.parseInt((String) newValue);
+            int index = mBackSwipeType.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.BACK_SWIPE_TYPE, swipeType);
+            mBackSwipeType.setSummary(mBackSwipeType.getEntries()[index]);
+            mTimeout.setEnabled(swipeType == 0);
+            return true;
         }
         return false;
     }
