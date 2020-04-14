@@ -1105,4 +1105,8 @@
     <string name="right_swipe_app_action_title">Select long right swipe app</string>
     <string name="back_swipe_app_select_summary">Select an app to launch with the back gesture</string>
     <string name="gesture_nav_tweaks_footer_info">To choose a specific app activity for the action, long press on any app in the app picker</string>
+
+    <!-- IME button space -->
+    <string name="navigation_bar_ime_space_title">IME button space</string>
+    <string name="navigation_bar_ime_space_summary">Show IME button space below keyboard</string>
 </resources>

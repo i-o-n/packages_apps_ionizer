@@ -34,6 +34,7 @@ import androidx.preference.SwitchPreference;
 
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.internal.util.hwkeys.ActionUtils;
+import com.android.settings.gestures.SystemNavigationGestureSettings;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settings.SettingsPreferenceFragment;
@@ -58,6 +59,7 @@ public class Navigation extends SettingsPreferenceFragment
     private static final String SYSUI_NAV_BAR = "sysui_nav_bar";
     private static final String KEY_CATEGORY_LEFT_SWIPE    = "left_swipe";
     private static final String KEY_CATEGORY_RIGHT_SWIPE   = "right_swipe";
+    private static final String KEY_NAVIGATION_IME_SPACE = "navigation_bar_ime_space";
 
     private ListPreference mNavBarLayout;
     private SwitchPreference mEnableNavigationBar;
@@ -72,6 +74,7 @@ public class Navigation extends SettingsPreferenceFragment
     private PreferenceCategory rightSwipeCategory;
     private SystemSettingListPreference mTimeout;
     private SystemSettingListPreference mBackSwipeType;
+    private SystemSettingSwitchPreference mNavigationIMESpace;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -155,6 +158,9 @@ public class Navigation extends SettingsPreferenceFragment
                 [leftSwipeActions].equals("5"));
         mLeftSwipeAppSelection.setVisible(mRightSwipeActions.getEntryValues()
                 [rightSwipeActions].equals("5"));
+
+        mNavigationIMESpace = (SystemSettingSwitchPreference) findPreference(KEY_NAVIGATION_IME_SPACE);
+        mNavigationIMESpace.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -211,6 +217,9 @@ public class Navigation extends SettingsPreferenceFragment
                     Settings.System.BACK_SWIPE_TYPE, swipeType);
             mBackSwipeType.setSummary(mBackSwipeType.getEntries()[index]);
             mTimeout.setEnabled(swipeType == 0);
+            return true;
+        } else if (preference == mNavigationIMESpace) {
+            SystemNavigationGestureSettings.updateNavigationBarOverlays(getActivity());
             return true;
         }
         return false;
