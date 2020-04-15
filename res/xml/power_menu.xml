@@ -85,6 +85,13 @@
             android:summary="@string/powermenu_lockscreen_summary"
             android:defaultValue="true" />
 
+        <com.ion.ionizer.preferences.GlobalSettingSwitchPreference
+            android:key="lockscreen_powermenu_secure"
+            android:title="@string/lockscreen_secure_power_menu_title"
+            android:summary="@string/lockscreen_secure_power_menu_summary"
+            android:dependency="powermenu_lockscreen"
+            android:defaultValue="false" />
+
         <SwitchPreference
             android:key="powermenu_ls_reboot"
             android:title="@string/powermenu_reboot_title"
