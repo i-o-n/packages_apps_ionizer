@@ -57,6 +57,12 @@
         android:summary="@string/notification_headers_summary"
         android:defaultValue="true" />
 
+    <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+        android:key="lockscreen_translucent_notifications_bg_enabled"
+        android:title="@string/translucent_lockscreen_notifications_bg_title"
+        android:summary="@string/translucent_lockscreen_notifications_bg_summary"
+        android:defaultValue="false" />
+
     <PreferenceCategory
         android:title="@string/charging_noti_category" >
 
@@ -69,7 +75,6 @@
         <com.ion.ionizer.preferences.GlobalSettingSwitchPreference
             android:key="wake_when_plugged_or_unplugged"
             android:title="@string/wakeup_when_plugged_unplugged_title"
-            android:summary="@string/wakeup_when_plugged_unplugged_summary"
             android:defaultValue="true" />
     </PreferenceCategory>
 

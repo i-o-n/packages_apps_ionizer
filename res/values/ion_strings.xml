@@ -1130,4 +1130,7 @@
     <string name="display_cutout_mode_hide">Hide</string>
     <string name="stock_statusbar_in_hide">Stock status bar height</string>
     <string name="stock_statusbar_in_hide_summary">Use default status bar height in Hide mode</string>
+
+    <!-- Translucent lockscreen notifications background -->
+    <string name="translucent_lockscreen_notifications_bg_title">Translucent notifications background</string>
 </resources>
