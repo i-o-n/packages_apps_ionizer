@@ -51,14 +51,16 @@ public class BatteryBar extends SettingsPreferenceFragment implements
     private static final String PREF_BATTERY_BAR_LOW_COLOR_WARNING = "battery_bar_battery_low_color_warning";
     private static final String PREF_BATTERY_BAR_LOW_COLOR = "battery_bar_low_color";
     private static final String PREF_BATTERY_BAR_HIGH_COLOR = "battery_bar_high_color";
+    private static final String PREF_BATTERY_BAR_GRADIENT = "battery_bar_use_gradient_color";
 
-    private ListPreference mBatteryBarLocation;
-    private ListPreference mBatteryBarStyle;
     private ColorPickerPreference mBatteryBarColor;
     private ColorPickerPreference mBatteryBarChargingColor;
     private ColorPickerPreference mBatteryBarLowColorWarning;
     private ColorPickerPreference mBatteryBarLowColor;
     private ColorPickerPreference mBatteryBarHighColor;
+    private ListPreference mBatteryBarLocation;
+    private ListPreference mBatteryBarStyle;
+    private SwitchPreference mBatteryBarGradient;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -134,6 +136,12 @@ public class BatteryBar extends SettingsPreferenceFragment implements
         else
             mBatteryBarHighColor.setSummary(batteryBarHighColorHex);
         mBatteryBarHighColor.setNewPreviewColor(batteryBarHighColor);
+
+        mBatteryBarGradient = (SwitchPreference) findPreference(PREF_BATTERY_BAR_GRADIENT);
+        mBatteryBarGradient.setOnPreferenceChangeListener(this);
+        boolean batteryBarGradient = Settings.System.getInt(resolver,
+                Settings.System.BATTERY_BAR_USE_GRADIENT_COLOR, 0) == 1;
+        updateEnabled(batteryBarGradient);
     }
 
     @Override
@@ -208,8 +216,18 @@ public class BatteryBar extends SettingsPreferenceFragment implements
             Settings.System.putInt(resolver,
                     Settings.System.BATTERY_BAR_HIGH_COLOR, intHex);
             return true;
+        } else if (preference == mBatteryBarGradient) {
+            boolean value = (Boolean) newValue;
+            updateEnabled(value);
+            return true;
         }
         return false;
+    }
+
+    private void updateEnabled(boolean val) {
+        mBatteryBarColor.setEnabled(!val);
+        mBatteryBarChargingColor.setEnabled(!val);
+        mBatteryBarLowColorWarning.setEnabled(!val);
     }
 
     @Override

@@ -73,8 +73,12 @@
             android:summary="@string/status_bar_battery_text_charging_summary"
             android:defaultValue="true" />
 
-        <Preference
-            android:key="battery_bar_settings"
+        <PreferenceScreen
+            android:layout="@layout/ion_divider"
+            android:selectable="false" />
+
+        <com.ion.ionizer.preferences.SystemSettingMasterSwitchPreference
+            android:key="battery_bar_switch"
             android:title="@string/sb_battery_bar_title"
             android:summary="@string/sb_battery_bar_summary"
             android:fragment="com.ion.ionizer.fragments.BatteryBar" />

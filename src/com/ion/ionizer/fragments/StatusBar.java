@@ -43,7 +43,7 @@ import androidx.preference.PreferenceScreen;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.SwitchPreference;
 
-import com.android.internal.logging.nano.MetricsProto; 
+import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -78,6 +78,7 @@ public class StatusBar extends DashboardFragment implements
     private static final String BATTERY_PERCENTAGE_HIDDEN = "0";
     private static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
     private static final String BATTERY_TEXT_CHARGING_SYMBOL = "text_charging_symbol";
+    private static final String BATTERY_BAR_SWITCH = "battery_bar_switch";
 
     private static final int BATTERY_STYLE_Q = 0;
     private static final int BATTERY_STYLE_DOTTED_CIRCLE = 1;
@@ -86,6 +87,7 @@ public class StatusBar extends DashboardFragment implements
     private static final int BATTERY_STYLE_HIDDEN = 4;
 
     private SystemSettingMasterSwitchPreference mStatusBarClockShow;
+    private SystemSettingMasterSwitchPreference mBatteryBar;
     private SwitchPreference mShowLteFourGee;
     private ListPreference mQuickPulldown;
     private ListPreference mBatteryPercent;
@@ -127,6 +129,12 @@ public class StatusBar extends DashboardFragment implements
         mBatteryStyle.setOnPreferenceChangeListener(this);
 
         updateBatteryOptions(batterystyle);
+
+        // Battery Bar
+        mBatteryBar = (SystemSettingMasterSwitchPreference) findPreference(BATTERY_BAR_SWITCH);
+        mBatteryBar.setChecked((Settings.System.getInt(resolver,
+                Settings.System.BATTERY_BAR_SWITCH, 0)) == 1);
+        mBatteryBar.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -152,6 +160,11 @@ public class StatusBar extends DashboardFragment implements
         } else if (preference == mBatteryStyle) {
             int value = Integer.parseInt((String) objValue);
             updateBatteryOptions(value);
+            return true;
+        } else if (preference == mBatteryBar) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.BATTERY_BAR_SWITCH, value ? 1 : 0);
             return true;
         }
         return false;

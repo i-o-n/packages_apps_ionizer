@@ -1055,7 +1055,6 @@
     <string name="sb_battery_bar_thickness_title">Battery bar thickness</string>
     <string name="sb_battery_bar_animate_title">Charging animation</string>
     <string name="sb_battery_bar_animate_summary">The charging animation may result in a poor user experience. Enable at your own discretion.</string>
-    <string name="sb_battery_bar_hide">Hide</string>
     <string name="sb_battery_bar_statusbar_top">Top of statusbar</string>
     <string name="sb_battery_bar_statusbar_bottom">Bottom of statusbar</string>
     <string name="sb_battery_bar_qs_header">QS Header</string>
@@ -1068,6 +1067,6 @@
     <string name="sb_battery_bar_reversed">Reversed</string>
     <string name="sb_battery_bar_use_gradient_color">Use gradient color</string>
     <string name="sb_battery_bar_gradient_color_summary">Use gradient color as a scale for the battery level</string>
-    <string name="sb_battery_bar_high_color">High level color"</string>
+    <string name="sb_battery_bar_high_color">High level color</string>
     <string name="sb_battery_bar_low_color">Low level color"</string>
 </resources>

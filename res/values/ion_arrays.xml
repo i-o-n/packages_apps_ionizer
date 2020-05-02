@@ -4,7 +4,7 @@
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
      You may obtain a copy of the License at
- 
+
          http://www.apache.org/licenses/LICENSE-2.0
 
      Unless required by applicable law or agreed to in writing, software
@@ -916,7 +916,6 @@
 
     <!-- Battery bar position -->
     <string-array name="battery_bar_entries" translatable="false">
-        <item>@string/sb_battery_bar_hide</item>
         <item>@string/sb_battery_bar_statusbar_top</item>
         <item>@string/sb_battery_bar_statusbar_bottom</item>
         <item>@string/sb_battery_bar_qs_header</item>
@@ -927,7 +926,6 @@
         <item>0</item>
         <item>1</item>
         <item>2</item>
-        <item>5</item>
         <item>3</item>
         <item>4</item>
     </string-array>
