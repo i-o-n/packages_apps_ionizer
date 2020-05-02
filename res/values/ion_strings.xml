@@ -1045,4 +1045,27 @@
     <!-- R Notification headers -->
     <string name="notification_headers_title">Show notification headers</string>
     <string name="notification_headers_summary">Whether to show R style notification headers (Requires a SystemUI restart)</string>
+
+    <!-- Battery bar -->
+    <string name="sb_battery_bar_title">Battery bar</string>
+    <string name="sb_battery_bar_summary">Display and customize battery bar</string>
+    <string name="sb_battery_bar_location">Battery bar location</string>
+    <string name="sb_battery_bar_color">Battery bar color</string>
+    <string name="sb_battery_bar_style_title">Battery bar style</string>
+    <string name="sb_battery_bar_thickness_title">Battery bar thickness</string>
+    <string name="sb_battery_bar_animate_title">Charging animation</string>
+    <string name="sb_battery_bar_animate_summary">The charging animation may result in a poor user experience. Enable at your own discretion.</string>
+    <string name="sb_battery_bar_hide">Hide</string>
+    <string name="sb_battery_bar_statusbar">Statusbar</string>
+    <string name="sb_battery_bar_topnav">Top of navbar</string>
+    <string name="sb_battery_bar_bottomnav">Bottom of navbar</string>
+    <string name="sb_battery_bar_reg">Regular</string>
+    <string name="sb_battery_bar_center">Center-mirrored</string>
+    <string name="sb_battery_bar_charging_color">Battery bar charging color</string>
+    <string name="sb_battery_bar_battery_low_color">Battery bar low battery color</string>
+    <string name="sb_battery_bar_reversed">Reversed</string>
+    <string name="sb_battery_bar_use_gradient_color">Use gradient color</string>
+    <string name="sb_battery_bar_gradient_color_summary">Use gradient color as a scale for the battery level</string>
+    <string name="sb_battery_bar_high_color">High level color"</string>
+    <string name="sb_battery_bar_low_color">Low level color"</string>
 </resources>

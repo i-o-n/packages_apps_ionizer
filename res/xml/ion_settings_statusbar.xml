@@ -72,6 +72,12 @@
             android:title="@string/status_bar_battery_text_charging_title"
             android:summary="@string/status_bar_battery_text_charging_summary"
             android:defaultValue="true" />
+
+        <Preference
+            android:key="battery_bar_settings"
+            android:title="@string/sb_battery_bar_title"
+            android:summary="@string/sb_battery_bar_summary"
+            android:fragment="com.ion.ionizer.fragments.BatteryBar" />
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -121,8 +127,8 @@
             android:defaultValue="0"/>
     </PreferenceCategory>
 
-    <PreferenceCategory 
-        android:key="status_gestures" 
+    <PreferenceCategory
+        android:key="status_gestures"
         android:title="@string/gesture_preference_title">
 
         <com.ion.ionizer.preferences.SystemSettingSwitchPreference
