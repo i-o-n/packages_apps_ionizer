@@ -1070,4 +1070,7 @@
     <string name="sb_battery_bar_high_color">High level color</string>
     <string name="sb_battery_bar_low_color">Low level color"</string>
     <string name="sb_battery_bar_animate_color">Charging animation color</string>
+
+    <!-- Accent color picker -->
+    <string name="accent_color_title">Accent color picker</string>
 </resources>
