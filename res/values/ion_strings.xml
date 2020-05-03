@@ -1069,4 +1069,5 @@
     <string name="sb_battery_bar_gradient_color_summary">Use gradient color as a scale for the battery level</string>
     <string name="sb_battery_bar_high_color">High level color</string>
     <string name="sb_battery_bar_low_color">Low level color"</string>
+    <string name="sb_battery_bar_animate_color">Charging animation color</string>
 </resources>

@@ -42,11 +42,9 @@
         settings:interval="1"
         ionionizer:units="dp" />
 
-    <com.ion.ionizer.preferences.SystemSettingSwitchPreference
-        android:key="battery_bar_animate"
-        android:title="@string/sb_battery_bar_animate_title"
-        android:summary="@string/sb_battery_bar_animate_summary"
-        android:defaultValue="false" />
+    <PreferenceScreen
+        android:layout="@layout/ion_divider"
+        android:selectable="false" />
 
     <com.ion.ionizer.colorpicker.ColorPickerPreference
         android:key="battery_bar_color"
@@ -66,6 +64,10 @@
         settings:defaultColorValue="0xffff6600"
         android:persistent="false" />
 
+    <PreferenceScreen
+        android:layout="@layout/ion_divider"
+        android:selectable="false" />
+
     <com.ion.ionizer.preferences.SystemSettingSwitchPreference
         android:key="battery_bar_use_gradient_color"
         android:title="@string/sb_battery_bar_use_gradient_color"
@@ -84,5 +86,22 @@
         android:title="@string/sb_battery_bar_high_color"
         android:dependency="battery_bar_use_gradient_color"
         settings:defaultColorValue="0xff99cc00"
+        android:persistent="false" />
+
+    <PreferenceScreen
+        android:layout="@layout/ion_divider"
+        android:selectable="false" />
+
+    <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+        android:key="battery_bar_animate"
+        android:title="@string/sb_battery_bar_animate_title"
+        android:summary="@string/sb_battery_bar_animate_summary"
+        android:defaultValue="false" />
+
+    <com.ion.ionizer.colorpicker.ColorPickerPreference
+        android:key="battery_bar_animate_color"
+        android:title="@string/sb_battery_bar_animate_color"
+        settings:defaultColorValue="0xffff2200"
+        android:dependency="battery_bar_animate"
         android:persistent="false" />
 </PreferenceScreen>

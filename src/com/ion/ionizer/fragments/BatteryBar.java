@@ -52,12 +52,14 @@ public class BatteryBar extends SettingsPreferenceFragment implements
     private static final String PREF_BATTERY_BAR_LOW_COLOR = "battery_bar_low_color";
     private static final String PREF_BATTERY_BAR_HIGH_COLOR = "battery_bar_high_color";
     private static final String PREF_BATTERY_BAR_GRADIENT = "battery_bar_use_gradient_color";
+    private static final String PREF_BATTERY_BAR_ANIMATE_COLOR = "battery_bar_animate_color";
 
     private ColorPickerPreference mBatteryBarColor;
     private ColorPickerPreference mBatteryBarChargingColor;
     private ColorPickerPreference mBatteryBarLowColorWarning;
     private ColorPickerPreference mBatteryBarLowColor;
     private ColorPickerPreference mBatteryBarHighColor;
+    private ColorPickerPreference mBatteryBarAnimateColor;
     private ListPreference mBatteryBarLocation;
     private ListPreference mBatteryBarStyle;
     private SwitchPreference mBatteryBarGradient;
@@ -142,6 +144,17 @@ public class BatteryBar extends SettingsPreferenceFragment implements
         boolean batteryBarGradient = Settings.System.getInt(resolver,
                 Settings.System.BATTERY_BAR_USE_GRADIENT_COLOR, 0) == 1;
         updateEnabled(batteryBarGradient);
+
+        mBatteryBarAnimateColor = (ColorPickerPreference) findPreference(PREF_BATTERY_BAR_ANIMATE_COLOR);
+        mBatteryBarAnimateColor.setOnPreferenceChangeListener(this);
+        int batteryBarAnimateColor = Settings.System.getInt(resolver,
+                Settings.System.BATTERY_BAR_ANIMATE_COLOR, 0xFFFF2200);
+        String batteryBarAnimateColorHex = String.format("#%08x", (0xFFFF2200 & batteryBarAnimateColor));
+        if (batteryBarAnimateColorHex.equals("#ffff2200"))
+            mBatteryBarAnimateColor.setSummary(R.string.default_string);
+        else
+            mBatteryBarAnimateColor.setSummary(batteryBarAnimateColorHex);
+        mBatteryBarAnimateColor.setNewPreviewColor(batteryBarAnimateColor);
     }
 
     @Override
@@ -219,6 +232,17 @@ public class BatteryBar extends SettingsPreferenceFragment implements
         } else if (preference == mBatteryBarGradient) {
             boolean value = (Boolean) newValue;
             updateEnabled(value);
+            return true;
+        } else if (preference == mBatteryBarAnimateColor) {
+            String hex = ColorPickerPreference.convertToARGB(
+                Integer.valueOf(String.valueOf(newValue)));
+            if (hex.equals("#ffff2200"))
+                mBatteryBarAnimateColor.setSummary(R.string.default_string);
+            else
+                mBatteryBarAnimateColor.setSummary(hex);
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(resolver,
+                Settings.System.BATTERY_BAR_ANIMATE_COLOR, intHex);
             return true;
         }
         return false;
