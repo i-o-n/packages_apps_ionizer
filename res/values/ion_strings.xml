@@ -45,7 +45,7 @@
     <string name="quicksettings_title_summary">Tiles, Header, Footer</string>
     <string name="button_info">Volume Rocker, Power Button</string>
     <string name="keyguarrd">Media, Gestures, Security</string>
-    <string name="notifications_title_summary">Heads-up, in-call vibration</string>
+    <string name="notifications_title_summary">Heads-up, Edge lighting</string>
     <string name="manusys">Gaming Mode, Animations, Screen</string>
     <string name="ime_title_summary">Keyboard Features</string>
     <string name="power_button">Power Button</string>
