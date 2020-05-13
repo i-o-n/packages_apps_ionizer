@@ -51,6 +51,7 @@ import com.ion.ionizer.R;
 import com.ion.ionizer.preferences.AppMultiSelectListPreference;
 import com.ion.ionizer.preferences.CustomSeekBarPreference;
 import com.ion.ionizer.preferences.ScrollAppsViewPreference;
+import com.ion.ionizer.preferences.SecureSettingSwitchPreference;
 
 import java.util.Arrays;
 import java.util.ArrayList;
@@ -66,11 +67,11 @@ public class RoundedCornersSettings extends SettingsPreferenceFragment implement
     private static final String SYSUI_ROUNDED_CONTENT_PADDING = "sysui_rounded_content_padding";
     private static final String SYSUI_STATUS_BAR_PADDING = "sysui_status_bar_padding";
     private static final String SYSUI_ROUNDED_FWVALS = "sysui_rounded_fwvals";
-    private static final String KEY_FORCE_FULLSCREEN = "display_cutout_force_fullscreen_settings";
     private static final String KEY_ASPECT_RATIO_APPS_ENABLED = "aspect_ratio_apps_enabled";
     private static final String KEY_ASPECT_RATIO_APPS_LIST = "aspect_ratio_apps_list";
     private static final String KEY_ASPECT_RATIO_CATEGORY = "aspect_ratio_category";
     private static final String KEY_ASPECT_RATIO_APPS_LIST_SCROLLER = "aspect_ratio_apps_list_scroller";
+    private static final String KEY_CUTOUT_CATEGORY = "cutout_category";
 
     private CustomSeekBarPreference mCornerRadius;
     private CustomSeekBarPreference mContentPadding;
@@ -78,6 +79,7 @@ public class RoundedCornersSettings extends SettingsPreferenceFragment implement
     private SwitchPreference mRoundedFwvals;
     private AppMultiSelectListPreference mAspectRatioAppsSelect;
     private ScrollAppsViewPreference mAspectRatioApps;
+    private SecureSettingSwitchPreference mCutoutCategory;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -126,9 +128,10 @@ public class RoundedCornersSettings extends SettingsPreferenceFragment implement
         mRoundedFwvals = (SwitchPreference) findPreference(SYSUI_ROUNDED_FWVALS);
         mRoundedFwvals.setOnPreferenceChangeListener(this);
 
-        final Preference forceFullscreen = (Preference) getPreferenceScreen().findPreference(KEY_FORCE_FULLSCREEN);
+        final PreferenceCategory cutoutCategory =
+                (PreferenceCategory) getPreferenceScreen().findPreference(KEY_CUTOUT_CATEGORY);
         if (!IonUtils.hasNotch(getContext())) {
-            getPreferenceScreen().removePreference(forceFullscreen);
+            getPreferenceScreen().removePreference(cutoutCategory);
         }
 
         final PreferenceCategory aspectRatioCategory =

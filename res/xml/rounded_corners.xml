@@ -20,11 +20,29 @@
     android:title="@string/display_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <Preference
-        android:key="display_cutout_force_fullscreen_settings"
-        android:title="@string/display_cutout_force_fullscreen_title"
-        android:summary="@string/display_cutout_force_fullscreen_summary"
-        android:fragment="com.ion.ionizer.fragments.DisplayCutoutForceFullscreenSettings" />
+    <PreferenceCategory
+        android:key="cutout_category"
+        android:title="@string/cutout_category_title">
+
+        <com.ion.ionizer.preferences.SystemSettingListPreference
+            android:key="display_cutout_mode"
+            android:title="@string/display_cutout_mode_title"
+            android:entries="@array/display_cutout_mode_entries"
+            android:entryValues="@array/display_cutout_mode_values"
+            android:defaultValue="0" />
+
+        <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+            android:key="stock_statusbar_in_hide"
+            android:title="@string/stock_statusbar_in_hide"
+            android:summary="@string/stock_statusbar_in_hide_summary"
+            android:defaultValue="true" />
+
+        <Preference
+            android:key="display_cutout_force_fullscreen_settings"
+            android:title="@string/display_cutout_force_fullscreen_title"
+            android:summary="@string/display_cutout_force_fullscreen_summary"
+            android:fragment="com.ion.ionizer.fragments.DisplayCutoutForceFullscreenSettings" />
+    </PreferenceCategory>
 
     <PreferenceCategory
         android:title="@string/corners_title" >
