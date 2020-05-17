@@ -1111,4 +1111,8 @@
     <!-- IME button space -->
     <string name="navigation_bar_ime_space_title">IME button space</string>
     <string name="navigation_bar_ime_space_summary">Show IME button space below keyboard</string>
+
+    <!-- Gesture Navigation Settings -->
+    <string name="gesture_settings_title">Gesture Navigation</string>
+    <string name="gesture_settings_summary">Customize Gesture Navigation</string>
 </resources>

@@ -46,67 +46,11 @@
         android:summary="@string/navigation_bar_arrow_keys_summary"
         android:defaultValue="false" />
 
-    <com.ion.ionizer.preferences.SystemSettingListPreference
-        android:key="back_swipe_type"
-        android:title="@string/back_swipe_type_title"
-        android:entries="@array/back_swipe_type_entries"
-        android:entryValues="@array/back_swipe_type_values"
-        android:defaultValue="0" />
-
-    <com.ion.ionizer.preferences.SystemSettingListPreference
-        android:key="long_back_swipe_timeout"
-        android:title="@string/long_back_swipe_timeout_title"
-        android:entries="@array/long_back_swipe_timeout_entries"
-        android:entryValues="@array/long_back_swipe_timeout_values"
-        android:defaultValue="2000" />
-
-    <com.ion.ionizer.preferences.SystemSettingSwitchPreference
-        android:key="navigation_bar_ime_space"
-        android:title="@string/navigation_bar_ime_space_title"
-        android:summary="@string/navigation_bar_ime_space_summary"
-        android:defaultValue="true" />
-
-    <PreferenceCategory
-        android:key="left_swipe"
-        android:title="@string/left_swipe_key_title">
-
-        <ListPreference
-            android:key="left_swipe_actions"
-            android:title="@string/left_swipe_actions_title"
-            android:entries="@array/active_edge_actions_entries"
-            android:entryValues="@array/active_edge_actions_values"
-            android:defaultValue="0" />
-
-        <Preference
-            android:key="left_swipe_app_action"
-            android:title="@string/left_swipe_app_action_title"
-            android:summary="@string/back_swipe_app_select_summary">
-            <intent android:action="android.intent.action.MAIN"
-                android:targetPackage="com.android.systemui"
-                android:targetClass="com.android.systemui.statusbar.phone.LeftBackSwipeCustomApp" />
-        </Preference>
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="right_swipe"
-        android:title="@string/right_swipe_key_title">
-
-        <ListPreference
-            android:key="right_swipe_actions"
-            android:title="@string/right_swipe_actions_title"
-            android:entries="@array/active_edge_actions_entries"
-            android:entryValues="@array/active_edge_actions_values"
-            android:defaultValue="0" />
-
-        <Preference
-            android:key="right_swipe_app_action"
-            android:title="@string/right_swipe_app_action_title"
-            android:summary="@string/back_swipe_app_select_summary">
-            <intent android:action="android.intent.action.MAIN"
-                android:targetPackage="com.android.systemui"
-                android:targetClass="com.android.systemui.statusbar.phone.RightBackSwipeCustomApp" />
-        </Preference>
-    </PreferenceCategory>
+    <Preference
+        android:key="gesture_settings"
+        android:title="@string/gesture_settings_title"
+        android:summary="@string/gesture_settings_summary"
+        android:fragment="com.ion.ionizer.fragments.GestureSettings" />
 
     <Preference
         android:fragment="com.ion.ionizer.fragments.ButtonsSettings"
@@ -114,7 +58,4 @@
         android:key="hw_buttons"
         android:summary="@string/buttons_summary"
         android:title="@string/buttons_title" />
-
-    <com.android.settingslib.widget.FooterPreference
-        android:title="@string/gesture_nav_tweaks_footer_info" />
 </PreferenceScreen>
