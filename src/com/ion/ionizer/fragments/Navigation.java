@@ -59,15 +59,17 @@ public class Navigation extends SettingsPreferenceFragment
     private static final String NAV_BAR_LAYOUT = "nav_bar_layout";
     private static final String SYSUI_NAV_BAR = "sysui_nav_bar";
     private static final String NAVBAR_ARROW_KEYS = "navigation_bar_menu_arrow_keys";
+    private static final String GESTURE_SETTINGS = "gesture_settings";
 
+    private Preference mGestureSettings;
     private ListPreference mNavBarLayout;
     private SwitchPreference mEnableNavigationBar;
     private SwitchPreference mNavbarArrowKeys;
+    private boolean isButtonMode = false;
     private boolean mIsNavSwitchingMode = false;
     private ContentResolver mResolver;
     private Handler mHandler;
 
-    private boolean isButtonMode;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -101,6 +103,9 @@ public class Navigation extends SettingsPreferenceFragment
         // check if button mode navigation is in use
         isButtonMode = IonUtils.isThemeEnabled("com.android.internal.systemui.navbar.twobutton")
                 || IonUtils.isThemeEnabled("com.android.internal.systemui.navbar.threebutton");
+
+        mGestureSettings = (Preference) findPreference(GESTURE_SETTINGS);
+        mGestureSettings.setEnabled(!isButtonMode);
 
         mNavBarLayout = (ListPreference) findPreference(NAV_BAR_LAYOUT);
         mNavBarLayout.setOnPreferenceChangeListener(this);
@@ -144,6 +149,7 @@ public class Navigation extends SettingsPreferenceFragment
             SystemNavigationGestureSettings.updateNavigationBarOverlays(getActivity());
             return true;
         }
+        updatePreferences();
         return false;
     }
 
@@ -156,6 +162,10 @@ public class Navigation extends SettingsPreferenceFragment
         boolean enabled = Settings.System.getIntForUser(getActivity().getContentResolver(),
                 Settings.System.FORCE_SHOW_NAVBAR, 1, UserHandle.USER_CURRENT) != 0;
         mEnableNavigationBar.setChecked(enabled);
+    }
+
+    private void updatePreferences() {
+        mGestureSettings.setEnabled(!isButtonMode);
     }
 
     @Override
