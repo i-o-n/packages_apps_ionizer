@@ -34,6 +34,7 @@ import androidx.preference.SwitchPreference;
 
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.internal.util.hwkeys.ActionUtils;
+import com.android.internal.util.ion.IonUtils;
 import com.android.settings.gestures.SystemNavigationGestureSettings;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
@@ -66,6 +67,8 @@ public class Navigation extends SettingsPreferenceFragment
     private ContentResolver mResolver;
     private Handler mHandler;
 
+    private boolean isButtonMode;
+
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -95,6 +98,10 @@ public class Navigation extends SettingsPreferenceFragment
             prefScreen.removePreference(mEnableNavigationBar);
         }
 
+        // check if button mode navigation is in use
+        isButtonMode = IonUtils.isThemeEnabled("com.android.internal.systemui.navbar.twobutton")
+                || IonUtils.isThemeEnabled("com.android.internal.systemui.navbar.threebutton");
+
         mNavBarLayout = (ListPreference) findPreference(NAV_BAR_LAYOUT);
         mNavBarLayout.setOnPreferenceChangeListener(this);
         String navBarLayoutValue = Settings.Secure.getString(mResolver, SYSUI_NAV_BAR);
@@ -103,6 +110,7 @@ public class Navigation extends SettingsPreferenceFragment
         } else {
             mNavBarLayout.setValueIndex(0);
         }
+        mNavBarLayout.setEnabled(isButtonMode);
 
         mNavbarArrowKeys = (SwitchPreference) findPreference(NAVBAR_ARROW_KEYS);
         mNavbarArrowKeys.setOnPreferenceChangeListener(this);
@@ -127,6 +135,7 @@ public class Navigation extends SettingsPreferenceFragment
                     mIsNavSwitchingMode = false;
                 }
             }, 1000);
+            mNavBarLayout.setEnabled(isButtonMode && isNavBarChecked);
             return true;
         } else if (preference == mNavBarLayout) {
             Settings.Secure.putString(mResolver, SYSUI_NAV_BAR, (String) newValue);
