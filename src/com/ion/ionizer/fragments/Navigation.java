@@ -119,6 +119,7 @@ public class Navigation extends SettingsPreferenceFragment
 
         mNavbarArrowKeys = (SwitchPreference) findPreference(NAVBAR_ARROW_KEYS);
         mNavbarArrowKeys.setOnPreferenceChangeListener(this);
+        refreshNavbarArrowKeysOption();
     }
 
     @Override
@@ -164,8 +165,29 @@ public class Navigation extends SettingsPreferenceFragment
         mEnableNavigationBar.setChecked(enabled);
     }
 
+    private boolean showIMEspace() {
+        return Settings.System.getIntForUser(getActivity().getContentResolver(),
+                Settings.System.NAVIGATION_BAR_IME_SPACE, 1, UserHandle.USER_CURRENT) != 0;
+    }
+
+    private void refreshNavbarArrowKeysOption() {
+        mNavbarArrowKeys.setEnabled(showIMEspace() || isButtonMode);
+    }
+
     private void updatePreferences() {
         mGestureSettings.setEnabled(!isButtonMode);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        refreshNavbarArrowKeysOption();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        refreshNavbarArrowKeysOption();
     }
 
     @Override
