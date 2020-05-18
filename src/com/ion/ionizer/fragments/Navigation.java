@@ -34,6 +34,7 @@ import androidx.preference.SwitchPreference;
 
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.internal.util.hwkeys.ActionUtils;
+import com.android.settings.gestures.SystemNavigationGestureSettings;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settings.SettingsPreferenceFragment;
@@ -56,9 +57,11 @@ public class Navigation extends SettingsPreferenceFragment
     private static final String ENABLE_NAV_BAR = "enable_nav_bar";
     private static final String NAV_BAR_LAYOUT = "nav_bar_layout";
     private static final String SYSUI_NAV_BAR = "sysui_nav_bar";
+    private static final String NAVBAR_ARROW_KEYS = "navigation_bar_menu_arrow_keys";
 
     private ListPreference mNavBarLayout;
     private SwitchPreference mEnableNavigationBar;
+    private SwitchPreference mNavbarArrowKeys;
     private boolean mIsNavSwitchingMode = false;
     private ContentResolver mResolver;
     private Handler mHandler;
@@ -100,6 +103,9 @@ public class Navigation extends SettingsPreferenceFragment
         } else {
             mNavBarLayout.setValueIndex(0);
         }
+
+        mNavbarArrowKeys = (SwitchPreference) findPreference(NAVBAR_ARROW_KEYS);
+        mNavbarArrowKeys.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -124,6 +130,9 @@ public class Navigation extends SettingsPreferenceFragment
             return true;
         } else if (preference == mNavBarLayout) {
             Settings.Secure.putString(mResolver, SYSUI_NAV_BAR, (String) newValue);
+            return true;
+        } else if (preference == mNavbarArrowKeys) {
+            SystemNavigationGestureSettings.updateNavigationBarOverlays(getActivity());
             return true;
         }
         return false;
