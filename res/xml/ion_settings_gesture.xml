@@ -18,6 +18,30 @@
     android:title="@string/gesture_settings_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+    <com.ion.ionizer.preferences.SecureSettingSwitchPreference
+        android:key="hide_back_arrow_gesture"
+        android:title="@string/back_gesture_arrow_title"
+        android:summary="@string/back_gesture_arrow_message"
+        android:defaultValue="false" />
+
+    <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+        android:key="back_gesture_haptic"
+        android:title="@string/back_gesture_haptic_title"
+        android:summary="@string/back_gesture_haptic_message"
+        android:defaultValue="true" />
+
+    <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+        android:key="back_gesture_block_ime"
+        android:title="@string/back_block_ime_title"
+        android:summary="@string/back_block_ime_message"
+        android:defaultValue="true" />
+
+    <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+        android:key="navigation_bar_ime_space"
+        android:title="@string/navigation_bar_ime_space_title"
+        android:summary="@string/navigation_bar_ime_space_summary"
+        android:defaultValue="true" />
+
     <com.ion.ionizer.preferences.SystemSettingListPreference
         android:key="back_swipe_type"
         android:title="@string/back_swipe_type_title"
@@ -32,11 +56,6 @@
         android:entryValues="@array/long_back_swipe_timeout_values"
         android:defaultValue="2000" />
 
-    <com.ion.ionizer.preferences.SystemSettingSwitchPreference
-        android:key="navigation_bar_ime_space"
-        android:title="@string/navigation_bar_ime_space_title"
-        android:summary="@string/navigation_bar_ime_space_summary"
-        android:defaultValue="true" />
 
     <PreferenceCategory
         android:key="left_swipe"
