@@ -24,6 +24,7 @@ import android.os.Handler;
 import android.os.UserHandle;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
+import android.text.TextUtils;
 
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -222,14 +223,23 @@ public class GestureSettings extends SettingsPreferenceFragment
     }
 
     private void customAppCheck() {
-        mLeftSwipeAppSelection.setSummary(Settings.System.getStringForUser(getActivity().getContentResolver(),
-                String.valueOf(Settings.System.LEFT_LONG_BACK_SWIPE_APP_FR_ACTION), UserHandle.USER_CURRENT));
-        mRightSwipeAppSelection.setSummary(Settings.System.getStringForUser(getActivity().getContentResolver(),
-                String.valueOf(Settings.System.RIGHT_LONG_BACK_SWIPE_APP_FR_ACTION), UserHandle.USER_CURRENT));
-        mLeftSwipeAppSelectionHold.setSummary(Settings.System.getStringForUser(getActivity().getContentResolver(),
-                String.valueOf(Settings.System.LEFT_HOLD_BACK_SWIPE_APP_FR_ACTION), UserHandle.USER_CURRENT));
-        mRightSwipeAppSelectionHold.setSummary(Settings.System.getStringForUser(getActivity().getContentResolver(),
-                String.valueOf(Settings.System.RIGHT_HOLD_BACK_SWIPE_APP_FR_ACTION), UserHandle.USER_CURRENT));
+        String mLeftLongSwipeApp = Settings.System.getStringForUser(getActivity().getContentResolver(),
+                String.valueOf(Settings.System.LEFT_LONG_BACK_SWIPE_APP_FR_ACTION), UserHandle.USER_CURRENT);
+        String mRightLongSwipeApp = Settings.System.getStringForUser(getActivity().getContentResolver(),
+                String.valueOf(Settings.System.RIGHT_LONG_BACK_SWIPE_APP_FR_ACTION), UserHandle.USER_CURRENT);
+        String mLeftHoldSwipeApp = Settings.System.getStringForUser(getActivity().getContentResolver(),
+                String.valueOf(Settings.System.LEFT_HOLD_BACK_SWIPE_APP_FR_ACTION), UserHandle.USER_CURRENT);
+        String mRightHoldSwipeApp = Settings.System.getStringForUser(getActivity().getContentResolver(),
+                String.valueOf(Settings.System.RIGHT_HOLD_BACK_SWIPE_APP_FR_ACTION), UserHandle.USER_CURRENT);
+
+        mLeftSwipeAppSelection.setSummary(TextUtils.isEmpty(mLeftLongSwipeApp)
+                ? getActivity().getString(R.string.back_swipe_app_select_summary) : mLeftLongSwipeApp);
+        mRightSwipeAppSelection.setSummary(TextUtils.isEmpty(mRightLongSwipeApp)
+                ? getActivity().getString(R.string.back_swipe_app_select_summary) : mRightLongSwipeApp);
+        mLeftSwipeAppSelectionHold.setSummary(TextUtils.isEmpty(mLeftHoldSwipeApp)
+                ? getActivity().getString(R.string.back_swipe_app_select_summary) : mLeftHoldSwipeApp);
+        mRightSwipeAppSelectionHold.setSummary(TextUtils.isEmpty(mRightHoldSwipeApp)
+                ? getActivity().getString(R.string.back_swipe_app_select_summary) : mRightHoldSwipeApp);
     }
 
     private void actionPreferenceReload() {
