@@ -1099,7 +1099,7 @@
     <string name="right_swipe_key_title">Right swipe</string>
     <string name="back_swipe_type_title">Double back arrow</string>
     <string name="back_swipe_type_summary">Show double back arrows for long swipe</string>
-    <string name="long_back_swipe_timeout_title">Long swipe timeout</string>
+    <string name="long_back_swipe_timeout_title">Swipe and hold delay</string>
     <string name="long_swipe_actions_title">Long swipe action</string>
     <string name="long_swipe_app_action_title">Select long swipe app</string>
     <string name="hold_swipe_actions_title">Swipe and hold action</string>

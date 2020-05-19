@@ -42,6 +42,7 @@ import com.android.settingslib.search.SearchIndexable;
 
 import com.ion.ionizer.R;
 import com.ion.ionizer.preferences.SystemSettingListPreference;
+import com.ion.ionizer.preferences.SystemSettingSeekBarPreference;
 import com.ion.ionizer.preferences.SystemSettingSwitchPreference;
 
 import java.util.ArrayList;
@@ -69,6 +70,7 @@ public class GestureSettings extends SettingsPreferenceFragment
     private PreferenceCategory leftSwipeCategory;
     private PreferenceCategory rightSwipeCategory;
     private SystemSettingSwitchPreference mNavigationIMESpace;
+    private SystemSettingSeekBarPreference mSwipeHoldDelay;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -147,6 +149,8 @@ public class GestureSettings extends SettingsPreferenceFragment
         mLeftSwipeAppSelectionHold.setVisible(mRightSwipeActionsHold.getEntryValues()
                 [rightSwipeActionsHold].equals("5"));
 
+        mSwipeHoldDelay = (SystemSettingSeekBarPreference) findPreference("long_back_swipe_timeout");
+        updateSwipeHoldDelayState();
         customAppCheck();
     }
 
@@ -191,6 +195,7 @@ public class GestureSettings extends SettingsPreferenceFragment
             mLeftSwipeAppSelectionHold.setEnabled(leftSwipeActionsHold == 5);
             actionPreferenceReload();
             customAppCheck();
+            updateSwipeHoldDelayState();
             return true;
         } else if (preference == mRightSwipeActionsHold) {
             int rightSwipeActionsHold = Integer.valueOf((String) newValue);
@@ -203,6 +208,7 @@ public class GestureSettings extends SettingsPreferenceFragment
             mRightSwipeAppSelectionHold.setEnabled(rightSwipeActionsHold == 5);
             actionPreferenceReload();
             customAppCheck();
+            updateSwipeHoldDelayState();
             return true;
         }
         return false;
@@ -278,6 +284,14 @@ public class GestureSettings extends SettingsPreferenceFragment
                 [leftSwipeActionsHold].equals("5"));
         mRightSwipeAppSelectionHold.setVisible(mRightSwipeActionsHold.getEntryValues()
                 [rightSwipeActionsHold].equals("5"));
+    }
+
+    private void updateSwipeHoldDelayState() {
+        boolean leftHoldBool = Settings.System.getIntForUser(getContentResolver(),
+                Settings.System.LEFT_HOLD_BACK_SWIPE_ACTION, 0, UserHandle.USER_CURRENT) != 0;
+        boolean rightHoldBool = Settings.System.getIntForUser(getContentResolver(),
+                Settings.System.RIGHT_HOLD_BACK_SWIPE_ACTION, 0, UserHandle.USER_CURRENT) != 0;
+        mSwipeHoldDelay.setEnabled(leftHoldBool || rightHoldBool);
     }
 
     @Override

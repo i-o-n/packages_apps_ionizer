@@ -50,13 +50,6 @@
         android:summary="@string/navigation_bar_ime_space_summary"
         android:defaultValue="true" />
 
-    <com.ion.ionizer.preferences.SystemSettingListPreference
-        android:key="long_back_swipe_timeout"
-        android:title="@string/long_back_swipe_timeout_title"
-        android:entries="@array/long_back_swipe_timeout_entries"
-        android:entryValues="@array/long_back_swipe_timeout_values"
-        android:defaultValue="2000" />
-
     <PreferenceCategory
         android:key="left_swipe"
         android:title="@string/left_swipe_key_title">
@@ -132,8 +125,18 @@
     </PreferenceCategory>
 
     <!-- Empty PreferenceCategory for divider -->
-    <!--<PreferenceCategory
-        android:layout="@layout/preference_category_no_label" />-->
+    <PreferenceCategory
+        android:layout="@layout/preference_category_no_label" />
+
+    <com.ion.ionizer.preferences.SystemSettingSeekBarPreference
+        android:key="long_back_swipe_timeout"
+        android:title="@string/long_back_swipe_timeout_title"
+        android:defaultValue="2000"
+        android:max="5000"
+        settings:min="250"
+        settings:interval="250"
+        settings:units="ms" />
+
     <!--<com.android.settingslib.widget.FooterPreference
         android:title="@string/gesture_nav_tweaks_footer_info" />-->
 </PreferenceScreen>
