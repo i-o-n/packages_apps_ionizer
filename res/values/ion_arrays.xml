@@ -981,16 +981,6 @@
         <item>15</item>
     </string-array>
 
-    <!-- Long swipe type -->
-    <string-array name="back_swipe_type_entries" translatable="false">
-        <item>@string/back_swipe_type_long</item>
-        <item>@string/back_swipe_type_extended</item>
-   </string-array>
-   <string-array name="back_swipe_type_values" translatable="false">
-      <item>0</item>
-      <item>1</item>
-   </string-array>
-
     <!-- Long swipe gestures -->
     <string-array name="long_back_swipe_timeout_entries" translatable="false">
       <item>250 ms</item>

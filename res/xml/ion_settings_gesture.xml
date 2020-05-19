@@ -22,6 +22,14 @@
         android:key="hide_back_arrow_gesture"
         android:title="@string/back_gesture_arrow_title"
         android:summary="@string/back_gesture_arrow_message"
+        android:disableDependentsState="true"
+        android:defaultValue="false" />
+
+    <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+        android:key="back_swipe_type"
+        android:title="@string/back_swipe_type_title"
+        android:summary="@string/back_swipe_type_summary"
+        android:dependency="hide_back_arrow_gesture"
         android:defaultValue="false" />
 
     <com.ion.ionizer.preferences.SystemSettingSwitchPreference
@@ -43,34 +51,42 @@
         android:defaultValue="true" />
 
     <com.ion.ionizer.preferences.SystemSettingListPreference
-        android:key="back_swipe_type"
-        android:title="@string/back_swipe_type_title"
-        android:entries="@array/back_swipe_type_entries"
-        android:entryValues="@array/back_swipe_type_values"
-        android:defaultValue="0" />
-
-    <com.ion.ionizer.preferences.SystemSettingListPreference
         android:key="long_back_swipe_timeout"
         android:title="@string/long_back_swipe_timeout_title"
         android:entries="@array/long_back_swipe_timeout_entries"
         android:entryValues="@array/long_back_swipe_timeout_values"
         android:defaultValue="2000" />
 
-
     <PreferenceCategory
         android:key="left_swipe"
         android:title="@string/left_swipe_key_title">
 
         <ListPreference
+            android:key="hold_left_swipe_actions"
+            android:title="@string/hold_swipe_actions_title"
+            android:entries="@array/active_edge_actions_entries"
+            android:entryValues="@array/active_edge_actions_values"
+            android:defaultValue="0" />
+
+        <Preference
+            android:key="hold_left_swipe_app_action"
+            android:title="@string/hold_swipe_app_action_title"
+            android:summary="@string/back_swipe_app_select_summary">
+            <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="com.android.systemui"
+                android:targetClass="com.android.systemui.statusbar.phone.HoldLeftBackSwipeCustomApp" />
+        </Preference>
+
+        <ListPreference
             android:key="left_swipe_actions"
-            android:title="@string/left_swipe_actions_title"
+            android:title="@string/long_swipe_actions_title"
             android:entries="@array/active_edge_actions_entries"
             android:entryValues="@array/active_edge_actions_values"
             android:defaultValue="0" />
 
         <Preference
             android:key="left_swipe_app_action"
-            android:title="@string/left_swipe_app_action_title"
+            android:title="@string/long_swipe_app_action_title"
             android:summary="@string/back_swipe_app_select_summary">
             <intent android:action="android.intent.action.MAIN"
                 android:targetPackage="com.android.systemui"
@@ -83,15 +99,31 @@
         android:title="@string/right_swipe_key_title">
 
         <ListPreference
+            android:key="hold_right_swipe_actions"
+            android:title="@string/hold_swipe_actions_title"
+            android:entries="@array/active_edge_actions_entries"
+            android:entryValues="@array/active_edge_actions_values"
+            android:defaultValue="0" />
+
+        <Preference
+            android:key="hold_right_swipe_app_action"
+            android:title="@string/hold_swipe_app_action_title"
+            android:summary="@string/back_swipe_app_select_summary">
+            <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="com.android.systemui"
+                android:targetClass="com.android.systemui.statusbar.phone.HoldRightBackSwipeCustomApp" />
+        </Preference>
+
+        <ListPreference
             android:key="right_swipe_actions"
-            android:title="@string/right_swipe_actions_title"
+            android:title="@string/long_swipe_actions_title"
             android:entries="@array/active_edge_actions_entries"
             android:entryValues="@array/active_edge_actions_values"
             android:defaultValue="0" />
 
         <Preference
             android:key="right_swipe_app_action"
-            android:title="@string/right_swipe_app_action_title"
+            android:title="@string/long_swipe_app_action_title"
             android:summary="@string/back_swipe_app_select_summary">
             <intent android:action="android.intent.action.MAIN"
                 android:targetPackage="com.android.systemui"
