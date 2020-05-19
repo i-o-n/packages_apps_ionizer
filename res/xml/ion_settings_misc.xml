@@ -73,12 +73,15 @@
             android:summary="@string/adaptive_playback_summary"
             android:defaultValue="false" />
 
-        <com.ion.ionizer.preferences.SystemSettingListPreference
+        <com.ion.ionizer.preferences.SystemSettingSeekBarPreference
             android:key="adaptive_playback_timeout"
             android:title="@string/adaptive_playback_timeout_title"
-            android:entries="@array/adaptive_playback_timeout_entries"
-            android:entryValues="@array/adaptive_playback_timeout_values"
-            android:defaultValue="30000"
-            android:dependency="adaptive_playback_enabled" />
+            android:summary="@string/adaptive_playback_timeout_summary"
+            android:dependency="adaptive_playback_enabled"
+            android:defaultValue="30"
+            android:max="900"
+            settings:min="0"
+            settings:interval="30"
+            settings:units="sec" />
     </PreferenceCategory>
 </PreferenceScreen>
