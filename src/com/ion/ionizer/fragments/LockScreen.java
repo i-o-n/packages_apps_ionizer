@@ -58,12 +58,16 @@ public class LockScreen extends DashboardFragment implements
     private static final String LOCKSCREEN_VISUALIZER_ENABLED = "lockscreen_visualizer_enabled";
     private static final String LOCKSCREEN_EXTRA = "lockscreen_extra";
     private static final String FOD_ICON_PICKER_CATEGORY = "fod_icon_picker_category";
+    private static final String FOD_RECOGNIZING_ANIMATION = "fod_recognizing_animation";
+    private static final String FOD_ANIM_PICKER = "fod_anim";
 
     private SystemSettingMasterSwitchPreference mClockEnabled;
     private SystemSettingMasterSwitchPreference mInfoEnabled;
     private SecureSettingMasterSwitchPreference mVisualizerEnabled;
     private PreferenceCategory mLsExtra;
     private Preference mFODIconPicker;
+    private SwitchPreference mFODRecognitionAnimation;
+    private ListPreference mFODAnimationPicker;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -94,9 +98,14 @@ public class LockScreen extends DashboardFragment implements
 
         mLsExtra = (PreferenceCategory) findPreference(LOCKSCREEN_EXTRA);
         mFODIconPicker = (Preference) findPreference(FOD_ICON_PICKER_CATEGORY);
-        if (mFODIconPicker != null
-                && !getResources().getBoolean(com.android.internal.R.bool.config_needCustomFODView)) {
-            mLsExtra.removePreference(mFODIconPicker);
+        mFODRecognitionAnimation = (SwitchPreference) findPreference(FOD_RECOGNIZING_ANIMATION);
+        mFODAnimationPicker = (ListPreference) findPreference(FOD_ANIM_PICKER);
+        if (!getResources().getBoolean(com.android.internal.R.bool.config_needCustomFODView)) {
+            if (mFODIconPicker != null) mLsExtra.removePreference(mFODIconPicker);
+            if (mFODRecognitionAnimation != null) mLsExtra.removePreference(mFODRecognitionAnimation);
+            if (mFODAnimationPicker != null) mLsExtra.removePreference(mFODAnimationPicker);
+        } else if (!getResources().getBoolean(R.bool.config_showFODAnimationPicker)) {
+            if (mFODAnimationPicker != null) mLsExtra.removePreference(mFODAnimationPicker);
         }
     }
 
