@@ -42,6 +42,7 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settingslib.search.SearchIndexable;
 
 import com.ion.ionizer.R;
+import com.ion.ionizer.preferences.SecureSettingSwitchPreference;
 import com.ion.ionizer.preferences.SystemSettingListPreference;
 import com.ion.ionizer.preferences.SystemSettingSwitchPreference;
 
@@ -60,16 +61,17 @@ public class Navigation extends SettingsPreferenceFragment
     private static final String SYSUI_NAV_BAR = "sysui_nav_bar";
     private static final String NAVBAR_ARROW_KEYS = "navigation_bar_menu_arrow_keys";
     private static final String GESTURE_SETTINGS = "gesture_settings";
+    private static final String NAVBAR_INVERSE = "sysui_nav_bar_inverse";
 
     private Preference mGestureSettings;
     private ListPreference mNavBarLayout;
     private SwitchPreference mEnableNavigationBar;
     private SwitchPreference mNavbarArrowKeys;
+    private SecureSettingSwitchPreference mNavbarInverse;
     private boolean isButtonMode = false;
     private boolean mIsNavSwitchingMode = false;
     private ContentResolver mResolver;
     private Handler mHandler;
-
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -105,7 +107,6 @@ public class Navigation extends SettingsPreferenceFragment
                 || IonUtils.isThemeEnabled("com.android.internal.systemui.navbar.threebutton");
 
         mGestureSettings = (Preference) findPreference(GESTURE_SETTINGS);
-        mGestureSettings.setEnabled(!isButtonMode);
 
         mNavBarLayout = (ListPreference) findPreference(NAV_BAR_LAYOUT);
         mNavBarLayout.setOnPreferenceChangeListener(this);
@@ -115,11 +116,12 @@ public class Navigation extends SettingsPreferenceFragment
         } else {
             mNavBarLayout.setValueIndex(0);
         }
-        mNavBarLayout.setEnabled(isButtonMode);
 
         mNavbarArrowKeys = (SwitchPreference) findPreference(NAVBAR_ARROW_KEYS);
         mNavbarArrowKeys.setOnPreferenceChangeListener(this);
-        refreshNavbarArrowKeysOption();
+
+        mNavbarInverse = (SecureSettingSwitchPreference) findPreference(NAVBAR_INVERSE);
+        updatePreferences();
     }
 
     @Override
@@ -142,6 +144,7 @@ public class Navigation extends SettingsPreferenceFragment
                 }
             }, 1000);
             mNavBarLayout.setEnabled(isButtonMode && isNavBarChecked);
+            updatePreferences();
             return true;
         } else if (preference == mNavBarLayout) {
             Settings.Secure.putString(mResolver, SYSUI_NAV_BAR, (String) newValue);
@@ -150,7 +153,6 @@ public class Navigation extends SettingsPreferenceFragment
             SystemNavigationGestureSettings.updateNavigationBarOverlays(getActivity());
             return true;
         }
-        updatePreferences();
         return false;
     }
 
@@ -170,24 +172,26 @@ public class Navigation extends SettingsPreferenceFragment
                 Settings.System.NAVIGATION_BAR_IME_SPACE, 1, UserHandle.USER_CURRENT) != 0;
     }
 
-    private void refreshNavbarArrowKeysOption() {
-        mNavbarArrowKeys.setEnabled(showIMEspace() || isButtonMode);
-    }
-
     private void updatePreferences() {
-        mGestureSettings.setEnabled(!isButtonMode);
+        boolean enabled = Settings.System.getIntForUser(getActivity().getContentResolver(),
+                Settings.System.FORCE_SHOW_NAVBAR, 1, UserHandle.USER_CURRENT) != 0;
+
+        mNavBarLayout.setEnabled(isButtonMode && enabled);
+        mNavbarInverse.setEnabled(isButtonMode ? enabled : (showIMEspace() && enabled));
+        mNavbarArrowKeys.setEnabled((showIMEspace() || isButtonMode) && enabled);
+        mGestureSettings.setEnabled(!isButtonMode && enabled);
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        refreshNavbarArrowKeysOption();
+        updatePreferences();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        refreshNavbarArrowKeysOption();
+        updatePreferences();
     }
 
     @Override

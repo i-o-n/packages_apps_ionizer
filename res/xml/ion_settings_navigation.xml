@@ -32,29 +32,25 @@
         android:defaultValue="default"
         android:persistent="false"
         android:entries="@array/nav_bar_layouts"
-        android:entryValues="@array/nav_bar_layouts_values"
-        android:dependency="enable_nav_bar" />
+        android:entryValues="@array/nav_bar_layouts_values" />
 
     <com.ion.ionizer.preferences.SecureSettingSwitchPreference
         android:key="sysui_nav_bar_inverse"
         android:title="@string/navbar_invert_layout_title"
         android:summary="@string/navbar_invert_layout_summary"
-        android:defaultValue="false"
-        android:dependency="enable_nav_bar" />
+        android:defaultValue="false" />
 
     <com.ion.ionizer.preferences.SystemSettingSwitchPreference
         android:key="navigation_bar_menu_arrow_keys"
         android:title="@string/navigation_bar_arrow_keys_title"
         android:summary="@string/navigation_bar_arrow_keys_summary"
-        android:defaultValue="false"
-        android:dependency="enable_nav_bar" />
+        android:defaultValue="false" />
 
     <Preference
         android:key="gesture_settings"
         android:title="@string/gesture_settings_title"
         android:summary="@string/gesture_settings_summary"
-        android:fragment="com.ion.ionizer.fragments.GestureSettings"
-        android:dependency="enable_nav_bar" />
+        android:fragment="com.ion.ionizer.fragments.GestureSettings" />
 
     <Preference
         android:fragment="com.ion.ionizer.fragments.ButtonsSettings"
