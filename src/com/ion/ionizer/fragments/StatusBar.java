@@ -130,8 +130,6 @@ public class StatusBar extends DashboardFragment implements
 
         // Battery Bar
         mBatteryBar = (SystemSettingMasterSwitchPreference) findPreference(BATTERY_BAR_SWITCH);
-        mBatteryBar.setChecked((Settings.System.getInt(resolver,
-                Settings.System.BATTERY_BAR_SWITCH, 0)) == 1);
         mBatteryBar.setOnPreferenceChangeListener(this);
 
         updatePreferences();
@@ -204,7 +202,8 @@ public class StatusBar extends DashboardFragment implements
     private void updatePreferences() {
         mStatusBarClockShow.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.STATUS_BAR_CLOCK, 1) == 1));
-
+        mBatteryBar.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.BATTERY_BAR_SWITCH, 0)) == 1);
     }
 
     protected int getPreferenceScreenResId() {
