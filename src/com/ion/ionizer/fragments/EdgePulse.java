@@ -22,10 +22,12 @@ import android.os.Bundle;
 import android.os.UserHandle;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
+import android.widget.Switch;
 
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
+import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 
@@ -34,6 +36,8 @@ import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
+import com.android.settings.widget.SwitchBar;
+import com.android.settings.SettingsActivity;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settingslib.search.SearchIndexable;
 
@@ -44,7 +48,7 @@ import java.util.List;
 
 @SearchIndexable
 public class EdgePulse extends SettingsPreferenceFragment implements
-        OnPreferenceChangeListener, Indexable {
+        OnPreferenceChangeListener, Indexable, SwitchBar.OnSwitchChangeListener {
 
     private static final String PULSE_AMBIENT_LIGHT_COLOR_LEFT = "pulse_ambient_light_color_left";
     private static final String PULSE_AMBIENT_LIGHT_COLOR_RIGHT = "pulse_ambient_light_color_right";
@@ -55,6 +59,34 @@ public class EdgePulse extends SettingsPreferenceFragment implements
     private ColorPickerPreference mRightEdgeLightColorPreference;
     private SwitchPreference mAmbientNotifLight;
     private SwitchPreference mAmbientContentHide;
+    private SwitchPreference mPulseForAll;
+    private ListPreference mPulseLayout;
+    private PreferenceCategory mSideLeft;
+    private PreferenceCategory mSideRight;
+
+    private SwitchBar mSwitchBar;
+
+    @Override
+    public void onActivityCreated(Bundle icicle) {
+        super.onActivityCreated(icicle);
+
+        final boolean isChecked = Settings.System.getInt(getContentResolver(),
+                Settings.System.PULSE_AMBIENT_LIGHT, 0) != 0;
+        mSwitchBar = ((SettingsActivity) getActivity()).getSwitchBar();
+        mSwitchBar.addOnSwitchChangeListener(this);
+        mSwitchBar.setChecked(isChecked);
+        mSwitchBar.show();
+    }
+
+    @Override
+    public void onSwitchChanged(Switch switchView, boolean isChecked) {
+        if (switchView != mSwitchBar.getSwitch()) {
+            return;
+        }
+        Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.PULSE_AMBIENT_LIGHT, isChecked ? 1 : 0);
+        updatePreferences();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,6 +96,8 @@ public class EdgePulse extends SettingsPreferenceFragment implements
 
         ContentResolver resolver = getActivity().getContentResolver();
         PreferenceScreen prefScreen = getPreferenceScreen();
+
+        mPulseForAll = (SwitchPreference) findPreference("pulse_ambient_light_pulse_for_all");
 
         mLeftEdgeLightColorPreference = (ColorPickerPreference) findPreference(PULSE_AMBIENT_LIGHT_COLOR_LEFT);
         mLeftEdgeLightColorPreference.setOnPreferenceChangeListener(this);
@@ -101,6 +135,11 @@ public class EdgePulse extends SettingsPreferenceFragment implements
         } else if (!mAODDisabled) {
             prefScreen.removePreference(mAmbientContentHide);
         }
+
+        mPulseLayout = (ListPreference) findPreference("pulse_ambient_light_layout");
+        mSideLeft = (PreferenceCategory) findPreference("edge_pulse_left");
+        mSideRight = (PreferenceCategory) findPreference("edge_pulse_right");
+        updatePreferences();
     }
 
     @Override
@@ -132,6 +171,17 @@ public class EdgePulse extends SettingsPreferenceFragment implements
             return true;
         }
         return false;
+    }
+
+    private void updatePreferences() {
+        boolean isChecked = Settings.System.getInt(getContentResolver(),
+                Settings.System.PULSE_AMBIENT_LIGHT, 0) != 0;
+
+        mPulseForAll.setEnabled(isChecked);
+        if (mAmbientNotifLight != null) mAmbientNotifLight.setEnabled(isChecked);
+        mPulseLayout.setEnabled(isChecked);
+        mSideLeft.setEnabled(isChecked);
+        mSideRight.setEnabled(isChecked);
     }
 
     @Override

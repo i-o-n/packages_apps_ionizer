@@ -116,9 +116,7 @@ public class Notifications extends DashboardFragment
 
         mEdgePulse = (SystemSettingMasterSwitchPreference) findPreference(PULSE_AMBIENT_LIGHT);
         mEdgePulse.setOnPreferenceChangeListener(this);
-        int edgePulse = Settings.System.getInt(getContentResolver(),
-                PULSE_AMBIENT_LIGHT, 0);
-        mEdgePulse.setChecked(edgePulse != 0);
+        updatePreferences();
     }
 
     @Override
@@ -170,6 +168,10 @@ public class Notifications extends DashboardFragment
             mHeadsUpEnabled.setSummary(getActivity().getString(
                         R.string.summary_heads_up_disabled));
         }
+        int edgePulse = Settings.System.getInt(getContentResolver(),
+                PULSE_AMBIENT_LIGHT, 0);
+        mEdgePulse.setChecked(edgePulse != 0);
+
     }
 
     protected int getPreferenceScreenResId() {

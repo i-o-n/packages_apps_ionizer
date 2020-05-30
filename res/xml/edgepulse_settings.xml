@@ -52,6 +52,7 @@
         android:defaultValue="0" />
 
     <PreferenceCategory
+        android:key="edge_pulse_left"
         android:title="@string/edgelight_left" >
 
         <com.ion.ionizer.preferences.SystemSettingSwitchPreference
@@ -94,6 +95,7 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="edge_pulse_right"
         android:title="@string/edgelight_right" >
 
         <com.ion.ionizer.preferences.SystemSettingSwitchPreference
