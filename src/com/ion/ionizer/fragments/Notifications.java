@@ -29,7 +29,7 @@ import androidx.preference.PreferenceScreen;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.SwitchPreference;
 
-import com.android.internal.logging.nano.MetricsProto; 
+import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
@@ -79,16 +79,6 @@ public class Notifications extends DashboardFragment
 
         mHeadsUpEnabled = (GlobalSettingMasterSwitchPreference) findPreference(HEADS_UP_NOTIFICATIONS_ENABLED);
         mHeadsUpEnabled.setOnPreferenceChangeListener(this);
-        int headsUpEnabled = Settings.Global.getInt(getContentResolver(),
-                HEADS_UP_NOTIFICATIONS_ENABLED, 1);
-        mHeadsUpEnabled.setChecked(headsUpEnabled != 0);
-        if (headsUpEnabled != 0) {
-            mHeadsUpEnabled.setSummary(getActivity().getString(
-                        R.string.summary_heads_up_enabled));
-        } else {
-            mHeadsUpEnabled.setSummary(getActivity().getString(
-                        R.string.summary_heads_up_disabled));
-        }
 
         mBatteryLightx = (SystemSettingMasterSwitchPreference) findPreference(BATTERY_LIGHT_ENABLED);
         mBatteryLightx.setOnPreferenceChangeListener(this);
@@ -169,8 +159,35 @@ public class Notifications extends DashboardFragment
         return false;
     }
 
+    private void updatePreferences() {
+        int headsUpEnabled = Settings.Global.getInt(getActivity().getContentResolver(),
+                HEADS_UP_NOTIFICATIONS_ENABLED, 1);
+        mHeadsUpEnabled.setChecked(headsUpEnabled != 0);
+        if (headsUpEnabled != 0) {
+            mHeadsUpEnabled.setSummary(getActivity().getString(
+                        R.string.summary_heads_up_enabled));
+        } else {
+            mHeadsUpEnabled.setSummary(getActivity().getString(
+                        R.string.summary_heads_up_disabled));
+        }
+    }
+
     protected int getPreferenceScreenResId() {
         return R.xml.ion_settings_notifications;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        updatePreferences();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        updatePreferences();
     }
 
     @Override
