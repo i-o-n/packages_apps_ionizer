@@ -16,10 +16,14 @@
 package com.ion.ionizer.fragments;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.provider.SearchIndexableResource;
+import android.provider.Settings;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceChangeListener;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.dashboard.DashboardFragment;
@@ -35,16 +39,60 @@ import com.ion.ionizer.display.AccentColorPreferenceController;
 import com.ion.ionizer.display.QsAlphaPreferenceController;
 import com.ion.ionizer.display.QsbgColorPreferenceController;
 import com.ion.ionizer.display.QsColorPreferenceController;
-import com.ion.ionizer.display.QsCustomHeaderPreferenceController;
+import com.ion.ionizer.preferences.SystemSettingMasterSwitchPreference;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @SearchIndexable
 public class Interface extends DashboardFragment implements
-        Indexable {
+        Indexable, OnPreferenceChangeListener {
 
     private static final String TAG = "Interface";
+
+    private static final String STATUS_BAR_CUSTOM_HEADER = "status_bar_custom_header";
+    private SystemSettingMasterSwitchPreference mCustomHeader;
+
+    @Override
+    public void onCreate(Bundle icicle) {
+        super.onCreate(icicle);
+
+        mCustomHeader = (SystemSettingMasterSwitchPreference) findPreference(STATUS_BAR_CUSTOM_HEADER);
+        mCustomHeader.setOnPreferenceChangeListener(this);
+
+        updatePreferences();
+    }
+
+    private void updatePreferences() {
+        int qsHeader = Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.STATUS_BAR_CUSTOM_HEADER, 0);
+        mCustomHeader.setChecked(qsHeader != 0);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        updatePreferences();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        updatePreferences();
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mCustomHeader) {
+            boolean header = (Boolean) newValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUS_BAR_CUSTOM_HEADER, header ? 1 : 0);
+            return true;
+        }
+        return false;
+    }
 
     @Override
     public int getMetricsCategory() {
@@ -79,7 +127,6 @@ public class Interface extends DashboardFragment implements
         controllers.add(new QsAlphaPreferenceController(context));
         controllers.add(new QsbgColorPreferenceController(context));
         controllers.add(new QsColorPreferenceController(context));
-        controllers.add(new QsCustomHeaderPreferenceController(context));
         return controllers;
     }
 

@@ -25,6 +25,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
+import android.widget.Switch;
 
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -33,10 +34,13 @@ import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
+import com.android.settings.widget.SwitchBar;
+import com.android.settings.SettingsActivity;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settingslib.search.SearchIndexable;
 
 import com.ion.ionizer.preferences.CustomSeekBarPreference;
+import com.ion.ionizer.preferences.SystemSettingSeekBarPreference;
 import com.ion.ionizer.preferences.SystemSettingSwitchPreference;
 
 import java.util.ArrayList;
@@ -47,11 +51,12 @@ import java.util.Map;
 
 @SearchIndexable
 public class QsHeader extends SettingsPreferenceFragment
-        implements Preference.OnPreferenceChangeListener, Indexable {
+        implements Preference.OnPreferenceChangeListener, Indexable, SwitchBar.OnSwitchChangeListener {
 
     private static final String CUSTOM_HEADER_BROWSE = "custom_header_browse";
     private static final String DAYLIGHT_HEADER_PACK = "daylight_header_pack";
     private static final String CUSTOM_HEADER_IMAGE_SHADOW = "status_bar_custom_header_shadow";
+    private static final String CUSTOM_HEADER_IMAGE_HEIGHT = "status_bar_custom_header_height";
     private static final String CUSTOM_HEADER_PROVIDER = "custom_header_provider";
     private static final String FILE_HEADER_SELECT = "file_header_select";
 
@@ -64,6 +69,31 @@ public class QsHeader extends SettingsPreferenceFragment
     private String mDaylightHeaderProvider;
     private Preference mFileHeader;
     private String mFileHeaderProvider;
+    private SystemSettingSeekBarPreference mHeaderHeight;
+
+    private SwitchBar mSwitchBar;
+
+    @Override
+    public void onActivityCreated(Bundle icicle) {
+        super.onActivityCreated(icicle);
+
+        final boolean isChecked = Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.STATUS_BAR_CUSTOM_HEADER, 0) == 1;
+        mSwitchBar = ((SettingsActivity) getActivity()).getSwitchBar();
+        mSwitchBar.addOnSwitchChangeListener(this);
+        mSwitchBar.setChecked(isChecked);
+        mSwitchBar.show();
+    }
+
+    @Override
+    public void onSwitchChanged(Switch switchView, boolean isChecked) {
+        if (switchView != mSwitchBar.getSwitch()) {
+            return;
+        }
+        Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.STATUS_BAR_CUSTOM_HEADER, isChecked ? 1 : 0);
+        updateEnablement();
+    }
 
     @Override
     public void onResume() {
@@ -105,7 +135,9 @@ public class QsHeader extends SettingsPreferenceFragment
         mHeaderProvider.setOnPreferenceChangeListener(this);
 
         mFileHeader = findPreference(FILE_HEADER_SELECT);
+        mHeaderHeight = (SystemSettingSeekBarPreference) findPreference(CUSTOM_HEADER_IMAGE_HEIGHT);
 
+        updateEnablement();
     }
 
     private void updateHeaderProviderSummary(boolean headerEnabled) {
@@ -218,12 +250,18 @@ public class QsHeader extends SettingsPreferenceFragment
         if (!providerName.equals(mDaylightHeaderProvider)) {
             providerName = mFileHeaderProvider;
         }
+        boolean isChecked = Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.STATUS_BAR_CUSTOM_HEADER, 0) == 1;
         int valueIndex = mHeaderProvider.findIndexOfValue(providerName);
         mHeaderProvider.setValueIndex(valueIndex >= 0 ? valueIndex : 0);
         mHeaderProvider.setSummary(mHeaderProvider.getEntry());
-        mDaylightHeaderPack.setEnabled(providerName.equals(mDaylightHeaderProvider));
-        mFileHeader.setEnabled(providerName.equals(mFileHeaderProvider));
-        mHeaderBrowse.setEnabled(isBrowseHeaderAvailable() && providerName.equals(mFileHeaderProvider));
+
+        mHeaderProvider.setEnabled(isChecked);
+        mDaylightHeaderPack.setEnabled(providerName.equals(mDaylightHeaderProvider) && isChecked);
+        mFileHeader.setEnabled(providerName.equals(mFileHeaderProvider) && isChecked);
+        mHeaderBrowse.setEnabled(isBrowseHeaderAvailable() && providerName.equals(mFileHeaderProvider) && isChecked);
+        mHeaderHeight.setEnabled(isChecked);
+        mHeaderShadow.setEnabled(isChecked);
     }
 
     @Override
