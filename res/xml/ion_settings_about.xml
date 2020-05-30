@@ -128,7 +128,7 @@
             android:icon="@drawable/ion_support"/>
 
         <Preference
-            android:title="Moonish"
+            android:title="neptunian"
             android:summary="@string/ion_support_summary"
             android:icon="@drawable/ion_support"/>
 
