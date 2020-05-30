@@ -104,8 +104,6 @@ public class StatusBar extends DashboardFragment implements
 
         // Clock
         mStatusBarClockShow = (SystemSettingMasterSwitchPreference) findPreference(STATUS_BAR_CLOCK);
-        mStatusBarClockShow.setChecked((Settings.System.getInt(resolver,
-                Settings.System.STATUS_BAR_CLOCK, 1) == 1));
         mStatusBarClockShow.setOnPreferenceChangeListener(this);
 
         mShowLteFourGee = (SwitchPreference) findPreference(SHOW_LTE_FOURGEE);
@@ -135,6 +133,8 @@ public class StatusBar extends DashboardFragment implements
         mBatteryBar.setChecked((Settings.System.getInt(resolver,
                 Settings.System.BATTERY_BAR_SWITCH, 0)) == 1);
         mBatteryBar.setOnPreferenceChangeListener(this);
+
+        updatePreferences();
     }
 
     @Override
@@ -200,8 +200,29 @@ public class StatusBar extends DashboardFragment implements
             mQuickPulldown.setSummary(res.getString(R.string.quick_pulldown_summary, direction));
         }
     }
+
+    private void updatePreferences() {
+        mStatusBarClockShow.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.STATUS_BAR_CLOCK, 1) == 1));
+
+    }
+
     protected int getPreferenceScreenResId() {
         return R.xml.ion_settings_statusbar;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        updatePreferences();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        updatePreferences();
     }
 
     @Override

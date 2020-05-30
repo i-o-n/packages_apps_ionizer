@@ -33,6 +33,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Switch;
 
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -49,6 +50,8 @@ import com.android.internal.util.ion.IonUtils;
 import com.android.settings.R;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
+import com.android.settings.widget.SwitchBar;
+import com.android.settings.SettingsActivity;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 import com.android.settingslib.search.SearchIndexable;
@@ -68,7 +71,7 @@ import java.util.Set;
 
 @SearchIndexable
 public class ClockSettings extends SettingsPreferenceFragment implements
-        OnPreferenceChangeListener, Indexable {
+        OnPreferenceChangeListener, Indexable, SwitchBar.OnSwitchChangeListener {
 
     private static final String STATUS_BAR_CLOCK = "status_bar_clock";
     private static final String STATUS_BAR_CLOCK_SECONDS = "status_bar_clock_seconds";
@@ -81,6 +84,7 @@ public class ClockSettings extends SettingsPreferenceFragment implements
     private static final String STATUS_BAR_CLOCK_SIZE  = "status_bar_clock_size";
     private static final String STATUS_BAR_CLOCK_FONT_STYLE  = "status_bar_clock_font_style";
     private static final String STATUS_BAR_CLOCK_COLOR = "status_bar_clock_color";
+    private static final String STATUS_BAR_CLOCK_AUTO_HIDE = "status_bar_clock_auto_hide";
     public static final int CLOCK_DATE_STYLE_LOWERCASE = 1;
     public static final int CLOCK_DATE_STYLE_UPPERCASE = 2;
     private static final int CUSTOM_CLOCK_DATE_FORMAT_INDEX = 18;
@@ -93,8 +97,34 @@ public class ClockSettings extends SettingsPreferenceFragment implements
     private ListPreference mClockDateFormat;
     private ListPreference mClockDatePosition;
     private SystemSettingSeekBarPreference mClockSize;
+    private SystemSettingSwitchPreference mClockAutoHide;
+    private SystemSettingSwitchPreference mClockSeconds;
     private ListPreference mClockFontStyle;
     private ColorPickerPreference mClockColor;
+
+    private SwitchBar mSwitchBar;
+
+    @Override
+    public void onActivityCreated(Bundle icicle) {
+        super.onActivityCreated(icicle);
+
+        final boolean isChecked = Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.STATUS_BAR_CLOCK, 1) == 1;
+        mSwitchBar = ((SettingsActivity) getActivity()).getSwitchBar();
+        mSwitchBar.addOnSwitchChangeListener(this);
+        mSwitchBar.setChecked(isChecked);
+        mSwitchBar.show();
+    }
+
+    @Override
+    public void onSwitchChanged(Switch switchView, boolean isChecked) {
+        if (switchView != mSwitchBar.getSwitch()) {
+            return;
+        }
+        Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.STATUS_BAR_CLOCK, isChecked ? 1 : 0);
+        setDateOptions();
+    }
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -150,7 +180,6 @@ public class ClockSettings extends SettingsPreferenceFragment implements
         mClockColor.setNewPreviewColor(intColor);
 
         if (DateFormat.is24HourFormat(getActivity())) {
-            mStatusBarAmPm.setEnabled(false);
             mStatusBarAmPm.setSummary(R.string.status_bar_am_pm_info);
         } else {
             int statusBarAmPm = Settings.System.getInt(resolver,
@@ -165,7 +194,7 @@ public class ClockSettings extends SettingsPreferenceFragment implements
         mClockDateDisplay.setValue(String.valueOf(clockDateDisplay));
         mClockDateDisplay.setSummary(mClockDateDisplay.getEntry());
         mClockDateDisplay.setOnPreferenceChangeListener(this);
-         int clockDateStyle = Settings.System.getInt(resolver,
+        int clockDateStyle = Settings.System.getInt(resolver,
                 Settings.System.STATUSBAR_CLOCK_DATE_STYLE, 0);
         mClockDateStyle.setValue(String.valueOf(clockDateStyle));
         mClockDateStyle.setSummary(mClockDateStyle.getEntry());
@@ -199,6 +228,8 @@ public class ClockSettings extends SettingsPreferenceFragment implements
         mClockDatePosition.setSummary(mClockDatePosition.getEntry());
         mClockDatePosition.setOnPreferenceChangeListener(this);
 
+        mClockSeconds = (SystemSettingSwitchPreference) findPreference(STATUS_BAR_CLOCK_SECONDS);
+        mClockAutoHide = (SystemSettingSwitchPreference) findPreference(STATUS_BAR_CLOCK_AUTO_HIDE);
         setDateOptions();
     }
 
@@ -335,17 +366,22 @@ public class ClockSettings extends SettingsPreferenceFragment implements
     }
 
     private void setDateOptions() {
-        int enableDateOptions = Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.STATUSBAR_CLOCK_DATE_DISPLAY, 0);
-        if (enableDateOptions == 0) {
-            mClockDateStyle.setEnabled(false);
-            mClockDateFormat.setEnabled(false);
-            mClockDatePosition.setEnabled(false);
-        } else {
-            mClockDateStyle.setEnabled(true);
-            mClockDateFormat.setEnabled(true);
-            mClockDatePosition.setEnabled(true);
-        }
+        boolean isChecked = Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.STATUS_BAR_CLOCK, 1) == 1;
+        boolean enableDateOptions = Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.STATUSBAR_CLOCK_DATE_DISPLAY, 0) != 0;
+
+        mStatusBarClock.setEnabled(isChecked);
+        mClockSeconds.setEnabled(isChecked);
+        mClockSize.setEnabled(isChecked);
+        mClockFontStyle.setEnabled(isChecked);
+        mClockColor.setEnabled(isChecked);
+        mClockDateDisplay.setEnabled(isChecked);
+        mClockDateStyle.setEnabled(enableDateOptions && isChecked);
+        mClockDateFormat.setEnabled(enableDateOptions && isChecked);
+        mClockDatePosition.setEnabled(enableDateOptions && isChecked);
+        mClockAutoHide.setEnabled(isChecked);
+        mStatusBarAmPm.setEnabled(!DateFormat.is24HourFormat(getActivity()) && isChecked);
     }
 
     @Override
