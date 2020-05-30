@@ -82,9 +82,6 @@ public class Notifications extends DashboardFragment
 
         mBatteryLightx = (SystemSettingMasterSwitchPreference) findPreference(BATTERY_LIGHT_ENABLED);
         mBatteryLightx.setOnPreferenceChangeListener(this);
-        int batteryLight = Settings.System.getInt(getContentResolver(),
-                BATTERY_LIGHT_ENABLED, 1);
-        mBatteryLightx.setChecked(batteryLight != 0);
 
         PreferenceCategory batteryLightxx = (PreferenceCategory) findPreference(BATTERY_LED);
         if (!getResources().getBoolean(
@@ -171,7 +168,9 @@ public class Notifications extends DashboardFragment
         int edgePulse = Settings.System.getInt(getContentResolver(),
                 PULSE_AMBIENT_LIGHT, 0);
         mEdgePulse.setChecked(edgePulse != 0);
-
+        int batteryLight = Settings.System.getInt(getContentResolver(),
+                BATTERY_LIGHT_ENABLED, 1);
+        mBatteryLightx.setChecked(batteryLight != 0);
     }
 
     protected int getPreferenceScreenResId() {

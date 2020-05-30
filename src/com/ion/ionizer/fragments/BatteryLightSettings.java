@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.os.UserHandle;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
+import android.widget.Switch;
 
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -32,6 +33,8 @@ import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
+import com.android.settings.widget.SwitchBar;
+import com.android.settings.SettingsActivity;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settingslib.search.SearchIndexable;
 
@@ -43,15 +46,40 @@ import java.util.List;
 
 @SearchIndexable
 public class BatteryLightSettings extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener, Indexable {
+        Preference.OnPreferenceChangeListener, Indexable, SwitchBar.OnSwitchChangeListener {
 
     private ColorPickerPreference mLowColor;
     private ColorPickerPreference mMediumColor;
     private ColorPickerPreference mFullColor;
     private ColorPickerPreference mReallyFullColor;
     private SystemSettingSwitchPreference mLowBatteryBlinking;
+    private SystemSettingSwitchPreference mBatteryLightOnDND;
 
     private PreferenceCategory mColorCategory;
+
+    private SwitchBar mSwitchBar;
+
+    @Override
+    public void onActivityCreated(Bundle icicle) {
+        super.onActivityCreated(icicle);
+
+        final boolean isChecked = Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.BATTERY_LIGHT_ENABLED, 1) != 0;
+        mSwitchBar = ((SettingsActivity) getActivity()).getSwitchBar();
+        mSwitchBar.addOnSwitchChangeListener(this);
+        mSwitchBar.setChecked(isChecked);
+        mSwitchBar.show();
+    }
+
+    @Override
+    public void onSwitchChanged(Switch switchView, boolean isChecked) {
+        if (switchView != mSwitchBar.getSwitch()) {
+            return;
+        }
+        Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.BATTERY_LIGHT_ENABLED, isChecked ? 1 : 0);
+        updatePreferences();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,6 +89,7 @@ public class BatteryLightSettings extends SettingsPreferenceFragment implements
         PreferenceScreen prefSet = getPreferenceScreen();
         mColorCategory = (PreferenceCategory) findPreference("battery_light_cat");
 
+        mBatteryLightOnDND = (SystemSettingSwitchPreference) findPreference("battery_light_allow_on_dnd");
         mLowBatteryBlinking = (SystemSettingSwitchPreference)prefSet.findPreference("battery_light_low_blinking");
         if (getResources().getBoolean(
                         com.android.internal.R.bool.config_ledCanPulse)) {
@@ -106,6 +135,16 @@ public class BatteryLightSettings extends SettingsPreferenceFragment implements
         } else {
             prefSet.removePreference(mColorCategory);
         }
+        updatePreferences();
+    }
+
+    private void updatePreferences() {
+        boolean isChecked = Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.BATTERY_LIGHT_ENABLED, 1) != 0;
+
+        mBatteryLightOnDND.setEnabled(isChecked);
+        mLowBatteryBlinking.setEnabled(isChecked);
+        if (mColorCategory != null) mColorCategory.setEnabled(isChecked);
     }
 
     @Override
