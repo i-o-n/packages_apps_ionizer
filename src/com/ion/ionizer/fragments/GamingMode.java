@@ -38,6 +38,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.Switch;
 
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -51,6 +52,8 @@ import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
+import com.android.settings.widget.SwitchBar;
+import com.android.settings.SettingsActivity;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settingslib.search.SearchIndexable;
 
@@ -64,7 +67,7 @@ import java.util.Map;
 
 @SearchIndexable
 public class GamingMode extends SettingsPreferenceFragment
-        implements Preference.OnPreferenceClickListener, Indexable {
+        implements Preference.OnPreferenceClickListener, Indexable, SwitchBar.OnSwitchChangeListener {
 
     private static final int DIALOG_GAMING_APPS = 1;
     private static final String GAMING_MODE_HW_KEYS = "gaming_mode_hw_keys_toggle";
@@ -75,6 +78,12 @@ public class GamingMode extends SettingsPreferenceFragment
     private PackageManager mPackageManager;
     private PreferenceGroup mGamingPrefList;
     private Preference mAddGamingPref;
+    private ListPreference mHeadsUpToggle;
+    private SwitchPreference mNotificationFeedback;
+    private SwitchPreference mBrightnessMode;
+    private ListPreference mRingerMode;
+    private ListPreference mGamingNotification;
+    private SwitchPreference mDynamicMode;
 
     private String mGamingPackageList;
     private Map<String, Package> mGamingPackages;
@@ -84,6 +93,30 @@ public class GamingMode extends SettingsPreferenceFragment
     private static final int KEY_MASK_BACK = 0x02;
     private static final int KEY_MASK_MENU = 0x04;
     private static final int KEY_MASK_APP_SWITCH = 0x10;
+
+    private SwitchBar mSwitchBar;
+
+    @Override
+    public void onActivityCreated(Bundle icicle) {
+        super.onActivityCreated(icicle);
+
+        final boolean isChecked = Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.GAMING_MODE_ENABLED, 0) == 1;
+        mSwitchBar = ((SettingsActivity) getActivity()).getSwitchBar();
+        mSwitchBar.addOnSwitchChangeListener(this);
+        mSwitchBar.setChecked(isChecked);
+        mSwitchBar.show();
+    }
+
+    @Override
+    public void onSwitchChanged(Switch switchView, boolean isChecked) {
+        if (switchView != mSwitchBar.getSwitch()) {
+            return;
+        }
+        Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.GAMING_MODE_ENABLED, isChecked ? 1 : 0);
+        updatePreferences();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -117,6 +150,27 @@ public class GamingMode extends SettingsPreferenceFragment
 
         SettingsObserver observer = new SettingsObserver(new Handler(Looper.getMainLooper()));
         observer.observe();
+
+        mHeadsUpToggle = (ListPreference) findPreference("gaming_mode_headsup_toggle");
+        mNotificationFeedback = (SwitchPreference) findPreference("gaming_mode_notifications_feedback");
+        mBrightnessMode = (SwitchPreference) findPreference("gaming_mode_manual_brightness_toggle");
+        mRingerMode = (ListPreference) findPreference("gaming_mode_ringer_mode");
+        mGamingNotification = (ListPreference) findPreference("gaming_mode_notifications");
+        mDynamicMode = (SwitchPreference) findPreference("gaming_mode_dynamic_state");
+        updatePreferences();
+    }
+
+    private void updatePreferences() {
+        boolean isChecked = Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.GAMING_MODE_ENABLED, 0) == 1;
+        mHeadsUpToggle.setEnabled(isChecked);
+        mNotificationFeedback.setEnabled(isChecked);
+        if (mHardwareKeysDisable != null) mHardwareKeysDisable.setEnabled(isChecked);
+        mBrightnessMode.setEnabled(isChecked);
+        mRingerMode.setEnabled(isChecked);
+        mGamingNotification.setEnabled(isChecked);
+        mDynamicMode.setEnabled(isChecked);
+        mGamingPrefList.setEnabled(isChecked);
     }
 
     @Override

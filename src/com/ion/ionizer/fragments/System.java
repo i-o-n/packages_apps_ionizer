@@ -83,9 +83,8 @@ public class System extends DashboardFragment
         mShowCpuInfo.setOnPreferenceChangeListener(this);
 
         mGamingMode = (SystemSettingMasterSwitchPreference) findPreference(GAMING_MODE_ENABLED);
-        mGamingMode.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.GAMING_MODE_ENABLED, 0) == 1));
         mGamingMode.setOnPreferenceChangeListener(this);
+        updatePreferences();
     }
 
     private void writeCpuInfoOptions(boolean value) {
@@ -115,8 +114,27 @@ public class System extends DashboardFragment
         return false;
     }
 
+    private void updatePreferences() {
+        mGamingMode.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.GAMING_MODE_ENABLED, 0) == 1));
+    }
+
     protected int getPreferenceScreenResId() {
         return R.xml.ion_settings_system;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        updatePreferences();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        updatePreferences();
     }
 
     @Override
