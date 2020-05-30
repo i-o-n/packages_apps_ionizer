@@ -26,6 +26,7 @@ import android.os.Bundle;
 import android.os.UserHandle;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
+import android.widget.Switch;
 
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -34,10 +35,12 @@ import androidx.preference.PreferenceScreen;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.SwitchPreference;
 
-import com.android.internal.logging.nano.MetricsProto; 
+import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
+import com.android.settings.widget.SwitchBar;
+import com.android.settings.SettingsActivity;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settingslib.search.SearchIndexable;
 
@@ -49,7 +52,7 @@ import java.util.List;
 
 @SearchIndexable
 public class LockScreenClock extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener, Indexable {
+        Preference.OnPreferenceChangeListener, Indexable, SwitchBar.OnSwitchChangeListener {
 
     private static final String LOCKSCREEN_CLOCK_SELECTION = "lockscreen_clock_selection";
     private static final String LOCK_CLOCK_FONTS = "lock_clock_fonts";
@@ -63,6 +66,30 @@ public class LockScreenClock extends SettingsPreferenceFragment implements
     private SystemSettingSeekBarPreference mClockFontSize;
     private SystemSettingSeekBarPreference mTextClockPadding;
 
+    private SwitchBar mSwitchBar;
+
+    @Override
+    public void onActivityCreated(Bundle icicle) {
+        super.onActivityCreated(icicle);
+
+        final boolean isChecked = Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.LOCKSCREEN_CLOCK, 1) != 0;
+        mSwitchBar = ((SettingsActivity) getActivity()).getSwitchBar();
+        mSwitchBar.addOnSwitchChangeListener(this);
+        mSwitchBar.setChecked(isChecked);
+        mSwitchBar.show();
+    }
+
+    @Override
+    public void onSwitchChanged(Switch switchView, boolean isChecked) {
+        if (switchView != mSwitchBar.getSwitch()) {
+            return;
+        }
+        Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.LOCKSCREEN_CLOCK, isChecked ? 1 : 0);
+        updatePreferences();
+    }
+
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -75,10 +102,6 @@ public class LockScreenClock extends SettingsPreferenceFragment implements
 
         // Lockscreen Clock
         mLockClockSelection = (ListPreference) findPreference(LOCKSCREEN_CLOCK_SELECTION);
-        boolean mClockSelection = Settings.Secure.getIntForUser(resolver,
-                Settings.Secure.LOCKSCREEN_CLOCK_SELECTION, 0, UserHandle.USER_CURRENT) == 9
-                || Settings.Secure.getIntForUser(resolver,
-                Settings.Secure.LOCKSCREEN_CLOCK_SELECTION, 0, UserHandle.USER_CURRENT) == 10;
         mLockClockSelection.setOnPreferenceChangeListener(this);
 
         // Lockscren Clock Fonts
@@ -96,22 +119,22 @@ public class LockScreenClock extends SettingsPreferenceFragment implements
 
         // Text Clock Alignment
         mTextClockAlign = (ListPreference) findPreference(TEXT_CLOCK_ALIGNMENT);
-        mTextClockAlign.setEnabled(mClockSelection);
         mTextClockAlign.setOnPreferenceChangeListener(this);
 
         // Text Clock Padding
         mTextClockPadding = (SystemSettingSeekBarPreference) findPreference(TEXT_CLOCK_PADDING);
-        boolean mTextClockAlignx = Settings.System.getIntForUser(resolver,
-                    Settings.System.TEXT_CLOCK_ALIGNMENT, 0, UserHandle.USER_CURRENT) == 1;
-        mTextClockPadding.setEnabled(!mTextClockAlignx);
+
+        updatePreferences();
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getActivity().getContentResolver();
         if (preference == mLockClockSelection) {
+            boolean isChecked = Settings.System.getInt(getActivity().getContentResolver(),
+                    Settings.System.LOCKSCREEN_CLOCK, 1) != 0;
             boolean val = Integer.valueOf((String) newValue) == 9
                     || Integer.valueOf((String) newValue) == 10;
-            mTextClockAlign.setEnabled(val);
+            mTextClockAlign.setEnabled(val && isChecked);
             return true;
         } else if (preference == mLockClockFonts) {
             Settings.System.putInt(getContentResolver(), Settings.System.LOCK_CLOCK_FONTS,
@@ -125,11 +148,30 @@ public class LockScreenClock extends SettingsPreferenceFragment implements
                     Settings.System.LOCKCLOCK_FONT_SIZE, top*1);
             return true;
         } else if (preference == mTextClockAlign) {
+            boolean isChecked = Settings.System.getInt(getActivity().getContentResolver(),
+                    Settings.System.LOCKSCREEN_CLOCK, 1) != 0;
             boolean val = Integer.valueOf((String) newValue) == 1;
-            mTextClockPadding.setEnabled(!val);
+            mTextClockPadding.setEnabled(!val && isChecked);
             return true;
         }
         return false;
+    }
+
+    private void updatePreferences() {
+        boolean isChecked = Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.LOCKSCREEN_CLOCK, 1) != 0;
+        boolean mClockSelection = Settings.Secure.getIntForUser(getActivity().getContentResolver(),
+                Settings.Secure.LOCKSCREEN_CLOCK_SELECTION, 0, UserHandle.USER_CURRENT) == 9
+                || Settings.Secure.getIntForUser(getActivity().getContentResolver(),
+                Settings.Secure.LOCKSCREEN_CLOCK_SELECTION, 0, UserHandle.USER_CURRENT) == 10;
+        boolean mTextClockAlignx = Settings.System.getIntForUser(getActivity().getContentResolver(),
+                Settings.System.TEXT_CLOCK_ALIGNMENT, 0, UserHandle.USER_CURRENT) == 1;
+
+        mLockClockSelection.setEnabled(isChecked);
+        mLockClockFonts.setEnabled(isChecked);
+        mClockFontSize.setEnabled(isChecked);
+        mTextClockAlign.setEnabled(mClockSelection && isChecked);
+        mTextClockPadding.setEnabled(!mTextClockAlignx && isChecked);
     }
 
     @Override

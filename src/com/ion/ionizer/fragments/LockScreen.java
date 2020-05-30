@@ -33,7 +33,7 @@ import androidx.preference.PreferenceScreen;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.SwitchPreference;
 
-import com.android.internal.logging.nano.MetricsProto; 
+import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -79,16 +79,9 @@ public class LockScreen extends DashboardFragment implements
 
         mClockEnabled = (SystemSettingMasterSwitchPreference) findPreference(LOCKSCREEN_CLOCK);
         mClockEnabled.setOnPreferenceChangeListener(this);
-        int clockEnabled = Settings.System.getInt(resolver,
-                LOCKSCREEN_CLOCK, 1);
-        mClockEnabled.setChecked(clockEnabled != 0);
 
         mInfoEnabled = (SystemSettingMasterSwitchPreference) findPreference(LOCKSCREEN_INFO);
         mInfoEnabled.setOnPreferenceChangeListener(this);
-        int infoEnabled = Settings.System.getInt(resolver,
-                LOCKSCREEN_INFO, 1);
-        mInfoEnabled.setChecked(infoEnabled != 0);
-        mInfoEnabled.setEnabled(clockEnabled != 0);
 
         mVisualizerEnabled = (SecureSettingMasterSwitchPreference) findPreference(LOCKSCREEN_VISUALIZER_ENABLED);
         mVisualizerEnabled.setOnPreferenceChangeListener(this);
@@ -107,6 +100,8 @@ public class LockScreen extends DashboardFragment implements
         } else if (!getResources().getBoolean(R.bool.config_showFODAnimationPicker)) {
             if (mFODAnimationPicker != null) mLsExtra.removePreference(mFODAnimationPicker);
         }
+
+        updatePreferences();
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -131,8 +126,34 @@ public class LockScreen extends DashboardFragment implements
         return false;
     }
 
+    private void updatePreferences() {
+        ContentResolver resolver = getActivity().getContentResolver();
+
+        int clockEnabled = Settings.System.getInt(resolver,
+                LOCKSCREEN_CLOCK, 1);
+        mClockEnabled.setChecked(clockEnabled != 0);
+        int infoEnabled = Settings.System.getInt(resolver,
+                LOCKSCREEN_INFO, 1);
+        mInfoEnabled.setChecked(infoEnabled != 0);
+        mInfoEnabled.setEnabled(clockEnabled != 0);
+    }
+
     protected int getPreferenceScreenResId() {
         return R.xml.ion_settings_lockscreen;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        updatePreferences();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        updatePreferences();
     }
 
     @Override
