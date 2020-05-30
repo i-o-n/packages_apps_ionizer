@@ -27,6 +27,7 @@ import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.widget.Switch;
 
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
@@ -37,6 +38,8 @@ import androidx.preference.SwitchPreference;
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
+import com.android.settings.widget.SwitchBar;
+import com.android.settings.SettingsActivity;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settingslib.search.SearchIndexable;
 import com.ion.ionizer.R;
@@ -47,7 +50,7 @@ import java.util.List;
 
 @SearchIndexable
 public class ScreenStateToggles extends SettingsPreferenceFragment
-        implements Preference.OnPreferenceChangeListener, Indexable {
+        implements Preference.OnPreferenceChangeListener, Indexable, SwitchBar.OnSwitchChangeListener {
 
     private static final String TAG = "ScreenStateToggles";
     private static final String SCREEN_STATE_TOGGLES_TWOG = "screen_state_toggles_twog";
@@ -67,6 +70,30 @@ public class ScreenStateToggles extends SettingsPreferenceFragment
     private CustomSeekBarPreference mSecondsOnDelay;
     private PreferenceCategory mMobileDateCategory;
     private PreferenceCategory mLocationCategory;
+
+    private SwitchBar mSwitchBar;
+
+    @Override
+    public void onActivityCreated(Bundle icicle) {
+        super.onActivityCreated(icicle);
+
+        final boolean isChecked = Settings.System.getIntForUser(getContentResolver(),
+                Settings.System.START_SCREEN_STATE_SERVICE, 0, UserHandle.USER_CURRENT) != 0;
+        mSwitchBar = ((SettingsActivity) getActivity()).getSwitchBar();
+        mSwitchBar.addOnSwitchChangeListener(this);
+        mSwitchBar.setChecked(isChecked);
+        mSwitchBar.show();
+    }
+
+    @Override
+    public void onSwitchChanged(Switch switchView, boolean isChecked) {
+        if (switchView != mSwitchBar.getSwitch()) {
+            return;
+        }
+        Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.START_SCREEN_STATE_SERVICE, isChecked ? 1 : 0);
+        updatePreferences();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -138,6 +165,7 @@ public class ScreenStateToggles extends SettingsPreferenceFragment
                 Settings.System.SCREEN_STATE_GPS, 0, UserHandle.USER_CURRENT) == 1));
             mEnableScreenStateTogglesGps.setOnPreferenceChangeListener(this);
         }
+        updatePreferences();
     }
 
     @Override
@@ -187,6 +215,16 @@ public class ScreenStateToggles extends SettingsPreferenceFragment
                 .setClassName("com.android.systemui", "com.android.systemui.ion.screenstate.ScreenStateService");
         getActivity().stopService(service);
         getActivity().startService(service);
+    }
+
+    private void updatePreferences() {
+        boolean isChecked = Settings.System.getIntForUser(getContentResolver(),
+                Settings.System.START_SCREEN_STATE_SERVICE, 0, UserHandle.USER_CURRENT) != 0;
+
+        mSecondsOffDelay.setEnabled(isChecked);
+        mSecondsOnDelay.setEnabled(isChecked);
+        mMobileDateCategory.setEnabled(isChecked);
+        mLocationCategory.setEnabled(isChecked);
     }
 
     @Override

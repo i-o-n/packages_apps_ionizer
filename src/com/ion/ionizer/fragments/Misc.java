@@ -30,7 +30,7 @@ import androidx.preference.PreferenceScreen;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.SwitchPreference;
 
-import com.android.internal.logging.nano.MetricsProto; 
+import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settings.SettingsPreferenceFragment;
@@ -59,10 +59,8 @@ public class Misc extends SettingsPreferenceFragment
         addPreferencesFromResource(R.xml.ion_settings_misc);
 
         mEnableScreenStateToggles = (SystemSettingMasterSwitchPreference) findPreference(SCREEN_STATE_TOGGLES_ENABLE);
-        int enabled = Settings.System.getIntForUser(getContentResolver(),
-                Settings.System.START_SCREEN_STATE_SERVICE, 0, UserHandle.USER_CURRENT);
-        mEnableScreenStateToggles.setChecked(enabled != 0);
         mEnableScreenStateToggles.setOnPreferenceChangeListener(this);
+        updatePreferences();
     }
 
     @Override
@@ -83,6 +81,26 @@ public class Misc extends SettingsPreferenceFragment
             return true;
         }
         return false;
+    }
+
+    private void updatePreferences() {
+        int enabled = Settings.System.getIntForUser(getContentResolver(),
+                Settings.System.START_SCREEN_STATE_SERVICE, 0, UserHandle.USER_CURRENT);
+        mEnableScreenStateToggles.setChecked(enabled != 0);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        updatePreferences();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        updatePreferences();
     }
 
     @Override
