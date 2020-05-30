@@ -85,9 +85,6 @@ public class LockScreen extends DashboardFragment implements
 
         mVisualizerEnabled = (SecureSettingMasterSwitchPreference) findPreference(LOCKSCREEN_VISUALIZER_ENABLED);
         mVisualizerEnabled.setOnPreferenceChangeListener(this);
-        int visualizerEnabled = Settings.Secure.getInt(resolver,
-                LOCKSCREEN_VISUALIZER_ENABLED, 0);
-        mVisualizerEnabled.setChecked(visualizerEnabled != 0);
 
         mLsExtra = (PreferenceCategory) findPreference(LOCKSCREEN_EXTRA);
         mFODIconPicker = (Preference) findPreference(FOD_ICON_PICKER_CATEGORY);
@@ -136,6 +133,9 @@ public class LockScreen extends DashboardFragment implements
                 LOCKSCREEN_INFO, 1);
         mInfoEnabled.setChecked(infoEnabled != 0);
         mInfoEnabled.setEnabled(clockEnabled != 0);
+        int visualizerEnabled = Settings.Secure.getInt(resolver,
+                LOCKSCREEN_VISUALIZER_ENABLED, 0);
+        mVisualizerEnabled.setChecked(visualizerEnabled != 0);
     }
 
     protected int getPreferenceScreenResId() {

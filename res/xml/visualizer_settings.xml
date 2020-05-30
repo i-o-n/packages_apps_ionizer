@@ -48,7 +48,7 @@
         android:dependency="lockscreen_lavalamp_enabled"/>
 
     <PreferenceCategory
-        android:id="@+id/lockscreen_solid_lines_category"
+        android:key="lockscreen_solid_lines_category"
         android:title="@string/lockscreen_solid_lines_category" >
 
         <com.ion.ionizer.preferences.SecureSettingSeekBarPreference

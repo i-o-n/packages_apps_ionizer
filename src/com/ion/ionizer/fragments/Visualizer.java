@@ -22,37 +22,70 @@ import android.os.Bundle;
 import android.os.UserHandle;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
+import android.widget.Switch;
 
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
+import androidx.preference.PreferenceCategory;
 import androidx.preference.SwitchPreference;
 
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
+import com.android.settings.widget.SwitchBar;
+import com.android.settings.SettingsActivity;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settingslib.search.SearchIndexable;
 
 import com.ion.ionizer.colorpicker.ColorPickerPreference;
+import com.ion.ionizer.preferences.SecureSettingSwitchPreference;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @SearchIndexable
 public class Visualizer extends SettingsPreferenceFragment implements
-        OnPreferenceChangeListener, Indexable {
+        OnPreferenceChangeListener, Indexable, SwitchBar.OnSwitchChangeListener {
 
     private static final String KEY_AUTOCOLOR = "lockscreen_visualizer_autocolor";
     private static final String KEY_LAVALAMP = "lockscreen_lavalamp_enabled";
     private static final String KEY_COLOR = "lockscreen_visualizer_color";
+    private static final String LINES_CATEGORY = "lockscreen_solid_lines_category";
+    private static final String AMBIENT_VISUALIZER = "ambient_visualizer";
 
     private static final int DEFAULT_COLOR = 0xffffffff;
 
     private SwitchPreference mAutoColor;
     private SwitchPreference mLavaLamp;
     private ColorPickerPreference mColor;
+    private PreferenceCategory mSolidLines;
+    private SecureSettingSwitchPreference mAmbientVisualizer;
+
+    private SwitchBar mSwitchBar;
+
+    @Override
+    public void onActivityCreated(Bundle icicle) {
+        super.onActivityCreated(icicle);
+
+        final boolean isChecked = Settings.Secure.getInt(getActivity().getContentResolver(),
+                Settings.Secure.LOCKSCREEN_VISUALIZER_ENABLED, 0) != 0;
+        mSwitchBar = ((SettingsActivity) getActivity()).getSwitchBar();
+        mSwitchBar.addOnSwitchChangeListener(this);
+        mSwitchBar.setChecked(isChecked);
+        mSwitchBar.show();
+    }
+
+    @Override
+    public void onSwitchChanged(Switch switchView, boolean isChecked) {
+        if (switchView != mSwitchBar.getSwitch()) {
+            return;
+        }
+        Settings.Secure.putInt(getActivity().getContentResolver(),
+                Settings.Secure.LOCKSCREEN_VISUALIZER_ENABLED, isChecked ? 1 : 0);
+        updatePreferences();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,21 +95,7 @@ public class Visualizer extends SettingsPreferenceFragment implements
 
         ContentResolver resolver = getActivity().getContentResolver();
 
-        boolean mLavaLampEnabled = Settings.Secure.getIntForUser(resolver,
-                Settings.Secure.LOCKSCREEN_LAVALAMP_ENABLED, 1,
-                UserHandle.USER_CURRENT) != 0;
-
         mAutoColor = (SwitchPreference) findPreference(KEY_AUTOCOLOR);
-        mAutoColor.setEnabled(!mLavaLampEnabled);
-
-        if (mLavaLampEnabled) {
-            mAutoColor.setSummary(getActivity().getString(
-                    R.string.lockscreen_autocolor_lavalamp));
-        } else {
-            mAutoColor.setSummary(getActivity().getString(
-                    R.string.lockscreen_autocolor_summary));
-        }
-
         mLavaLamp = (SwitchPreference) findPreference(KEY_LAVALAMP);
         mLavaLamp.setOnPreferenceChangeListener(this);
 
@@ -87,12 +106,19 @@ public class Visualizer extends SettingsPreferenceFragment implements
         String hexColor = String.format("#%08x", (DEFAULT_COLOR & intColor));
         mColor.setSummary(hexColor);
         mColor.setNewPreviewColor(intColor);
+
+        mSolidLines = (PreferenceCategory) findPreference(LINES_CATEGORY);
+        mAmbientVisualizer = (SecureSettingSwitchPreference) findPreference(AMBIENT_VISUALIZER);
+
+        updatePreferences();
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getActivity().getContentResolver();
         if (preference == mLavaLamp) {
+            boolean isChecked = Settings.Secure.getInt(getActivity().getContentResolver(),
+                    Settings.Secure.LOCKSCREEN_VISUALIZER_ENABLED, 0) != 0;
             boolean mLavaLampEnabled = (Boolean) newValue;
             if (mLavaLampEnabled) {
                 mAutoColor.setSummary(getActivity().getString(
@@ -101,7 +127,7 @@ public class Visualizer extends SettingsPreferenceFragment implements
                 mAutoColor.setSummary(getActivity().getString(
                         R.string.lockscreen_autocolor_summary));
             }
-            mAutoColor.setEnabled(!mLavaLampEnabled);
+            mAutoColor.setEnabled(!mLavaLampEnabled && isChecked);
             return true;
         } else if (preference == mColor) {
             String hex = ColorPickerPreference.convertToARGB(
@@ -113,6 +139,26 @@ public class Visualizer extends SettingsPreferenceFragment implements
             return true;
         }
         return false;
+    }
+
+    private void updatePreferences() {
+        boolean isChecked = Settings.Secure.getInt(getActivity().getContentResolver(),
+                Settings.Secure.LOCKSCREEN_VISUALIZER_ENABLED, 0) != 0;
+        boolean mLavaLampEnabled = Settings.Secure.getIntForUser(getActivity().getContentResolver(),
+                Settings.Secure.LOCKSCREEN_LAVALAMP_ENABLED, 1,
+                UserHandle.USER_CURRENT) != 0;
+
+        mAutoColor.setEnabled(!mLavaLampEnabled && isChecked);
+        if (mLavaLampEnabled) {
+            mAutoColor.setSummary(getActivity().getString(
+                    R.string.lockscreen_autocolor_lavalamp));
+        } else {
+            mAutoColor.setSummary(getActivity().getString(
+                    R.string.lockscreen_autocolor_summary));
+        }
+        mLavaLamp.setEnabled(isChecked);
+        mSolidLines.setEnabled(isChecked);
+        mAmbientVisualizer.setEnabled(isChecked);
     }
 
     @Override
