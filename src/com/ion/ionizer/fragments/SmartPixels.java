@@ -23,12 +23,15 @@ import android.os.UserHandle;
 import android.os.PowerManager;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
+import android.widget.Switch;
 import androidx.preference.*;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
+import com.android.settings.widget.SwitchBar;
+import com.android.settings.SettingsActivity;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settingslib.search.SearchIndexable;
 import com.ion.ionizer.preferences.SystemSettingSwitchPreference;
@@ -38,7 +41,7 @@ import java.util.List;
 
 @SearchIndexable
 public class SmartPixels extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener, Indexable {
+        Preference.OnPreferenceChangeListener, Indexable, SwitchBar.OnSwitchChangeListener {
     private static final String TAG = "SmartPixels";
 
     private static final String ON_POWER_SAVE = "smart_pixels_on_power_save";
@@ -46,6 +49,29 @@ public class SmartPixels extends SettingsPreferenceFragment implements
     private SystemSettingSwitchPreference mSmartPixelsOnPowerSave;
 
     ContentResolver resolver;
+
+    private SwitchBar mSwitchBar;
+
+    @Override
+    public void onActivityCreated(Bundle icicle) {
+        super.onActivityCreated(icicle);
+
+        final boolean isChecked = Settings.System.getInt(getContentResolver(),
+                Settings.System.SMART_PIXELS_ENABLE, 0) != 0;
+        mSwitchBar = ((SettingsActivity) getActivity()).getSwitchBar();
+        mSwitchBar.addOnSwitchChangeListener(this);
+        mSwitchBar.setChecked(isChecked);
+        mSwitchBar.show();
+    }
+
+    @Override
+    public void onSwitchChanged(Switch switchView, boolean isChecked) {
+        if (switchView != mSwitchBar.getSwitch()) {
+            return;
+        }
+        Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.SMART_PIXELS_ENABLE, isChecked ? 1 : 0);
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -80,7 +106,7 @@ public class SmartPixels extends SettingsPreferenceFragment implements
     }
 
     private void updateDependency() {
-        boolean mUseOnPowerSave = (Settings.System.getIntForUser(
+        /*boolean mUseOnPowerSave = (Settings.System.getIntForUser(
                 resolver, Settings.System.SMART_PIXELS_ON_POWER_SAVE,
                 0, UserHandle.USER_CURRENT) == 1);
         PowerManager pm = (PowerManager)getActivity().getSystemService(Context.POWER_SERVICE);
@@ -88,7 +114,7 @@ public class SmartPixels extends SettingsPreferenceFragment implements
             mSmartPixelsOnPowerSave.setEnabled(false);
         } else {
             mSmartPixelsOnPowerSave.setEnabled(true);
-        }
+        }*/
     }
 
     public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
