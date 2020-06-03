@@ -98,7 +98,7 @@
             android:key="qs_blur"
             android:title="@string/blur_quicksettings_title"
             android:summary="@string/blur_quicksettings_summary"
-            android:defaultValue="true" />
+            android:defaultValue="false" />
 
         <com.ion.ionizer.preferences.SystemSettingSeekBarPreference
             android:key="qs_blur_alpha"
