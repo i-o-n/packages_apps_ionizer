@@ -50,14 +50,14 @@ public class Misc extends SettingsPreferenceFragment
     public static final String TAG = "Misc";
 
     private static final String SCREEN_STATE_TOGGLES_ENABLE = "screen_state_toggles_enable_key";
-    private static final String PREF_STOCK_RECENTS_CATEGORY = "stock_recents_category";
     private static final String PREF_ALTERNATIVE_RECENTS_CATEGORY = "alternative_recents_category";
     private static final String PREF_SWIPE_UP_ENABLED = "swipe_up_enabled_warning";
+    private static final String PREF_USE_SLIM_RECENTS = "use_slim_recents";
 
     private SystemSettingMasterSwitchPreference mEnableScreenStateToggles;
-    private PreferenceCategory mStockRecentsCategory;
+    private SystemSettingMasterSwitchPreference mEnableSlimRecent;
     private PreferenceCategory mAlternativeRecentsCategory;
-    private Context mContext;
+    private Preference mSwipeUpEnabledWarning;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -67,30 +67,18 @@ public class Misc extends SettingsPreferenceFragment
 
         mEnableScreenStateToggles = (SystemSettingMasterSwitchPreference) findPreference(SCREEN_STATE_TOGGLES_ENABLE);
         mEnableScreenStateToggles.setOnPreferenceChangeListener(this);
-        updatePreferences();
-
-        mStockRecentsCategory = (PreferenceCategory) findPreference(PREF_STOCK_RECENTS_CATEGORY);
-        mAlternativeRecentsCategory =
-                (PreferenceCategory) findPreference(PREF_ALTERNATIVE_RECENTS_CATEGORY);
 
         // Alternative recents en-/disabling
-        Preference.OnPreferenceChangeListener alternativeRecentsChangeListener =
-                new Preference.OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
-                updateDependencies(preference, (Boolean) newValue);
-                return true;
-            }
-        };
-        for (int i = 0; i < mAlternativeRecentsCategory.getPreferenceCount(); i++) {
-            Preference preference = mAlternativeRecentsCategory.getPreference(i);
-            if (preference instanceof SystemSettingMasterSwitchPreference) {
-                preference.setOnPreferenceChangeListener(alternativeRecentsChangeListener);
-            }
-        }
+        mAlternativeRecentsCategory = (PreferenceCategory) findPreference(PREF_ALTERNATIVE_RECENTS_CATEGORY);
+        mSwipeUpEnabledWarning = (Preference) findPreference(PREF_SWIPE_UP_ENABLED);
+        mEnableSlimRecent = (SystemSettingMasterSwitchPreference) findPreference(PREF_USE_SLIM_RECENTS);
+        mEnableSlimRecent.setOnPreferenceChangeListener(this);
 
+        updatePreferences();
         updateDependencies();
+    }
 
+    private void updateDependencies() {
         // Warning for alternative recents when gesture navigation is enabled,
         // which directly controls quickstep (launcher) recents.
         final int navigationMode = getActivity().getResources()
@@ -100,42 +88,9 @@ public class Misc extends SettingsPreferenceFragment
         // 1: 2 button mode (currently does not support alternative recents)
         // 2: gesture only (currently does not support alternative recents)
         if (navigationMode != 0) {
-            for (int i = 0; i < mAlternativeRecentsCategory.getPreferenceCount(); i++) {
-                Preference preference = mAlternativeRecentsCategory.getPreference(i);
-                if (PREF_SWIPE_UP_ENABLED.equals(preference.getKey())) {
-                    // We want to have that one enabled
-                    continue;
-                }
-                preference.setEnabled(false);
-            }
+            mEnableSlimRecent.setEnabled(false);
         } else {
-            mAlternativeRecentsCategory.removePreference(findPreference(PREF_SWIPE_UP_ENABLED));
-        }
-    }
-
-    private void updateDependencies() {
-        updateDependencies(null, null);
-    }
-
-    private void updateDependencies(Preference updatedPreference, Boolean newValue) {
-        // Disable stock recents category if alternative enabled
-        boolean alternativeRecentsEnabled = newValue != null && newValue;
-        if (!alternativeRecentsEnabled) {
-            for (int i = 0; i < mAlternativeRecentsCategory.getPreferenceCount(); i++) {
-                Preference preference = mAlternativeRecentsCategory.getPreference(i);
-                if (preference == updatedPreference) {
-                    // Already used newValue
-                    continue;
-                }
-                if (preference instanceof SystemSettingMasterSwitchPreference
-                        && ((SystemSettingMasterSwitchPreference) preference).isChecked()) {
-                    alternativeRecentsEnabled = true;
-                    break;
-                }
-            }
-        }
-        if (mStockRecentsCategory != null) {
-            mStockRecentsCategory.setEnabled(!alternativeRecentsEnabled);
+            mAlternativeRecentsCategory.removePreference(mSwipeUpEnabledWarning);
         }
     }
 
@@ -155,6 +110,11 @@ public class Misc extends SettingsPreferenceFragment
                 getActivity().stopService(service);
             }
             return true;
+        } else if (preference == mEnableSlimRecent) {
+            boolean value = (Boolean) newValue;
+            Settings.System.putIntForUser(getContentResolver(),
+                    Settings.System.USE_SLIM_RECENTS, value ? 1 : 0, UserHandle.USER_CURRENT);
+            return true;
         }
         return false;
     }
@@ -163,6 +123,10 @@ public class Misc extends SettingsPreferenceFragment
         int enabled = Settings.System.getIntForUser(getContentResolver(),
                 Settings.System.START_SCREEN_STATE_SERVICE, 0, UserHandle.USER_CURRENT);
         mEnableScreenStateToggles.setChecked(enabled != 0);
+
+        int useSlimRecent = Settings.System.getIntForUser(getContentResolver(),
+                Settings.System.USE_SLIM_RECENTS, 0, UserHandle.USER_CURRENT);
+        mEnableSlimRecent.setChecked(useSlimRecent != 0);
     }
 
     @Override
@@ -170,6 +134,7 @@ public class Misc extends SettingsPreferenceFragment
         super.onPause();
 
         updatePreferences();
+        updateDependencies();
     }
 
     @Override
@@ -177,6 +142,7 @@ public class Misc extends SettingsPreferenceFragment
         super.onResume();
 
         updatePreferences();
+        updateDependencies();
     }
 
     @Override
