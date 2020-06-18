@@ -50,6 +50,12 @@
         android:summary="@string/navigation_bar_ime_space_summary"
         android:defaultValue="true" />
 
+    <com.ion.ionizer.preferences.SystemSettingSwitchPreference
+        android:key="show_only_navbar_handle"
+        android:title="@string/show_only_navbar_handle_title"
+        android:summary="@string/show_only_navbar_handle_summary"
+        android:defaultValue="false" />
+
     <PreferenceCategory
         android:key="left_swipe"
         android:title="@string/left_swipe_key_title">

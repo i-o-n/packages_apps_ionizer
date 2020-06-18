@@ -57,6 +57,7 @@ public class GestureSettings extends SettingsPreferenceFragment
     private static final String KEY_CATEGORY_LEFT_SWIPE    = "left_swipe";
     private static final String KEY_CATEGORY_RIGHT_SWIPE   = "right_swipe";
     private static final String KEY_NAVIGATION_IME_SPACE = "navigation_bar_ime_space";
+    private static final String KEY_SHOW_ONLY_NAVBAR_HANDLE = "show_only_navbar_handle";
 
     private ContentResolver mResolver;
     private ListPreference mLeftSwipeActions;
@@ -71,6 +72,7 @@ public class GestureSettings extends SettingsPreferenceFragment
     private PreferenceCategory rightSwipeCategory;
     private SystemSettingSwitchPreference mNavigationIMESpace;
     private SystemSettingSeekBarPreference mSwipeHoldDelay;
+    private SystemSettingSwitchPreference mShowOnlyNavbarHandle;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -149,6 +151,9 @@ public class GestureSettings extends SettingsPreferenceFragment
         mLeftSwipeAppSelectionHold.setVisible(mRightSwipeActionsHold.getEntryValues()
                 [rightSwipeActionsHold].equals("5"));
 
+        mShowOnlyNavbarHandle = (SystemSettingSwitchPreference) findPreference(KEY_SHOW_ONLY_NAVBAR_HANDLE);
+        mShowOnlyNavbarHandle.setOnPreferenceChangeListener(this);
+
         mSwipeHoldDelay = (SystemSettingSeekBarPreference) findPreference("long_back_swipe_timeout");
         updateSwipeHoldDelayState();
         customAppCheck();
@@ -209,6 +214,9 @@ public class GestureSettings extends SettingsPreferenceFragment
             actionPreferenceReload();
             customAppCheck();
             updateSwipeHoldDelayState();
+            return true;
+        } else if (preference == mShowOnlyNavbarHandle) {
+            SystemNavigationGestureSettings.updateNavigationBarOverlays(getActivity());
             return true;
         }
         return false;
